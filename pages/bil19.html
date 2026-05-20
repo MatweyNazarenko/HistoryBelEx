@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билет №19: Подвиг белорусского народа в Великой Отечественной войне</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f4efe0;
+            color: #2e2b1a;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 15% 20%, #e4d5aa 0%, #f4efe0 70%);
+        }        .btnBackBlock{
+            position: absolute;
+            display: flex;
+            top: 40px;
+            left: 40px;
+        }
+        .backBtn{
+            text-decoration: none;
+            background: #6b4f28;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .backBtn>p{
+            transition: .3s;
+            position: relative;
+            z-index: 10;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+        .backBtn::after{    
+            transition: .5s;
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dfd0b0;
+            z-index: 1;
+        }
+        .backBtn:hover>p{
+            color: #4e3d22;
+        }
+        .backBtn:hover::after{
+            right: 0;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 250, 240, 0.93);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(130, 100, 70, 0.25);
+            padding: 2rem 2rem 3rem;
+        }
+        h1 { font-size: 2.3rem; text-align: center; color: #4a3620; margin-bottom: 0.2rem; }
+        .subtitle {
+            text-align: center; font-style: italic; color: #6b5a3e;
+            margin-bottom: 2.5rem; border-bottom: 2px dotted #b89a5e; padding-bottom: 1rem;
+        }
+        .tab-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2rem; }
+        .tab-btn {
+            background: #dfd0b0; border: none; padding: 12px 20px; border-radius: 30px;
+            font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            color: #4e3d22; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #b89a5e;
+        }
+        .tab-btn:hover { background: #cdba8b; color: #2d1f0c; }
+        .tab-btn.active {
+            background: #6b4f28; color: #fff; border-color: #4a3520;
+            box-shadow: 0 6px 12px rgba(107, 79, 40, 0.5); transform: translateY(-2px);
+        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card {
+            background: #fffef7; border: 1px solid #d9c7a0; border-radius: 20px;
+            padding: 1.5rem; margin-bottom: 1.8rem; box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .year-badge {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 12px; border-radius: 20px; display: inline-block; margin-right: 10px;
+        }
+        .timeline {
+            position: relative; margin: 2rem 0; padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+            width: 4px; background: #b89a5e; border-radius: 2px;
+        }
+        .timeline-item {
+            margin-bottom: 2rem; position: relative; padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '◆'; position: absolute; left: -6px; top: 2px;
+            font-size: 1.5rem; color: #6b4f28;
+        }
+        .tl-date {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 14px; border-radius: 20px; display: inline-block; margin-bottom: 4px;
+        }
+        .tl-desc { color: #4d3b20; font-style: italic; }
+        .cards-grid {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-top: 1.5rem;
+        }
+        .flip-card {
+            background: transparent; width: 220px; height: 150px; perspective: 1000px; cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.6s; transform-style: preserve-3d;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2); border-radius: 18px;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 18px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 15px; font-weight: 600; font-size: 1rem;
+        }
+        .flip-card-front {
+            background: #efe3cc; color: #4e3620; border: 2px solid #c8aa7a;
+        }
+        .flip-card-back {
+            background: #6b4f28; color: #fff; border: 2px solid #4a3520;
+            transform: rotateY(180deg); font-size: 0.9rem;
+        }
+        .card-actions { display: flex; gap: 10px; justify-content: center; margin-top: 1.5rem; }
+        .quiz-area { background: #faf3e4; border-radius: 20px; padding: 1.5rem; }
+        .quiz-question { font-weight: 700; margin: 1.2rem 0 0.4rem; }
+        .quiz-result { font-weight: bold; margin-top: 1rem; padding: 0.8rem; border-radius: 12px; }
+        button {
+            background: #6b4f28; color: white; border: none; padding: 10px 25px;
+            border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 1rem; transition: 0.2s;
+        }
+        button:hover { background: #8b6a3a; }
+
+        .match-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .match-table td { padding: 8px; vertical-align: middle; }
+        .match-table select {
+            width: 100%; padding: 8px; border-radius: 10px; border: 1px solid #bb9a6e;
+            background: #fffef7; font-family: inherit;
+        }
+        .match-row.correct { background-color: #d4edda; }
+        .match-row.incorrect { background-color: #f8d7da; }
+        .fill-gap {
+            background: #fffef7; border: 1px solid #bb9a6e; padding: 5px 10px;
+            border-radius: 8px; width: auto; min-width: 100px;
+        }
+        .correct-feedback { color: #2d6a2d; font-weight: bold; }
+        .incorrect-feedback { color: #a13d3d; font-weight: bold; }
+        @media (max-width: 600px) {
+            .tab-btn { padding: 8px 14px; font-size: 0.85rem; }
+            .flip-card { width: 160px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class="btnBackBlock" id="backBtn">
+        <a href="../index.html" class="backBtn" ><p>Назад</p></a>
+    </div>
+    <h1>Билет №19</h1>
+    <div class="subtitle">Подвиг белорусского народа в годы Великой Отечественной войны</div>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="defence">Оборонительные бои 1941</button>
+        <button class="tab-btn" data-tab="partisan">Партизанское движение</button>
+        <button class="tab-btn" data-tab="underground">Подполье</button>
+        <button class="tab-btn" data-tab="timeline">Лента времени</button>
+        <button class="tab-btn" data-tab="cards">Хроно-карточки</button>
+        <button class="tab-btn" data-tab="quiz">Тест (20 вопросов)</button>
+        <button class="tab-btn" data-tab="practice">Практические задания</button>
+    </div>
+
+    <!-- Оборонительные бои -->
+    <div class="tab-content active" id="tab-defence">
+        <div class="card">
+            <h2>⚔️ Начало войны и план «Барбаросса»</h2>
+            <p><span class="year-badge">22 июня 1941</span> – вероломное нападение Германии на СССР. План «Барбаросса» предусматривал «молниеносную войну». Группа армий «Центр» наступала через Беларусь на Москву.</p>
+        </div>
+        <div class="card">
+            <h2>🏰 Брестская крепость</h2>
+            <p>Гарнизон под командованием капитана <strong>И.Н. Зубачева</strong>, комиссара <strong>Ефима Фомина</strong> и майора <strong>П.М. Гаврилова</strong> держался около месяца. Известны надписи: «Умрем, но из крепости не уйдём!», «Я умираю, но не сдаюсь! Прощай, Родина. 20.VII.41г.». Лейтенант <strong>Андрей Кижеватов</strong> (9-я погранзастава) посмертно удостоен звания Героя Советского Союза (1965).</p>
+        </div>
+        <div class="card">
+            <h2>🛩️ Подвиги лётчиков</h2>
+            <p><strong>Андрей Данилов</strong> – таранил три «мессершмитта», выжил и вернулся на фронт.</p>
+            <p>Экипаж <strong>Николая Гастелло</strong> направил горящий самолёт на колонну немцев под Радошковичами (Герой Советского Союза посмертно, 1941). В 1996 году звание Героя Российской Федерации присвоено командиру эскадрильи <strong>Александру Маслову</strong>, повторившему аналогичный подвиг.</p>
+        </div>
+        <div class="card">
+            <h2>🛡️ Оборона городов</h2>
+            <p><strong>Минск:</strong> 100-я стрелковая дивизия генерала <strong>И.Н. Руссиянова</strong> (первая гвардейская в Красной Армии) использовала «стеклянную артиллерию» (бутылки с горючей смесью). Минск пал на шестой день.</p>
+            <p><strong>Могилёв:</strong> 23 дня обороны. Дивизия генерала <strong>М.Т. Романова</strong> и полк <strong>С.Ф. Кутепова</strong> уничтожили 179 танков. Мемориал «Буйничское поле».</p>
+            <p><strong>Под Оршей:</strong> первое применение реактивных миномётов («Катюш») батареей капитана <strong>Ивана Флёрова</strong>. В окружении взорвали секретные установки. Флёрову посмертно звание Героя Российской Федерации (1995).</p>
+            <p><strong>Гомель:</strong> более месяца обороны. В боях участвовало свыше 10 тыс. ополченцев. К началу сентября вся Беларусь была оккупирована.</p>
+        </div>
+    </div>
+
+    <!-- Партизанское движение -->
+    <div class="tab-content" id="tab-partisan">
+        <div class="card">
+            <h2>🌲 Первые отряды и герои</h2>
+            <p>С конца июня 1941 г. стихийно создаются партизанские отряды.</p>
+            <p><strong>Василий Захарович Корж</strong> – участник войны в Испании, организатор отряда на Пинщине (позже министр лесного хозяйства БССР).</p>
+            <p>Отряд «Красный Октябрь» в Полесской области возглавили <strong>Тихон Бумажков</strong> и <strong>Фёдор Павловский</strong> – первые партизаны Герои Советского Союза (6 августа 1941).</p>
+            <p><strong>Минай Шмырёв</strong> (Батька Минай) – командир отряда из рабочих картонной фабрики в посёлке Пудать. Оккупанты взяли в заложники четверых его детей. Дети были расстреляны, Шмырёв не сдался.</p>
+        </div>
+        <div class="card">
+            <h2>📈 Развитие движения</h2>
+            <p>С весны 1942 г. формируются партизанские бригады. Комиссаром одной из бригад стал <strong>Пётр Миронович Машеров</strong> (бывший учитель, организатор Россонского подполья, в 26 лет получил звание Героя Советского Союза).</p>
+            <p>Юный герой: 14-летний разведчик <strong>Марат Казей</strong> (Минская область) подорвал себя гранатой вместе с врагами (Герой Советского Союза посмертно).</p>
+        </div>
+        <div class="card">
+            <h2>🗺️ Партизанские зоны и рельсовая война</h2>
+            <p>Первая зона – осень 1941 в Октябрьском районе Полесской области. Крупные: Ушачская, Борисовско-Бегомльская, Кличевская. Восстанавливалась советская власть.</p>
+            <p><strong>Рельсовая война</strong> (3 этапа): 1) август-сентябрь 1943; 2) «Концерт» сентябрь-октябрь 1943; 3) июнь-июль 1944 (до освобождения Беларуси).</p>
+            <p>В июле 1943 г. <strong>Фёдор Крылович</strong> на станции Осиповичи подорвал эшелон с горючим, уничтожив 4 состава, включая новые танки «Тигр».</p>
+            <p>В апреле 1944 г. 17-летний <strong>Николай Гойщик</strong> бросился с миной под вражеский эшелон.</p>
+        </div>
+    </div>
+
+    <!-- Подполье -->
+    <div class="tab-content" id="tab-underground">
+        <div class="card">
+            <h2>🏙️ Подпольная борьба в городах</h2>
+            <p>Подпольные организации действовали в Минске, Витебске, Орше и других городах.</p>
+            <p><strong>Константин Заслонов</strong> (Орша) – диверсии на железнодорожном узле: с помощью угольных мин вывели из строя более 200 паровозов.</p>
+            <p><strong>Минское подполье:</strong> руководитель <strong>Исай Казинец</strong>; разведчик <strong>Иван Кабушкин</strong> (побег из плена, добывал оружие); <strong>Николай Кедышко</strong> (диверсии, листовки, погиб в перестрелке). Профессор <strong>Евгений Клумов</strong> передавал медикаменты, казнён в «душегубке».</p>
+            <p>В 1943 г. операция по ликвидации гауляйтера <strong>Вильгельма Кубе</strong>. Исполнители – <strong>Елена Мазаник</strong>, <strong>Мария Осипова</strong>, <strong>Надежда Траян</strong> (Герои Советского Союза).</p>
+            <p>Минск прозван «стреляющим городом», с 1974 года – город-герой.</p>
+        </div>
+    </div>
+
+    <!-- Лента времени -->
+    <div class="tab-content" id="tab-timeline">
+        <h2 style="text-align:center; margin-bottom:1.5rem;">🕰️ Хронология событий</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="tl-date">22 июня 1941</div><div class="tl-desc">Начало войны, оборона Брестской крепости.</div></div>
+            <div class="timeline-item"><div class="tl-date">Июнь-август 1941</div><div class="tl-desc">Оборона Минска (6 дней), Могилёва (23 дня), Гомеля.</div></div>
+            <div class="timeline-item"><div class="tl-date">Осень 1941</div><div class="tl-desc">Первая партизанская зона в Октябрьском районе.</div></div>
+            <div class="timeline-item"><div class="tl-date">Август-сентябрь 1943</div><div class="tl-desc">Первый этап «рельсовой войны».</div></div>
+            <div class="timeline-item"><div class="tl-date">Сентябрь-октябрь 1943</div><div class="tl-desc">«Концерт» (второй этап).</div></div>
+            <div class="timeline-item"><div class="tl-date">Июнь-июль 1944</div><div class="tl-desc">Третий этап «рельсовой войны», освобождение Беларуси.</div></div>
+        </div>
+    </div>
+
+    <!-- Хроно-карточки -->
+    <div class="tab-content" id="tab-cards">
+        <h2 style="text-align:center; margin-bottom:0.5rem;">📅 Хронологические карточки</h2>
+        <p style="text-align:center; color:#5e4a2e;">Нажмите на карточку, чтобы увидеть обратную сторону.</p>
+        <div class="cards-grid" id="chrono-cards-container"></div>
+        <div class="card-actions">
+            <button id="flip-all">🔄 Перевернуть все</button>
+            <button id="reset-cards">↩️ Сбросить</button>
+        </div>
+    </div>
+
+    <!-- Тест -->
+    <div class="tab-content" id="tab-quiz">
+        <div class="quiz-area">
+            <h2>📝 Тест по билету №19</h2>
+            <div id="quiz-container"></div>
+            <button id="check-quiz">Проверить ответы</button>
+            <div id="quiz-result" class="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Практические задания -->
+    <div class="tab-content" id="tab-practice">
+        <div class="card">
+            <h2>🧩 Задание 1. Соотнесите событие и дату</h2>
+            <table class="match-table" id="chrono-match">
+                <tr><th>Событие</th><th>Дата</th></tr>
+                <tr data-correct="22 июня 1941"><td>Начало Великой Отечественной войны</td><td>
+                    <select class="chrono-select">
+                        <option value="">-- выберите --</option>
+                        <option value="22 июня 1941">22 июня 1941</option>
+                        <option value="14 июля 1941">14 июля 1941</option>
+                        <option value="август 1943">август 1943</option>
+                        <option value="сентябрь 1943">сентябрь 1943</option>
+                        <option value="июнь 1944">июнь 1944</option>
+                    </select></td></tr>
+                <tr data-correct="14 июля 1941"><td>Первое применение «Катюш» под Оршей</td><td>
+                    <select class="chrono-select">
+                        <option value="">-- выберите --</option>
+                        <option value="22 июня 1941">22 июня 1941</option>
+                        <option value="14 июля 1941">14 июля 1941</option>
+                        <option value="август 1943">август 1943</option>
+                        <option value="сентябрь 1943">сентябрь 1943</option>
+                        <option value="июнь 1944">июнь 1944</option>
+                    </select></td></tr>
+                <tr data-correct="август 1943"><td>Первый этап «рельсовой войны»</td><td>
+                    <select class="chrono-select">
+                        <option value="">-- выберите --</option>
+                        <option value="22 июня 1941">22 июня 1941</option>
+                        <option value="14 июля 1941">14 июля 1941</option>
+                        <option value="август 1943">август 1943</option>
+                        <option value="сентябрь 1943">сентябрь 1943</option>
+                        <option value="июнь 1944">июнь 1944</option>
+                    </select></td></tr>
+                <tr data-correct="сентябрь 1943"><td>Операция «Концерт»</td><td>
+                    <select class="chrono-select">
+                        <option value="">-- выберите --</option>
+                        <option value="22 июня 1941">22 июня 1941</option>
+                        <option value="14 июля 1941">14 июля 1941</option>
+                        <option value="август 1943">август 1943</option>
+                        <option value="сентябрь 1943">сентябрь 1943</option>
+                        <option value="июнь 1944">июнь 1944</option>
+                    </select></td></tr>
+                <tr data-correct="июнь 1944"><td>Третий этап «рельсовой войны» (до освобождения Беларуси)</td><td>
+                    <select class="chrono-select">
+                        <option value="">-- выберите --</option>
+                        <option value="22 июня 1941">22 июня 1941</option>
+                        <option value="14 июля 1941">14 июля 1941</option>
+                        <option value="август 1943">август 1943</option>
+                        <option value="сентябрь 1943">сентябрь 1943</option>
+                        <option value="июнь 1944">июнь 1944</option>
+                    </select></td></tr>
+            </table>
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <button id="check-chrono-match">Проверить пары</button>
+                <button id="reset-chrono-match">↩️ Сбросить</button>
+            </div>
+            <span id="chrono-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>🔗 Задание 2. Соотнесите героя и его подвиг</h2>
+            <table class="match-table" id="hero-match">
+                <tr><th>Герой</th><th>Подвиг</th></tr>
+                <tr data-correct="гастелло"><td>Николай Гастелло</td><td>
+                    <select class="hero-select">
+                        <option value="">--</option>
+                        <option value="гастелло">Огненный таран колонны врага</option>
+                        <option value="флёров">Первое применение «Катюш»</option>
+                        <option value="шмырёв">Пожертвовал детьми, не сдавшись в плен</option>
+                        <option value="крылович">Подрыв эшелонов на станции Осиповичи</option>
+                        <option value="мазаник">Ликвидация гауляйтера Кубе</option>
+                    </select></td></tr>
+                <tr data-correct="флёров"><td>Иван Флёров</td><td>
+                    <select class="hero-select">
+                        <option value="">--</option>
+                        <option value="гастелло">Огненный таран колонны врага</option>
+                        <option value="флёров">Первое применение «Катюш»</option>
+                        <option value="шмырёв">Пожертвовал детьми, не сдавшись в плен</option>
+                        <option value="крылович">Подрыв эшелонов на станции Осиповичи</option>
+                        <option value="мазаник">Ликвидация гауляйтера Кубе</option>
+                    </select></td></tr>
+                <tr data-correct="шмырёв"><td>Минай Шмырёв (Батька Минай)</td><td>
+                    <select class="hero-select">
+                        <option value="">--</option>
+                        <option value="гастелло">Огненный таран колонны врага</option>
+                        <option value="флёров">Первое применение «Катюш»</option>
+                        <option value="шмырёв">Пожертвовал детьми, не сдавшись в плен</option>
+                        <option value="крылович">Подрыв эшелонов на станции Осиповичи</option>
+                        <option value="мазаник">Ликвидация гауляйтера Кубе</option>
+                    </select></td></tr>
+                <tr data-correct="крылович"><td>Фёдор Крылович</td><td>
+                    <select class="hero-select">
+                        <option value="">--</option>
+                        <option value="гастелло">Огненный таран колонны врага</option>
+                        <option value="флёров">Первое применение «Катюш»</option>
+                        <option value="шмырёв">Пожертвовал детьми, не сдавшись в плен</option>
+                        <option value="крылович">Подрыв эшелонов на станции Осиповичи</option>
+                        <option value="мазаник">Ликвидация гауляйтера Кубе</option>
+                    </select></td></tr>
+                <tr data-correct="мазаник"><td>Елена Мазаник, Мария Осипова, Надежда Траян</td><td>
+                    <select class="hero-select">
+                        <option value="">--</option>
+                        <option value="гастелло">Огненный таран колонны врага</option>
+                        <option value="флёров">Первое применение «Катюш»</option>
+                        <option value="шмырёв">Пожертвовал детьми, не сдавшись в плен</option>
+                        <option value="крылович">Подрыв эшелонов на станции Осиповичи</option>
+                        <option value="мазаник">Ликвидация гауляйтера Кубе</option>
+                    </select></td></tr>
+            </table>
+            <button id="check-hero-match">Проверить соответствия</button>
+            <span id="hero-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>✍️ Задание 3. Вставьте пропущенные слова</h2>
+            <p>«На рассвете 
+                <input type="text" class="fill-gap" id="gap1" placeholder="?"> 
+                1941 г. гитлеровские войска вероломно напали на СССР. План «Барбаросса» предполагал «...» войну. Первое применение реактивных миномётов («...») произошло под Оршей».
+            </p>
+            <button id="check-gaps">Проверить</button>
+            <span id="gaps-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Переключение вкладок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(`tab-${target}`).classList.add('active');
+            });
+        });
+
+        // Хронологические карточки
+        const chronoData = [
+            { date: "22 июня 1941", desc: "Начало войны. Оборона Брестской крепости." },
+            { date: "июнь-август 1941", desc: "Оборонительные бои в Беларуси." },
+            { date: "6 августа 1941", desc: "Звание ГСС первым партизанам Бумажкову и Павловскому." },
+            { date: "весна 1942", desc: "Создание партизанских бригад." },
+            { date: "август 1943", desc: "Первый этап «рельсовой войны»." },
+            { date: "сентябрь 1943", desc: "«Концерт» — второй этап." },
+            { date: "июнь 1944", desc: "Третий этап «рельсовой войны»." }
+        ];
+        const cardsContainer = document.getElementById('chrono-cards-container');
+        function buildCards() {
+            cardsContainer.innerHTML = '';
+            chronoData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'flip-card';
+                card.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">${item.date}</div>
+                        <div class="flip-card-back">${item.desc}</div>
+                    </div>
+                `;
+                card.addEventListener('click', () => card.classList.toggle('flipped'));
+                cardsContainer.appendChild(card);
+            });
+        }
+        buildCards();
+        document.getElementById('flip-all').addEventListener('click', () => {
+            const cards = document.querySelectorAll('.flip-card');
+            const allFlipped = Array.from(cards).every(c => c.classList.contains('flipped'));
+            cards.forEach(c => c.classList.toggle('flipped', !allFlipped));
+        });
+        document.getElementById('reset-cards').addEventListener('click', () => {
+            document.querySelectorAll('.flip-card').forEach(c => c.classList.remove('flipped'));
+        });
+
+        // Тест (20 вопросов)
+        const quizData = [
+            { q: "Когда началась Великая Отечественная война?", options: ["1 сентября 1939", "22 июня 1941", "7 ноября 1941", "23 февраля 1942"], correct: 1 },
+            { q: "Как назывался немецкий план нападения на СССР?", options: ["Тайфун", "Барбаросса", "Цитадель", "Ост"], correct: 1 },
+            { q: "Кто руководил обороной Брестской крепости?", options: ["И.Н. Зубачев, Е. Фомин, П. Гаврилов", "Г.К. Жуков", "К.Е. Ворошилов", "М.П. Кирпонос"], correct: 0 },
+            { q: "Какой подвиг совершил экипаж Николая Гастелло?", options: ["Первым совершил таран в небе", "Направил горящий самолёт на колонну врага", "Сбил 10 самолётов", "Уничтожил пулемётное гнездо"], correct: 1 },
+            { q: "Где впервые были применены «Катюши»?", options: ["Под Москвой", "Под Сталинградом", "Под Оршей", "Под Минском"], correct: 2 },
+            { q: "Сколько дней длилась оборона Могилёва?", options: ["6", "23", "30", "45"], correct: 1 },
+            { q: "Кто командовал 100-й стрелковой дивизией, ставшей первой гвардейской?", options: ["М.Т. Романов", "И.Н. Руссиянов", "С.Ф. Кутепов", "А.Л. Гетьман"], correct: 1 },
+            { q: "Когда были присвоены первые звания Героев Советского Союза партизанам?", options: ["22 июня 1941", "6 августа 1941", "1 мая 1942", "9 мая 1945"], correct: 1 },
+            { q: "Кого из партизанских командиров называли «Батька Минай»?", options: ["В.З. Корж", "М.Ф. Шмырёв", "П.М. Машеров", "Т.П. Бумажков"], correct: 1 },
+            { q: "Какой юный партизан подорвал себя гранатой вместе с врагами?", options: ["Марат Казей", "Лёня Голиков", "Витя Коробков", "Нина Куковерова"], correct: 0 },
+            { q: "Что такое «рельсовая война»?", options: ["Бомбардировка путей авиацией", "Массовые диверсии на железных дорогах партизанами", "Строительство бронепоездов", "Восстановление путей после войны"], correct: 1 },
+            { q: "Сколько этапов было в «рельсовой войне»?", options: ["Один", "Два", "Три", "Четыре"], correct: 2 },
+            { q: "Кто осуществил диверсию на станции Осиповичи в 1943 г.?", options: ["К.С. Заслонов", "Ф. Крылович", "Н. Гойщик", "И. Кабушкин"], correct: 1 },
+            { q: "Какой город получил почётное звание «Город-герой» в 1974 г. за подвиг подпольщиков?", options: ["Витебск", "Минск", "Брест", "Могилёв"], correct: 1 },
+            { q: "Кто из подпольщиков организовал диверсии на Оршанском железнодорожном узле с помощью угольных мин?", options: ["И. Казинец", "К. Заслонов", "Н. Кедышко", "Е. Клумов"], correct: 1 },
+            { q: "Кто из участников ликвидации гауляйтера Кубе стал Героем Советского Союза?", options: ["Только Е. Мазаник", "Е. Мазаник, М. Осипова, Н. Траян", "Только М. Осипова", "Только Н. Траян"], correct: 1 },
+            { q: "Какой партизанский командир в будущем стал известным государственным деятелем?", options: ["В. Корж", "П. Машеров", "М. Шмырёв", "Ф. Павловский"], correct: 1 },
+            { q: "Какие самолёты таранил Андрей Данилов?", options: ["Юнкерсы", "Мессершмитты", "Хейнкели", "Фокке-Вульфы"], correct: 1 },
+            { q: "Как назывался этап «рельсовой войны» в сентябре-октябре 1943 г.?", options: ["Цитадель", "Концерт", "Багратион", "Уран"], correct: 1 },
+            { q: "Чем прославился профессор Е.В. Клумов?", options: ["Возглавлял подполье", "Передавал медикаменты, спас много жизней, казнён в душегубке", "Взорвал эшелон", "Ликвидировал Кубе"], correct: 1 }
+        ];
+        const quizContainer = document.getElementById('quiz-container');
+        function buildQuiz() {
+            let html = '';
+            quizData.forEach((item, idx) => {
+                html += `<p class="quiz-question">${idx+1}. ${item.q}</p>`;
+                item.options.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label>`;
+                });
+            });
+            quizContainer.innerHTML = html;
+        }
+        buildQuiz();
+        document.getElementById('check-quiz').addEventListener('click', () => {
+            let score = 0;
+            quizData.forEach((item, idx) => {
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === item.correct) score++;
+            });
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.textContent = `Ваш результат: ${score} из ${quizData.length}.`;
+            resultDiv.style.background = score >= 15 ? '#d4edda' : '#f8d7da';
+        });
+
+        // Задание 1: хронология с подсветкой
+        const chronoTable = document.getElementById('chrono-match');
+        const chronoCheckBtn = document.getElementById('check-chrono-match');
+        const chronoResetBtn = document.getElementById('reset-chrono-match');
+        const chronoFeedback = document.getElementById('chrono-feedback');
+
+        chronoCheckBtn.addEventListener('click', () => {
+            const rows = chronoTable.querySelectorAll('tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.chrono-select');
+                row.classList.remove('correct', 'incorrect');
+                if (select.value === correct) {
+                    row.classList.add('correct');
+                } else {
+                    row.classList.add('incorrect');
+                    allCorrect = false;
+                }
+            });
+            chronoFeedback.textContent = allCorrect ? '✅ Все даты определены верно!' : '❌ Некоторые даты неверны. Правильные строки подсвечены зелёным.';
+            chronoFeedback.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+        chronoResetBtn.addEventListener('click', () => {
+            chronoTable.querySelectorAll('tr[data-correct]').forEach(row => {
+                row.classList.remove('correct', 'incorrect');
+                row.querySelector('.chrono-select').value = '';
+            });
+            chronoFeedback.textContent = '';
+        });
+
+        // Задание 2: герои
+        const heroTable = document.getElementById('hero-match');
+        const heroCheckBtn = document.getElementById('check-hero-match');
+        const heroFeedback = document.getElementById('hero-feedback');
+
+        heroCheckBtn.addEventListener('click', () => {
+            const rows = heroTable.querySelectorAll('tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.hero-select');
+                row.classList.remove('correct', 'incorrect');
+                if (select.value === correct) {
+                    row.classList.add('correct');
+                } else {
+                    row.classList.add('incorrect');
+                    allCorrect = false;
+                }
+            });
+            heroFeedback.textContent = allCorrect ? '✅ Все герои верно соотнесены!' : '❌ Есть ошибки. Подсвечены правильные строки.';
+            heroFeedback.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Задание 3: пропуски
+        document.getElementById('check-gaps').addEventListener('click', () => {
+            const g1 = document.getElementById('gap1').value.trim().toLowerCase();
+            const g2 = document.getElementById('gap2').value.trim().toLowerCase();
+            const g3 = document.getElementById('gap3').value.trim().toLowerCase();
+            const ok1 = g1 === '22 июня';
+            const ok2 = g2.includes('молниеносной') || g2.includes('маланкавай');
+            const ok3 = g3 === 'катюши' || g3 === 'катюш';
+            document.getElementById('gap1').style.border = ok1 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap2').style.border = ok2 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap3').style.border = ok3 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            const feedback = document.getElementById('gaps-feedback');
+            if (ok1 && ok2 && ok3) {
+                feedback.textContent = '✅ Верно! 22 июня, молниеносной, Катюш.';
+                feedback.className = 'correct-feedback';
+            } else {
+                feedback.textContent = '❌ Ожидались: 22 июня, молниеносной (или молниеносную), Катюши (или Катюш).';
+                feedback.className = 'incorrect-feedback';
+            }
+        });
+    })();
+</script>
+</body>
+</html>

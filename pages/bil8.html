@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билет №8: Объединение Великого Княжества Литовского и Польши в составе Речи Посполитой:причины, условия, итоги Люблинской унии. Статут ВКЛ 1588 г.</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f4efdf;
+            color: #2e2b1f;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 20% 30%, #e5d8b0 0%, #f4efdf 70%);
+        }        .btnBackBlock{
+            position: absolute;
+            display: flex;
+            top: 40px;
+            left: 40px;
+        }
+        .backBtn{
+            text-decoration: none;
+            background: #6b4f28;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .backBtn>p{
+            transition: .3s;
+            position: relative;
+            z-index: 10;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+        .backBtn::after{    
+            transition: .5s;
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dfd0b0;
+            z-index: 1;
+        }
+        .backBtn:hover>p{
+            color: #4e3d22;
+        }
+        .backBtn:hover::after{
+            right: 0;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 250, 240, 0.93);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(139, 115, 85, 0.25);
+            padding: 2rem 2rem 3rem;
+        }
+        h1 {
+            font-size: 2.3rem;
+            text-align: center;
+            color: #4a3820;
+            margin-bottom: 0.2rem;
+            letter-spacing: 1px;
+        }
+        .subtitle {
+            text-align: center;
+            font-style: italic;
+            color: #6b5a3e;
+            margin-bottom: 2.5rem;
+            border-bottom: 2px dotted #b8a06e;
+            padding-bottom: 1rem;
+        }
+        .tab-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 2rem;
+        }
+        .tab-btn {
+            background: #e0d4b7;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            color: #4e3d22;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 1px solid #b89a5e;
+            letter-spacing: 0.5px;
+        }
+        .tab-btn:hover { background: #cdba8b; color: #2d1f0c; }
+        .tab-btn.active {
+            background: #6b4f28;
+            color: #fff;
+            border-color: #4a3520;
+            box-shadow: 0 6px 12px rgba(107, 79, 40, 0.5);
+            transform: translateY(-2px);
+        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card {
+            background: #fffef7;
+            border: 1px solid #d9c7a0;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .year-badge {
+            font-weight: bold;
+            color: #6b4f28;
+            background: #f2e2c6;
+            padding: 2px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #b89a5e;
+            border-radius: 2px;
+        }
+        .timeline-item {
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '◆';
+            position: absolute;
+            left: -6px;
+            top: 2px;
+            font-size: 1.5rem;
+            color: #6b4f28;
+            line-height: 1;
+        }
+        .tl-date {
+            font-weight: bold;
+            color: #6b4f28;
+            background: #f2e2c6;
+            padding: 2px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+        .tl-desc { color: #4d3b20; font-style: italic; }
+
+        .quiz-area {
+            background: #faf3e4;
+            border-radius: 20px;
+            padding: 1.5rem;
+        }
+        .quiz-question { font-weight: 700; margin: 1.2rem 0 0.4rem; }
+        .quiz-result {
+            font-weight: bold;
+            margin-top: 1rem;
+            padding: 0.8rem;
+            border-radius: 12px;
+        }
+        button {
+            background: #6b4f28;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: 0.2s;
+        }
+        button:hover { background: #8b6a3a; }
+
+        .sortable-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+            max-width: 500px;
+        }
+        .sortable-item {
+            background: #fffef7;
+            border: 1px solid #c9a87c;
+            border-radius: 12px;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            cursor: grab;
+            display: flex;
+            align-items: center;
+            transition: 0.2s;
+            user-select: none;
+        }
+        .sortable-item:active { cursor: grabbing; opacity: 0.8; }
+        .drag-handle { margin-right: 10px; font-size: 1.3rem; color: #6b4f28; }
+
+        .match-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .match-table td { padding: 8px; vertical-align: middle; }
+        .match-table select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 10px;
+            border: 1px solid #bb9a6e;
+            background: #fffef7;
+            font-family: inherit;
+        }
+        .fill-gap {
+            background: #fffef7;
+            border: 1px solid #bb9a6e;
+            padding: 5px 10px;
+            border-radius: 8px;
+            width: auto;
+            min-width: 120px;
+        }
+        .correct-feedback { color: #2d6a2d; font-weight: bold; }
+        .incorrect-feedback { color: #a13d3d; font-weight: bold; }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 1rem auto;
+            background: #e0d7b9;
+            border-radius: 30px;
+            padding: 20px;
+            aspect-ratio: 4/3;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><path d="M50 140 L110 70 L200 50 L290 80 L330 150 L290 220 L200 240 L110 220 Z" fill="%23dcc8a0" stroke="%23997b55" stroke-width="2"/><circle cx="150" cy="100" r="10" fill="%236b4f28" opacity="0.7"/><circle cx="120" cy="150" r="8" fill="%236b4f28" opacity="0.7"/><circle cx="220" cy="170" r="8" fill="%236b4f28" opacity="0.7"/><circle cx="180" cy="130" r="8" fill="%236b4f28" opacity="0.7"/></svg>');
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #b89a5e;
+        }
+        .map-marker {
+            position: absolute;
+            background: #6b4f28;
+            color: white;
+            font-weight: bold;
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 20px;
+            transform: translate(-50%, -100%);
+            white-space: nowrap;
+            border: 1px solid white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        .map-marker.kiev { top: 60%; left: 75%; }
+        .map-marker.podol { top: 65%; left: 50%; }
+        .map-marker.podlasie { top: 35%; left: 20%; }
+        .map-marker.volyn { top: 50%; left: 55%; }
+
+        @media (max-width: 600px) {
+            .tab-btn { padding: 8px 14px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class="btnBackBlock" id="backBtn">
+        <a href="../index.html" class="backBtn" ><p>Назад</p></a>
+    </div>
+    <h1>Билет №8</h1>
+    <div class="subtitle">Объединение Великого Княжества Литовского и Польши в составе Речи Посполитой: причины, условия, итоги Люблинской унии. Статут ВКЛ 1588 г.</div>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="reasons">Причины унии</button>
+        <button class="tab-btn" data-tab="sejm">Люблинский сейм</button>
+        <button class="tab-btn" data-tab="conditions">Условия унии</button>
+        <button class="tab-btn" data-tab="statut">Статут 1588 г.</button>
+        <button class="tab-btn" data-tab="timeline">Лента времени</button>
+        <button class="tab-btn" data-tab="quiz">Тест (20 вопросов)</button>
+        <button class="tab-btn" data-tab="practice">Практические задания</button>
+    </div>
+
+    <!-- Причины унии -->
+    <div class="tab-content active" id="tab-reasons">
+        <div class="card">
+            <h2>⚔️ Тяжёлое внешнеполитическое положение ВКЛ</h2>
+            <p>В ходе Ливонской войны (1558–1583) московский царь Иван IV стремился захватить выход к Балтийскому морю и считал белорусские земли своей вотчиной. ВКЛ нуждалось в сильном союзнике.</p>
+        </div>
+        <div class="card">
+            <h2>🛡️ Стремление шляхты ВКЛ к «вольностям»</h2>
+            <p>Шляхта ВКЛ хотела получить такие же права, как польская: активное участие в политике, право на протест, свободу голоса, неприкосновенность личности и владений.</p>
+        </div>
+        <div class="card">
+            <h2>🏰 Интересы польской шляхты и церкви</h2>
+            <p>Польская шляхта желала подчинить ВКЛ как богатый придаток, получить новые земли и должности. Католическая церковь рассчитывала расширить влияние католицизма на белорусские земли.</p>
+        </div>
+    </div>
+
+    <!-- Люблинский сейм -->
+    <div class="tab-content" id="tab-sejm">
+        <div class="card">
+            <h2>🏛️ Ход сейма 1569 г. (6 месяцев)</h2>
+            <p>Польская сторона стремилась к инкорпорации (включению) ВКЛ в состав Польши. Делегация ВКЛ во главе с канцлером <strong>Николаем Радзивиллом Рыжим</strong> настаивала на равноправном союзе.</p>
+            <p>Сигизмунд II Август приказал послам ВКЛ пойти на уступки. В знак протеста они покинули сейм и уехали в Вильну. В это время польская шляхта добилась от короля передачи Польше <strong>Киевщины, Подолья, Подляшья и Волыни</strong> – ВКЛ значительно уменьшилось.</p>
+            <p>Утрата земель и продолжение Ливонской войны вынудили делегацию ВКЛ вернуться. Были приняты многие польские условия.</p>
+        </div>
+        <div style="text-align:center; margin-top:1rem;">
+            <p>📍 Территории, отошедшие к Польше в 1569 г.</p>
+            <div class="map-container">
+                <div class="map-marker kiev">Киевщина</div>
+                <div class="map-marker podol">Подолье</div>
+                <div class="map-marker podlasie">Подляшье</div>
+                <div class="map-marker volyn">Волынь</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Условия Люблинской унии -->
+    <div class="tab-content" id="tab-conditions">
+        <div class="card">
+            <h2>🤝 Общие институты</h2>
+            <ul>
+                <li><strong>Сейм</strong> – высший общий орган власти, собирался только на территории Польши. Отдельные сеймы для ВКЛ и Польши не предусматривались.</li>
+                <li><strong>Глава государства</strong> – общий король Речи Посполитой, избираемый феодалами обеих стран (он же великий князь литовский). Пример: Стефан Баторий.</li>
+                <li><strong>Внешняя политика</strong> – совместная.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h2>📜 Что сохранялось раздельным</h2>
+            <ul>
+                <li>Административный аппарат (государственные должности).</li>
+                <li>Законодательство, в ВКЛ – Статуты.</li>
+                <li>Судебная организация: с 1581 г. высший суд – <strong>Главный трибунал ВКЛ</strong>.</li>
+                <li>Отдельное войско, казна, титулы, герб, печати.</li>
+                <li>Старобелорусский язык как государственный (подтверждено Статутом 1588 г.).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Статут ВКЛ 1588 г. -->
+    <div class="tab-content" id="tab-statut">
+        <div class="card">
+            <h2>📖 Издание и идея правового государства</h2>
+            <p><strong>Лев Сапега</strong> на свои средства издал III Статут ВКЛ. Во вступлении он сформулировал идею правового государства: все органы и лица должны действовать согласно закону, все люди равны перед законом (независимо от сословия). Однако в реальности Статут защищал интересы феодалов и окончательно закрепостил крестьян.</p>
+            <p>Статут запрещал чужеземцам и заграничникам занимать государственные должности в ВКЛ и наделять их землёй.</p>
+        </div>
+        <div class="card">
+            <h2>🗣️ Государственный статус языка</h2>
+            <p>Статут написан на старобелорусском языке. Лев Сапега с гордостью подчёркивал: <em>«Не чужой якой моваю, але сваёю ўласнай правы пісаныя маем»</em>. Первая статья IV раздела закрепляла государственный статус старобелорусского языка.</p>
+            <p>Статут 1588 г. стал одним из самых совершенных сводов общегосударственного права в Европе того времени.</p>
+        </div>
+    </div>
+
+    <!-- Лента времени -->
+    <div class="tab-content" id="tab-timeline">
+        <h2 style="text-align:center; margin-bottom:1.5rem;">🕰️ Ключевые даты</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="tl-date">1558–1583</div>
+                <div class="tl-desc">Ливонская война, ослабившая ВКЛ и подтолкнувшая к унии.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">1569, 1 июля</div>
+                <div class="tl-desc">Заключение Люблинской унии, создание Речи Посполитой.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">1581</div>
+                <div class="tl-desc">Создание Главного трибунала ВКЛ – высшего судебного органа.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">1588</div>
+                <div class="tl-desc">Издание III Статута ВКЛ Львом Сапегой.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Тест -->
+    <div class="tab-content" id="tab-quiz">
+        <div class="quiz-area">
+            <h2>📝 Тест по билету №8</h2>
+            <div id="quiz-container"></div>
+            <button id="check-quiz">Проверить ответы</button>
+            <div id="quiz-result" class="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Практические задания -->
+    <div class="tab-content" id="tab-practice">
+        <div class="card">
+            <h2>🧩 Задание 1. Хронология событий</h2>
+            <p>Перетащите события в правильном порядке.</p>
+            <ul class="sortable-list" id="sortable-chrono">
+                <li class="sortable-item" data-order="1"><span class="drag-handle">☰</span> Начало Ливонской войны</li>
+                <li class="sortable-item" data-order="2"><span class="drag-handle">☰</span> Люблинский сейм (подписание унии)</li>
+                <li class="sortable-item" data-order="3"><span class="drag-handle">☰</span> Создание Главного трибунала ВКЛ</li>
+                <li class="sortable-item" data-order="4"><span class="drag-handle">☰</span> Издание III Статута ВКЛ</li>
+            </ul>
+            <button id="check-chrono-order">Проверить порядок</button>
+            <span id="chrono-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>🔗 Задание 2. Соотнесите причину и её описание</h2>
+            <table class="match-table">
+                <tr><th>Причина</th><th>Суть</th></tr>
+                <tr>
+                    <td>Внешняя угроза</td>
+                    <td>
+                        <select class="match-select" data-cause="threat">
+                            <option value="">-- выберите --</option>
+                            <option value="livonia">Ливонская война, давление Ивана IV</option>
+                            <option value="freedom">Стремление шляхты к польским вольностям</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Шляхетские амбиции ВКЛ</td>
+                    <td>
+                        <select class="match-select" data-cause="ambitions">
+                            <option value="">-- выберите --</option>
+                            <option value="livonia">Ливонская война, давление Ивана IV</option>
+                            <option value="freedom">Стремление шляхты к польским вольностям</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Польская экспансия</td>
+                    <td>
+                        <select class="match-select" data-cause="poland">
+                            <option value="">-- выберите --</option>
+                            <option value="land">Желание получить земли и должности в ВКЛ</option>
+                            <option value="catholic">Расширение католичества</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Католическая церковь</td>
+                    <td>
+                        <select class="match-select" data-cause="church">
+                            <option value="">-- выберите --</option>
+                            <option value="land">Желание получить земли и должности в ВКЛ</option>
+                            <option value="catholic">Расширение католичества</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <button id="check-match">Проверить соответствия</button>
+            <span id="match-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>✍️ Задание 3. Вставьте пропущенные слова в цитату Льва Сапеги</h2>
+            <p>«Не 
+                <input type="text" class="fill-gap" id="gap1" placeholder="?"> 
+                якой моваю, але 
+                <input type="text" class="fill-gap" id="gap2" placeholder="?"> 
+                ўласнай правы пісаныя маем»
+            </p>
+            <button id="check-gaps">Проверить</button>
+            <span id="gaps-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Переключение вкладок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(`tab-${target}`).classList.add('active');
+            });
+        });
+
+        // Тест (20 вопросов)
+        const quizData = [
+            { q: "Как переводится название «Речь Посполитая»?", options: ["Королевство", "Общее дело (республика)", "Союз государств", "Великое княжество"], correct: 1 },
+            { q: "Когда была заключена Люблинская уния?", options: ["1 июля 1569 г.", "3 мая 1588 г.", "10 декабря 1581 г.", "1 января 1558 г."], correct: 0 },
+            { q: "Какая война подтолкнула ВКЛ к унии?", options: ["Северная война", "Ливонская война", "Тридцатилетняя война", "Война с Турцией"], correct: 1 },
+            { q: "Кто возглавлял делегацию ВКЛ на Люблинском сейме?", options: ["Лев Сапега", "Николай Радзивилл Рыжий", "Сигизмунд II Август", "Стефан Баторий"], correct: 1 },
+            { q: "Какие территории отошли к Польше в 1569 г.?", options: ["Смоленщина, Черниговщина", "Киевщина, Подолье, Подляшье, Волынь", "Полоцк, Витебск", "Жемайтия, Аукштайтия"], correct: 1 },
+            { q: "Что являлось высшим общим органом власти Речи Посполитой?", options: ["Королевский совет", "Сейм", "Главный трибунал", "Рада панов"], correct: 1 },
+            { q: "Где мог собираться общий сейм?", options: ["Попеременно в Польше и ВКЛ", "Только на территории Польши", "Только в Вильне", "В любом крупном городе"], correct: 1 },
+            { q: "Какой король был признан и великим князем литовским?", options: ["Сигизмунд II Август", "Стефан Баторий", "Ян Казимир", "Александр Ягеллон"], correct: 1 },
+            { q: "Что сохранялось отдельным в ВКЛ после унии?", options: ["Внешняя политика", "Законодательство (Статуты) и суд", "Глава государства", "Общий сейм"], correct: 1 },
+            { q: "Когда был создан Главный трибунал ВКЛ?", options: ["1569 г.", "1581 г.", "1588 г.", "1558 г."], correct: 1 },
+            { q: "Кто издал III Статут ВКЛ на свои средства?", options: ["Николай Радзивилл Рыжий", "Остафий Волович", "Лев Сапега", "Сигизмунд II Август"], correct: 2 },
+            { q: "Какую идею сформулировал Лев Сапега во вступлении к Статуту?", options: ["Божественного права королей", "Правового государства", "Сословной монархии", "Независимости церкви"], correct: 1 },
+            { q: "На каком языке был написан III Статут ВКЛ?", options: ["Польском", "Латыни", "Церковнославянском", "Старобелорусском"], correct: 3 },
+            { q: "Что означает цитата Сапеги «не чужой якой моваю, але сваёю ўласнай»?", options: ["О превосходстве польского языка", "О гордости за собственный язык законодательства", "О необходимости учить латынь", "О переводе с немецкого"], correct: 1 },
+            { q: "Какая статья Статута закрепляла государственный статус старобелорусского языка?", options: ["Первая статья I раздела", "Первая статья IV раздела", "Последняя статья", "Преамбула"], correct: 1 },
+            { q: "Что запрещал Статут 1588 г. относительно должностей?", options: ["Занимать должности православным", "Занимать должности чужеземцам и заграничникам", "Наследовать должности", "Совмещать несколько должностей"], correct: 1 },
+            { q: "Каков был фактический итог Статута для крестьян?", options: ["Освобождение от зависимости", "Окончательное закрепощение", "Сохранение прежнего положения", "Переход под юрисдикцию церкви"], correct: 1 },
+            { q: "Почему шляхта ВКЛ стремилась к унии?", options: ["Из-за любви к королю", "Ради получения польских шляхетских вольностей", "Из-за военного приказа", "По требованию крестьян"], correct: 1 },
+            { q: "Какова была позиция католической церкви?", options: ["Выступала против унии", "Поддерживала унию для расширения влияния", "Была нейтральна", "Поддерживала ВКЛ"], correct: 1 },
+            { q: "Какой характер имела Люблинская уния для ВКЛ?", options: ["Полная инкорпорация без автономии", "Равноправный союз с сохранением отдельных институтов", "Временный военный альянс", "Дипломатическое подчинение Москве"], correct: 1 }
+        ];
+
+        const quizContainer = document.getElementById('quiz-container');
+        function buildQuiz() {
+            let html = '';
+            quizData.forEach((item, idx) => {
+                html += `<p class="quiz-question">${idx+1}. ${item.q}</p>`;
+                item.options.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label>`;
+                });
+            });
+            quizContainer.innerHTML = html;
+        }
+        buildQuiz();
+
+        document.getElementById('check-quiz').addEventListener('click', () => {
+            let score = 0;
+            quizData.forEach((item, idx) => {
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === item.correct) score++;
+            });
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.textContent = `Ваш результат: ${score} из ${quizData.length}.`;
+            resultDiv.style.background = score >= 15 ? '#d4edda' : '#f8d7da';
+        });
+
+        // Задание 1: Drag-and-drop
+        const sortableList = document.getElementById('sortable-chrono');
+        let draggedItem = null;
+
+        sortableList.addEventListener('dragstart', function(e) {
+            draggedItem = e.target.closest('.sortable-item');
+            if (!draggedItem) return;
+            e.dataTransfer.effectAllowed = 'move';
+            draggedItem.style.opacity = '0.5';
+        });
+        sortableList.addEventListener('dragend', function(e) {
+            if (draggedItem) draggedItem.style.opacity = '1';
+            draggedItem = null;
+            document.querySelectorAll('.sortable-item').forEach(item => item.classList.remove('drag-over'));
+        });
+        sortableList.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            const targetItem = e.target.closest('.sortable-item');
+            if (!targetItem || targetItem === draggedItem) return;
+            targetItem.classList.add('drag-over');
+        });
+        sortableList.addEventListener('dragleave', function(e) {
+            const targetItem = e.target.closest('.sortable-item');
+            if (targetItem) targetItem.classList.remove('drag-over');
+        });
+        sortableList.addEventListener('drop', function(e) {
+            e.preventDefault();
+            const targetItem = e.target.closest('.sortable-item');
+            if (!targetItem || !draggedItem || targetItem === draggedItem) return;
+            targetItem.classList.remove('drag-over');
+            const list = sortableList;
+            const children = Array.from(list.children);
+            const draggedIndex = children.indexOf(draggedItem);
+            const targetIndex = children.indexOf(targetItem);
+            if (draggedIndex < targetIndex) {
+                list.insertBefore(draggedItem, targetItem.nextSibling);
+            } else {
+                list.insertBefore(draggedItem, targetItem);
+            }
+        });
+
+        document.getElementById('check-chrono-order').addEventListener('click', () => {
+            const items = Array.from(sortableList.querySelectorAll('.sortable-item'));
+            const currentOrder = items.map(item => parseInt(item.getAttribute('data-order')));
+            const isCorrect = currentOrder.every((val, idx) => val === idx + 1);
+            const feedback = document.getElementById('chrono-feedback');
+            if (isCorrect) {
+                feedback.textContent = '✅ Верно! Хронология правильная.';
+                feedback.className = 'correct-feedback';
+            } else {
+                feedback.textContent = '❌ Порядок нарушен. Попробуйте ещё раз.';
+                feedback.className = 'incorrect-feedback';
+            }
+        });
+
+        // Задание 2: Соотнесение причин
+        document.getElementById('check-match').addEventListener('click', () => {
+            const correct = {
+                threat: 'livonia',
+                ambitions: 'freedom',
+                poland: 'land',
+                church: 'catholic'
+            };
+            let allCorrect = true;
+            document.querySelectorAll('.match-select').forEach(select => {
+                const cause = select.getAttribute('data-cause');
+                if (select.value !== correct[cause]) allCorrect = false;
+            });
+            const feedback = document.getElementById('match-feedback');
+            if (allCorrect) {
+                feedback.textContent = '✅ Все причины соотнесены верно!';
+                feedback.className = 'correct-feedback';
+            } else {
+                feedback.textContent = '❌ Есть ошибки. Проверьте соответствия.';
+                feedback.className = 'incorrect-feedback';
+            }
+        });
+
+        // Задание 3: Пропуски в цитате
+        document.getElementById('check-gaps').addEventListener('click', () => {
+            const gap1 = document.getElementById('gap1').value.trim().toLowerCase();
+            const gap2 = document.getElementById('gap2').value.trim().toLowerCase();
+            const correct1 = ['чужой', 'чужою'];
+            const correct2 = ['сваёй', 'сваею', 'своей'];
+            const allCorrect = correct1.includes(gap1) && correct2.includes(gap2);
+            document.getElementById('gap1').style.border = correct1.includes(gap1) ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap2').style.border = correct2.includes(gap2) ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            const feedback = document.getElementById('gaps-feedback');
+            if (allCorrect) {
+                feedback.textContent = '✅ Именно так! «Не чужой моваю, але сваёй уласнай…»';
+                feedback.className = 'correct-feedback';
+            } else {
+                feedback.textContent = '❌ Пока не совсем. Ожидается: чужой, сваёй (или чужою, сваею).';
+                feedback.className = 'incorrect-feedback';
+            }
+        });
+    })();
+</script>
+</body>
+</html>

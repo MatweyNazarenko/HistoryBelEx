@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билет №25: Социально-экономическое развитие Республики Беларусь</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }        .btnBackBlock{
+            position: absolute;
+            display: flex;
+            top: 40px;
+            left: 40px;
+        }
+        .backBtn{
+            text-decoration: none;
+            background: #6b4f28;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .backBtn>p{
+            transition: .3s;
+            position: relative;
+            z-index: 10;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+        .backBtn::after{    
+            transition: .5s;
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dfd0b0;
+            z-index: 1;
+        }
+        .backBtn:hover>p{
+            color: #4e3d22;
+        }
+        .backBtn:hover::after{
+            right: 0;
+        }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f4efe0;
+            color: #2e2b1a;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 15% 20%, #e4d5aa 0%, #f4efe0 70%);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 250, 240, 0.93);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(130, 100, 70, 0.25);
+            padding: 2rem 2rem 3rem;
+        }
+        h1 { font-size: 2.3rem; text-align: center; color: #4a3620; margin-bottom: 0.2rem; }
+        .subtitle {
+            text-align: center; font-style: italic; color: #6b5a3e;
+            margin-bottom: 2.5rem; border-bottom: 2px dotted #b89a5e; padding-bottom: 1rem;
+        }
+        .tab-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2rem; }
+        .tab-btn {
+            background: #dfd0b0; border: none; padding: 12px 20px; border-radius: 30px;
+            font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            color: #4e3d22; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #b89a5e;
+        }
+        .tab-btn:hover { background: #cdba8b; color: #2d1f0c; }
+        .tab-btn.active {
+            background: #6b4f28; color: #fff; border-color: #4a3520;
+            box-shadow: 0 6px 12px rgba(107, 79, 40, 0.5); transform: translateY(-2px);
+        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card {
+            background: #fffef7; border: 1px solid #d9c7a0; border-radius: 20px;
+            padding: 1.5rem; margin-bottom: 1.8rem; box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .year-badge {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 12px; border-radius: 20px; display: inline-block; margin-right: 10px;
+        }
+        .timeline {
+            position: relative; margin: 2rem 0; padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+            width: 4px; background: #b89a5e; border-radius: 2px;
+        }
+        .timeline-item {
+            margin-bottom: 2rem; position: relative; padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '◆'; position: absolute; left: -6px; top: 2px;
+            font-size: 1.5rem; color: #6b4f28;
+        }
+        .tl-date {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 14px; border-radius: 20px; display: inline-block; margin-bottom: 4px;
+        }
+        .tl-desc { color: #4d3b20; font-style: italic; }
+        .cards-grid {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-top: 1.5rem;
+        }
+        .flip-card {
+            background: transparent; width: 220px; height: 150px; perspective: 1000px; cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.6s; transform-style: preserve-3d;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2); border-radius: 18px;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 18px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 15px; font-weight: 600; font-size: 1rem;
+        }
+        .flip-card-front {
+            background: #efe3cc; color: #4e3620; border: 2px solid #c8aa7a;
+        }
+        .flip-card-back {
+            background: #6b4f28; color: #fff; border: 2px solid #4a3520;
+            transform: rotateY(180deg); font-size: 0.9rem;
+        }
+        .card-actions { display: flex; gap: 10px; justify-content: center; margin-top: 1.5rem; }
+        .quiz-area { background: #faf3e4; border-radius: 20px; padding: 1.5rem; }
+        .quiz-question { font-weight: 700; margin: 1.2rem 0 0.4rem; }
+        .quiz-result { font-weight: bold; margin-top: 1rem; padding: 0.8rem; border-radius: 12px; }
+        button {
+            background: #6b4f28; color: white; border: none; padding: 10px 25px;
+            border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 1rem; transition: 0.2s;
+        }
+        button:hover { background: #8b6a3a; }
+        .match-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .match-table td { padding: 8px; vertical-align: middle; }
+        .match-table select {
+            width: 100%; padding: 8px; border-radius: 10px; border: 1px solid #bb9a6e;
+            background: #fffef7; font-family: inherit;
+        }
+        .match-row.correct { background-color: #d4edda; }
+        .match-row.incorrect { background-color: #f8d7da; }
+        .fill-gap {
+            background: #fffef7; border: 1px solid #bb9a6e; padding: 5px 10px;
+            border-radius: 8px; width: auto; min-width: 100px;
+        }
+        .correct-feedback { color: #2d6a2d; font-weight: bold; }
+        .incorrect-feedback { color: #a13d3d; font-weight: bold; }
+        @media (max-width: 600px) {
+            .tab-btn { padding: 8px 14px; font-size: 0.85rem; }
+            .flip-card { width: 160px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class="btnBackBlock" id="backBtn">
+        <a href="../index.html" class="backBtn" ><p>Назад</p></a>
+    </div>
+    <h1>Билет №25</h1>
+    <div class="subtitle">Социально-экономическое развитие Республики Беларусь</div>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="crisis">Кризис 1990-х и реформы</button>
+        <button class="tab-btn" data-tab="model">Модель и программы</button>
+        <button class="tab-btn" data-tab="achievements">Достижения и герои</button>
+        <button class="tab-btn" data-tab="timeline">Лента времени</button>
+        <button class="tab-btn" data-tab="cards">Хроно-карточки</button>
+        <button class="tab-btn" data-tab="quiz">Тест (20 вопросов)</button>
+        <button class="tab-btn" data-tab="practice">Практические задания</button>
+    </div>
+
+    <!-- Кризис 1990-х и реформы -->
+    <div class="tab-content active" id="tab-crisis">
+        <div class="card">
+            <h2>📉 Тяжёлое наследие распада СССР</h2>
+            <p>Разрыв хозяйственных связей, падение производства, ВВП и доходов. В <span class="year-badge">1994 г.</span> инфляция превысила <strong>2200%</strong>, за чертой бедности оказалось <strong>более 60% населения</strong>. Обесценились сбережения.</p>
+        </div>
+        <div class="card">
+            <h2>🔄 Рыночные реформы 1992–1994 гг.</h2>
+            <p>Либерализация цен, конкуренция, аренда, приватизация. Становление предпринимательских и банковских структур. Но в середине 1990-х отказались от «шоковой терапии» и обвальной приватизации, сохранив крупные предприятия и колхозы при поддержке государства.</p>
+        </div>
+    </div>
+
+    <!-- Модель и программы -->
+    <div class="tab-content" id="tab-model">
+        <div class="card">
+            <h2>🏛️ Социально ориентированная рыночная экономика</h2>
+            <p>Ведущая роль госсектора, приватизация с социальной защитой, повышение конкурентоспособности, экономическая безопасность, рост благосостояния. Ставка на сохранение и модернизацию крупных производств.</p>
+        </div>
+        <div class="card">
+            <h2>📅 Всебелорусские народные собрания и пятилетки</h2>
+            <ul>
+                <li><strong>1996</strong> – I ВНС: программа 1996–2000 (восстановление уровня 1990 г.).</li>
+                <li><strong>2001</strong> – II ВНС: программа 2001–2005 («За сильную и процветающую Беларусь!»).</li>
+                <li><strong>2006</strong> – III ВНС: программа 2006–2010 («Государство для народа»).</li>
+                <li><strong>2010</strong> – IV ВНС: программа 2011–2015 (инновации, импортозамещение, развитие регионов).</li>
+                <li><strong>2016</strong> – V ВНС: программа 2016–2020 (переход к опережающей стратегии, качество жизни).</li>
+            </ul>
+            <p>Строительство <strong>Белорусской АЭС</strong> в Островецком районе направлено на снижение энергозависимости.</p>
+        </div>
+    </div>
+
+    <!-- Достижения и герои -->
+    <div class="tab-content" id="tab-achievements">
+        <div class="card">
+            <h2>🏭 Промышленные гиганты и их лидеры</h2>
+            <p><strong>П. Л. Мариев</strong> (БелАЗ) – создан самосвал на <strong>450 тонн</strong> (2013), около 30% мирового рынка.</p>
+            <p><strong>М. С. Высоцкий</strong> (МАЗ) – шесть поколений магистральных автопоездов, прозвище «Майкл Грузовик».</p>
+            <p><strong>П. П. Прокопович</strong> – глава Нацбанка, вклад в устойчивый экономический рост (Герой Беларуси 2006).</p>
+        </div>
+        <div class="card">
+            <h2>🌾 Аграрные герои</h2>
+            <p><strong>М. А. Карчмит</strong> (СПК «Агро-комбинат «Снов»», 2001) – первый Герой Беларуси среди аграриев.</p>
+            <p><strong>А. И. Дубко</strong> (агрокомбинат «Прогресс», Гродненщина) – посмертное звание.</p>
+            <p><strong>В. А. Ревяко</strong> (СПК «Прогресс-Вертелишки», 2006) – школа передового опыта.</p>
+            <p><strong>В. И. Кремко</strong> (с/х предприятие «Октябрь», 2001) – девиз «Всё начинается с земли».</p>
+        </div>
+        <div class="card">
+            <h2>👥 Молодёжная политика</h2>
+            <p>Специальные фонды Президента по поддержке одарённых учащихся и талантливой молодёжи. Программы «Молодёжь Беларуси», «Молодые таланты Беларуси».</p>
+        </div>
+    </div>
+
+    <!-- Лента времени -->
+    <div class="tab-content" id="tab-timeline">
+        <h2 style="text-align:center; margin-bottom:1.5rem;">🕰️ Этапы развития</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="tl-date">1992–1994</div><div class="tl-desc">Первые рыночные реформы, либерализация цен, приватизация.</div></div>
+            <div class="timeline-item"><div class="tl-date">1994</div><div class="tl-desc">Пик инфляции (свыше 2200%), кризис. Начало президентства А. Г. Лукашенко.</div></div>
+            <div class="timeline-item"><div class="tl-date">1996</div><div class="tl-desc">I Всебелорусское народное собрание. Программа восстановления.</div></div>
+            <div class="timeline-item"><div class="tl-date">2000</div><div class="tl-desc">Восстановлен уровень промышленного производства 1990 г.</div></div>
+            <div class="timeline-item"><div class="tl-date">2001</div><div class="tl-desc">II ВНС. Курс на благосостояние. Первые Герои Беларуси в аграрном секторе.</div></div>
+            <div class="timeline-item"><div class="tl-date">2006</div><div class="tl-desc">III ВНС. «Государство для народа». Награждение промышленных лидеров.</div></div>
+            <div class="timeline-item"><div class="tl-date">2013</div><div class="tl-desc">БелАЗ выпустил 450-тонный самосвал.</div></div>
+            <div class="timeline-item"><div class="tl-date">2016</div><div class="tl-desc">V ВНС. Программа 2016–2020 – опережающее развитие.</div></div>
+        </div>
+    </div>
+
+    <!-- Хроно-карточки -->
+    <div class="tab-content" id="tab-cards">
+        <h2 style="text-align:center; margin-bottom:0.5rem;">📅 Хронологические карточки</h2>
+        <p style="text-align:center; color:#5e4a2e;">Нажмите на карточку, чтобы увидеть детали.</p>
+        <div class="cards-grid" id="chrono-cards-container"></div>
+        <div class="card-actions">
+            <button id="flip-all">🔄 Перевернуть все</button>
+            <button id="reset-cards">↩️ Сбросить</button>
+        </div>
+    </div>
+
+    <!-- Тест -->
+    <div class="tab-content" id="tab-quiz">
+        <div class="quiz-area">
+            <h2>📝 Тест по билету №25</h2>
+            <div id="quiz-container"></div>
+            <button id="check-quiz">Проверить ответы</button>
+            <div id="quiz-result" class="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Практические задания -->
+    <div class="tab-content" id="tab-practice">
+        <div class="card">
+            <h2>🧩 Задание 1. Соотнесите съезд с программой</h2>
+            <table class="match-table" id="match-vns">
+                <tr><th>Всебелорусское народное собрание</th><th>Программа / лозунг</th></tr>
+                <tr data-correct="1996"><td>I ВНС (1996)</td><td>
+                    <select class="vns-select">
+                        <option value="">-- выберите --</option>
+                        <option value="1996">Преодоление кризиса, восстановление уровня 1990 г.</option>
+                        <option value="2001">«За сильную и процветающую Беларусь»</option>
+                        <option value="2006">«Государство для народа»</option>
+                        <option value="2010">Инновации, импортозамещение, развитие регионов</option>
+                        <option value="2016">Опережающая стратегия, повышение качества жизни</option>
+                    </select></td></tr>
+                <tr data-correct="2001"><td>II ВНС (2001)</td><td>
+                    <select class="vns-select">
+                        <option value="">-- выберите --</option>
+                        <option value="1996">Преодоление кризиса, восстановление уровня 1990 г.</option>
+                        <option value="2001">«За сильную и процветающую Беларусь»</option>
+                        <option value="2006">«Государство для народа»</option>
+                        <option value="2010">Инновации, импортозамещение, развитие регионов</option>
+                        <option value="2016">Опережающая стратегия, повышение качества жизни</option>
+                    </select></td></tr>
+                <tr data-correct="2006"><td>III ВНС (2006)</td><td>
+                    <select class="vns-select">
+                        <option value="">-- выберите --</option>
+                        <option value="1996">Преодоление кризиса, восстановление уровня 1990 г.</option>
+                        <option value="2001">«За сильную и процветающую Беларусь»</option>
+                        <option value="2006">«Государство для народа»</option>
+                        <option value="2010">Инновации, импортозамещение, развитие регионов</option>
+                        <option value="2016">Опережающая стратегия, повышение качества жизни</option>
+                    </select></td></tr>
+                <tr data-correct="2010"><td>IV ВНС (2010)</td><td>
+                    <select class="vns-select">
+                        <option value="">-- выберите --</option>
+                        <option value="1996">Преодоление кризиса, восстановление уровня 1990 г.</option>
+                        <option value="2001">«За сильную и процветающую Беларусь»</option>
+                        <option value="2006">«Государство для народа»</option>
+                        <option value="2010">Инновации, импортозамещение, развитие регионов</option>
+                        <option value="2016">Опережающая стратегия, повышение качества жизни</option>
+                    </select></td></tr>
+                <tr data-correct="2016"><td>V ВНС (2016)</td><td>
+                    <select class="vns-select">
+                        <option value="">-- выберите --</option>
+                        <option value="1996">Преодоление кризиса, восстановление уровня 1990 г.</option>
+                        <option value="2001">«За сильную и процветающую Беларусь»</option>
+                        <option value="2006">«Государство для народа»</option>
+                        <option value="2010">Инновации, импортозамещение, развитие регионов</option>
+                        <option value="2016">Опережающая стратегия, повышение качества жизни</option>
+                    </select></td></tr>
+            </table>
+            <button id="check-vns">Проверить</button>
+            <span id="vns-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>✍️ Задание 2. Вставьте пропущенные цифры и термины</h2>
+            <p>«В 1994 г. уровень инфляции в Беларуси превысил 
+                <input type="text" class="fill-gap" id="gap1" placeholder="?">%. 
+                За чертой бедности оказалось более 
+                <input type="text" class="fill-gap" id="gap2" placeholder="?">% населения. 
+                Национальной моделью развития выбрана социально ориентированная 
+                <input type="text" class="fill-gap" id="gap3" placeholder="?">. 
+                В 2013 г. БелАЗ выпустил самый большой в мире самосвал грузоподъёмностью 
+                <input type="text" class="fill-gap" id="gap4" placeholder="?"> тонн. 
+                Строительство 
+                <input type="text" class="fill-gap" id="gap5" placeholder="?"> в Островецком районе снижает энергозависимость».
+            </p>
+            <button id="check-gaps">Проверить</button>
+            <span id="gaps-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Переключение вкладок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(`tab-${target}`).classList.add('active');
+            });
+        });
+
+        // Хронологические карточки
+        const chronoData = [
+            { date: "1994", desc: "Инфляция >2200%. Начало президентства." },
+            { date: "1996", desc: "I ВНС. Программа восстановления до 2000 г." },
+            { date: "2001", desc: "II ВНС. Лозунг «За сильную и процветающую Беларусь!»." },
+            { date: "2006", desc: "III ВНС. Девиз «Государство для народа»." },
+            { date: "2010", desc: "IV ВНС. Инновации, импортозамещение." },
+            { date: "2013", desc: "БелАЗ создал 450-тонный самосвал." },
+            { date: "2016", desc: "V ВНС. Опережающая стратегия развития." }
+        ];
+        const cardsContainer = document.getElementById('chrono-cards-container');
+        function buildCards() {
+            cardsContainer.innerHTML = '';
+            chronoData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'flip-card';
+                card.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">${item.date}</div>
+                        <div class="flip-card-back">${item.desc}</div>
+                    </div>
+                `;
+                card.addEventListener('click', () => card.classList.toggle('flipped'));
+                cardsContainer.appendChild(card);
+            });
+        }
+        buildCards();
+        document.getElementById('flip-all').addEventListener('click', () => {
+            const cards = document.querySelectorAll('.flip-card');
+            const allFlipped = Array.from(cards).every(c => c.classList.contains('flipped'));
+            cards.forEach(c => c.classList.toggle('flipped', !allFlipped));
+        });
+        document.getElementById('reset-cards').addEventListener('click', () => {
+            document.querySelectorAll('.flip-card').forEach(c => c.classList.remove('flipped'));
+        });
+
+        // Тест (20 вопросов)
+        const quizData = [
+            { q: "Каким был уровень инфляции в Беларуси в 1994 г.?", options: ["500%", "1000%", "2200%", "4000%"], correct: 2 },
+            { q: "Какая доля населения оказалась за чертой бедности в середине 1990-х?", options: ["30%", "Около 50%", "Более 60%", "80%"], correct: 2 },
+            { q: "От какой модели реформ отказалась Беларусь в середине 1990-х?", options: ["Приватизация", "Шоковая терапия", "Рыночные отношения", "Либерализация цен"], correct: 1 },
+            { q: "Какая модель экономики избрана в Беларуси?", options: ["Чисто рыночная", "Социально ориентированная рыночная", "Командно-административная", "Либеральная"], correct: 1 },
+            { q: "Когда состоялось первое Всебелорусское народное собрание?", options: ["1994", "1996", "2001", "2006"], correct: 1 },
+            { q: "Какой лозунг был у пятилетки 2001–2005?", options: ["Государство для народа", "За сильную и процветающую Беларусь", "Опережающая стратегия", "Инновации и прогресс"], correct: 1 },
+            { q: "На каком ВНС была принята программа «Государство для народа»?", options: ["I", "II", "III", "IV"], correct: 2 },
+            { q: "Кто из промышленников получил звание Героя Беларуси за БелАЗ?", options: ["М. С. Высоцкий", "П. Л. Мариев", "П. П. Прокопович", "В. А. Ревяко"], correct: 1 },
+            { q: "Какую рекордную грузоподъёмность имеет самосвал БелАЗ, созданный в 2013 г.?", options: ["220 т", "360 т", "450 т", "500 т"], correct: 2 },
+            { q: "Какое прозвище получил конструктор МАЗов Михаил Высоцкий?", options: ["Тракторный король", "Майкл Грузовик", "Автомобильный гений", "Карьерный магнат"], correct: 1 },
+            { q: "Первый Герой Беларуси среди аграриев в 2001 г. –", options: ["А. И. Дубко", "В. И. Кремко", "М. А. Карчмит", "В. А. Ревяко"], correct: 2 },
+            { q: "Какой объект энергетики строится в Островецком районе?", options: ["ГЭС", "ТЭЦ", "АЭС", "Ветряная станция"], correct: 2 },
+            { q: "Какая Директива была принята для развития предпринимательства?", options: ["О свободе торговли", "О развитии предпринимательской инициативы", "О либерализации цен", "О государственной поддержке"], correct: 1 },
+            { q: "Сколько процентов мирового рынка карьерных самосвалов принадлежит БелАЗу?", options: ["~10%", "~20%", "~30%", "~50%"], correct: 2 },
+            { q: "Какое место заняла Беларусь по индексу человеческого развития в 2015 г.?", options: ["30-е", "40-е", "50-е", "62-е"], correct: 2 },
+            { q: "Кто руководил Национальным банком и стал Героем Беларуси?", options: ["П. Л. Мариев", "М. С. Высоцкий", "П. П. Прокопович", "А. И. Дубко"], correct: 2 },
+            { q: "Какой девиз был у В. И. Кремко?", options: ["Земля – наше богатство", "Всё начинается с земли", "Хлеб – всему голова", "Урожай решает всё"], correct: 1 },
+            { q: "В каком году прошло IV Всебелорусское народное собрание?", options: ["2006", "2010", "2011", "2016"], correct: 1 },
+            { q: "Что является приоритетом Программы на 2011–2015?", options: ["Ваучерная приватизация", "Создание наукоёмких импортозамещающих производств", "Массовое закрытие колхозов", "Переход к плановой экономике"], correct: 1 },
+            { q: "Какой государственный фонд поддерживает одарённых студентов?", options: ["Фонд мира", "Специальный фонд Президента по социальной поддержке одарённых учащихся", "Детский фонд", "Фонд «Будущее»"], correct: 1 }
+        ];
+        const quizContainer = document.getElementById('quiz-container');
+        function buildQuiz() {
+            let html = '';
+            quizData.forEach((item, idx) => {
+                html += `<p class="quiz-question">${idx+1}. ${item.q}</p>`;
+                item.options.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label>`;
+                });
+            });
+            quizContainer.innerHTML = html;
+        }
+        buildQuiz();
+        document.getElementById('check-quiz').addEventListener('click', () => {
+            let score = 0;
+            quizData.forEach((item, idx) => {
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === item.correct) score++;
+            });
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.textContent = `Ваш результат: ${score} из ${quizData.length}.`;
+            resultDiv.style.background = score >= 15 ? '#d4edda' : '#f8d7da';
+        });
+
+        // Задание 1: ВНС и программы
+        const vnsTable = document.getElementById('match-vns');
+        document.getElementById('check-vns').addEventListener('click', () => {
+            const rows = vnsTable.querySelectorAll('tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.vns-select');
+                row.classList.remove('correct', 'incorrect');
+                if (select.value === correct) {
+                    row.classList.add('correct');
+                } else {
+                    row.classList.add('incorrect');
+                    allCorrect = false;
+                }
+            });
+            const feedback = document.getElementById('vns-feedback');
+            feedback.textContent = allCorrect ? '✅ Все собрания соотнесены верно!' : '❌ Есть ошибки. Правильные строки подсвечены зелёным.';
+            feedback.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Задание 2: пропуски
+        document.getElementById('check-gaps').addEventListener('click', () => {
+            const check = (id, expected) => {
+                const input = document.getElementById(id);
+                const val = input.value.trim().toLowerCase();
+                const ok = val === expected.toLowerCase();
+                input.style.border = ok ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+                return ok;
+            };
+            const ok1 = check('gap1', '2200');
+            const ok2 = check('gap2', '60');
+            const ok3 = document.getElementById('gap3').value.trim().toLowerCase().includes('рыночная');
+            document.getElementById('gap3').style.border = ok3 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            const ok4 = check('gap4', '450');
+            const ok5 = document.getElementById('gap5').value.trim().toLowerCase().includes('аэс') || document.getElementById('gap5').value.trim().toLowerCase().includes('белорусской');
+            document.getElementById('gap5').style.border = ok5 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+
+            const allOk = ok1 && ok2 && ok3 && ok4 && ok5;
+            const feedback = document.getElementById('gaps-feedback');
+            feedback.textContent = allOk ? '✅ Верно! 2200, 60, рыночная, 450, АЭС.' : '❌ Проверьте: 2200, 60, рыночная, 450, АЭС (или Белорусской АЭС).';
+            feedback.className = allOk ? 'correct-feedback' : 'incorrect-feedback';
+        });
+    })();
+</script>
+</body>
+</html>

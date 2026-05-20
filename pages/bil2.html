@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билет №2: Полоцкое и Туровское княжества X–XII вв.</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+                .btnBackBlock{
+            position: absolute;
+            display: flex;
+            top: 40px;
+            left: 40px;
+        }
+        .backBtn{
+            text-decoration: none;
+            background: #6b4f28;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .backBtn>p{
+            transition: .3s;
+            position: relative;
+            z-index: 10;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+        .backBtn::after{    
+            transition: .5s;
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dfd0b0;
+            z-index: 1;
+        }
+        .backBtn:hover>p{
+            color: #4e3d22;
+        }
+        .backBtn:hover::after{
+            right: 0;
+        }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f4efe0;
+            color: #2e2b1a;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 10% 20%, #e4d5aa 0%, #f4efe0 70%);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 250, 240, 0.93);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(130, 100, 70, 0.25);
+            padding: 2rem 2rem 3rem;
+        }
+        h1 { font-size: 2.3rem; text-align: center; color: #4a3620; margin-bottom: 0.2rem; letter-spacing: 1px; }
+        .subtitle {
+            text-align: center; font-style: italic; color: #6b5a3e;
+            margin-bottom: 2.5rem; border-bottom: 2px dotted #b89a5e; padding-bottom: 1rem;
+        }
+        .tab-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2rem; }
+        .tab-btn {
+            background: #dfd0b0; border: none; padding: 12px 20px; border-radius: 30px;
+            font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            color: #4e3d22; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #b89a5e;
+            letter-spacing: 0.5px;
+        }
+        .tab-btn:hover { background: #cdba8b; color: #2d1f0c; }
+        .tab-btn.active {
+            background: #6b4f28; color: #fff; border-color: #4a3520;
+            box-shadow: 0 6px 12px rgba(107, 79, 40, 0.5); transform: translateY(-2px);
+        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card {
+            background: #fffef7; border: 1px solid #d9c7a0; border-radius: 20px;
+            padding: 1.5rem; margin-bottom: 1.8rem; box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .year-badge {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 12px; border-radius: 20px; display: inline-block; margin-right: 10px;
+        }
+        .timeline {
+            position: relative; margin: 2rem 0; padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+            width: 4px; background: #b89a5e; border-radius: 2px;
+        }
+        .timeline-item {
+            margin-bottom: 2rem; position: relative; padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '◆'; position: absolute; left: -6px; top: 2px;
+            font-size: 1.5rem; color: #6b4f28;
+        }
+        .tl-date {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 14px; border-radius: 20px; display: inline-block; margin-bottom: 4px;
+        }
+        .tl-desc { color: #4d3b20; font-style: italic; }
+        .quiz-area { background: #faf3e4; border-radius: 20px; padding: 1.5rem; }
+        .quiz-question { font-weight: 700; margin: 1.2rem 0 0.4rem; }
+        .quiz-result { font-weight: bold; margin-top: 1rem; padding: 0.8rem; border-radius: 12px; }
+        button {
+            background: #6b4f28; color: white; border: none; padding: 10px 25px;
+            border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 1rem; transition: 0.2s;
+        }
+        button:hover { background: #8b6a3a; }
+        .match-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .match-table td { padding: 8px; vertical-align: middle; }
+        .match-table select {
+            width: 100%; padding: 8px; border-radius: 10px; border: 1px solid #bb9a6e;
+            background: #fffef7; font-family: inherit;
+        }
+        .match-row.correct { background-color: #d4edda; }
+        .match-row.incorrect { background-color: #f8d7da; }
+        .fill-gap {
+            background: #fffef7; border: 1px solid #bb9a6e; padding: 5px 10px;
+            border-radius: 8px; width: auto; min-width: 100px;
+        }
+        .correct-feedback { color: #2d6a2d; font-weight: bold; }
+        .incorrect-feedback { color: #a13d3d; font-weight: bold; }
+        @media (max-width: 600px) {
+            .tab-btn { padding: 8px 14px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class="btnBackBlock" id="backBtn">
+        <a href="../index.html" class="backBtn" ><p>Назад</p></a>
+    </div>
+    <h1>Билет №2</h1>
+    <div class="subtitle">Полоцкое и Туровское княжества в X–XII вв.</div>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="polotsk">Полоцкое княжество</button>
+        <button class="tab-btn" data-tab="turov">Туровское княжество</button>
+        <button class="tab-btn" data-tab="timeline">Лента времени</button>
+        <button class="tab-btn" data-tab="quiz">Тест (20 вопросов)</button>
+        <button class="tab-btn" data-tab="practice">Практические задания</button>
+        <button class="tab-btn" data-tab="dictionary">📖 Словарик</button>
+        <button class="tab-btn" data-tab="answer">✍️ Приблизительный ответ</button>
+        <button class="tab-btn" data-tab="learningapp">🎮 Тренажёр</button>
+    </div>
+
+    <!-- Полоцкое княжество -->
+    <div class="tab-content active" id="tab-polotsk">
+        <div class="card">
+            <h2>🏙️ Основание и ранняя история</h2>
+            <p><span class="year-badge">862 г.</span> Первое летописное упоминание Полоцка. Город основан при впадении реки Полоты в Западную Двину, на важном торговом пути «из варяг в греки».</p>
+        </div>
+        <div class="card">
+            <h2>👑 Рогволод и Рогнеда</h2>
+            <p>В 960‑е гг. власть в Полоцке захватил варяжский князь <strong>Рогволод</strong>, который проводил независимую от Киева политику.</p>
+            <p><span class="year-badge">Ок. 980 г.</span> Новгородский князь Владимир попросил руки дочери Рогволода <strong>Рогнеды</strong>, но она отказала, предпочтя киевского князя Ярополка. Владимир силой захватил Полоцк, убил Рогволода и его сыновей, а Рогнеду взял в жёны (назвав её Гориславой).</p>
+        </div>
+        <div class="card">
+            <h2>⚔️ Восстановление династии: Изяслав</h2>
+            <p>Рогнеда родила Владимиру сына <strong>Изяслава</strong>. В 988 г. она попыталась убить Владимира, но князь пощадил её ради мужественного заступничества сына. Владимир передал Рогнеде и Изяславу Полоцкое княжество, восстановив его самостоятельность.</p>
+            <p>С <span class="year-badge">988 г.</span> в Полоцке правила собственная княжеская династия. Изяслав вошёл в историю как князь-книжник, распространявший письменность. Умер молодым в <span class="year-badge">1001 г.</span></p>
+        </div>
+        <div class="card">
+            <h2>📜 Брячислав и борьба за волоки</h2>
+            <p>С <span class="year-badge">1003 г.</span> княжил сын Изяслава <strong>Брячислав</strong>. Он вступил в борьбу с Новгородом за волоки – сухопутные торговые пути между Днепром и Западной Двиной. В <span class="year-badge">1021 г.</span> Брячислав напал на Новгород, захватил богатую добычу и пленных.</p>
+            <p>Ярослав Мудрый (дядя Брячислава) заступился за Новгород, но в итоге был заключён мир. Ярослав отдал Полоцку <strong>Витебск</strong> и <strong>Усвяты</strong>, где проходили волоки. Территория княжества значительно увеличилась.</p>
+        </div>
+        <div class="card">
+            <h2>🐺 Всеслав Чародей (1044–1101)</h2>
+            <p>После смерти Брячислава в 1044 г. князем стал его сын <strong>Всеслав</strong>, прозванный <strong>Чародеем</strong>. Современники верили, что он мог оборачиваться волком. При нём Полоцкое княжество достигло наивысшего расцвета.</p>
+            <p>Всеслав нападал на Псков и Новгород, захватил последний. В ответ три сына Ярослава Мудрого зимой <span class="year-badge">1067 г.</span> осадили и разрушили Менск (Минск).</p>
+            <p><strong>Битва на реке Немиге 3 марта 1067 г.</strong> – войска Всеслава были разбиты. Позже киевские князья пригласили его на переговоры, но схватили и посадили в тюрьму в Киеве.</p>
+            <p>Через год восставшие горожане освободили Всеслава и провозгласили великим князем киевским. Пробыв семь месяцев в Киеве, он вернулся в Полоцк. В последние годы жизни не воевал. Построил новый мощный замок и <strong>Софийский собор</strong> в Полоцке.</p>
+        </div>
+        <div class="card">
+            <h2>⚖️ Княжеско-вечевой строй и законы</h2>
+            <p>В Полоцке действовала система власти, сочетавшая князя и вече (народное собрание свободных мужчин, способных носить оружие). Вече решало вопросы войны и мира, избирало князя.</p>
+            <p>Князь командовал войском, собирал дань, обеспечивал защиту. Его опорой была дружина – отряд профессиональных воинов. На время войны созывалось военное ополчение.</p>
+            <p>Сборник законов – <strong>«Русская правда»</strong> (при Ярославе Мудром). Доказательство вины часто определялось «судом божьим» (испытание огнём). Суд вершил князь или его представители.</p>
+        </div>
+        <div class="card">
+            <h2>📉 Раздробленность Полоцкой земли</h2>
+            <p>После смерти Всеслава Чародея наступил период феодальной раздробленности. Первым выделилось <strong>Менское (Минское) княжество</strong>, где княжил сын Всеслава – <strong>Глеб Всеславич</strong>.</p>
+        </div>
+    </div>
+
+    <!-- Туровское княжество -->
+    <div class="tab-content" id="tab-turov">
+        <div class="card">
+            <h2>🏞️ Основание и подчинение Киеву</h2>
+            <p>Туровское княжество сложилось на основе племенного союза дреговичей. Первое упоминание – <span class="year-badge">980 г.</span> (по летописи – князь Тур).</p>
+            <p>В конце X в. Владимир Святославич передал Туров сыну <strong>Святополку</strong>. Княжество попало в зависимость от Киева. Позже Ярослав Мудрый отдал его сыну <strong>Изяславу</strong>, который впоследствии стал киевским князем.</p>
+        </div>
+        <div class="card">
+            <h2>👑 Местная династия и независимость</h2>
+            <p>В <span class="year-badge">1157 г.</span> князь <strong>Юрий Ярославич</strong> восстановил местную княжескую династию, успешно отразив нападение киевских войск. В 1160 г. очередная попытка захватить Туров также провалилась.</p>
+            <p>После его смерти правили сыновья, но и здесь наступила раздробленность. Особенно усилился город <strong>Пинск</strong>, впервые упомянутый в <span class="year-badge">1097 г.</span></p>
+        </div>
+        <div class="card">
+            <h2>📌 Особенности Туровского княжества</h2>
+            <ul>
+                <li>Более тесные связи с Киевом, чем у Полоцка</li>
+                <li>Туровские князья на законных основаниях могли занимать киевский великокняжеский престол</li>
+                <li>Широкие полномочия посадников, управлявших от имени князя, когда тот находился в Киеве</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Лента времени -->
+    <div class="tab-content" id="tab-timeline">
+        <h2 style="text-align:center; margin-bottom:1.5rem;">🕰️ Хронология Полоцкого и Туровского княжеств</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="tl-date">862</div><div class="tl-desc">Первое упоминание Полоцка в летописи.</div></div>
+            <div class="timeline-item"><div class="tl-date">960-е</div><div class="tl-desc">Князь Рогволод в Полоцке, независимая от Киева политика.</div></div>
+            <div class="timeline-item"><div class="tl-date">Ок. 980</div><div class="tl-desc">Владимир захватывает Полоцк, убивает Рогволода, берёт в жёны Рогнеду.</div></div>
+            <div class="timeline-item"><div class="tl-date">988</div><div class="tl-desc">Восстановление самостоятельности Полоцкого княжества. Начало династии Изяслава.</div></div>
+            <div class="timeline-item"><div class="tl-date">1001</div><div class="tl-desc">Смерть Изяслава, князя-книжника.</div></div>
+            <div class="timeline-item"><div class="tl-date">1003–1044</div><div class="tl-desc">Княжение Брячислава. 1021 – поход на Новгород, присоединение Витебска и Усвят.</div></div>
+            <div class="timeline-item"><div class="tl-date">1044–1101</div><div class="tl-desc">Княжение Всеслава Чародея. 1067 – битва на Немиге. Расцвет Полоцка.</div></div>
+            <div class="timeline-item"><div class="tl-date">980</div><div class="tl-desc">Первое упоминание Турова (князь Тур).</div></div>
+            <div class="timeline-item"><div class="tl-date">1157</div><div class="tl-desc">Юрий Ярославич восстановил независимую династию в Турове.</div></div>
+        </div>
+    </div>
+
+    <!-- Тест (20 вопросов) -->
+    <div class="tab-content" id="tab-quiz">
+        <div class="quiz-area">
+            <h2>📝 Тест по билету №2</h2>
+            <div id="quiz-container"></div>
+            <button id="check-quiz">Проверить ответы</button>
+            <div id="quiz-result" class="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Практические задания -->
+    <div class="tab-content" id="tab-practice">
+        <div class="card">
+            <h2>🧩 Задание 1. Хронология событий</h2>
+            <p>Укажите верный порядок событий (от 1 до 5).</p>
+            <table class="match-table" id="chrono-order-table">
+                <tr><th>Событие</th><th>Порядок</th></tr>
+                <tr data-correct="1"><td>Первое упоминание Полоцка (862)</td><td><select class="order-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+                <tr data-correct="2"><td>Захват Полоцка Владимиром и гибель Рогволода</td><td><select class="order-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+                <tr data-correct="3"><td>Восстановление Полоцкой династии (Изяслав)</td><td><select class="order-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+                <tr data-correct="4"><td>Битва на Немиге (1067)</td><td><select class="order-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+                <tr data-correct="5"><td>Юрий Ярославич отстоял Туров (1157)</td><td><select class="order-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+            </table>
+            <button id="check-chrono-order">Проверить порядок</button>
+            <span id="chrono-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>🔗 Задание 2. Соотнесите князя и его деяние</h2>
+            <table class="match-table" id="prince-match">
+                <tr><th>Князь</th><th>Деяние</th></tr>
+                <tr data-correct="nezavis"><td>Рогволод</td><td><select class="prince-select"><option value="">--</option><option value="nezavis">Независимая от Киева политика</option><option value="bitva">Победа на Немиге</option></select></td></tr>
+                <tr data-correct="voloki"><td>Брячислав</td><td><select class="prince-select"><option value="">--</option><option value="voloki">Борьба за волоки, присоединение Витебска</option><option value="sofia">Строительство Софийского собора</option></select></td></tr>
+                <tr data-correct="sofia"><td>Всеслав Чародей</td><td><select class="prince-select"><option value="">--</option><option value="sofia">Строительство Софийского собора и расцвет княжества</option><option value="nezavis">Независимая от Киева политика</option></select></td></tr>
+                <tr data-correct="turov"><td>Юрий Ярославич</td><td><select class="prince-select"><option value="">--</option><option value="turov">Восстановление династии в Турове (1157)</option><option value="bitva">Победа на Немиге</option></select></td></tr>
+            </table>
+            <button id="check-prince-match">Проверить</button>
+            <span id="prince-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>✍️ Задание 3. Вставьте пропущенные слова в цитату</h2>
+            <p>«Нямiгi крывавыя берагi не збожжам былi засеяны зноў – засеяны 
+                <input type="text" class="fill-gap" id="gap1" placeholder="?"> 
+                рускiх сыноў».
+            </p>
+            <button id="check-gaps">Проверить</button>
+            <span id="gaps-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>🔗 Задание 4. Соотнесите термин и его значение</h2>
+            <table class="match-table" id="term-match">
+                <tr><th>Термин</th><th>Значение</th></tr>
+                <tr data-correct="veche"><td>Вече</td><td><select class="term-select"><option value="">--</option><option value="veche">Народное собрание свободных мужчин, решавшее важнейшие вопросы</option><option value="druzhina">Отряд профессиональных воинов, служивших князю</option><option value="volok">Сухопутный торговый путь между реками</option></select></td></tr>
+                <tr data-correct="druzhina"><td>Дружина</td><td><select class="term-select"><option value="">--</option><option value="veche">Народное собрание свободных мужчин</option><option value="druzhina">Отряд профессиональных воинов, служивших князю</option><option value="volok">Сухопутный торговый путь между реками</option></select></td></tr>
+                <tr data-correct="volok"><td>Волок</td><td><select class="term-select"><option value="">--</option><option value="veche">Народное собрание свободных мужчин</option><option value="druzhina">Отряд профессиональных воинов</option><option value="volok">Сухопутный путь, по которому перетаскивали суда между реками</option></select></td></tr>
+            </table>
+            <button id="check-term-match">Проверить</button>
+            <span id="term-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+    </div>
+
+    <!-- Словарик -->
+    <div class="tab-content" id="tab-dictionary">
+        <div class="card">
+            <h2>📖 Основные термины и понятия</h2>
+            <table style="width:100%; border-collapse:collapse; margin-top:1rem;">
+                <tr style="background:#f2e2c6;"><th style="padding:10px; text-align:left;">Термин</th><th style="padding:10px; text-align:left;">Определение</th></tr>
+                <tr><td style="padding:8px;"><strong>Полоцк</strong></td><td style="padding:8px;">Крупный город на Западной Двине, центр Полоцкого княжества, впервые упомянут в 862 г.</td></tr>
+                <tr><td style="padding:8px;"><strong>Волок</strong></td><td style="padding:8px;">Сухопутный торговый путь между реками, где суда перетаскивали по земле.</td></tr>
+                <tr><td style="padding:8px;"><strong>Вече</strong></td><td style="padding:8px;">Народное собрание взрослых свободных мужчин, решавшее вопросы войны и мира, избиравшее князя.</td></tr>
+                <tr><td style="padding:8px;"><strong>Дружина</strong></td><td style="padding:8px;">Отряд профессиональных вооружённых воинов, лично преданных князю.</td></tr>
+                <tr><td style="padding:8px;"><strong>Русская правда</strong></td><td style="padding:8px;">Сборник законов, созданный при Ярославе Мудром; действовал и в Полоцком княжестве.</td></tr>
+                <tr><td style="padding:8px;"><strong>Поруб</strong></td><td style="padding:8px;">Тюрьма в Древней Руси (погреб, яма).</td></tr>
+                <tr><td style="padding:8px;"><strong>Феодальная раздробленность</strong></td><td style="padding:8px;">Распад единого княжества на мелкие самостоятельные княжества (уделы).</td></tr>
+                <tr><td style="padding:8px;"><strong>Удел</strong></td><td style="padding:8px;">Часть княжества, находящаяся во владении князя или его наследника.</td></tr>
+                <tr><td style="padding:8px;"><strong>Посадник</strong></td><td style="padding:8px;">Должностное лицо, управлявшее городом или землёй от имени князя.</td></tr>
+                <tr><td style="padding:8px;"><strong>Дань</strong></td><td style="padding:8px;">Натуральный или денежный сбор с подвластного населения.</td></tr>
+                <tr><td style="padding:8px;"><strong>Софийский собор</strong></td><td style="padding:8px;">Главный храм Полоцка, построенный в XI веке при Всеславе Чародее.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Приблизительный ответ -->
+    <div class="tab-content" id="tab-answer">
+        <div class="card">
+            <h2>✍️ Примерный ответ по билету №2</h2>
+            <p><strong>Полоцкое княжество (IX–XI вв.)</strong></p>
+            <p>Полоцк – один из древнейших городов восточных славян. Располагаясь на Западной Двине, он контролировал важный торговый путь «из варяг в греки». В 862 году Полоцк впервые упоминается в «Повести временных лет». В 960-е годы власть в нём захватил варяжский князь Рогволод, проводивший независимую от Киева политику. Около 980 года новгородский князь Владимир после отказа Рогнеды напал на Полоцк, убил Рогволода и взял Рогнеду в жёны. В 988 году, после попытки Рогнеды убить Владимира, она была выслана в Полоцк вместе с сыном Изяславом. Так была восстановлена самостоятельность Полоцкого княжества. Изяслав известен как князь-книжник, распространявший письменность и христианство.</p>
+            <p>При его сыне Брячиславе (1003–1044) княжество расширило свои владения за счёт волоков и приоборело Витебск и Усвяты. Наивысшего могущества Полоцк достиг при Всеславе Чародее (1044–1101). Он вёл активные войны с Новгородом и Киевом, потерпел поражение в битве на Немиге (1067), но позже вернул власть. При нём был построен Софийский собор. После смерти Всеслава княжество распалось на уделы (Минское, Витебское и др.), вступив в период феодальной раздробленности.</p>
+            <p>В Полоцке сложился княжеско-вечевой строй: власть князя сочеталась с вечем – народным собранием, решавшим вопросы войны, мира, изгнания и призвания князей. Судебная система опиралась на «Русскую правду». Войско состояло из профессиональной дружины и ополчения.</p>
+            <p><strong>Туровское княжество (X–XII вв.)</strong></p>
+            <p>Туров возник на землях дреговичей и впервые упоминается в 980 году. Княжество долгое время находилось в тесной зависимости от Киева, часто управлялось сыновьями или наместниками киевских князей. Туровские князья могли занимать киевский престол. Лишь в середине XII века (1157) князь Юрий Ярославич установил самостоятельную династию. Крупным городом был Пинск. В период раздробленности Туровское княжество также распалось на уделы.</p>
+            <p>Таким образом, Полоцкое княжество было более самостоятельным и сильным политическим центром, тогда как Туровское долгое время играло роль киевской волости.</p>
+        </div>
+    </div>
+
+    <!-- Тренажёр -->
+    <div class="tab-content" id="tab-learningapp">
+        <div class="card">
+            <h2>🧠 Интерактивный тренажёр</h2>
+            <iframe src="https://learningapps.org/watch?v=pq52zpnx326" 
+                    style="border:0px; width:100%; height:500px; border-radius:20px;" 
+                    allowfullscreen="true" 
+                    webkitallowfullscreen="true" 
+                    mozallowfullscreen="true"></iframe>
+            <p style="margin-top:1rem; font-style:italic;">Выполните задание, чтобы закрепить тему. После ответа можно вернуться к другим вкладкам.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Переключение вкладок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(`tab-${target}`).classList.add('active');
+            });
+        });
+
+        // Тест (20 вопросов)
+        const quizData = [
+            { q: "В каком году Полоцк впервые упоминается в летописи?", options: ["862", "980", "988", "1044"], correct: 0 },
+            { q: "На какой реке основан Полоцк?", options: ["Днепр", "Западная Двина", "Немига", "Припять"], correct: 1 },
+            { q: "Как звали варяжского князя, правившего в Полоцке в 960-е гг.?", options: ["Рюрик", "Рогволод", "Тур", "Всеслав"], correct: 1 },
+            { q: "Что сделала Рогнеда после отказа Владимиру?", options: ["Согласилась на брак с Ярополком", "Убежала в Киев", "Сама убила Владимира", "Вышла за Олега"], correct: 0 },
+            { q: "Какое имя дал Владимир Рогнеде после захвата Полоцка?", options: ["Анастасия", "Горислава", "Ольга", "Рогнеда-Гореслава"], correct: 1 },
+            { q: "В каком году была восстановлена самостоятельность Полоцкого княжества (начало династии Изяслава)?", options: ["980", "988", "1001", "1067"], correct: 1 },
+            { q: "Чем прославился князь Изяслав?", options: ["Воевал с Византией", "Был князем-книжником, распространял письменность", "Построил Софийский собор", "Присоединил Туров"], correct: 1 },
+            { q: "За что воевал Брячислав с Новгородом в 1021 г.?", options: ["За киевский престол", "За волоки (торговые пути)", "За Софийский собор", "За дань с дреговичей"], correct: 1 },
+            { q: "Какие города получил Брячислав по мирному договору с Ярославом?", options: ["Минск и Пинск", "Витебск и Усвяты", "Туров и Слуцк", "Смоленск и Чернигов"], correct: 1 },
+            { q: "Какое прозвище носил князь Всеслав Брячиславич?", options: ["Мудрый", "Храбрый", "Чародей", "Книжник"], correct: 2 },
+            { q: "Что случилось в битве на Немиге 3 марта 1067 г.?", options: ["Победил Всеслав", "Всеслав был разбит", "Ничья", "Город Минск устоял"], correct: 1 },
+            { q: "Сколько времени Всеслав Чародей был киевским князем?", options: ["Три года", "Семь месяцев", "Пять лет", "Никогда"], correct: 1 },
+            { q: "Какое здание построил Всеслав в Полоцке?", options: ["Замок Гедимина", "Софийский собор", "Церковь Спаса", "Костёл Святого Духа"], correct: 1 },
+            { q: "Кто из сыновей Всеслава выделился в самостоятельное Менское княжество?", options: ["Брячислав", "Глеб", "Рогволод", "Изяслав"], correct: 1 },
+            { q: "Первое упоминание Турова относится к:", options: ["862 г.", "980 г.", "1097 г.", "1157 г."], correct: 1 },
+            { q: "Какой киевский князь передал Туров своему сыну Святополку?", options: ["Ярослав Мудрый", "Владимир Святославич", "Изяслав", "Всеволод"], correct: 1 },
+            { q: "В каком году Юрий Ярославич восстановил независимую династию в Турове?", options: ["1097", "1157", "1160", "1067"], correct: 1 },
+            { q: "Какой город Туровской земли впервые упоминается в 1097 г.?", options: ["Мозырь", "Пинск", "Слуцк", "Кобрин"], correct: 1 },
+            { q: "Чем отличалось Туровское княжество от Полоцкого?", options: ["Более тесные связи с Киевом и право на киевский престол", "Более сильное вече", "Отсутствие дружины", "Языческие верования"], correct: 0 },
+            { q: "Что такое «вече»?", options: ["Совет старейшин", "Народное собрание свободных мужчин", "Княжеский суд", "Дружина"], correct: 1 }
+        ];
+
+        const quizContainer = document.getElementById('quiz-container');
+        function buildQuiz() {
+            let html = '';
+            quizData.forEach((item, idx) => {
+                html += `<p class="quiz-question">${idx+1}. ${item.q}</p>`;
+                item.options.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label><br>`;
+                });
+            });
+            quizContainer.innerHTML = html;
+        }
+        buildQuiz();
+
+        document.getElementById('check-quiz').addEventListener('click', () => {
+            let score = 0;
+            quizData.forEach((item, idx) => {
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === item.correct) score++;
+            });
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.textContent = `Ваш результат: ${score} из ${quizData.length}.`;
+            resultDiv.style.background = score >= 15 ? '#d4edda' : '#f8d7da';
+        });
+
+        // Задание 1: Хронология
+        document.getElementById('check-chrono-order').addEventListener('click', () => {
+            const rows = document.querySelectorAll('#chrono-order-table tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.order-select');
+                row.classList.remove('correct', 'incorrect');
+                if (select.value === correct) {
+                    row.classList.add('correct');
+                } else {
+                    row.classList.add('incorrect');
+                    allCorrect = false;
+                }
+            });
+            const fb = document.getElementById('chrono-feedback');
+            fb.textContent = allCorrect ? '✅ Порядок верный!' : '❌ Есть ошибки в порядке.';
+            fb.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Задание 2: Князья
+        document.getElementById('check-prince-match').addEventListener('click', () => {
+            const rows = document.querySelectorAll('#prince-match tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.prince-select');
+                row.classList.remove('correct', 'incorrect');
+                if (select.value === correct) {
+                    row.classList.add('correct');
+                } else {
+                    row.classList.add('incorrect');
+                    allCorrect = false;
+                }
+            });
+            const fb = document.getElementById('prince-feedback');
+            fb.textContent = allCorrect ? '✅ Все верно!' : '❌ Есть ошибки.';
+            fb.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Задание 3: Цитата
+        document.getElementById('check-gaps').addEventListener('click', () => {
+            const input = document.getElementById('gap1');
+            const val = input.value.trim().toLowerCase();
+            const correct = ['касцьмi', 'касцямi', 'касцями', 'костьми'];
+            const ok = correct.includes(val);
+            input.style.border = ok ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            const feedback = document.getElementById('gaps-feedback');
+            if (ok) {
+                feedback.textContent = '✅ Верно! «…засеяны касцьмi рускiх сыноў».';
+                feedback.className = 'correct-feedback';
+            } else {
+                feedback.textContent = '❌ Проверьте: слово должно быть «касцьмi» (или «костями»).';
+                feedback.className = 'incorrect-feedback';
+            }
+        });
+
+        // Задание 4: Термины
+        document.getElementById('check-term-match').addEventListener('click', () => {
+            const rows = document.querySelectorAll('#term-match tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.term-select');
+                row.classList.remove('correct', 'incorrect');
+                if (select.value === correct) {
+                    row.classList.add('correct');
+                } else {
+                    row.classList.add('incorrect');
+                    allCorrect = false;
+                }
+            });
+            const fb = document.getElementById('term-feedback');
+            fb.textContent = allCorrect ? '✅ Все термины верны!' : '❌ Есть ошибки.';
+            fb.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+    })();
+</script>
+</body>
+</html>

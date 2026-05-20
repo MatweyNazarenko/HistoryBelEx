@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билет №9: Формирование белорусской народности (XIV–XVIII вв.)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f4efe0;
+            color: #2e2b1a;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 15% 20%, #e4d5aa 0%, #f4efe0 70%);
+        }        .btnBackBlock{
+            position: absolute;
+            display: flex;
+            top: 40px;
+            left: 40px;
+        }
+        .backBtn{
+            text-decoration: none;
+            background: #6b4f28;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .backBtn>p{
+            transition: .3s;
+            position: relative;
+            z-index: 10;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+        .backBtn::after{    
+            transition: .5s;
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dfd0b0;
+            z-index: 1;
+        }
+        .backBtn:hover>p{
+            color: #4e3d22;
+        }
+        .backBtn:hover::after{
+            right: 0;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 250, 240, 0.93);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(130, 100, 70, 0.25);
+            padding: 2rem 2rem 3rem;
+        }
+        h1 { font-size: 2.3rem; text-align: center; color: #4a3620; margin-bottom: 0.2rem; letter-spacing: 1px; }
+        .subtitle {
+            text-align: center; font-style: italic; color: #6b5a3e;
+            margin-bottom: 2.5rem; border-bottom: 2px dotted #b89a5e; padding-bottom: 1rem;
+        }
+        .tab-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2rem; }
+        .tab-btn {
+            background: #dfd0b0; border: none; padding: 12px 20px; border-radius: 30px;
+            font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            color: #4e3d22; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #b89a5e;
+            letter-spacing: 0.5px;
+        }
+        .tab-btn:hover { background: #cdba8b; color: #2d1f0c; }
+        .tab-btn.active {
+            background: #6b4f28; color: #fff; border-color: #4a3520;
+            box-shadow: 0 6px 12px rgba(107, 79, 40, 0.5); transform: translateY(-2px);
+        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card {
+            background: #fffef7; border: 1px solid #d9c7a0; border-radius: 20px;
+            padding: 1.5rem; margin-bottom: 1.8rem; box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .year-badge {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 12px; border-radius: 20px; display: inline-block; margin-right: 10px;
+        }
+        .timeline {
+            position: relative; margin: 2rem 0; padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+            width: 4px; background: #b89a5e; border-radius: 2px;
+        }
+        .timeline-item {
+            margin-bottom: 2rem; position: relative; padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '◆'; position: absolute; left: -6px; top: 2px;
+            font-size: 1.5rem; color: #6b4f28; line-height: 1;
+        }
+        .tl-date {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 14px; border-radius: 20px; display: inline-block; margin-bottom: 4px;
+        }
+        .tl-desc { color: #4d3b20; font-style: italic; }
+
+        .cards-grid {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-top: 1.5rem;
+        }
+        .flip-card {
+            background: transparent; width: 220px; height: 150px; perspective: 1000px; cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.6s; transform-style: preserve-3d;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2); border-radius: 18px;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 18px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 15px; font-weight: 600; font-size: 1rem;
+        }
+        .flip-card-front {
+            background: #efe3cc; color: #4e3620; border: 2px solid #c8aa7a;
+        }
+        .flip-card-back {
+            background: #6b4f28; color: #fff; border: 2px solid #4a3520;
+            transform: rotateY(180deg); font-size: 0.9rem;
+        }
+        .card-actions { display: flex; gap: 10px; justify-content: center; margin-top: 1.5rem; }
+
+        .quiz-area { background: #faf3e4; border-radius: 20px; padding: 1.5rem; }
+        .quiz-question { font-weight: 700; margin: 1.2rem 0 0.4rem; }
+        .quiz-result { font-weight: bold; margin-top: 1rem; padding: 0.8rem; border-radius: 12px; }
+        button {
+            background: #6b4f28; color: white; border: none; padding: 10px 25px;
+            border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 1rem; transition: 0.2s;
+        }
+        button:hover { background: #8b6a3a; }
+        .sortable-list { list-style: none; padding: 0; margin: 1rem 0; max-width: 500px; }
+        .sortable-item {
+            background: #fffef7; border: 1px solid #c9a87c; border-radius: 12px;
+            padding: 10px 15px; margin-bottom: 8px; cursor: grab; display: flex;
+            align-items: center; transition: 0.2s; user-select: none;
+        }
+        .sortable-item:active { cursor: grabbing; opacity: 0.8; }
+        .drag-handle { margin-right: 10px; font-size: 1.3rem; color: #6b4f28; }
+        .match-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .match-table td { padding: 8px; vertical-align: middle; }
+        .match-table select {
+            width: 100%; padding: 8px; border-radius: 10px; border: 1px solid #bb9a6e;
+            background: #fffef7; font-family: inherit;
+        }
+        .fill-gap {
+            background: #fffef7; border: 1px solid #bb9a6e; padding: 5px 10px;
+            border-radius: 8px; width: auto; min-width: 100px;
+        }
+        .correct-feedback { color: #2d6a2d; font-weight: bold; }
+        .incorrect-feedback { color: #a13d3d; font-weight: bold; }
+        @media (max-width: 600px) {
+            .tab-btn { padding: 8px 14px; font-size: 0.85rem; }
+            .flip-card { width: 160px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class="btnBackBlock" id="backBtn">
+        <a href="../index.html" class="backBtn" ><p>Назад</p></a>
+    </div>
+    <h1>Билет №9</h1>
+    <div class="subtitle">Формирование белорусской народности (XIV–XVIII вв.)</div>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="signs">Признаки и этапы</button>
+        <button class="tab-btn" data-tab="language">Язык и самоназвания</button>
+        <button class="tab-btn" data-tab="name">Происхождение «Белой Руси»</button>
+        <button class="tab-btn" data-tab="timeline">Лента времени</button>
+        <button class="tab-btn" data-tab="cards">Хроно-карточки</button>
+        <button class="tab-btn" data-tab="quiz">Тест (20 вопросов)</button>
+        <button class="tab-btn" data-tab="practice">Практические задания</button>
+    </div>
+
+    <!-- Признаки и этапы формирования народности -->
+    <div class="tab-content active" id="tab-signs">
+        <div class="card">
+            <h2>📌 Что такое народность?</h2>
+            <p>Народность – это исторически сложившаяся общность людей, для которой характерны: единство происхождения, общий язык, общая территория, сходство психического склада, этническое самосознание.</p>
+        </div>
+        <div class="card">
+            <h2>⏳ Временные рамки</h2>
+            <p>Формирование белорусской народности происходило <strong>с конца XIII по XVI век</strong>. Важнейшим условием стало объединение белорусских земель в составе Великого Княжества Литовского.</p>
+        </div>
+        <div class="card">
+            <h2>🗣️ Формирование языка как признак народности</h2>
+            <p>В XIV–XV вв. складываются особенности белорусского языка на основе среднебелорусской (минско-молодечненской) группы диалектов. Характерные черты: <strong>«дзеканье»</strong>, <strong>«цеканье»</strong>, твёрдое «р», <strong>«аканье»</strong>, <strong>«яканье»</strong>.</p>
+            <p>Старобелорусский язык приобрёл государственный статус – стал языком официального делопроизводства ВКЛ.</p>
+        </div>
+    </div>
+
+    <!-- Язык и самоназвания -->
+    <div class="tab-content" id="tab-language">
+        <div class="card">
+            <h2>🧬 Этническое самосознание и самоназвания</h2>
+            <p>У населения Беларуси существовали разные самоназвания, отражавшие региональную специфику:</p>
+            <ul>
+                <li><strong>«Русины»</strong> и <strong>«белорусцы»</strong> – характерны для Подвинья и Поднепровья (восточная и северо-восточная Беларусь).</li>
+                <li><strong>«Литвины»</strong> – употреблялись в Верхнем Понёманье (современная Гродненская область).</li>
+                <li><strong>«Полешуки»</strong> – более позднее название жителей Полесья (Брестская и Гомельская области).</li>
+            </ul>
+            <p>Все эти названия являются элементами этнического самосознания белорусского народа.</p>
+        </div>
+    </div>
+
+    <!-- Происхождение названия «Белая Русь» -->
+    <div class="tab-content" id="tab-name">
+        <div class="card">
+            <h2>🤍 Версии происхождения «Белой Руси»</h2>
+            <p>Существует несколько научных версий происхождения названия:</p>
+            <ul>
+                <li>🟡 <strong>По стороне света:</strong> белый цвет символизировал восток.</li>
+                <li>👕 <strong>По одежде и внешности:</strong> население носило белые полотняные одежды, имело светлые волосы и белую кожу.</li>
+                <li>✝️ <strong>По религиозному признаку:</strong> «белая» – значит православная, «чистая» (в отличие от языческой – «поганской»).</li>
+                <li>🛡️ <strong>По внешнеполитическим обстоятельствам:</strong> территории, не захваченные ни крестоносцами, ни ордынцами, считались «вольными», «свободными».</li>
+                <li>👑 <strong>Привилегированное положение:</strong> название «Белая Русь» могло означать особый статус восточных земель Беларуси (Полоцкой и Витебской) в составе ВКЛ.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h2>📜 Первое летописное упоминание</h2>
+            <p>Один из исторических источников под <span class="year-badge">1382 г.</span> называет <strong>Полоцк</strong> «крепостью Белой Руси». Это говорит о том, что топоним «Белая Русь» уже существовал в XIV веке.</p>
+        </div>
+    </div>
+
+    <!-- Лента времени -->
+    <div class="tab-content" id="tab-timeline">
+        <h2 style="text-align:center; margin-bottom:1.5rem;">🕰️ Хронология формирования народности</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="tl-date">Конец XIII – XVI в.</div>
+                <div class="tl-desc">Основной период формирования белорусской народности.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">XIV–XV вв.</div>
+                <div class="tl-desc">Складывание особенностей белорусского языка (дзеканье, цеканье, аканье).</div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">XIV–XV вв.</div>
+                <div class="tl-desc">Старобелорусский язык становится государственным языком делопроизводства ВКЛ.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">1382</div>
+                <div class="tl-desc">Первое упоминание Полоцка как «крепости Белой Руси» в исторических источниках.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">XVI–XVIII вв.</div>
+                <div class="tl-desc">Распространение самоназваний «русины», «литвины», «полешуки», «белорусцы».</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Хроно-карточки -->
+    <div class="tab-content" id="tab-cards">
+        <h2 style="text-align:center; margin-bottom:0.5rem;">📅 Хронологические карточки</h2>
+        <p style="text-align:center; color:#5e4a2e;">Нажмите на карточку, чтобы увидеть обратную сторону.</p>
+        <div class="cards-grid" id="chrono-cards-container"></div>
+        <div class="card-actions">
+            <button id="flip-all">🔄 Перевернуть все</button>
+            <button id="reset-cards">↩️ Сбросить все</button>
+        </div>
+    </div>
+
+    <!-- Тест (20 вопросов) -->
+    <div class="tab-content" id="tab-quiz">
+        <div class="quiz-area">
+            <h2>📝 Тест по билету №9</h2>
+            <div id="quiz-container"></div>
+            <button id="check-quiz">Проверить ответы</button>
+            <div id="quiz-result" class="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Практические задания -->
+    <div class="tab-content" id="tab-practice">
+        <div class="card">
+            <h2>🧩 Задание 1. Хронология формирования народности</h2>
+            <p>Перетащите события в правильном порядке.</p>
+            <ul class="sortable-list" id="sortable-chrono">
+                <li class="sortable-item" data-order="1"><span class="drag-handle">☰</span> Объединение белорусских земель в ВКЛ</li>
+                <li class="sortable-item" data-order="2"><span class="drag-handle">☰</span> Формирование особенностей белорусского языка (дзеканье, цеканье)</li>
+                <li class="sortable-item" data-order="3"><span class="drag-handle">☰</span> Государственный статус старобелорусского языка</li>
+                <li class="sortable-item" data-order="4"><span class="drag-handle">☰</span> Первое упоминание «Белой Руси» (1382)</li>
+            </ul>
+            <button id="check-chrono-order">Проверить порядок</button>
+            <span id="chrono-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>🔗 Задание 2. Соотнесите самоназвание и территорию</h2>
+            <table class="match-table">
+                <tr><th>Самоназвание</th><th>Территория преимущественного бытования</th></tr>
+                <tr><td>Русины, белорусцы</td><td><select class="match-select" data-id="1"><option value="">--</option><option value="podviny">Подвинье и Поднепровье</option><option value="ponemanye">Верхнее Понёманье</option><option value="polesye">Полесье</option></select></td></tr>
+                <tr><td>Литвины</td><td><select class="match-select" data-id="2"><option value="">--</option><option value="podviny">Подвинье и Поднепровье</option><option value="ponemanye">Верхнее Понёманье</option><option value="polesye">Полесье</option></select></td></tr>
+                <tr><td>Полешуки</td><td><select class="match-select" data-id="3"><option value="">--</option><option value="podviny">Подвинье и Поднепровье</option><option value="ponemanye">Верхнее Понёманье</option><option value="polesye">Полесье</option></select></td></tr>
+            </table>
+            <button id="check-match">Проверить соответствия</button>
+            <span id="match-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>✍️ Задание 3. Вставьте пропущенные слова в определение народности</h2>
+            <p>Народность – это исторически сложившаяся общность людей, для которой характерны единство происхождения, общий 
+                <input type="text" class="fill-gap" id="gap1" placeholder="?">, 
+                общая 
+                <input type="text" class="fill-gap" id="gap2" placeholder="?">, 
+                сходство психического склада и этническое самосознание.
+            </p>
+            <button id="check-gaps">Проверить</button>
+            <span id="gaps-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Переключение вкладок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(`tab-${target}`).classList.add('active');
+            });
+        });
+
+        // Хронологические карточки
+        const chronoData = [
+            { date: "Конец XIII в.", desc: "Начало формирования белорусской народности." },
+            { date: "XIV–XV вв.", desc: "Складывание особенностей белорусского языка." },
+            { date: "XIV–XV вв.", desc: "Старобелорусский язык – государственный в ВКЛ." },
+            { date: "1382", desc: "Полоцк назван «крепостью Белой Руси»." },
+            { date: "XVI–XVIII вв.", desc: "Бытование самоназваний: русины, литвины, полешуки." }
+        ];
+
+        const cardsContainer = document.getElementById('chrono-cards-container');
+        function buildCards() {
+            cardsContainer.innerHTML = '';
+            chronoData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'flip-card';
+                card.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">${item.date}</div>
+                        <div class="flip-card-back">${item.desc}</div>
+                    </div>
+                `;
+                card.addEventListener('click', () => card.classList.toggle('flipped'));
+                cardsContainer.appendChild(card);
+            });
+        }
+        buildCards();
+
+        document.getElementById('flip-all').addEventListener('click', () => {
+            const cards = document.querySelectorAll('.flip-card');
+            const allFlipped = Array.from(cards).every(c => c.classList.contains('flipped'));
+            cards.forEach(c => c.classList.toggle('flipped', !allFlipped));
+        });
+        document.getElementById('reset-cards').addEventListener('click', () => {
+            document.querySelectorAll('.flip-card').forEach(c => c.classList.remove('flipped'));
+        });
+
+        // Тест (20 вопросов)
+        const quizData = [
+            { q: "В какой период происходило формирование белорусской народности?", options: ["X–XII вв.", "Конец XIII – XVI в.", "XIV–XVIII вв.", "XVI–XVII вв."], correct: 1 },
+            { q: "Что является важнейшим условием формирования белорусской народности?", options: ["Крещение Руси", "Объединение земель в составе ВКЛ", "Люблинская уния", "Разделы Речи Посполитой"], correct: 1 },
+            { q: "Какой язык стал государственным в ВКЛ?", options: ["Польский", "Латинский", "Старобелорусский", "Церковнославянский"], correct: 2 },
+            { q: "К какой группе диалектов восходит белорусский язык?", options: ["Северо-восточной", "Среднебелорусской (минско-молодечненской)", "Полесской", "Гродненско-барановичской"], correct: 1 },
+            { q: "Какая фонетическая особенность характерна для белорусского языка?", options: ["Оканье", "Дзеканье и цеканье", "Произношение «г» фрикативного", "Отсутствие редукции гласных"], correct: 1 },
+            { q: "Какое из перечисленных слов относится к самоназваниям белорусского населения?", options: ["Кривичи", "Литвины", "Дреговичи", "Радимичи"], correct: 1 },
+            { q: "Где преимущественно бытовало самоназвание «русины» и «белорусцы»?", options: ["Полесье", "Верхнее Понёманье", "Подвинье и Поднепровье", "Жемайтия"], correct: 2 },
+            { q: "Жителей Гродненской области (Верхнее Понёманье) исторически называли:", options: ["Полешуками", "Литвинами", "Русинами", "Белорусцами"], correct: 1 },
+            { q: "Какое название было более поздним и относилось к жителям Полесья?", options: ["Литвины", "Русины", "Полешуки", "Белорусцы"], correct: 2 },
+            { q: "Какой город в 1382 г. назван «крепостью Белой Руси»?", options: ["Новогрудок", "Вильна", "Полоцк", "Гродно"], correct: 2 },
+            { q: "Какая версия происхождения названия «Белая Русь» связывает его со стороной света?", options: ["Белый – цвет запада", "Белый – цвет востока", "Белый – цвет юга", "Белый – цвет севера"], correct: 1 },
+            { q: "По одной из версий, «Белая Русь» означает:", options: ["Языческую Русь", "Православную, «чистую» Русь", "Католическую Русь", "Мусульманскую Русь"], correct: 1 },
+            { q: "Какие земли считаются вероятным ядром «Белой Руси»?", options: ["Жемайтия и Аукштайтия", "Полоцкая и Витебская", "Киевская и Черниговская", "Галицкая и Волынская"], correct: 1 },
+            { q: "Что означает версия «привилегированного положения»?", options: ["Эти земли были захвачены", "Особый статус восточных земель Беларуси в ВКЛ", "Земли платили дань Золотой Орде", "Регион был подчинен Польше"], correct: 1 },
+            { q: "Когда старобелорусский язык получил государственный статус?", options: ["XIII в.", "XIV–XV вв.", "XVI в.", "XVII в."], correct: 1 },
+            { q: "Какой из признаков НЕ является признаком народности?", options: ["Единство языка", "Единство происхождения", "Единая религия", "Этническое самосознание"], correct: 2 },
+            { q: "Название «литвины» в историческом смысле относится к:", options: ["Жителям современной Литвы", "Жителям Полесья", "Населению Верхнего Понёманья (Гродненщины)", "Жителям Подвинья"], correct: 2 },
+            { q: "Какое явление отражает существование разных самоназваний (русины, литвины, полешуки)?", options: ["Разделение народности", "Региональные элементы этнического самосознания", "Отсутствие единства", "Иноземное влияние"], correct: 1 },
+            { q: "Почему версия о свободной, не захваченной крестоносцами территории связана с «Белой Русью»?", options: ["Белый – цвет мира и свободы", "Белый – цвет ордынцев", "В белый цвет красили крепости", "Не связано"], correct: 0 },
+            { q: "Какой цвет одежды, по одной из версий, дал название «Белая Русь»?", options: ["Красный", "Чёрный", "Белый (полотняные одежды)", "Синий"], correct: 2 }
+        ];
+
+        const quizContainer = document.getElementById('quiz-container');
+        function buildQuiz() {
+            let html = '';
+            quizData.forEach((item, idx) => {
+                html += `<p class="quiz-question">${idx+1}. ${item.q}</p>`;
+                item.options.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label>`;
+                });
+            });
+            quizContainer.innerHTML = html;
+        }
+        buildQuiz();
+
+        document.getElementById('check-quiz').addEventListener('click', () => {
+            let score = 0;
+            quizData.forEach((item, idx) => {
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === item.correct) score++;
+            });
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.textContent = `Ваш результат: ${score} из ${quizData.length}.`;
+            resultDiv.style.background = score >= 15 ? '#d4edda' : '#f8d7da';
+        });
+
+        // Drag-and-drop хронология
+        const sortableList = document.getElementById('sortable-chrono');
+        let draggedItem = null;
+        function initDragDrop(list) {
+            list.addEventListener('dragstart', function(e) {
+                draggedItem = e.target.closest('.sortable-item');
+                if (!draggedItem) return;
+                e.dataTransfer.effectAllowed = 'move';
+                draggedItem.style.opacity = '0.5';
+            });
+            list.addEventListener('dragend', function(e) {
+                if (draggedItem) draggedItem.style.opacity = '1';
+                draggedItem = null;
+                document.querySelectorAll('.sortable-item').forEach(item => item.classList.remove('drag-over'));
+            });
+            list.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                const targetItem = e.target.closest('.sortable-item');
+                if (!targetItem || targetItem === draggedItem) return;
+                targetItem.classList.add('drag-over');
+            });
+            list.addEventListener('dragleave', function(e) {
+                const targetItem = e.target.closest('.sortable-item');
+                if (targetItem) targetItem.classList.remove('drag-over');
+            });
+            list.addEventListener('drop', function(e) {
+                e.preventDefault();
+                const targetItem = e.target.closest('.sortable-item');
+                if (!targetItem || !draggedItem || targetItem === draggedItem) return;
+                targetItem.classList.remove('drag-over');
+                const children = Array.from(list.children);
+                const draggedIndex = children.indexOf(draggedItem);
+                const targetIndex = children.indexOf(targetItem);
+                if (draggedIndex < targetIndex) {
+                    list.insertBefore(draggedItem, targetItem.nextSibling);
+                } else {
+                    list.insertBefore(draggedItem, targetItem);
+                }
+            });
+        }
+        initDragDrop(sortableList);
+
+        document.getElementById('check-chrono-order').addEventListener('click', () => {
+            const items = Array.from(sortableList.querySelectorAll('.sortable-item'));
+            const currentOrder = items.map(item => parseInt(item.getAttribute('data-order')));
+            const isCorrect = currentOrder.every((val, idx) => val === idx + 1);
+            const feedback = document.getElementById('chrono-feedback');
+            feedback.textContent = isCorrect ? '✅ Верно! Хронология правильная.' : '❌ Порядок нарушен. Попробуйте ещё раз.';
+            feedback.className = isCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Соотнесение самоназваний
+        document.getElementById('check-match').addEventListener('click', () => {
+            const answers = { 1: 'podviny', 2: 'ponemanye', 3: 'polesye' };
+            let allCorrect = true;
+            document.querySelectorAll('.match-select').forEach(select => {
+                const id = select.getAttribute('data-id');
+                if (select.value !== answers[id]) allCorrect = false;
+            });
+            const feedback = document.getElementById('match-feedback');
+            feedback.textContent = allCorrect ? '✅ Все соответствия верны!' : '❌ Есть ошибки. Проверьте ответы.';
+            feedback.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Пропуски в определении
+        document.getElementById('check-gaps').addEventListener('click', () => {
+            const g1 = document.getElementById('gap1').value.trim().toLowerCase();
+            const g2 = document.getElementById('gap2').value.trim().toLowerCase();
+            const ok1 = g1 === 'язык' || g1 === 'язык';
+            const ok2 = g2 === 'территория' || g2 === 'тэрыторыя' || g2 === 'территория';
+            document.getElementById('gap1').style.border = ok1 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap2').style.border = ok2 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            const feedback = document.getElementById('gaps-feedback');
+            if (ok1 && ok2) {
+                feedback.textContent = '✅ Верно! Единство языка и общая территория – ключевые признаки народности.';
+                feedback.className = 'correct-feedback';
+            } else {
+                feedback.textContent = '❌ Ожидаются слова «язык» и «территория».';
+                feedback.className = 'incorrect-feedback';
+            }
+        });
+    })();
+</script>
+</body>
+</html>

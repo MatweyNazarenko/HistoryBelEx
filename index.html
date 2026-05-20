@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Реестр билетов | История Беларуси — тренажёр и справочник</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #ede7d5;
+            color: #2e2b1a;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* ГЛАВНАЯ СЕТКА */
+        .app {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+
+        /* БОКОВОЕ МЕНЮ (реестр) */
+        .sidebar {
+            width: 320px;
+            background: #fdf7ed;
+            border-right: 1px solid #dac29c;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 4px 0 12px rgba(0, 0, 0, 0.05);
+            z-index: 10;
+            overflow-y: auto;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem 1.2rem;
+            background: #6b4f28;
+            color: white;
+            border-bottom: 1px solid #8b6a3a;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.4rem;
+        }
+
+        .sidebar-header p {
+            font-size: 0.85rem;
+            opacity: 0.85;
+            font-style: italic;
+        }
+
+        .search-box {
+            padding: 12px 16px;
+            background: #f4ede0;
+            border-bottom: 1px solid #e2d2b6;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 40px;
+            border: 1px solid #c9aa7a;
+            background: white;
+            font-size: 0.9rem;
+            outline: none;
+            font-family: inherit;
+            transition: 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: #6b4f28;
+            box-shadow: 0 0 0 2px rgba(107, 79, 40, 0.2);
+        }
+
+        .ticket-list {
+            flex: 1;
+            list-style: none;
+            padding: 0.75rem 0;
+        }
+
+        .ticket-list li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .ticket-btn {
+            display: flex;
+            align-items: baseline;
+            width: 100%;
+            text-align: left;
+            padding: 12px 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #4a3820;
+            transition: 0.2s;
+            border-left: 4px solid transparent;
+            font-family: inherit;
+            gap: 8px;
+        }
+
+        .ticket-btn .ticket-num {
+            font-weight: 700;
+            color: #8b5a2b;
+            min-width: 48px;
+        }
+
+        .ticket-btn .ticket-title {
+            flex: 1;
+            font-size: 0.92rem;
+            line-height: 1.3;
+        }
+
+        .ticket-btn:hover {
+            background: #efe3cf;
+            border-left-color: #c9aa7a;
+        }
+
+        .ticket-btn.active {
+            background: #e7d8bd;
+            border-left-color: #6b4f28;
+            font-weight: 600;
+            color: #3a2a10;
+        }
+
+        /* ОБЛАСТЬ ПРОСМОТРА */
+        .viewer {
+            flex: 1;
+            background: #fef9ef;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .viewer-header {
+            background: #fffcf5;
+            padding: 0.8rem 1.5rem;
+            border-bottom: 1px solid #e2cfab;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .current-ticket {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #5a401e;
+        }
+
+        .open-new-tab {
+            background: #6b4f28;
+            color: white;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .open-new-tab:hover {
+            background: #8b6a3a;
+        }
+
+        .iframe-container {
+            flex: 1;
+            background: #fef6ea;
+            position: relative;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #fcf7ef;
+        }
+
+        .loading-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fcf7ef;
+            z-index: 5;
+            pointer-events: none;
+            font-size: 1.2rem;
+            color: #8b6a3a;
+            gap: 12px;
+        }
+
+        iframe.loaded + .loading-placeholder {
+            display: none;
+        }
+
+        /* Футер меню */
+        .sidebar-footer {
+            padding: 1rem;
+            font-size: 0.7rem;
+            text-align: center;
+            border-top: 1px solid #e2cfab;
+            color: #7c6846;
+        }
+
+        /* адаптив */
+        @media (max-width: 700px) {
+            .sidebar {
+                width: 260px;
+            }
+            .ticket-btn {
+                padding: 10px 14px;
+            }
+            .ticket-btn .ticket-num {
+                min-width: 40px;
+            }
+        }
+
+        @media (max-width: 580px) {
+            .app {
+                flex-direction: column;
+                height: auto;
+                overflow: auto;
+            }
+            .sidebar {
+                width: 100%;
+                max-height: 280px;
+                border-right: none;
+                border-bottom: 1px solid #dac29c;
+            }
+            .viewer {
+                height: 70vh;
+                min-height: 500px;
+            }
+            body {
+                overflow: auto;
+            }
+        }
+
+        /* полоса прокрутки */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0e6d6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b99a6a;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>📚 Реестр билетов</h2>
+            <p>История Беларуси • Тренажёр-справочник</p>
+        </div>
+        <div class="search-box">
+            <input type="text" id="searchTicket" placeholder="🔍 Поиск по названию или номеру...">
+        </div>
+        <ul class="ticket-list" id="ticketList"></ul>
+        <div class="sidebar-footer">
+            🧠 12 билетов с тестами, карточками, практикой
+        </div>
+    </aside>
+
+    <main class="viewer">
+        <div class="viewer-header">
+            <span class="current-ticket" id="currentTicketLabel">Билет №1: Древние люди</span>
+            <button class="open-new-tab" id="openNewTabBtn">📖 Открыть в новой вкладке</button>
+        </div>
+        <div class="iframe-container" id="iframeContainer">
+            <iframe id="ticketFrame" title="Билет по истории Беларуси" src="билет 1.html"></iframe>
+            <div class="loading-placeholder" id="loadingPlaceholder">
+                <span>⏳</span> Загрузка билета...
+            </div>
+        </div>
+    </main>
+</div>
+
+    <script src="scripts/index.js"></script>
+</body>
+</html>

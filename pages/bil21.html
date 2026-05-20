@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билет №21: БССР во второй половине 1940-х – 1980-е гг.</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f4efe0;
+            color: #2e2b1a;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 15% 20%, #e4d5aa 0%, #f4efe0 70%);
+        }        .btnBackBlock{
+            position: absolute;
+            display: flex;
+            top: 40px;
+            left: 40px;
+        }
+        .backBtn{
+            text-decoration: none;
+            background: #6b4f28;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .backBtn>p{
+            transition: .3s;
+            position: relative;
+            z-index: 10;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+        .backBtn::after{    
+            transition: .5s;
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dfd0b0;
+            z-index: 1;
+        }
+        .backBtn:hover>p{
+            color: #4e3d22;
+        }
+        .backBtn:hover::after{
+            right: 0;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 250, 240, 0.93);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(130, 100, 70, 0.25);
+            padding: 2rem 2rem 3rem;
+        }
+        h1 { font-size: 2.3rem; text-align: center; color: #4a3620; margin-bottom: 0.2rem; }
+        .subtitle {
+            text-align: center; font-style: italic; color: #6b5a3e;
+            margin-bottom: 2.5rem; border-bottom: 2px dotted #b89a5e; padding-bottom: 1rem;
+        }
+        .tab-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2rem; }
+        .tab-btn {
+            background: #dfd0b0; border: none; padding: 12px 20px; border-radius: 30px;
+            font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            color: #4e3d22; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #b89a5e;
+        }
+        .tab-btn:hover { background: #cdba8b; color: #2d1f0c; }
+        .tab-btn.active {
+            background: #6b4f28; color: #fff; border-color: #4a3520;
+            box-shadow: 0 6px 12px rgba(107, 79, 40, 0.5); transform: translateY(-2px);
+        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card {
+            background: #fffef7; border: 1px solid #d9c7a0; border-radius: 20px;
+            padding: 1.5rem; margin-bottom: 1.8rem; box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .year-badge {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 12px; border-radius: 20px; display: inline-block; margin-right: 10px;
+        }
+        .timeline {
+            position: relative; margin: 2rem 0; padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+            width: 4px; background: #b89a5e; border-radius: 2px;
+        }
+        .timeline-item {
+            margin-bottom: 2rem; position: relative; padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '◆'; position: absolute; left: -6px; top: 2px;
+            font-size: 1.5rem; color: #6b4f28;
+        }
+        .tl-date {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 14px; border-radius: 20px; display: inline-block; margin-bottom: 4px;
+        }
+        .tl-desc { color: #4d3b20; font-style: italic; }
+        .cards-grid {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-top: 1.5rem;
+        }
+        .flip-card {
+            background: transparent; width: 220px; height: 150px; perspective: 1000px; cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.6s; transform-style: preserve-3d;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2); border-radius: 18px;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 18px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 15px; font-weight: 600; font-size: 1rem;
+        }
+        .flip-card-front {
+            background: #efe3cc; color: #4e3620; border: 2px solid #c8aa7a;
+        }
+        .flip-card-back {
+            background: #6b4f28; color: #fff; border: 2px solid #4a3520;
+            transform: rotateY(180deg); font-size: 0.9rem;
+        }
+        .card-actions { display: flex; gap: 10px; justify-content: center; margin-top: 1.5rem; }
+        .quiz-area { background: #faf3e4; border-radius: 20px; padding: 1.5rem; }
+        .quiz-question { font-weight: 700; margin: 1.2rem 0 0.4rem; }
+        .quiz-result { font-weight: bold; margin-top: 1rem; padding: 0.8rem; border-radius: 12px; }
+        button {
+            background: #6b4f28; color: white; border: none; padding: 10px 25px;
+            border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 1rem; transition: 0.2s;
+        }
+        button:hover { background: #8b6a3a; }
+
+        .match-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .match-table td { padding: 8px; vertical-align: middle; }
+        .match-table select {
+            width: 100%; padding: 8px; border-radius: 10px; border: 1px solid #bb9a6e;
+            background: #fffef7; font-family: inherit;
+        }
+        .match-row.correct { background-color: #d4edda; }
+        .match-row.incorrect { background-color: #f8d7da; }
+        .fill-gap {
+            background: #fffef7; border: 1px solid #bb9a6e; padding: 5px 10px;
+            border-radius: 8px; width: auto; min-width: 100px;
+        }
+        .correct-feedback { color: #2d6a2d; font-weight: bold; }
+        .incorrect-feedback { color: #a13d3d; font-weight: bold; }
+        @media (max-width: 600px) {
+            .tab-btn { padding: 8px 14px; font-size: 0.85rem; }
+            .flip-card { width: 160px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class="btnBackBlock" id="backBtn">
+        <a href="../index.html" class="backBtn" ><p>Назад</p></a>
+    </div>
+    <h1>Билет №21</h1>
+    <div class="subtitle">БССР во второй половине 1940-х – 1980-е гг.</div>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="recovery">Послевоенное восстановление</button>
+        <button class="tab-btn" data-tab="development">1950-е – 1960-е</button>
+        <button class="tab-btn" data-tab="reform1965">Реформа 1965 г.</button>
+        <button class="tab-btn" data-tab="late">1970-е – 1980-е</button>
+        <button class="tab-btn" data-tab="chernobyl">Чернобыль</button>
+        <button class="tab-btn" data-tab="timeline">Лента времени</button>
+        <button class="tab-btn" data-tab="cards">Хроно-карточки</button>
+        <button class="tab-btn" data-tab="quiz">Тест (20 вопросов)</button>
+        <button class="tab-btn" data-tab="practice">Практические задания</button>
+    </div>
+
+    <!-- Послевоенное восстановление -->
+    <div class="tab-content active" id="tab-recovery">
+        <div class="card">
+            <h2>🏚️ Условия после войны</h2>
+            <p>БССР потеряла более половины национального богатства. Разрушены города, сожжены тысячи деревень. В Минске уцелело лишь несколько крупных зданий. В 1945 г. численность населения – 6,3 млн человек (погиб почти каждый третий).</p>
+            <p>Помощь из союзного бюджета, репарации, поставки оборудования и материалов из других республик.</p>
+        </div>
+        <div class="card">
+            <h2>📅 Четвёртая пятилетка (1946–1950)</h2>
+            <p>Приоритет – тяжелая промышленность (машиностроение, металлообработка, электроэнергетика).</p>
+            <p><span class="year-badge">1947</span> – первые самосвалы на Минском автомобильном заводе (МАЗ). <span class="year-badge">1950</span> – серийный выпуск тракторов на МТЗ, <span class="year-badge">1953</span> – первый колёсный трактор «Беларусь». Освоен выпуск велосипедов, автоприцепов. Электроэнергии – на 47% больше довоенного уровня. К 1950 г. народное хозяйство восстановлено.</p>
+        </div>
+        <div class="card">
+            <h2>🌾 Сельское хозяйство и коллективизация</h2>
+            <p>Карточная система до 1947 г. В западных областях – сплошная коллективизация (до войны было лишь 7% колхозов). Ликвидация хуторов, принудительное переселение. Тяжёлое положение колхозников: скудные трудодни, почти всё продавалось государству по низким ценам.</p>
+            <p>С <span class="year-badge">1953</span> – повышение закупочных цен, отмена обязательных поставок с подсобного хозяйства.</p>
+        </div>
+    </div>
+
+    <!-- 1950-е – 1960-е -->
+    <div class="tab-content" id="tab-development">
+        <div class="card">
+            <h2>⚙️ НТР и промышленный подъём</h2>
+            <p>С середины 1950-х – развёртывание научно-технической революции. Приоритет – машиностроение.</p>
+            <p><span class="year-badge">1958</span> – первые карьерные самосвалы на БелАЗе (Жодино). <span class="year-badge">1960</span> – первая в СССР ЭВМ «Минск-1». <span class="year-badge">1962</span> – Минский завод холодильников. Химическая промышленность: Солигорские калийные комбинаты, Гомельский суперфосфатный, Гродненский азотно-туковый заводы. <span class="year-badge">1964</span> – первая промышленная нефть в Речице (обеспечивала ~10% потребностей). Полоцкий НПЗ, Светлогорск – искусственное волокно. Химическая промышленность выросла в 27 раз за 1950–1965 гг.</p>
+        </div>
+        <div class="card">
+            <h2>🌽 Сельское хозяйство и волюнтаризм</h2>
+            <p>В середине 1950-х – денежные авансы на трудодни (с 1956), передача техники колхозам (с 1958), мелиорация Полесья. Освоение целины: 50 тыс. семей (около 180 тыс. человек) из БССР.</p>
+            <p>В начале 1960-х – волюнтаризм Хрущёва: повсеместное насаждение кукурузы, сокращение поголовья лошадей, ограничение подсобного хозяйства. Темпы роста сельского хозяйства упали до 4% в год.</p>
+        </div>
+    </div>
+
+    <!-- Реформа 1965 г. -->
+    <div class="tab-content" id="tab-reform1965">
+        <div class="card">
+            <h2>📈 Экономическая реформа А. Н. Косыгина (1965)</h2>
+            <ul>
+                <li>Сокращение числа обязательных плановых показателей с 100 до 8.</li>
+                <li>Главный показатель – объём реализованной продукции (а не валовой).</li>
+                <li>Введение хозяйственного расчёта (самоокупаемость и самофинансирование).</li>
+                <li>Право предприятий распоряжаться частью прибыли.</li>
+            </ul>
+            <p>Итоги: улучшение работы промышленности, новые предприятия, начало использования робототехники. Восьмая пятилетка (1966–1970) выполнена успешно, но к началу 1970-х реформа фактически прекратилась.</p>
+        </div>
+    </div>
+
+    <!-- 1970-е – 1980-е -->
+    <div class="tab-content" id="tab-late">
+        <div class="card">
+            <h2>🏭 Промышленность и инфраструктура</h2>
+            <p>Девятая пятилетка (1971–1975): более 90 новых предприятий. Мозырский НПЗ, Жлобинский металлургический завод, шинный комбинат в Бобруйске, четвёртый калийный комбинат в Солигорске.</p>
+            <p><span class="year-badge">1984</span> – Минский метрополитен. Электрификация линии Брест-Москва, участие в строительстве БАМ. В середине 1980-х – признаки стагнации, экстенсивный путь развития.</p>
+        </div>
+        <div class="card">
+            <h2>🌱 Сельское хозяйство и экология</h2>
+            <p>Специализация: мясо-молочное животноводство, картофель, лён, сахарная свекла. Строительство крупных механизированных ферм, птицефабрик. Мелиорация (около 1 млн га осушено). Химизация: рост внесения удобрений в 20 раз за 1965–1985, что вызвало экологические проблемы.</p>
+        </div>
+        <div class="card">
+            <h2>🔄 Перестройка и конец 1980-х</h2>
+            <p>Курс на ускорение социально-экономического развития. Хозрасчёт и самофинансирование, но административно-командная система сохранялась. Инфляция, талонная система. Переориентация на выпуск товаров народного потребления. Закон «О собственности» (1990) – начало перехода к разнообразным формам хозяйствования.</p>
+        </div>
+    </div>
+
+    <!-- Чернобыль -->
+    <div class="tab-content" id="tab-chernobyl">
+        <div class="card">
+            <h2>☢️ Чернобыльская катастрофа (26 апреля 1986)</h2>
+            <p>Пожар на одном из блоков Чернобыльской АЭС. Среди ликвидаторов – белорус Василий Игнатенко (посмертно награждён орденом Красного Знамени, в 2006 г. – звание Героя Украины).</p>
+            <p>Последствия: ущерб равен 32 республиканским бюджетам 1985 г. Загрязнено 23% территории БССР. Пострадало 2,3 млн человек (каждый пятый). Выведено из оборота 20% земель. В 1989 г. принята государственная программа ликвидации последствий. Отселено более 135 тыс. человек. Создан Полесский радиационно-экологический заповедник.</p>
+        </div>
+    </div>
+
+    <!-- Лента времени -->
+    <div class="tab-content" id="tab-timeline">
+        <h2 style="text-align:center; margin-bottom:1.5rem;">🕰️ Хронология экономического развития БССР</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="tl-date">1946–1950</div><div class="tl-desc">Четвёртая пятилетка. Восстановление народного хозяйства.</div></div>
+            <div class="timeline-item"><div class="tl-date">1947</div><div class="tl-desc">Первые самосвалы МАЗ. Карточная система отменена в 1947 г.</div></div>
+            <div class="timeline-item"><div class="tl-date">1950</div><div class="tl-desc">Серийный выпуск тракторов на МТЗ.</div></div>
+            <div class="timeline-item"><div class="tl-date">1958</div><div class="tl-desc">Первый карьерный самосвал БелАЗ в Жодино.</div></div>
+            <div class="timeline-item"><div class="tl-date">1960</div><div class="tl-desc">ЭВМ «Минск-1» — первая в СССР.</div></div>
+            <div class="timeline-item"><div class="tl-date">1964</div><div class="tl-desc">Первая промышленная нефть в Речице.</div></div>
+            <div class="timeline-item"><div class="tl-date">1965</div><div class="tl-desc">Экономическая реформа Косыгина (хозрасчёт).</div></div>
+            <div class="timeline-item"><div class="tl-date">1984</div><div class="tl-desc">Открытие Минского метрополитена.</div></div>
+            <div class="timeline-item"><div class="tl-date">26 апреля 1986</div><div class="tl-desc">Авария на Чернобыльской АЭС.</div></div>
+        </div>
+    </div>
+
+    <!-- Хроно-карточки -->
+    <div class="tab-content" id="tab-cards">
+        <h2 style="text-align:center; margin-bottom:0.5rem;">📅 Хронологические карточки</h2>
+        <p style="text-align:center; color:#5e4a2e;">Нажмите на карточку, чтобы увидеть обратную сторону.</p>
+        <div class="cards-grid" id="chrono-cards-container"></div>
+        <div class="card-actions">
+            <button id="flip-all">🔄 Перевернуть все</button>
+            <button id="reset-cards">↩️ Сбросить</button>
+        </div>
+    </div>
+
+    <!-- Тест -->
+    <div class="tab-content" id="tab-quiz">
+        <div class="quiz-area">
+            <h2>📝 Тест по билету №21</h2>
+            <div id="quiz-container"></div>
+            <button id="check-quiz">Проверить ответы</button>
+            <div id="quiz-result" class="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Практические задания -->
+    <div class="tab-content" id="tab-practice">
+        <div class="card">
+            <h2>🧩 Задание 1. Соотнесите событие и дату / период</h2>
+            <table class="match-table" id="match-events">
+                <tr><th>Событие</th><th>Дата / период</th></tr>
+                <tr data-correct="1947"><td>Выпуск первых автомобилей-самосвалов на МАЗе</td><td>
+                    <select class="event-select">
+                        <option value="">-- выберите --</option><option value="1947">1947</option><option value="1950">1950</option><option value="1958">1958</option><option value="1960">1960</option><option value="1964">1964</option><option value="1984">1984</option>
+                    </select></td></tr>
+                <tr data-correct="1960"><td>Создание ЭВМ «Минск-1»</td><td>
+                    <select class="event-select">
+                        <option value="">-- выберите --</option><option value="1947">1947</option><option value="1950">1950</option><option value="1958">1958</option><option value="1960">1960</option><option value="1964">1964</option><option value="1984">1984</option>
+                    </select></td></tr>
+                <tr data-correct="1964"><td>Добыча первой промышленной нефти в Речице</td><td>
+                    <select class="event-select">
+                        <option value="">-- выберите --</option><option value="1947">1947</option><option value="1950">1950</option><option value="1958">1958</option><option value="1960">1960</option><option value="1964">1964</option><option value="1984">1984</option>
+                    </select></td></tr>
+                <tr data-correct="1984"><td>Открытие первой линии Минского метрополитена</td><td>
+                    <select class="event-select">
+                        <option value="">-- выберите --</option><option value="1947">1947</option><option value="1950">1950</option><option value="1958">1958</option><option value="1960">1960</option><option value="1964">1964</option><option value="1984">1984</option>
+                    </select></td></tr>
+                <tr data-correct="1958"><td>Начало выпуска карьерных самосвалов на БелАЗе</td><td>
+                    <select class="event-select">
+                        <option value="">-- выберите --</option><option value="1947">1947</option><option value="1950">1950</option><option value="1958">1958</option><option value="1960">1960</option><option value="1964">1964</option><option value="1984">1984</option>
+                    </select></td></tr>
+            </table>
+            <button id="check-events">Проверить</button>
+            <span id="events-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>🔢 Задание 2. Вставьте пропущенные цифры и термины</h2>
+            <p>«Чернобыльская катастрофа нанесла ущерб, равный 
+                <input type="text" class="fill-gap" id="gap1" placeholder="?"> республиканским бюджетам 1985 г. 
+                Загрязнено 
+                <input type="text" class="fill-gap" id="gap2" placeholder="?"> % территории БССР. 
+                Пострадало 2,3 млн человек – каждый 
+                <input type="text" class="fill-gap" id="gap3" placeholder="?"> житель республики. 
+                Для ликвидации последствий была принята долгосрочная 
+                <input type="text" class="fill-gap" id="gap4" placeholder="?"> программа».
+            </p>
+            <button id="check-gaps">Проверить</button>
+            <span id="gaps-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Переключение вкладок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(`tab-${target}`).classList.add('active');
+            });
+        });
+
+        // Хронологические карточки
+        const chronoData = [
+            { date: "1946–1950", desc: "Четвёртая пятилетка. Восстановление хозяйства." },
+            { date: "1947", desc: "Первые самосвалы МАЗ." },
+            { date: "1950", desc: "Серийный выпуск тракторов на МТЗ." },
+            { date: "1958", desc: "БелАЗ начинает выпуск карьерных самосвалов." },
+            { date: "1960", desc: "ЭВМ «Минск-1»." },
+            { date: "1965", desc: "Экономическая реформа Косыгина." },
+            { date: "1984", desc: "Открытие Минского метрополитена." },
+            { date: "26 апреля 1986", desc: "Чернобыльская катастрофа." }
+        ];
+        const cardsContainer = document.getElementById('chrono-cards-container');
+        function buildCards() {
+            cardsContainer.innerHTML = '';
+            chronoData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'flip-card';
+                card.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">${item.date}</div>
+                        <div class="flip-card-back">${item.desc}</div>
+                    </div>
+                `;
+                card.addEventListener('click', () => card.classList.toggle('flipped'));
+                cardsContainer.appendChild(card);
+            });
+        }
+        buildCards();
+        document.getElementById('flip-all').addEventListener('click', () => {
+            const cards = document.querySelectorAll('.flip-card');
+            const allFlipped = Array.from(cards).every(c => c.classList.contains('flipped'));
+            cards.forEach(c => c.classList.toggle('flipped', !allFlipped));
+        });
+        document.getElementById('reset-cards').addEventListener('click', () => {
+            document.querySelectorAll('.flip-card').forEach(c => c.classList.remove('flipped'));
+        });
+
+        // Тест (20 вопросов)
+        const quizData = [
+            { q: "Какая пятилетка охватывала 1946–1950 гг.?", options: ["Третья", "Четвёртая", "Пятая", "Восьмая"], correct: 1 },
+            { q: "Сколько процентов довоенного уровня производства электроэнергии было превышено к 1950 г.?", options: ["20%", "47%", "75%", "100%"], correct: 1 },
+            { q: "В каком году начался серийный выпуск тракторов на МТЗ?", options: ["1947", "1950", "1953", "1958"], correct: 1 },
+            { q: "Какой завод первым в СССР выпустил ЭВМ «Минск-1»?", options: ["МАЗ", "МТЗ", "Завод электронных вычислительных машин в Минске", "БелАЗ"], correct: 2 },
+            { q: "В каком году была добыта первая промышленная нефть в Речице?", options: ["1958", "1960", "1964", "1965"], correct: 2 },
+            { q: "Сколько процентов потребностей БССР обеспечивала собственная нефть в 1960-е гг.?", options: ["Около 5%", "Не более 10%", "Около 50%", "100%"], correct: 1 },
+            { q: "Что такое волюнтаризм, проявившийся в сельском хозяйстве при Хрущёве?", options: ["Научный подход", "Игнорирование объективных законов, управление по личной воле", "Планирование снизу", "Экономические методы"], correct: 1 },
+            { q: "В чём суть экономической реформы 1965 г.?", options: ["Переход к рынку", "Сокращение плановых показателей, хозрасчёт", "Полная приватизация", "Введение карточной системы"], correct: 1 },
+            { q: "Какой город стал центром производства карьерных самосвалов?", options: ["Минск", "Жодино", "Могилёв", "Гомель"], correct: 1 },
+            { q: "Когда был открыт Минский метрополитен?", options: ["1980", "1984", "1986", "1990"], correct: 1 },
+            { q: "Что стало главным показателем работы предприятия по реформе 1965 г.?", options: ["Валовая продукция", "Объём реализованной продукции", "Количество станков", "Численность рабочих"], correct: 1 },
+            { q: "Какая черта экономики БССР в середине 1980-х гг.?", options: ["Интенсивный рост", "Стагнация и экстенсивный путь", "Полная компьютеризация", "Доминирование частного сектора"], correct: 1 },
+            { q: "Какой завод стал выпускать холодильники с 1962 г.?", options: ["БелАЗ", "Минский завод холодильников", "МАЗ", "Гомсельмаш"], correct: 1 },
+            { q: "Сколько человек пострадало от чернобыльского загрязнения в БССР?", options: ["1 млн", "2,3 млн", "5 млн", "500 тыс."], correct: 1 },
+            { q: "Какая доля территории Беларуси была загрязнена после Чернобыля?", options: ["10%", "23%", "50%", "5%"], correct: 1 },
+            { q: "Что из перечисленного НЕ относится к развитию химической промышленности?", options: ["Солигорские калийные комбинаты", "Гродненский азотно-туковый завод", "Минский шинный комбинат", "Полоцкий НПЗ"], correct: 2 },
+            { q: "Какой принцип был положен в основу хозяйственного расчёта?", options: ["Государственное финансирование", "Самоокупаемость и самофинансирование", "Ручное управление", "Уравнительное распределение"], correct: 1 },
+            { q: "Какая система снабжения продуктами была введена во второй половине 1980-х гг.?", options: ["Карточная", "Талоны", "Свободная торговля", "Бартер"], correct: 1 },
+            { q: "Сколько человек было вынуждено переселиться из загрязнённых районов?", options: ["Более 135 тыс.", "Около 50 тыс.", "Менее 10 тыс.", "1 млн"], correct: 0 },
+            { q: "Какой заповедник был создан в зоне отчуждения ЧАЭС?", options: ["Беловежская пуща", "Полесский радиационно-экологический", "Березинский", "Нарочанский"], correct: 1 }
+        ];
+        const quizContainer = document.getElementById('quiz-container');
+        function buildQuiz() {
+            let html = '';
+            quizData.forEach((item, idx) => {
+                html += `<p class="quiz-question">${idx+1}. ${item.q}</p>`;
+                item.options.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label>`;
+                });
+            });
+            quizContainer.innerHTML = html;
+        }
+        buildQuiz();
+        document.getElementById('check-quiz').addEventListener('click', () => {
+            let score = 0;
+            quizData.forEach((item, idx) => {
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === item.correct) score++;
+            });
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.textContent = `Ваш результат: ${score} из ${quizData.length}.`;
+            resultDiv.style.background = score >= 15 ? '#d4edda' : '#f8d7da';
+        });
+
+        // Задание 1: соотнесение событий и дат
+        const eventsTable = document.getElementById('match-events');
+        document.getElementById('check-events').addEventListener('click', () => {
+            const rows = eventsTable.querySelectorAll('tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.event-select');
+                row.classList.remove('correct', 'incorrect');
+                if (select.value === correct) {
+                    row.classList.add('correct');
+                } else {
+                    row.classList.add('incorrect');
+                    allCorrect = false;
+                }
+            });
+            const feedback = document.getElementById('events-feedback');
+            feedback.textContent = allCorrect ? '✅ Все даты определены верно!' : '❌ Есть ошибки. Правильные строки подсвечены зелёным.';
+            feedback.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Задание 2: пропуски
+        document.getElementById('check-gaps').addEventListener('click', () => {
+            const g1 = document.getElementById('gap1').value.trim();
+            const g2 = document.getElementById('gap2').value.trim();
+            const g3 = document.getElementById('gap3').value.trim();
+            const g4 = document.getElementById('gap4').value.trim().toLowerCase();
+            const ok1 = g1 === '32';
+            const ok2 = g2 === '23';
+            const ok3 = g3 === 'пятый' || g3 === '5-й' || g3 === 'пяты';
+            const ok4 = g4 === 'государственная' || g4 === 'дзяржаўная' || g4.includes('государствен');
+            document.getElementById('gap1').style.border = ok1 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap2').style.border = ok2 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap3').style.border = ok3 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap4').style.border = ok4 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            const feedback = document.getElementById('gaps-feedback');
+            if (ok1 && ok2 && ok3 && ok4) {
+                feedback.textContent = '✅ Верно! 32, 23%, пятый, государственная.';
+                feedback.className = 'correct-feedback';
+            } else {
+                feedback.textContent = '❌ Проверьте: 32, 23, пятый, государственная.';
+                feedback.className = 'incorrect-feedback';
+            }
+        });
+    })();
+</script>
+</body>
+</html>

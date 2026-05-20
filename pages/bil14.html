@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билет №14: Создание Социалистической Советской Республики Беларуси (ССРБ)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f4efe0;
+            color: #2e2b1a;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 15% 20%, #e4d5aa 0%, #f4efe0 70%);
+        }        .btnBackBlock{
+            position: absolute;
+            display: flex;
+            top: 40px;
+            left: 40px;
+        }
+        .backBtn{
+            text-decoration: none;
+            background: #6b4f28;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .backBtn>p{
+            transition: .3s;
+            position: relative;
+            z-index: 10;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+        .backBtn::after{    
+            transition: .5s;
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dfd0b0;
+            z-index: 1;
+        }
+        .backBtn:hover>p{
+            color: #4e3d22;
+        }
+        .backBtn:hover::after{
+            right: 0;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 250, 240, 0.93);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(130, 100, 70, 0.25);
+            padding: 2rem 2rem 3rem;
+        }
+        h1 { font-size: 2.3rem; text-align: center; color: #4a3620; margin-bottom: 0.2rem; letter-spacing: 1px; }
+        .subtitle {
+            text-align: center; font-style: italic; color: #6b5a3e;
+            margin-bottom: 2.5rem; border-bottom: 2px dotted #b89a5e; padding-bottom: 1rem;
+        }
+        .tab-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2rem; }
+        .tab-btn {
+            background: #dfd0b0; border: none; padding: 12px 20px; border-radius: 30px;
+            font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            color: #4e3d22; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #b89a5e;
+            letter-spacing: 0.5px;
+        }
+        .tab-btn:hover { background: #cdba8b; color: #2d1f0c; }
+        .tab-btn.active {
+            background: #6b4f28; color: #fff; border-color: #4a3520;
+            box-shadow: 0 6px 12px rgba(107, 79, 40, 0.5); transform: translateY(-2px);
+        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card {
+            background: #fffef7; border: 1px solid #d9c7a0; border-radius: 20px;
+            padding: 1.5rem; margin-bottom: 1.8rem; box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .year-badge {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 12px; border-radius: 20px; display: inline-block; margin-right: 10px;
+        }
+        .timeline {
+            position: relative; margin: 2rem 0; padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+            width: 4px; background: #b89a5e; border-radius: 2px;
+        }
+        .timeline-item {
+            margin-bottom: 2rem; position: relative; padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '◆'; position: absolute; left: -6px; top: 2px;
+            font-size: 1.5rem; color: #6b4f28; line-height: 1;
+        }
+        .tl-date {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 14px; border-radius: 20px; display: inline-block; margin-bottom: 4px;
+        }
+        .tl-desc { color: #4d3b20; font-style: italic; }
+        .cards-grid {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-top: 1.5rem;
+        }
+        .flip-card {
+            background: transparent; width: 220px; height: 150px; perspective: 1000px; cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.6s; transform-style: preserve-3d;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2); border-radius: 18px;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 18px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 15px; font-weight: 600; font-size: 1rem;
+        }
+        .flip-card-front {
+            background: #efe3cc; color: #4e3620; border: 2px solid #c8aa7a;
+        }
+        .flip-card-back {
+            background: #6b4f28; color: #fff; border: 2px solid #4a3520;
+            transform: rotateY(180deg); font-size: 0.9rem;
+        }
+        .card-actions { display: flex; gap: 10px; justify-content: center; margin-top: 1.5rem; }
+        .quiz-area { background: #faf3e4; border-radius: 20px; padding: 1.5rem; }
+        .quiz-question { font-weight: 700; margin: 1.2rem 0 0.4rem; }
+        .quiz-result { font-weight: bold; margin-top: 1rem; padding: 0.8rem; border-radius: 12px; }
+        button {
+            background: #6b4f28; color: white; border: none; padding: 10px 25px;
+            border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 1rem; transition: 0.2s;
+        }
+        button:hover { background: #8b6a3a; }
+        .sortable-list { list-style: none; padding: 0; margin: 1rem 0; max-width: 500px; }
+        .sortable-item {
+            background: #fffef7; border: 1px solid #c9a87c; border-radius: 12px;
+            padding: 10px 15px; margin-bottom: 8px; cursor: grab; display: flex;
+            align-items: center; transition: 0.2s; user-select: none;
+        }
+        .sortable-item:active { cursor: grabbing; opacity: 0.8; }
+        .drag-handle { margin-right: 10px; font-size: 1.3rem; color: #6b4f28; }
+        .match-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .match-table td { padding: 8px; vertical-align: middle; }
+        .match-table select {
+            width: 100%; padding: 8px; border-radius: 10px; border: 1px solid #bb9a6e;
+            background: #fffef7; font-family: inherit;
+        }
+        .fill-gap {
+            background: #fffef7; border: 1px solid #bb9a6e; padding: 5px 10px;
+            border-radius: 8px; width: auto; min-width: 100px;
+        }
+        .correct-feedback { color: #2d6a2d; font-weight: bold; }
+        .incorrect-feedback { color: #a13d3d; font-weight: bold; }
+        @media (max-width: 600px) {
+            .tab-btn { padding: 8px 14px; font-size: 0.85rem; }
+            .flip-card { width: 160px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class="btnBackBlock" id="backBtn">
+        <a href="../index.html" class="backBtn" ><p>Назад</p></a>
+    </div>
+    <h1>Билет №14</h1>
+    <div class="subtitle">Создание Социалистической Советской Республики Беларуси (ССРБ)</div>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="directions">Два направления</button>
+        <button class="tab-btn" data-tab="congress">Всебелорусский съезд</button>
+        <button class="tab-btn" data-tab="ssrb">Образование ССРБ</button>
+        <button class="tab-btn" data-tab="litbel">Литбел и 1920 г.</button>
+        <button class="tab-btn" data-tab="timeline">Лента времени</button>
+        <button class="tab-btn" data-tab="cards">Хроно-карточки</button>
+        <button class="tab-btn" data-tab="quiz">Тест (20 вопросов)</button>
+        <button class="tab-btn" data-tab="practice">Практические задания</button>
+    </div>
+
+    <!-- Два направления -->
+    <div class="tab-content active" id="tab-directions">
+        <div class="card">
+            <h2>🔴 Леворадикальное (социалистическое) направление</h2>
+            <p>Представлено Белорусской социал-демократической рабочей партией, Белорусским областным комитетом (при ВЦИК) и Белнацкомом при Народном комиссариате по делам национальностей РСФСР. Лидеры: <strong>З. Жилунович, А. Червяков, Е. Кончар</strong>. Выступали за создание белорусской государственности на советской основе.</p>
+        </div>
+        <div class="card">
+            <h2>⚪ Либерально-буржуазное направление</h2>
+            <p>Группировалось вокруг <strong>Великой белорусской рады (ВБР)</strong>. Признали советское правительство в Петрограде, но отказались признать Облискомзап, считая его органом солдат Западного фронта, а не белорусского народа.</p>
+        </div>
+        <div class="card">
+            <h2>⚡ Позиция Облискомзапа</h2>
+            <p>Руководители Облискомзапа считали, что скорая мировая пролетарская революция отменит государственность, и видели в создании национальных республик препятствие на её пути.</p>
+        </div>
+    </div>
+
+    <!-- Всебелорусский съезд -->
+    <div class="tab-content" id="tab-congress">
+        <div class="card">
+            <h2>🏛️ I Всебелорусский съезд (15–18 декабря 1917)</h2>
+            <p>Съезд признал всероссийскую советскую власть, но игнорировал Облискомзап. Было решено создать <strong>Всебелорусский Совет крестьянских, рабочих и солдатских депутатов</strong> и передать ему власть в крае. С точки зрения большевиков — попытка контрреволюционного переворота.</p>
+        </div>
+        <div class="card">
+            <h2>❌ Роспуск и последствия</h2>
+            <p>СНК Западной области ночью <span class="year-badge">18 декабря 1917</span> распустил съезд. Президиум и ряд делегатов арестованы. Оставшиеся на свободе делегаты передали власть Исполкому Рады Всебелорусского съезда и позже провозгласили <strong>Белорусскую Народную Республику (БНР)</strong>, которая не стала полноценным государством.</p>
+        </div>
+    </div>
+
+    <!-- Образование ССРБ -->
+    <div class="tab-content" id="tab-ssrb">
+        <div class="card">
+            <h2>📜 Провозглашение ССРБ</h2>
+            <p><span class="year-badge">30 декабря 1918</span> – VI Северо-Западная областная конференция РКП(б) в Смоленске провозгласила себя I съездом КП(б)Б.</p>
+            <p><span class="year-badge">1 января 1919</span> – обнародован Манифест о создании <strong>Социалистической Советской Республики Беларуси (ССРБ)</strong>. Первый председатель Временного рабоче-крестьянского правительства – <strong>Дмитрий Жилунович (Тишка Гартный)</strong>, автор Манифеста.</p>
+            <p><span class="year-badge">5 января 1919</span> – правительство переехало из Смоленска в Минск, который стал столицей ССРБ.</p>
+            <p>В состав вошли Минская, Витебская, Гродненская, Могилёвская, частично Смоленская, Виленская, Ковенская и Черниговская губернии. Через две недели Витебская, Могилёвская и Смоленская губернии были присоединены к РСФСР.</p>
+        </div>
+        <div class="card">
+            <h2>📋 Первая Конституция</h2>
+            <p><span class="year-badge">2–3 февраля 1919</span> – I Всебелорусский съезд Советов в Минске принял первую Конституцию ССРБ. Также принято решение об объединении с Литвой и создании Литбел.</p>
+        </div>
+    </div>
+
+    <!-- Литбел и второе провозглашение -->
+    <div class="tab-content" id="tab-litbel">
+        <div class="card">
+            <h2>🔷 Литовско-Белорусская ССР (Литбел)</h2>
+            <p>Образована как <strong>буферное государство</strong> между РСФСР и Польшей для предотвращения открытой войны. Включила Минскую, Гродненскую, Виленскую, частично Ковенскую губернии. Центр – Вильна. Просуществовала до августа 1919 г., после захвата польскими войсками.</p>
+        </div>
+        <div class="card">
+            <h2>🔄 Второе провозглашение ССРБ</h2>
+            <p><span class="year-badge">31 июля 1920</span> – после освобождения от польских войск принята Декларация о независимости ССРБ. Восстановлена в границах шести уездов Минской губернии (Минский, Борисовский, Бобруйский, Игуменский, Слуцкий, Мозырский) с населением чуть более 1,5 млн человек.</p>
+        </div>
+    </div>
+
+    <!-- Лента времени -->
+    <div class="tab-content" id="tab-timeline">
+        <h2 style="text-align:center; margin-bottom:1.5rem;">🕰️ Хронология создания ССРБ</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="tl-date">Дек. 1917</div><div class="tl-desc">I Всебелорусский съезд (15–18). Роспуск и аресты.</div></div>
+            <div class="timeline-item"><div class="tl-date">30 дек. 1918</div><div class="tl-desc">I съезд КП(б)Б в Смоленске. Решение о создании ССРБ.</div></div>
+            <div class="timeline-item"><div class="tl-date">1 янв. 1919</div><div class="tl-desc">Обнародован Манифест о ССРБ. Правительство Жилуновича.</div></div>
+            <div class="timeline-item"><div class="tl-date">5 янв. 1919</div><div class="tl-desc">Переезд правительства в Минск. Минск – столица ССРБ.</div></div>
+            <div class="timeline-item"><div class="tl-date">2–3 фев. 1919</div><div class="tl-desc">Первая конституция ССРБ. Решение о создании Литбел.</div></div>
+            <div class="timeline-item"><div class="tl-date">Июль 1920</div><div class="tl-desc">Второе провозглашение ССРБ. Декларация о независимости.</div></div>
+        </div>
+    </div>
+
+    <!-- Хроно-карточки -->
+    <div class="tab-content" id="tab-cards">
+        <h2 style="text-align:center; margin-bottom:0.5rem;">📅 Хронологические карточки</h2>
+        <p style="text-align:center; color:#5e4a2e;">Нажмите на карточку, чтобы увидеть обратную сторону.</p>
+        <div class="cards-grid" id="chrono-cards-container"></div>
+        <div class="card-actions">
+            <button id="flip-all">🔄 Перевернуть все</button>
+            <button id="reset-cards">↩️ Сбросить все</button>
+        </div>
+    </div>
+
+    <!-- Тест -->
+    <div class="tab-content" id="tab-quiz">
+        <div class="quiz-area">
+            <h2>📝 Тест по билету №14</h2>
+            <div id="quiz-container"></div>
+            <button id="check-quiz">Проверить ответы</button>
+            <div id="quiz-result" class="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Практические задания -->
+    <div class="tab-content" id="tab-practice">
+        <div class="card">
+            <h2>🧩 Задание 1. Хронология событий</h2>
+            <p>Перетащите события в правильном порядке.</p>
+            <ul class="sortable-list" id="sortable-chrono">
+                <li class="sortable-item" data-order="1"><span class="drag-handle">☰</span> Всебелорусский съезд в Минске</li>
+                <li class="sortable-item" data-order="2"><span class="drag-handle">☰</span> Провозглашение ССРБ</li>
+                <li class="sortable-item" data-order="3"><span class="drag-handle">☰</span> Переезд правительства в Минск</li>
+                <li class="sortable-item" data-order="4"><span class="drag-handle">☰</span> Принятие первой Конституции ССРБ</li>
+                <li class="sortable-item" data-order="5"><span class="drag-handle">☰</span> Второе провозглашение ССРБ</li>
+            </ul>
+            <button id="check-chrono-order">Проверить порядок</button>
+            <span id="chrono-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>🔗 Задание 2. Соотнесите направление и его признак</h2>
+            <table class="match-table">
+                <tr><th>Направление</th><th>Признак</th></tr>
+                <tr><td>Леворадикальное (социалистическое)</td><td><select class="match-select" data-id="1"><option value="">--</option><option value="soviet">Советская основа государственности</option><option value="liberal">Независимая от РСФСР республика</option></select></td></tr>
+                <tr><td>Либерально-буржуазное (ВБР)</td><td><select class="match-select" data-id="2"><option value="">--</option><option value="soviet">Советская основа государственности</option><option value="liberal">Не признали Облискомзап</option></select></td></tr>
+            </table>
+            <button id="check-match">Проверить соответствия</button>
+            <span id="match-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>✍️ Задание 3. Вставьте пропущенные сведения о провозглашении ССРБ</h2>
+            <p>«1 января 1919 г. был обнародован 
+                <input type="text" class="fill-gap" id="gap1" placeholder="?"> 
+                о создании ССРБ. Первым главой правительства стал 
+                <input type="text" class="fill-gap" id="gap2" placeholder="?"> 
+                (Тишка Гартный). Столицей ССРБ стал 
+                <input type="text" class="fill-gap" id="gap3" placeholder="?">».
+            </p>
+            <button id="check-gaps">Проверить</button>
+            <span id="gaps-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Переключение вкладок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(`tab-${target}`).classList.add('active');
+            });
+        });
+
+        // Хронологические карточки
+        const chronoData = [
+            { date: "15-18 дек. 1917", desc: "I Всебелорусский съезд. Роспуск, аресты." },
+            { date: "30 дек. 1918", desc: "I съезд КП(б)Б в Смоленске. Решение о ССРБ." },
+            { date: "1 янв. 1919", desc: "Манифест о создании ССРБ. Правительство Жилуновича." },
+            { date: "5 янв. 1919", desc: "Правительство переехало в Минск – столицу ССРБ." },
+            { date: "2-3 фев. 1919", desc: "Первая Конституция ССРБ. Решение о Литбел." },
+            { date: "31 июля 1920", desc: "Второе провозглашение ССРБ. Декларация о независимости." }
+        ];
+        const cardsContainer = document.getElementById('chrono-cards-container');
+        function buildCards() {
+            cardsContainer.innerHTML = '';
+            chronoData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'flip-card';
+                card.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">${item.date}</div>
+                        <div class="flip-card-back">${item.desc}</div>
+                    </div>
+                `;
+                card.addEventListener('click', () => card.classList.toggle('flipped'));
+                cardsContainer.appendChild(card);
+            });
+        }
+        buildCards();
+        document.getElementById('flip-all').addEventListener('click', () => {
+            const cards = document.querySelectorAll('.flip-card');
+            const allFlipped = Array.from(cards).every(c => c.classList.contains('flipped'));
+            cards.forEach(c => c.classList.toggle('flipped', !allFlipped));
+        });
+        document.getElementById('reset-cards').addEventListener('click', () => {
+            document.querySelectorAll('.flip-card').forEach(c => c.classList.remove('flipped'));
+        });
+
+        // Тест (20 вопросов)
+        const quizData = [
+            { q: "Какие два направления определились в белорусском национальном движении в конце 1917 г.?", options: ["Социалистическое и либерально-буржуазное", "Монархическое и республиканское", "Партизанское и парламентское", "Федеративное и унитарное"], correct: 0 },
+            { q: "Какая организация представляла либерально-буржуазное направление?", options: ["Белнацком", "Великая белорусская рада", "Облискомзап", "БСДРП"], correct: 1 },
+            { q: "Кто из лидеров выступал за советскую государственность Беларуси?", options: ["Деятели ВБР", "З. Жилунович и А. Червяков", "Генерал Духонин", "В. Ластовский"], correct: 1 },
+            { q: "Почему ВБР не признала Облискомзап?", options: ["Считала его органом солдат, а не белорусского народа", "Он был немецкой марионеткой", "Облискомзап не существовал", "Из-за религиозных разногласий"], correct: 0 },
+            { q: "Когда состоялся I Всебелорусский съезд?", options: ["Ноябрь 1917", "15–18 декабря 1917", "Январь 1918", "Март 1918"], correct: 1 },
+            { q: "Как поступил СНК Западной области со съездом?", options: ["Поддержал его решения", "Распустил съезд и арестовал президиум", "Пригласил к переговорам", "Объявил перевыборы"], correct: 1 },
+            { q: "Какое государственное образование попытались создать после роспуска съезда?", options: ["ССРБ", "БНР", "Литбел", "Западную область"], correct: 1 },
+            { q: "Где и когда проходил I съезд КП(б)Б?", options: ["Минск, январь 1919", "Смоленск, 30 декабря 1918", "Вильна, февраль 1919", "Москва, ноябрь 1918"], correct: 1 },
+            { q: "В какой день был обнародован Манифест о ССРБ?", options: ["1 января 1919", "1 мая 1919", "7 ноября 1918", "31 июля 1920"], correct: 0 },
+            { q: "Кто стал первым председателем правительства ССРБ?", options: ["А. Червяков", "К. Ландер", "Дмитрий Жилунович", "В. Ластовский"], correct: 2 },
+            { q: "Куда переехало правительство ССРБ 5 января 1919 г.?", options: ["Вильна", "Минск", "Гродно", "Могилёв"], correct: 1 },
+            { q: "Какие губернии вскоре были переданы из ССРБ в РСФСР?", options: ["Минская, Гродненская", "Витебская, Могилёвская, Смоленская", "Ковенская, Виленская", "Черниговская, Витебская"], correct: 1 },
+            { q: "Когда была принята первая Конституция ССРБ?", options: ["1 января 1919", "2-3 февраля 1919", "31 июля 1920", "30 декабря 1918"], correct: 1 },
+            { q: "Для чего создали Литовско-Белорусскую ССР?", options: ["Как буферное государство между РСФСР и Польшей", "Для объединения всех балтов", "По требованию Германии", "Для проведения коллективизации"], correct: 0 },
+            { q: "Как долго просуществовал Литбел?", options: ["До августа 1919", "До июля 1920", "До 1921", "До 1939"], correct: 0 },
+            { q: "Что произошло 31 июля 1920 г.?", options: ["Создание Литбел", "Второе провозглашение ССРБ", "Начало советско-польской войны", "Арест Жилуновича"], correct: 1 },
+            { q: "Сколько губерний вошло в ССРБ при втором провозглашении?", options: ["Шесть уездов Минской губернии", "Вся Минская губерния", "Три губернии", "Десять уездов"], correct: 0 },
+            { q: "Что было характерно для позиции Облискомзапа?", options: ["Поддержка белорусской государственности", "Отрицание национальной государственности в ожидании мировой революции", "Требование автономии", "Союз с ВБР"], correct: 1 },
+            { q: "Какую роль сыграл Белнацком?", options: ["Пытался создать БНР", "Выступал за советскую белорусскую автономию", "Поддерживал Облискомзап", "Боролся с большевиками"], correct: 1 },
+            { q: "Можно ли считать БНР полноценным государством?", options: ["Да, с 1918 г.", "Нет, не было реальной власти и территории", "Была федеративной частью РСФСР", "Признана Лигой Наций"], correct: 1 }
+        ];
+
+        const quizContainer = document.getElementById('quiz-container');
+        function buildQuiz() {
+            let html = '';
+            quizData.forEach((item, idx) => {
+                html += `<p class="quiz-question">${idx+1}. ${item.q}</p>`;
+                item.options.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label>`;
+                });
+            });
+            quizContainer.innerHTML = html;
+        }
+        buildQuiz();
+        document.getElementById('check-quiz').addEventListener('click', () => {
+            let score = 0;
+            quizData.forEach((item, idx) => {
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === item.correct) score++;
+            });
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.textContent = `Ваш результат: ${score} из ${quizData.length}.`;
+            resultDiv.style.background = score >= 15 ? '#d4edda' : '#f8d7da';
+        });
+
+        // Drag-and-drop хронология
+        const sortableList = document.getElementById('sortable-chrono');
+        let draggedItem = null;
+        function initDragDrop(list) {
+            list.addEventListener('dragstart', function(e) {
+                draggedItem = e.target.closest('.sortable-item');
+                if (!draggedItem) return;
+                e.dataTransfer.effectAllowed = 'move';
+                draggedItem.style.opacity = '0.5';
+            });
+            list.addEventListener('dragend', function(e) {
+                if (draggedItem) draggedItem.style.opacity = '1';
+                draggedItem = null;
+                document.querySelectorAll('.sortable-item').forEach(item => item.classList.remove('drag-over'));
+            });
+            list.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                const targetItem = e.target.closest('.sortable-item');
+                if (!targetItem || targetItem === draggedItem) return;
+                targetItem.classList.add('drag-over');
+            });
+            list.addEventListener('dragleave', function(e) {
+                const targetItem = e.target.closest('.sortable-item');
+                if (targetItem) targetItem.classList.remove('drag-over');
+            });
+            list.addEventListener('drop', function(e) {
+                e.preventDefault();
+                const targetItem = e.target.closest('.sortable-item');
+                if (!targetItem || !draggedItem || targetItem === draggedItem) return;
+                targetItem.classList.remove('drag-over');
+                const children = Array.from(list.children);
+                const draggedIndex = children.indexOf(draggedItem);
+                const targetIndex = children.indexOf(targetItem);
+                if (draggedIndex < targetIndex) {
+                    list.insertBefore(draggedItem, targetItem.nextSibling);
+                } else {
+                    list.insertBefore(draggedItem, targetItem);
+                }
+            });
+        }
+        initDragDrop(sortableList);
+        document.getElementById('check-chrono-order').addEventListener('click', () => {
+            const items = Array.from(sortableList.querySelectorAll('.sortable-item'));
+            const currentOrder = items.map(item => parseInt(item.getAttribute('data-order')));
+            const isCorrect = currentOrder.every((val, idx) => val === idx + 1);
+            const feedback = document.getElementById('chrono-feedback');
+            feedback.textContent = isCorrect ? '✅ Верно!' : '❌ Порядок нарушен.';
+            feedback.className = isCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Соотнесение направлений
+        document.getElementById('check-match').addEventListener('click', () => {
+            const answers = { 1: 'soviet', 2: 'liberal' };
+            let allCorrect = true;
+            document.querySelectorAll('.match-select').forEach(select => {
+                const id = select.getAttribute('data-id');
+                if (select.value !== answers[id]) allCorrect = false;
+            });
+            const feedback = document.getElementById('match-feedback');
+            feedback.textContent = allCorrect ? '✅ Верно!' : '❌ Есть ошибки.';
+            feedback.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Пропуски о провозглашении ССРБ
+        document.getElementById('check-gaps').addEventListener('click', () => {
+            const g1 = document.getElementById('gap1').value.trim();
+            const g2 = document.getElementById('gap2').value.trim();
+            const g3 = document.getElementById('gap3').value.trim();
+            const ok1 = g1.toLowerCase().includes('манифест');
+            const ok2 = g2.toLowerCase().includes('жилунович') || g2.toLowerCase().includes('дмитрий жилунович');
+            const ok3 = g3.toLowerCase() === 'минск';
+            document.getElementById('gap1').style.border = ok1 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap2').style.border = ok2 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap3').style.border = ok3 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            const feedback = document.getElementById('gaps-feedback');
+            if (ok1 && ok2 && ok3) {
+                feedback.textContent = '✅ Верно! Манифест, Жилунович, Минск.';
+                feedback.className = 'correct-feedback';
+            } else {
+                feedback.textContent = '❌ Ожидались: Манифест, Жилунович (или Дмитрий Жилунович), Минск.';
+                feedback.className = 'incorrect-feedback';
+            }
+        });
+    })();
+</script>
+</body>
+</html>

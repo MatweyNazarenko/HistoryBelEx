@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билет №15: Беларусь в годы польско-советской войны 1919–1921</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f4efe0;
+            color: #2e2b1a;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 15% 20%, #e4d5aa 0%, #f4efe0 70%);
+        }        .btnBackBlock{
+            position: absolute;
+            display: flex;
+            top: 40px;
+            left: 40px;
+        }
+        .backBtn{
+            text-decoration: none;
+            background: #6b4f28;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .backBtn>p{
+            transition: .3s;
+            position: relative;
+            z-index: 10;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+        .backBtn::after{    
+            transition: .5s;
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dfd0b0;
+            z-index: 1;
+        }
+        .backBtn:hover>p{
+            color: #4e3d22;
+        }
+        .backBtn:hover::after{
+            right: 0;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 250, 240, 0.93);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(130, 100, 70, 0.25);
+            padding: 2rem 2rem 3rem;
+        }
+        h1 { font-size: 2.3rem; text-align: center; color: #4a3620; margin-bottom: 0.2rem; letter-spacing: 1px; }
+        .subtitle {
+            text-align: center; font-style: italic; color: #6b5a3e;
+            margin-bottom: 2.5rem; border-bottom: 2px dotted #b89a5e; padding-bottom: 1rem;
+        }
+        .tab-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2rem; }
+        .tab-btn {
+            background: #dfd0b0; border: none; padding: 12px 20px; border-radius: 30px;
+            font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            color: #4e3d22; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #b89a5e;
+            letter-spacing: 0.5px;
+        }
+        .tab-btn:hover { background: #cdba8b; color: #2d1f0c; }
+        .tab-btn.active {
+            background: #6b4f28; color: #fff; border-color: #4a3520;
+            box-shadow: 0 6px 12px rgba(107, 79, 40, 0.5); transform: translateY(-2px);
+        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card {
+            background: #fffef7; border: 1px solid #d9c7a0; border-radius: 20px;
+            padding: 1.5rem; margin-bottom: 1.8rem; box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .year-badge {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 12px; border-radius: 20px; display: inline-block; margin-right: 10px;
+        }
+        .timeline {
+            position: relative; margin: 2rem 0; padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+            width: 4px; background: #b89a5e; border-radius: 2px;
+        }
+        .timeline-item {
+            margin-bottom: 2rem; position: relative; padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '◆'; position: absolute; left: -6px; top: 2px;
+            font-size: 1.5rem; color: #6b4f28; line-height: 1;
+        }
+        .tl-date {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 14px; border-radius: 20px; display: inline-block; margin-bottom: 4px;
+        }
+        .tl-desc { color: #4d3b20; font-style: italic; }
+        .cards-grid {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-top: 1.5rem;
+        }
+        .flip-card {
+            background: transparent; width: 220px; height: 150px; perspective: 1000px; cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.6s; transform-style: preserve-3d;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2); border-radius: 18px;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 18px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 15px; font-weight: 600; font-size: 1rem;
+        }
+        .flip-card-front {
+            background: #efe3cc; color: #4e3620; border: 2px solid #c8aa7a;
+        }
+        .flip-card-back {
+            background: #6b4f28; color: #fff; border: 2px solid #4a3520;
+            transform: rotateY(180deg); font-size: 0.9rem;
+        }
+        .card-actions { display: flex; gap: 10px; justify-content: center; margin-top: 1.5rem; }
+        .quiz-area { background: #faf3e4; border-radius: 20px; padding: 1.5rem; }
+        .quiz-question { font-weight: 700; margin: 1.2rem 0 0.4rem; }
+        .quiz-result { font-weight: bold; margin-top: 1rem; padding: 0.8rem; border-radius: 12px; }
+        button {
+            background: #6b4f28; color: white; border: none; padding: 10px 25px;
+            border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 1rem; transition: 0.2s;
+        }
+        button:hover { background: #8b6a3a; }
+        .sortable-list { list-style: none; padding: 0; margin: 1rem 0; max-width: 500px; }
+        .sortable-item {
+            background: #fffef7; border: 1px solid #c9a87c; border-radius: 12px;
+            padding: 10px 15px; margin-bottom: 8px; cursor: grab; display: flex;
+            align-items: center; transition: 0.2s; user-select: none;
+        }
+        .sortable-item:active { cursor: grabbing; opacity: 0.8; }
+        .drag-handle { margin-right: 10px; font-size: 1.3rem; color: #6b4f28; }
+        .match-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .match-table td { padding: 8px; vertical-align: middle; }
+        .match-table select {
+            width: 100%; padding: 8px; border-radius: 10px; border: 1px solid #bb9a6e;
+            background: #fffef7; font-family: inherit;
+        }
+        .fill-gap {
+            background: #fffef7; border: 1px solid #bb9a6e; padding: 5px 10px;
+            border-radius: 8px; width: auto; min-width: 100px;
+        }
+        .correct-feedback { color: #2d6a2d; font-weight: bold; }
+        .incorrect-feedback { color: #a13d3d; font-weight: bold; }
+        @media (max-width: 600px) {
+            .tab-btn { padding: 8px 14px; font-size: 0.85rem; }
+            .flip-card { width: 160px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class="btnBackBlock" id="backBtn">
+        <a href="../index.html" class="backBtn" ><p>Назад</p></a>
+    </div>
+    <h1>Билет №15</h1>
+    <div class="subtitle">Беларусь в годы польско-советской войны 1919–1921</div>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="start">Начало и оккупация</button>
+        <button class="tab-btn" data-tab="partisans">Партизанское движение</button>
+        <button class="tab-btn" data-tab="war1920">Ход войны в 1920 г.</button>
+        <button class="tab-btn" data-tab="riga">Рижский мир и итоги</button>
+        <button class="tab-btn" data-tab="timeline">Лента времени</button>
+        <button class="tab-btn" data-tab="cards">Хроно-карточки</button>
+        <button class="tab-btn" data-tab="quiz">Тест (20 вопросов)</button>
+        <button class="tab-btn" data-tab="practice">Практические задания</button>
+    </div>
+
+    <!-- Начало и оккупация -->
+    <div class="tab-content active" id="tab-start">
+        <div class="card">
+            <h2>🕊️ От Брестского мира к новому конфликту</h2>
+            <p>Брестский мир завершил участие России в Первой мировой войне. После капитуляции Германии и Компьенского перемирия <span class="year-badge">11 ноября 1918</span> мир был аннулирован.</p>
+            <p>В начале 1919 г. польское правительство во главе с <strong>Юзефом Пилсудским</strong> при поддержке Франции и Англии начало реализацию планов присоединения украинских, белорусских и литовских земель с целью возродить Речь Посполитую в границах 1772 г.</p>
+        </div>
+        <div class="card">
+            <h2>⚔️ Вторжение и оккупационный режим</h2>
+            <p>Февраль 1919 – начало крупномасштабного наступления польских войск. Захвачены Вильно, Лида, Молодечно, большая часть Гродненской губернии, Барановичи, Минск, Пинск и другие города.</p>
+            <p><span class="year-badge">22 апреля 1919</span> – обращение Пилсудского «К жителям бывшего Великого Княжества Литовского» с обещанием федерации свободных государств под руководством Польши – дипломатический ход.</p>
+        </div>
+        <div class="card">
+            <h2>📉 Политика на захваченных землях</h2>
+            <ul>
+                <li>Ликвидация советских органов, восстановление помещичьего землевладения.</li>
+                <li>Репрессии против политических противников, вывоз ценностей в Польшу.</li>
+                <li>Полонизация культуры: закрытие белорусских школ и учреждений, аресты учителей и национальных деятелей.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Партизанское движение -->
+    <div class="tab-content" id="tab-partisans">
+        <div class="card">
+            <h2>🌲 Сопротивление оккупантам</h2>
+            <p>Борьбу возглавили коммунисты и эсеры. Партизаны разрушали коммуникации, взрывали эшелоны, вели разведку.</p>
+            <p>Сохранялась <strong>«Рудобельская республика»</strong> (до января 1920 г., когда поляки сожгли деревню Рудобелку).</p>
+        </div>
+        <div class="card">
+            <h2>👴 Дед Талаш</h2>
+            <p><strong>Василий Исаакович Талаш</strong> в возрасте 75 лет в 1919 г. организовал партизанский отряд численностью около 300 человек, действовавший в Белорусском Полесье. События описаны в повести <strong>Якуба Коласа «Трясина»</strong>. В Великую Отечественную войну он также участвовал в борьбе с фашистами.</p>
+        </div>
+    </div>
+
+    <!-- Ход войны в 1920 г. -->
+    <div class="tab-content" id="tab-war1920">
+        <div class="card">
+            <h2>💥 Наступление и разгром под Варшавой</h2>
+            <p>Весной 1920 г. Польша при поддержке Антанты возобновила широкомасштабное наступление. Красная Армия первоначально отбросила противника.</p>
+            <p><span class="year-badge">11 июля 1920</span> – нота британского министра иностранных дел Керзона с предложением остановить советские войска по линии Гродно–Яловка–Немиров–Брест (восточная временная граница Польши). В историю вошла как <strong>«линия Керзона»</strong>. Советское руководство отвергло предложение и двинулось на Варшаву – политическая ошибка.</p>
+            <p>В середине августа 1920 г. Красная Армия подошла к Варшаве, но 16 августа польские войска перешли в контрнаступление и нанесли поражение. К октябрю 1920 г. вся Западная Беларусь вновь была оккупирована.</p>
+        </div>
+    </div>
+
+    <!-- Рижский мир и итоги -->
+    <div class="tab-content" id="tab-riga">
+        <div class="card">
+            <h2>🕊️ Рижский мирный договор (18 марта 1921)</h2>
+            <p>Подписан между Советской Россией, Украиной и Польшей. Делегации ССРБ и БНР к переговорам не допустили. Интересы Беларуси представляла делегация РСФСР.</p>
+            <ul>
+                <li>К Польше отошла Западная Беларусь: <strong>113 тыс. км²</strong>, около <strong>4 млн человек</strong>.</li>
+                <li>Граница прошла в 50 км западнее Минска.</li>
+                <li>Витебская и Гомельская губернии, западные уезды Смоленской губернии остались в РСФСР.</li>
+                <li>За ССРБ сохранилось только <strong>6 уездов</strong> Минской губернии с населением чуть более <strong>1,5 млн человек</strong>.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Лента времени -->
+    <div class="tab-content" id="tab-timeline">
+        <h2 style="text-align:center; margin-bottom:1.5rem;">🕰️ Хронология войны</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="tl-date">Ноябрь 1918</div><div class="tl-desc">Возрождение польского государства. Планы Пилсудского.</div></div>
+            <div class="timeline-item"><div class="tl-date">Февраль 1919</div><div class="tl-desc">Начало наступления польских войск на Беларусь.</div></div>
+            <div class="timeline-item"><div class="tl-date">22 апреля 1919</div><div class="tl-desc">Обращение Пилсудского «К жителям бывшего ВКЛ».</div></div>
+            <div class="timeline-item"><div class="tl-date">Весна 1920</div><div class="tl-desc">Новое наступление Польши при поддержке Антанты.</div></div>
+            <div class="timeline-item"><div class="tl-date">11 июля 1920</div><div class="tl-desc">Нота Керзона. «Линия Керзона».</div></div>
+            <div class="timeline-item"><div class="tl-date">16 августа 1920</div><div class="tl-desc">Контрнаступление поляков. Поражение Красной Армии.</div></div>
+            <div class="timeline-item"><div class="tl-date">18 марта 1921</div><div class="tl-desc">Рижский мирный договор. Раздел Беларуси.</div></div>
+        </div>
+    </div>
+
+    <!-- Хроно-карточки -->
+    <div class="tab-content" id="tab-cards">
+        <h2 style="text-align:center; margin-bottom:0.5rem;">📅 Хронологические карточки</h2>
+        <p style="text-align:center; color:#5e4a2e;">Нажмите на карточку, чтобы увидеть обратную сторону.</p>
+        <div class="cards-grid" id="chrono-cards-container"></div>
+        <div class="card-actions">
+            <button id="flip-all">🔄 Перевернуть все</button>
+            <button id="reset-cards">↩️ Сбросить все</button>
+        </div>
+    </div>
+
+    <!-- Тест -->
+    <div class="tab-content" id="tab-quiz">
+        <div class="quiz-area">
+            <h2>📝 Тест по билету №15</h2>
+            <div id="quiz-container"></div>
+            <button id="check-quiz">Проверить ответы</button>
+            <div id="quiz-result" class="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Практические задания -->
+    <div class="tab-content" id="tab-practice">
+        <div class="card">
+            <h2>🧩 Задание 1. Расставьте события в хронологическом порядке</h2>
+            <ul class="sortable-list" id="sortable-chrono">
+                <li class="sortable-item" data-order="1"><span class="drag-handle">☰</span> Начало польского наступления на Беларусь (февраль 1919)</li>
+                <li class="sortable-item" data-order="2"><span class="drag-handle">☰</span> Обращение Пилсудского «К жителям бывшего ВКЛ»</li>
+                <li class="sortable-item" data-order="3"><span class="drag-handle">☰</span> Нота Керзона и «линия Керзона»</li>
+                <li class="sortable-item" data-order="4"><span class="drag-handle">☰</span> Подписание Рижского мирного договора</li>
+            </ul>
+            <button id="check-chrono-order">Проверить порядок</button>
+            <span id="chrono-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>🔗 Задание 2. Соотнесите событие и его описание</h2>
+            <table class="match-table">
+                <tr><th>Событие</th><th>Суть</th></tr>
+                <tr><td>Литбел</td><td><select class="match-select" data-id="1"><option value="">--</option><option value="buffer">Буферное государство между РСФСР и Польшей</option><option value="line">Предложенная восточная граница Польши</option></select></td></tr>
+                <tr><td>«Линия Керзона»</td><td><select class="match-select" data-id="2"><option value="">--</option><option value="buffer">Буферное государство между РСФСР и Польшей</option><option value="line">Предложенная восточная граница Польши</option></select></td></tr>
+                <tr><td>Рижский мир</td><td><select class="match-select" data-id="3"><option value="">--</option><option value="divide">Раздел Беларуси, 113 тыс. км² к Польше</option><option value="republic">Сохранение «Рудобельской республики»</option></select></td></tr>
+            </table>
+            <button id="check-match">Проверить соответствия</button>
+            <span id="match-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>✍️ Задание 3. Вставьте пропущенные цифры</h2>
+            <p>«По Рижскому миру к Польше отошла Западная Беларусь площадью 
+                <input type="text" class="fill-gap" id="gap1" placeholder="?" style="width:60px;"> тыс. км² с населением около 
+                <input type="text" class="fill-gap" id="gap2" placeholder="?" style="width:60px;"> млн человек. За ССРБ сохранилось только 6 уездов с населением около 
+                <input type="text" class="fill-gap" id="gap3" placeholder="?" style="width:60px;"> млн человек».
+            </p>
+            <button id="check-gaps">Проверить</button>
+            <span id="gaps-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Переключение вкладок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(`tab-${target}`).classList.add('active');
+            });
+        });
+
+        // Хронологические карточки
+        const chronoData = [
+            { date: "Февраль 1919", desc: "Начало наступления польских войск на Беларусь." },
+            { date: "22 апреля 1919", desc: "Обращение Пилсудского «К жителям бывшего ВКЛ»." },
+            { date: "Весна 1920", desc: "Новое наступление Польши при поддержке Антанты." },
+            { date: "11 июля 1920", desc: "Нота Керзона. «Линия Керзона»." },
+            { date: "16 августа 1920", desc: "Контрнаступление поляков, разгром Красной Армии." },
+            { date: "18 марта 1921", desc: "Рижский мирный договор." }
+        ];
+        const cardsContainer = document.getElementById('chrono-cards-container');
+        function buildCards() {
+            cardsContainer.innerHTML = '';
+            chronoData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'flip-card';
+                card.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">${item.date}</div>
+                        <div class="flip-card-back">${item.desc}</div>
+                    </div>
+                `;
+                card.addEventListener('click', () => card.classList.toggle('flipped'));
+                cardsContainer.appendChild(card);
+            });
+        }
+        buildCards();
+        document.getElementById('flip-all').addEventListener('click', () => {
+            const cards = document.querySelectorAll('.flip-card');
+            const allFlipped = Array.from(cards).every(c => c.classList.contains('flipped'));
+            cards.forEach(c => c.classList.toggle('flipped', !allFlipped));
+        });
+        document.getElementById('reset-cards').addEventListener('click', () => {
+            document.querySelectorAll('.flip-card').forEach(c => c.classList.remove('flipped'));
+        });
+
+        // Тест (20 вопросов)
+        const quizData = [
+            { q: "Какое событие позволило Польше начать реализацию планов по возрождению Речи Посполитой?", options: ["Брестский мир", "Компьенское перемирие", "Обращение Пилсудского", "Образование ССРБ"], correct: 1 },
+            { q: "Кто возглавлял польское правительство в 1919 г.?", options: ["Роман Дмовский", "Юзеф Пилсудский", "Игнаций Падеревский", "Владислав Сикорский"], correct: 1 },
+            { q: "В каком месяце 1919 г. началось крупное наступление поляков?", options: ["Январь", "Февраль", "Март", "Апрель"], correct: 1 },
+            { q: "Что обещал Пилсудский в обращении «К жителям бывшего ВКЛ»?", options: ["Полную независимость", "Федерацию под руководством Польши", "Вхождение в состав Германии", "Советскую власть"], correct: 1 },
+            { q: "Что происходило с белорусской культурой на оккупированных землях?", options: ["Расцвет", "Полонизация и закрытие школ", "Статус государственного языка", "Переход на кириллицу"], correct: 1 },
+            { q: "Кто возглавил партизанский отряд в Белорусском Полесье в 1919 г.?", options: ["Якуб Колас", "Дед Талаш", "Карл Ландер", "Александр Чапаев"], correct: 1 },
+            { q: "Как называется повесть Я. Коласа о событиях с участием деда Талаша?", options: ["«Дрыгва»", "«Трясина»", "«На росстанях»", "«Сымон-музыка»"], correct: 1 },
+            { q: "Что такое «Рудобельская республика»?", options: ["Государственное образование", "Партизанская зона, где сохранялась советская власть", "Польская провинция", "Буферное государство"], correct: 1 },
+            { q: "Какая страна НЕ поддерживала Польшу в 1920 г.?", options: ["Франция", "Англия", "США", "Германия"], correct: 2 },
+            { q: "Что предложил лорд Керзон 11 июля 1920 г.?", options: ["Перемирие на всех фронтах", "Восточную временную границу Польши", "Признание ССРБ", "Создание независимой Беларуси"], correct: 1 },
+            { q: "Почему решение пойти на Варшаву в 1920 г. считается ошибкой?", options: ["Привело к поражению и новой оккупации", "Нарушало договор с Германией", "Ослабило Восточный фронт против Колчака", "Было отменено"], correct: 0 },
+            { q: "Когда поляки перешли в контрнаступление под Варшавой?", options: ["1 августа", "11 августа", "16 августа", "31 августа"], correct: 2 },
+            { q: "Когда был подписан Рижский мирный договор?", options: ["18 марта 1921", "31 июля 1920", "11 ноября 1918", "18 августа 1920"], correct: 0 },
+            { q: "Кто представлял интересы Беларуси на переговорах в Риге?", options: ["Делегация ССРБ", "Делегация РСФСР", "БНР", "Польская делегация"], correct: 1 },
+            { q: "Какова была площадь Западной Беларуси, отошедшей к Польше?", options: ["66 тыс. км²", "113 тыс. км²", "200 тыс. км²", "150 тыс. км²"], correct: 1 },
+            { q: "Сколько человек проживало на отошедшей к Польше территории?", options: ["Около 2 млн", "Около 4 млн", "Около 6 млн", "Около 1,5 млн"], correct: 1 },
+            { q: "На каком расстоянии от Минска прошла граница с Польшей?", options: ["10 км", "50 км", "100 км", "150 км"], correct: 1 },
+            { q: "Какие губернии остались в составе РСФСР после Рижского мира?", options: ["Минская и Гродненская", "Витебская и Гомельская", "Брестская и Гродненская", "Могилёвская и Виленская"], correct: 1 },
+            { q: "Сколько уездов Минской губернии осталось за ССРБ?", options: ["4", "6", "8", "10"], correct: 1 },
+            { q: "Какое государство было буферным между РСФСР и Польшей в начале войны?", options: ["БНР", "Литбел", "ССРБ", "Западная область"], correct: 1 }
+        ];
+        const quizContainer = document.getElementById('quiz-container');
+        function buildQuiz() {
+            let html = '';
+            quizData.forEach((item, idx) => {
+                html += `<p class="quiz-question">${idx+1}. ${item.q}</p>`;
+                item.options.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label>`;
+                });
+            });
+            quizContainer.innerHTML = html;
+        }
+        buildQuiz();
+        document.getElementById('check-quiz').addEventListener('click', () => {
+            let score = 0;
+            quizData.forEach((item, idx) => {
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === item.correct) score++;
+            });
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.textContent = `Ваш результат: ${score} из ${quizData.length}.`;
+            resultDiv.style.background = score >= 15 ? '#d4edda' : '#f8d7da';
+        });
+
+        // Drag-and-drop
+        const sortableList = document.getElementById('sortable-chrono');
+        let draggedItem = null;
+        function initDragDrop(list) {
+            list.addEventListener('dragstart', function(e) {
+                draggedItem = e.target.closest('.sortable-item');
+                if (!draggedItem) return;
+                e.dataTransfer.effectAllowed = 'move';
+                draggedItem.style.opacity = '0.5';
+            });
+            list.addEventListener('dragend', function(e) {
+                if (draggedItem) draggedItem.style.opacity = '1';
+                draggedItem = null;
+                document.querySelectorAll('.sortable-item').forEach(item => item.classList.remove('drag-over'));
+            });
+            list.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                const targetItem = e.target.closest('.sortable-item');
+                if (!targetItem || targetItem === draggedItem) return;
+                targetItem.classList.add('drag-over');
+            });
+            list.addEventListener('dragleave', function(e) {
+                const targetItem = e.target.closest('.sortable-item');
+                if (targetItem) targetItem.classList.remove('drag-over');
+            });
+            list.addEventListener('drop', function(e) {
+                e.preventDefault();
+                const targetItem = e.target.closest('.sortable-item');
+                if (!targetItem || !draggedItem || targetItem === draggedItem) return;
+                targetItem.classList.remove('drag-over');
+                const children = Array.from(list.children);
+                const draggedIndex = children.indexOf(draggedItem);
+                const targetIndex = children.indexOf(targetItem);
+                if (draggedIndex < targetIndex) {
+                    list.insertBefore(draggedItem, targetItem.nextSibling);
+                } else {
+                    list.insertBefore(draggedItem, targetItem);
+                }
+            });
+        }
+        initDragDrop(sortableList);
+        document.getElementById('check-chrono-order').addEventListener('click', () => {
+            const items = Array.from(sortableList.querySelectorAll('.sortable-item'));
+            const currentOrder = items.map(item => parseInt(item.getAttribute('data-order')));
+            const isCorrect = currentOrder.every((val, idx) => val === idx + 1);
+            const feedback = document.getElementById('chrono-feedback');
+            feedback.textContent = isCorrect ? '✅ Верно!' : '❌ Порядок нарушен.';
+            feedback.className = isCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Соотнесение
+        document.getElementById('check-match').addEventListener('click', () => {
+            const answers = { 1: 'buffer', 2: 'line', 3: 'divide' };
+            let allCorrect = true;
+            document.querySelectorAll('.match-select').forEach(select => {
+                const id = select.getAttribute('data-id');
+                if (select.value !== answers[id]) allCorrect = false;
+            });
+            const feedback = document.getElementById('match-feedback');
+            feedback.textContent = allCorrect ? '✅ Верно!' : '❌ Есть ошибки.';
+            feedback.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Пропуски цифр
+        document.getElementById('check-gaps').addEventListener('click', () => {
+            const g1 = document.getElementById('gap1').value.trim();
+            const g2 = document.getElementById('gap2').value.trim();
+            const g3 = document.getElementById('gap3').value.trim();
+            const ok1 = g1 === '113';
+            const ok2 = g2 === '4';
+            const ok3 = g3 === '1,5' || g3 === '1.5';
+            document.getElementById('gap1').style.border = ok1 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap2').style.border = ok2 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap3').style.border = ok3 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            const feedback = document.getElementById('gaps-feedback');
+            if (ok1 && ok2 && ok3) {
+                feedback.textContent = '✅ Верно! 113 тыс. км², 4 млн, 1,5 млн.';
+                feedback.className = 'correct-feedback';
+            } else {
+                feedback.textContent = '❌ Ожидались: 113, 4, 1,5.';
+                feedback.className = 'incorrect-feedback';
+            }
+        });
+    })();
+</script>
+</body>
+</html>

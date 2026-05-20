@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билет №20: Геноцид населения Беларуси в годы Великой Отечественной войны</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f4efe0;
+            color: #2e2b1a;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 15% 20%, #e4d5aa 0%, #f4efe0 70%);
+        }        .btnBackBlock{
+            position: absolute;
+            display: flex;
+            top: 40px;
+            left: 40px;
+        }
+        .backBtn{
+            text-decoration: none;
+            background: #6b4f28;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .backBtn>p{
+            transition: .3s;
+            position: relative;
+            z-index: 10;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+        .backBtn::after{    
+            transition: .5s;
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dfd0b0;
+            z-index: 1;
+        }
+        .backBtn:hover>p{
+            color: #4e3d22;
+        }
+        .backBtn:hover::after{
+            right: 0;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 250, 240, 0.93);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(130, 100, 70, 0.25);
+            padding: 2rem 2rem 3rem;
+        }
+        h1 { font-size: 2.3rem; text-align: center; color: #4a3620; margin-bottom: 0.2rem; }
+        .subtitle {
+            text-align: center; font-style: italic; color: #6b5a3e;
+            margin-bottom: 2.5rem; border-bottom: 2px dotted #b89a5e; padding-bottom: 1rem;
+        }
+        .tab-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2rem; }
+        .tab-btn {
+            background: #dfd0b0; border: none; padding: 12px 20px; border-radius: 30px;
+            font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            color: #4e3d22; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #b89a5e;
+        }
+        .tab-btn:hover { background: #cdba8b; color: #2d1f0c; }
+        .tab-btn.active {
+            background: #6b4f28; color: #fff; border-color: #4a3520;
+            box-shadow: 0 6px 12px rgba(107, 79, 40, 0.5); transform: translateY(-2px);
+        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card {
+            background: #fffef7; border: 1px solid #d9c7a0; border-radius: 20px;
+            padding: 1.5rem; margin-bottom: 1.8rem; box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .year-badge {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 12px; border-radius: 20px; display: inline-block; margin-right: 10px;
+        }
+        .timeline {
+            position: relative; margin: 2rem 0; padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+            width: 4px; background: #b89a5e; border-radius: 2px;
+        }
+        .timeline-item {
+            margin-bottom: 2rem; position: relative; padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '◆'; position: absolute; left: -6px; top: 2px;
+            font-size: 1.5rem; color: #6b4f28;
+        }
+        .tl-date {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 14px; border-radius: 20px; display: inline-block; margin-bottom: 4px;
+        }
+        .tl-desc { color: #4d3b20; font-style: italic; }
+        .cards-grid {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-top: 1.5rem;
+        }
+        .flip-card {
+            background: transparent; width: 220px; height: 150px; perspective: 1000px; cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.6s; transform-style: preserve-3d;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2); border-radius: 18px;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 18px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 15px; font-weight: 600; font-size: 1rem;
+        }
+        .flip-card-front {
+            background: #efe3cc; color: #4e3620; border: 2px solid #c8aa7a;
+        }
+        .flip-card-back {
+            background: #6b4f28; color: #fff; border: 2px solid #4a3520;
+            transform: rotateY(180deg); font-size: 0.9rem;
+        }
+        .card-actions { display: flex; gap: 10px; justify-content: center; margin-top: 1.5rem; }
+        .quiz-area { background: #faf3e4; border-radius: 20px; padding: 1.5rem; }
+        .quiz-question { font-weight: 700; margin: 1.2rem 0 0.4rem; }
+        .quiz-result { font-weight: bold; margin-top: 1rem; padding: 0.8rem; border-radius: 12px; }
+        button {
+            background: #6b4f28; color: white; border: none; padding: 10px 25px;
+            border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 1rem; transition: 0.2s;
+        }
+        button:hover { background: #8b6a3a; }
+
+        .match-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .match-table td { padding: 8px; vertical-align: middle; }
+        .match-table select {
+            width: 100%; padding: 8px; border-radius: 10px; border: 1px solid #bb9a6e;
+            background: #fffef7; font-family: inherit;
+        }
+        .match-row.correct { background-color: #d4edda; }
+        .match-row.incorrect { background-color: #f8d7da; }
+        .fill-gap {
+            background: #fffef7; border: 1px solid #bb9a6e; padding: 5px 10px;
+            border-radius: 8px; width: auto; min-width: 100px;
+        }
+        .correct-feedback { color: #2d6a2d; font-weight: bold; }
+        .incorrect-feedback { color: #a13d3d; font-weight: bold; }
+        @media (max-width: 600px) {
+            .tab-btn { padding: 8px 14px; font-size: 0.85rem; }
+            .flip-card { width: 160px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class="btnBackBlock" id="backBtn">
+        <a href="../index.html" class="backBtn" ><p>Назад</p></a>
+    </div>
+    <h1>Билет №20</h1>
+    <div class="subtitle">Геноцид населения Беларуси в годы Великой Отечественной войны</div>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="regime">Оккупационный режим</button>
+        <button class="tab-btn" data-tab="genocide">Геноцид и карательные операции</button>
+        <button class="tab-btn" data-tab="memory">Память и закон</button>
+        <button class="tab-btn" data-tab="timeline">Лента времени</button>
+        <button class="tab-btn" data-tab="cards">Хроно-карточки</button>
+        <button class="tab-btn" data-tab="quiz">Тест (20 вопросов)</button>
+        <button class="tab-btn" data-tab="practice">Практические задания</button>
+    </div>
+
+    <!-- Оккупационный режим -->
+    <div class="tab-content active" id="tab-regime">
+        <div class="card">
+            <h2>📜 «Новый порядок» и план «Ост»</h2>
+            <p>С сентября 1941 г. вся Беларусь оккупирована. Нацисты ввели <strong>«новый порядок»</strong> – систему политических, экономических и идеологических мер, основанную на расовой теории о превосходстве арийской расы.</p>
+            <p><strong>План «Ост»</strong> предусматривал: 75% белорусов, русских и украинцев подлежали физическому уничтожению, остальных 25% – превращению в рабов. Цыгане и евреи – полному истреблению. Проводилась колонизация и германизация.</p>
+        </div>
+        <div class="card">
+            <h2>💼 Экономическое ограбление и остарбайтеры</h2>
+            <p>Оккупанты грабили и уничтожали предприятия, вывозили оборудование, скот, лес. Уцелевшие заводы передавали немецким фабрикантам. Крестьяне облагались непосильными налогами.</p>
+            <p>На принудительные работы в Германию вывезено <strong>380 тыс. человек</strong>, из них 24 тыс. детей. Их называли <strong>остарбайтерами</strong> (восточными рабочими), лишив имени и национальности. Вернулось около 120 тыс.</p>
+        </div>
+    </div>
+
+    <!-- Геноцид и карательные операции -->
+    <div class="tab-content" id="tab-genocide">
+        <div class="card">
+            <h2>🕯️ Геноцид и холокост</h2>
+            <p>Политика геноцида – уничтожение групп населения по расовым, национальным, религиозным признакам. Полному уничтожению подлежали евреи, цыгане, коммунисты.</p>
+            <p>Евреев сгоняли в <strong>гетто</strong>. Всего в Беларуси >100 гетто. Крупнейшие – Минское (уничтожено около 100 тыс.), Брестское, Барановичское, Гродненское, Гомельское. Более 700 белорусов признаны Праведниками народов мира. 27 января – Международный день памяти жертв Холокоста.</p>
+        </div>
+        <div class="card">
+            <h2>🏚️ Лагеря смерти и карательные операции</h2>
+            <p>Создано <strong>более 260 лагерей смерти</strong>. Крупнейший – <strong>Тростенец</strong> (под Минском): уничтожено >200 тыс. человек (четвёртый по числу жертв после Освенцима, Майданека, Треблинки).</p>
+            <p>Проведено <strong>более 140 карательных операций</strong>. Сожжено около 5,5 тыс. населённых пунктов вместе с жителями. <span class="year-badge">22 марта 1943</span> – уничтожена деревня <strong>Хатынь</strong>: 149 погибших, из них 76 детей. Всего сожжено 628 деревень, 186 не восстановлены.</p>
+            <p>Детей использовали как доноров крови. Первый мемориал детям-жертвам – в <strong>Красном береге</strong> (Жлобинский район).</p>
+        </div>
+    </div>
+
+    <!-- Память и закон -->
+    <div class="tab-content" id="tab-memory">
+        <div class="card">
+            <h2>📅 Современное признание</h2>
+            <p><span class="year-badge">2022</span> – принят Закон Республики Беларусь «О геноциде белорусского народа». Юридически признан геноцид, совершённый нацистскими преступниками и их пособниками.</p>
+            <p>Указом Президента день <strong>22 июня</strong> объявлен Днём всенародной памяти жертв Великой Отечественной войны и геноцида белорусского народа.</p>
+            <p>Общие потери: погибло более <strong>2 млн 200 тыс. человек</strong> – каждый третий житель Беларуси.</p>
+        </div>
+    </div>
+
+    <!-- Лента времени -->
+    <div class="tab-content" id="tab-timeline">
+        <h2 style="text-align:center; margin-bottom:1.5rem;">🕰️ Хронология геноцида</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="tl-date">сентябрь 1941</div><div class="tl-desc">Полная оккупация Беларуси. Начало «нового порядка».</div></div>
+            <div class="timeline-item"><div class="tl-date">1941–1944</div><div class="tl-desc">Создание гетто, лагерей смерти. Массовые расстрелы.</div></div>
+            <div class="timeline-item"><div class="tl-date">22 марта 1943</div><div class="tl-desc">Сожжение Хатыни. Уничтожены 149 человек.</div></div>
+            <div class="timeline-item"><div class="tl-date">27 января</div><div class="tl-desc">Международный день памяти жертв Холокоста (освобождение Освенцима).</div></div>
+            <div class="timeline-item"><div class="tl-date">2022</div><div class="tl-desc">Закон «О геноциде белорусского народа». День памяти 22 июня.</div></div>
+        </div>
+    </div>
+
+    <!-- Хроно-карточки -->
+    <div class="tab-content" id="tab-cards">
+        <h2 style="text-align:center; margin-bottom:0.5rem;">📅 Хронологические карточки</h2>
+        <p style="text-align:center; color:#5e4a2e;">Нажмите на карточку, чтобы увидеть обратную сторону.</p>
+        <div class="cards-grid" id="chrono-cards-container"></div>
+        <div class="card-actions">
+            <button id="flip-all">🔄 Перевернуть все</button>
+            <button id="reset-cards">↩️ Сбросить</button>
+        </div>
+    </div>
+
+    <!-- Тест -->
+    <div class="tab-content" id="tab-quiz">
+        <div class="quiz-area">
+            <h2>📝 Тест по билету №20</h2>
+            <div id="quiz-container"></div>
+            <button id="check-quiz">Проверить ответы</button>
+            <div id="quiz-result" class="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Практические задания -->
+    <div class="tab-content" id="tab-practice">
+        <div class="card">
+            <h2>🧩 Задание 1. Соотнесите термин/событие с его содержанием</h2>
+            <table class="match-table" id="match-terms">
+                <tr><th>Термин / событие</th><th>Содержание</th></tr>
+                <tr data-correct="ost"><td>План «Ост»</td><td>
+                    <select class="term-select">
+                        <option value="">-- выберите --</option>
+                        <option value="ost">Физическое уничтожение 75% белорусов, остальных – в рабов</option>
+                        <option value="genocide">Уничтожение групп населения по расовым, национальным, религиозным признакам</option>
+                        <option value="trost">Крупнейший лагерь смерти в Беларуси (более 200 тыс. жертв)</option>
+                        <option value="hatyn">Деревня, сожжённая 22 марта 1943 г. (149 погибших)</option>
+                        <option value="ghetto">Специальный квартал для уничтожения еврейского населения</option>
+                    </select></td></tr>
+                <tr data-correct="genocide"><td>Геноцид</td><td>
+                    <select class="term-select">
+                        <option value="">-- выберите --</option>
+                        <option value="ost">Физическое уничтожение 75% белорусов, остальных – в рабов</option>
+                        <option value="genocide">Уничтожение групп населения по расовым, национальным, религиозным признакам</option>
+                        <option value="trost">Крупнейший лагерь смерти в Беларуси (более 200 тыс. жертв)</option>
+                        <option value="hatyn">Деревня, сожжённая 22 марта 1943 г. (149 погибших)</option>
+                        <option value="ghetto">Специальный квартал для уничтожения еврейского населения</option>
+                    </select></td></tr>
+                <tr data-correct="trost"><td>Тростенец</td><td>
+                    <select class="term-select">
+                        <option value="">-- выберите --</option>
+                        <option value="ost">Физическое уничтожение 75% белорусов, остальных – в рабов</option>
+                        <option value="genocide">Уничтожение групп населения по расовым, национальным, религиозным признакам</option>
+                        <option value="trost">Крупнейший лагерь смерти в Беларуси (более 200 тыс. жертв)</option>
+                        <option value="hatyn">Деревня, сожжённая 22 марта 1943 г. (149 погибших)</option>
+                        <option value="ghetto">Специальный квартал для уничтожения еврейского населения</option>
+                    </select></td></tr>
+                <tr data-correct="hatyn"><td>Хатынь</td><td>
+                    <select class="term-select">
+                        <option value="">-- выберите --</option>
+                        <option value="ost">Физическое уничтожение 75% белорусов, остальных – в рабов</option>
+                        <option value="genocide">Уничтожение групп населения по расовым, национальным, религиозным признакам</option>
+                        <option value="trost">Крупнейший лагерь смерти в Беларуси (более 200 тыс. жертв)</option>
+                        <option value="hatyn">Деревня, сожжённая 22 марта 1943 г. (149 погибших)</option>
+                        <option value="ghetto">Специальный квартал для уничтожения еврейского населения</option>
+                    </select></td></tr>
+                <tr data-correct="ghetto"><td>Гетто</td><td>
+                    <select class="term-select">
+                        <option value="">-- выберите --</option>
+                        <option value="ost">Физическое уничтожение 75% белорусов, остальных – в рабов</option>
+                        <option value="genocide">Уничтожение групп населения по расовым, национальным, религиозным признакам</option>
+                        <option value="trost">Крупнейший лагерь смерти в Беларуси (более 200 тыс. жертв)</option>
+                        <option value="hatyn">Деревня, сожжённая 22 марта 1943 г. (149 погибших)</option>
+                        <option value="ghetto">Специальный квартал для уничтожения еврейского населения</option>
+                    </select></td></tr>
+            </table>
+            <button id="check-term-match">Проверить</button>
+            <span id="term-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>🔢 Задание 2. Заполните пропуски в цифрах и фактах</h2>
+            <p>На принудительные работы в Германию вывезено 
+                <input type="text" class="fill-gap" id="gap1" placeholder="?"> тыс. человек. 
+                В лагере смерти Тростенец уничтожено более 
+                <input type="text" class="fill-gap" id="gap2" placeholder="?"> тыс. человек. 
+                Всего в Беларуси погибло более 2 млн 
+                <input type="text" class="fill-gap" id="gap3" placeholder="?"> тыс. человек – каждый третий житель.
+            </p>
+            <button id="check-gaps">Проверить цифры</button>
+            <span id="gaps-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Переключение вкладок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(`tab-${target}`).classList.add('active');
+            });
+        });
+
+        // Хронологические карточки
+        const chronoData = [
+            { date: "сентябрь 1941", desc: "Полная оккупация. Введение «нового порядка»." },
+            { date: "1941–1944", desc: "Создание гетто и лагерей смерти." },
+            { date: "22 марта 1943", desc: "Сожжение Хатыни (149 человек, 76 детей)." },
+            { date: "1941–1944", desc: "Более 140 карательных операций, 5,5 тыс. сожжённых деревень." },
+            { date: "27 января", desc: "Международный день памяти жертв Холокоста." },
+            { date: "2022", desc: "Закон «О геноциде белорусского народа». 22 июня – День памяти." }
+        ];
+        const cardsContainer = document.getElementById('chrono-cards-container');
+        function buildCards() {
+            cardsContainer.innerHTML = '';
+            chronoData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'flip-card';
+                card.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">${item.date}</div>
+                        <div class="flip-card-back">${item.desc}</div>
+                    </div>
+                `;
+                card.addEventListener('click', () => card.classList.toggle('flipped'));
+                cardsContainer.appendChild(card);
+            });
+        }
+        buildCards();
+        document.getElementById('flip-all').addEventListener('click', () => {
+            const cards = document.querySelectorAll('.flip-card');
+            const allFlipped = Array.from(cards).every(c => c.classList.contains('flipped'));
+            cards.forEach(c => c.classList.toggle('flipped', !allFlipped));
+        });
+        document.getElementById('reset-cards').addEventListener('click', () => {
+            document.querySelectorAll('.flip-card').forEach(c => c.classList.remove('flipped'));
+        });
+
+        // Тест (20 вопросов)
+        const quizData = [
+            { q: "Что подразумевал план «Ост» для белорусов?", options: ["Переселение в Сибирь", "75% – физическое уничтожение, 25% – в рабов", "Создание автономии", "Принудительное крещение"], correct: 1 },
+            { q: "Сколько людей было вывезено из Беларуси на работы в Германию?", options: ["150 тыс.", "380 тыс.", "500 тыс.", "120 тыс."], correct: 1 },
+            { q: "Как называли людей, вывезенных на работы в Германию?", options: ["Холопы", "Остарбайтеры", "Гастарбайтеры", "Унтерменши"], correct: 1 },
+            { q: "Какова судьба цыган и евреев по плану оккупантов?", options: ["Ассимиляция", "Выселение", "Полное уничтожение", "Заключение в лагеря без уничтожения"], correct: 2 },
+            { q: "Какое количество лагерей смерти было создано в Беларуси?", options: ["Около 50", "Более 260", "100", "Более 1000"], correct: 1 },
+            { q: "Сколько человек уничтожено в лагере Тростенец?", options: ["100 тыс.", "Более 200 тыс.", "500 тыс.", "1 млн"], correct: 1 },
+            { q: "Когда была сожжена деревня Хатынь?", options: ["22 марта 1943", "23 февраля 1942", "9 мая 1944", "22 июня 1941"], correct: 0 },
+            { q: "Сколько человек погибло в Хатыни?", options: ["75", "149", "200", "300"], correct: 1 },
+            { q: "Какой мемориал посвящён детям-жертвам в Беларуси?", options: ["Хатынь", "Красный берег", "Тростенец", "Яма"], correct: 1 },
+            { q: "Что означает понятие \"гетто\"?", options: ["Тюрьма строгого режима", "Специальный квартал для уничтожения евреев", "Лагерь военнопленных", "Рабочий посёлок"], correct: 1 },
+            { q: "Какой знак должны были носить евреи в гетто?", options: ["Красный крест", "Жёлтые знаки (звёзды)", "Белые повязки", "Чёрные ленты"], correct: 1 },
+            { q: "Сколько евреев уничтожено в Минском гетто?", options: ["20 тыс.", "Около 100 тыс.", "500 тыс.", "1 млн"], correct: 1 },
+            { q: "Какая дата объявлена Международным днём памяти жертв Холокоста?", options: ["22 марта", "22 июня", "27 января", "9 мая"], correct: 2 },
+            { q: "Сколько карательных операций провели оккупанты в Беларуси?", options: ["Менее 50", "Около 100", "Более 140", "200"], correct: 2 },
+            { q: "Какое количество деревень сожжено вместе с жителями?", options: ["628", "5,5 тыс.", "186", "Более 140"], correct: 0 },
+            { q: "Какое понятие определяет уничтожение людей по расовому признаку?", options: ["Депортация", "Геноцид", "Репрессии", "Колонизация"], correct: 1 },
+            { q: "Сколько белорусов признано Праведниками народов мира?", options: ["Более 100", "Более 700", "Менее 50", "Около 2000"], correct: 1 },
+            { q: "Какой закон принят в Беларуси в 2022 году?", options: ["О ветеранах", "О геноциде белорусского народа", "О реабилитации жертв", "О статусе города-героя"], correct: 1 },
+            { q: "Какой день объявлен Днём всенародной памяти жертв ВОВ и геноцида?", options: ["9 мая", "22 июня", "27 января", "3 июля"], correct: 1 },
+            { q: "Сколько процентов белорусского населения погибло в годы войны?", options: ["Менее 10%", "Каждый третий (~33%)", "Половина", "Около 75%"], correct: 1 }
+        ];
+        const quizContainer = document.getElementById('quiz-container');
+        function buildQuiz() {
+            let html = '';
+            quizData.forEach((item, idx) => {
+                html += `<p class="quiz-question">${idx+1}. ${item.q}</p>`;
+                item.options.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label>`;
+                });
+            });
+            quizContainer.innerHTML = html;
+        }
+        buildQuiz();
+        document.getElementById('check-quiz').addEventListener('click', () => {
+            let score = 0;
+            quizData.forEach((item, idx) => {
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === item.correct) score++;
+            });
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.textContent = `Ваш результат: ${score} из ${quizData.length}.`;
+            resultDiv.style.background = score >= 15 ? '#d4edda' : '#f8d7da';
+        });
+
+        // Задание 1: Соотнесение терминов
+        const termTable = document.getElementById('match-terms');
+        document.getElementById('check-term-match').addEventListener('click', () => {
+            const rows = termTable.querySelectorAll('tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.term-select');
+                row.classList.remove('correct', 'incorrect');
+                if (select.value === correct) {
+                    row.classList.add('correct');
+                } else {
+                    row.classList.add('incorrect');
+                    allCorrect = false;
+                }
+            });
+            const feedback = document.getElementById('term-feedback');
+            feedback.textContent = allCorrect ? '✅ Все пары определены верно!' : '❌ Есть ошибки. Правильные строки подсвечены зелёным.';
+            feedback.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Задание 2: Пропуски цифр
+        document.getElementById('check-gaps').addEventListener('click', () => {
+            const g1 = document.getElementById('gap1').value.trim();
+            const g2 = document.getElementById('gap2').value.trim();
+            const g3 = document.getElementById('gap3').value.trim();
+            const ok1 = g1 === '380';
+            const ok2 = g2 === '200';
+            const ok3 = g3 === '200';
+            document.getElementById('gap1').style.border = ok1 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap2').style.border = ok2 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap3').style.border = ok3 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            const feedback = document.getElementById('gaps-feedback');
+            if (ok1 && ok2 && ok3) {
+                feedback.textContent = '✅ Верно! 380 тыс., 200 тыс., 200 тыс.';
+                feedback.className = 'correct-feedback';
+            } else {
+                feedback.textContent = '❌ Проверьте цифры: 380, 200, 200.';
+                feedback.className = 'incorrect-feedback';
+            }
+        });
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билет №17: Индустриализация и коллективизация в БССР</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f4efe0;
+            color: #2e2b1a;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 15% 20%, #e4d5aa 0%, #f4efe0 70%);
+        }        .btnBackBlock{
+            position: absolute;
+            display: flex;
+            top: 40px;
+            left: 40px;
+        }
+        .backBtn{
+            text-decoration: none;
+            background: #6b4f28;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .backBtn>p{
+            transition: .3s;
+            position: relative;
+            z-index: 10;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+        .backBtn::after{    
+            transition: .5s;
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dfd0b0;
+            z-index: 1;
+        }
+        .backBtn:hover>p{
+            color: #4e3d22;
+        }
+        .backBtn:hover::after{
+            right: 0;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 250, 240, 0.93);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(130, 100, 70, 0.25);
+            padding: 2rem 2rem 3rem;
+        }
+        h1 { font-size: 2.3rem; text-align: center; color: #4a3620; margin-bottom: 0.2rem; letter-spacing: 1px; }
+        .subtitle {
+            text-align: center; font-style: italic; color: #6b5a3e;
+            margin-bottom: 2.5rem; border-bottom: 2px dotted #b89a5e; padding-bottom: 1rem;
+        }
+        .tab-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2rem; }
+        .tab-btn {
+            background: #dfd0b0; border: none; padding: 12px 20px; border-radius: 30px;
+            font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            color: #4e3d22; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #b89a5e;
+            letter-spacing: 0.5px;
+        }
+        .tab-btn:hover { background: #cdba8b; color: #2d1f0c; }
+        .tab-btn.active {
+            background: #6b4f28; color: #fff; border-color: #4a3520;
+            box-shadow: 0 6px 12px rgba(107, 79, 40, 0.5); transform: translateY(-2px);
+        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card {
+            background: #fffef7; border: 1px solid #d9c7a0; border-radius: 20px;
+            padding: 1.5rem; margin-bottom: 1.8rem; box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .year-badge {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 12px; border-radius: 20px; display: inline-block; margin-right: 10px;
+        }
+        .timeline {
+            position: relative; margin: 2rem 0; padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+            width: 4px; background: #b89a5e; border-radius: 2px;
+        }
+        .timeline-item {
+            margin-bottom: 2rem; position: relative; padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '◆'; position: absolute; left: -6px; top: 2px;
+            font-size: 1.5rem; color: #6b4f28; line-height: 1;
+        }
+        .tl-date {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 14px; border-radius: 20px; display: inline-block; margin-bottom: 4px;
+        }
+        .tl-desc { color: #4d3b20; font-style: italic; }
+        .cards-grid {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-top: 1.5rem;
+        }
+        .flip-card {
+            background: transparent; width: 220px; height: 150px; perspective: 1000px; cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.6s; transform-style: preserve-3d;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2); border-radius: 18px;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 18px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 15px; font-weight: 600; font-size: 1rem;
+        }
+        .flip-card-front {
+            background: #efe3cc; color: #4e3620; border: 2px solid #c8aa7a;
+        }
+        .flip-card-back {
+            background: #6b4f28; color: #fff; border: 2px solid #4a3520;
+            transform: rotateY(180deg); font-size: 0.9rem;
+        }
+        .card-actions { display: flex; gap: 10px; justify-content: center; margin-top: 1.5rem; }
+        .quiz-area { background: #faf3e4; border-radius: 20px; padding: 1.5rem; }
+        .quiz-question { font-weight: 700; margin: 1.2rem 0 0.4rem; }
+        .quiz-result { font-weight: bold; margin-top: 1rem; padding: 0.8rem; border-radius: 12px; }
+        button {
+            background: #6b4f28; color: white; border: none; padding: 10px 25px;
+            border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 1rem; transition: 0.2s;
+        }
+        button:hover { background: #8b6a3a; }
+        .sortable-list { list-style: none; padding: 0; margin: 1rem 0; max-width: 500px; }
+        .sortable-item {
+            background: #fffef7; border: 1px solid #c9a87c; border-radius: 12px;
+            padding: 10px 15px; margin-bottom: 8px; cursor: grab; display: flex;
+            align-items: center; transition: 0.2s; user-select: none;
+        }
+        .sortable-item:active { cursor: grabbing; opacity: 0.8; }
+        .drag-handle { margin-right: 10px; font-size: 1.3rem; color: #6b4f28; }
+        .match-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .match-table td { padding: 8px; vertical-align: middle; }
+        .match-table select {
+            width: 100%; padding: 8px; border-radius: 10px; border: 1px solid #bb9a6e;
+            background: #fffef7; font-family: inherit;
+        }
+        .fill-gap {
+            background: #fffef7; border: 1px solid #bb9a6e; padding: 5px 10px;
+            border-radius: 8px; width: auto; min-width: 100px;
+        }
+        .correct-feedback { color: #2d6a2d; font-weight: bold; }
+        .incorrect-feedback { color: #a13d3d; font-weight: bold; }
+        @media (max-width: 600px) {
+            .tab-btn { padding: 8px 14px; font-size: 0.85rem; }
+            .flip-card { width: 160px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class="btnBackBlock" id="backBtn">
+        <a href="../index.html" class="backBtn" ><p>Назад</p></a>
+    </div>
+    <h1>Билет №17</h1>
+    <div class="subtitle">Индустриализация и коллективизация в БССР (конец 1920-х – 1930-е гг.)</div>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="industrial">Индустриализация</button>
+        <button class="tab-btn" data-tab="collectiv">Коллективизация</button>
+        <button class="tab-btn" data-tab="timeline">Лента времени</button>
+        <button class="tab-btn" data-tab="cards">Хроно-карточки</button>
+        <button class="tab-btn" data-tab="quiz">Тест (20 вопросов)</button>
+        <button class="tab-btn" data-tab="practice">Практические задания</button>
+    </div>
+
+    <!-- Индустриализация -->
+    <div class="tab-content active" id="tab-industrial">
+        <div class="card">
+            <h2>📈 Сущность и причины</h2>
+            <p><strong>Индустриализация</strong> – процесс создания крупного машинного производства во всех отраслях народного хозяйства. Курс принят на <strong>XIV съезде ВКП(б)</strong> в декабре <span class="year-badge">1925</span>.</p>
+            <p>Цели: создание материально-технической базы социализма, технико-экономическая независимость, укрепление обороны, повышение благосостояния.</p>
+        </div>
+        <div class="card">
+            <h2>📊 Особенности в БССР</h2>
+            <ul>
+                <li>Приоритет лёгкой, пищевой, деревообрабатывающей промышленности.</li>
+                <li>Приграничное положение, недостаток разведанных ресурсов и кадров мешал тяжёлой индустрии.</li>
+                <li>Недостаток собственных средств – помощь из союзного бюджета.</li>
+                <li>Результат: БССР превратилась из аграрной в <strong>индустриально-аграрную</strong> республику.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h2>🏭 Пятилетки и новостройки</h2>
+            <p><strong>Первая пятилетка (1928–1932):</strong> фабрика искусственного волокна в Могилёве, КИМ и «Знамя индустриализации» в Витебске, Гомсельмаш и деревообрабатывающий в Гомеле и Бобруйске.</p>
+            <p><strong>Вторая пятилетка (1933–1937):</strong> цементный в Кричеве, авторемонтный в Могилёве, льнокомбинат в Орше.</p>
+            <p><strong>Третья (1938–1941):</strong> радиозавод в Минске, «Коммунарка», «Спартак», макаронная в Борисове.</p>
+        </div>
+        <div class="card">
+            <h2>⚡ Новаторство и итоги</h2>
+            <p><strong>Стахановское движение</strong> (с 1935 г.) – массовое перевыполнение норм. Девиз: «Кадры, овладевшие техникой, решают всё». Учреждён орден «Знак почёта», позже – звание Героя Социалистического Труда.</p>
+            <p>Итоги: ликвидирована безработица, отменены карточки, созданы новые отрасли, БССР стала одной из индустриальных республик СССР.</p>
+        </div>
+    </div>
+
+    <!-- Коллективизация -->
+    <div class="tab-content" id="tab-collectiv">
+        <div class="card">
+            <h2>🌾 Причины и задачи</h2>
+            <p><strong>Коллективизация</strong> – объединение крестьянских хозяйств в колхозы. Курс принят <strong>XV съездом ВКП(б)</strong> в <span class="year-badge">1927</span>. Причины: кризис хлебозаготовок (1928–1929), потребность в сырье и продуктах, нужны средства для индустриализации, контроль над деревней, идеологическое неприятие кулаков.</p>
+        </div>
+        <div class="card">
+            <h2>📉 Ход и методы</h2>
+            <p><span class="year-badge">1929</span> – «год великого перелома». С января 1930 г. – сплошная коллективизация, часто с принуждением. К 1 марта 1930 г. – 58% хозяйств. Из-за перегибов – массовый забой скота.</p>
+            <p>14 марта 1930 г. – постановление ЦК «О борьбе с искажениями партлинии в колхозном движении». Искусственные колхозы распадались.</p>
+            <p><strong>Раскулачивание:</strong> ликвидация кулачества как класса. К маю 1930 г. раскулачено 15 629 хозяйств, за пределы БССР выслано 40 тыс. человек.</p>
+        </div>
+        <div class="card">
+            <h2>⚙️ Организация и итоги</h2>
+            <p>Первая МТС – в <span class="year-badge">1930</span> в Койданово (Дзержинск). Труд – по трудодням, минимум 80. В 1932–1933 гг. введён паспортный режим, колхозники паспортов не получали (фактически прикрепление к месту).</p>
+            <p>Итоги: к <span class="year-badge">1939</span> более 90% хозяйств в колхозах. Создана материально-техническая база, высвобождены рабочие руки для индустрии. Но крестьяне пострадали от перегибов, раскулачивания и насильственной ломки уклада.</p>
+        </div>
+    </div>
+
+    <!-- Лента времени -->
+    <div class="tab-content" id="tab-timeline">
+        <h2 style="text-align:center; margin-bottom:1.5rem;">🕰️ Ключевые даты</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="tl-date">Декабрь 1925</div><div class="tl-desc">XIV съезд ВКП(б) – курс на индустриализацию.</div></div>
+            <div class="timeline-item"><div class="tl-date">1927</div><div class="tl-desc">XV съезд ВКП(б) – курс на коллективизацию.</div></div>
+            <div class="timeline-item"><div class="tl-date">1928–1932</div><div class="tl-desc">Первая пятилетка.</div></div>
+            <div class="timeline-item"><div class="tl-date">1929</div><div class="tl-desc">«Год великого перелома». Начало сплошной коллективизации.</div></div>
+            <div class="timeline-item"><div class="tl-date">1930</div><div class="tl-desc">Первая МТС в Койданово. Постановление против искажений.</div></div>
+            <div class="timeline-item"><div class="tl-date">1933–1937</div><div class="tl-desc">Вторая пятилетка.</div></div>
+            <div class="timeline-item"><div class="tl-date">1938–1941</div><div class="tl-desc">Третья пятилетка.</div></div>
+            <div class="timeline-item"><div class="tl-date">1939</div><div class="tl-desc">Завершение коллективизации (более 90% хозяйств в колхозах).</div></div>
+        </div>
+    </div>
+
+    <!-- Хроно-карточки -->
+    <div class="tab-content" id="tab-cards">
+        <h2 style="text-align:center; margin-bottom:0.5rem;">📅 Хронологические карточки</h2>
+        <p style="text-align:center; color:#5e4a2e;">Нажмите, чтобы увидеть подробности.</p>
+        <div class="cards-grid" id="chrono-cards-container"></div>
+        <div class="card-actions">
+            <button id="flip-all">🔄 Перевернуть все</button>
+            <button id="reset-cards">↩️ Сбросить</button>
+        </div>
+    </div>
+
+    <!-- Тест -->
+    <div class="tab-content" id="tab-quiz">
+        <div class="quiz-area">
+            <h2>📝 Тест по билету №17</h2>
+            <div id="quiz-container"></div>
+            <button id="check-quiz">Проверить ответы</button>
+            <div id="quiz-result" class="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Практические задания -->
+    <div class="tab-content" id="tab-practice">
+        <div class="card">
+            <h2>🧩 Задание 1. Расставьте события в хронологическом порядке</h2>
+            <ul class="sortable-list" id="sortable-chrono">
+                <li class="sortable-item" data-order="1"><span class="drag-handle">☰</span> Курс на индустриализацию (XIV съезд, 1925)</li>
+                <li class="sortable-item" data-order="2"><span class="drag-handle">☰</span> Курс на коллективизацию (XV съезд, 1927)</li>
+                <li class="sortable-item" data-order="3"><span class="drag-handle">☰</span> «Год великого перелома» (1929)</li>
+                <li class="sortable-item" data-order="4"><span class="drag-handle">☰</span> Первая МТС в БССР (1930)</li>
+                <li class="sortable-item" data-order="5"><span class="drag-handle">☰</span> Завершение коллективизации (1939)</li>
+            </ul>
+            <button id="check-chrono-order">Проверить порядок</button>
+            <span id="chrono-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>🔗 Задание 2. Соотнесите пятилетку и построенное предприятие</h2>
+            <table class="match-table">
+                <tr><th>Пятилетка</th><th>Предприятие</th></tr>
+                <tr><td>Первая (1928–1932)</td><td><select class="match-select" data-id="1"><option value="">--</option><option value="silk">Могилёв – фабрика искусственного волокна</option><option value="cement">Кричев – цементный завод</option><option value="radio">Минск – радиозавод</option></select></td></tr>
+                <tr><td>Вторая (1933–1937)</td><td><select class="match-select" data-id="2"><option value="">--</option><option value="silk">Могилёв – фабрика искусственного волокна</option><option value="cement">Кричев – цементный завод</option><option value="radio">Минск – радиозавод</option></select></td></tr>
+                <tr><td>Третья (1938–1941)</td><td><select class="match-select" data-id="3"><option value="">--</option><option value="silk">Могилёв – фабрика искусственного волокна</option><option value="cement">Кричев – цементный завод</option><option value="radio">Минск – радиозавод</option></select></td></tr>
+            </table>
+            <button id="check-match">Проверить соответствия</button>
+            <span id="match-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>✍️ Задание 3. Вставьте пропущенные термины</h2>
+            <p>«Процесс создания крупного машинного производства назывался 
+                <input type="text" class="fill-gap" id="gap1" placeholder="?">. 
+                Объединение крестьянских хозяйств в колхозы – 
+                <input type="text" class="fill-gap" id="gap2" placeholder="?">. 
+                Политика против зажиточных крестьян – 
+                <input type="text" class="fill-gap" id="gap3" placeholder="?">».
+            </p>
+            <button id="check-gaps">Проверить</button>
+            <span id="gaps-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Переключение вкладок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(`tab-${target}`).classList.add('active');
+            });
+        });
+
+        // Хронологические карточки
+        const chronoData = [
+            { date: "1925", desc: "XIV съезд – курс на индустриализацию." },
+            { date: "1927", desc: "XV съезд – курс на коллективизацию." },
+            { date: "1928", desc: "Начало первой пятилетки." },
+            { date: "1929", desc: "«Год великого перелома»." },
+            { date: "1930", desc: "Первая МТС в Койданово. Борьба с перегибами." },
+            { date: "1935", desc: "Стахановское движение." },
+            { date: "1939", desc: "Завершение коллективизации (свыше 90% хозяйств)." }
+        ];
+        const cardsContainer = document.getElementById('chrono-cards-container');
+        function buildCards() {
+            cardsContainer.innerHTML = '';
+            chronoData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'flip-card';
+                card.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">${item.date}</div>
+                        <div class="flip-card-back">${item.desc}</div>
+                    </div>
+                `;
+                card.addEventListener('click', () => card.classList.toggle('flipped'));
+                cardsContainer.appendChild(card);
+            });
+        }
+        buildCards();
+        document.getElementById('flip-all').addEventListener('click', () => {
+            const cards = document.querySelectorAll('.flip-card');
+            const allFlipped = Array.from(cards).every(c => c.classList.contains('flipped'));
+            cards.forEach(c => c.classList.toggle('flipped', !allFlipped));
+        });
+        document.getElementById('reset-cards').addEventListener('click', () => {
+            document.querySelectorAll('.flip-card').forEach(c => c.classList.remove('flipped'));
+        });
+
+        // Тест (20 вопросов)
+        const quizData = [
+            { q: "Что такое индустриализация?", options: ["Объединение крестьянских хозяйств", "Создание крупного машинного производства", "Развитие искусства", "Ликвидация неграмотности"], correct: 1 },
+            { q: "Какой съезд провозгласил курс на индустриализацию?", options: ["X съезд", "XIV съезд", "XV съезд", "XX съезд"], correct: 1 },
+            { q: "В каком году принят курс на коллективизацию?", options: ["1925", "1927", "1929", "1930"], correct: 1 },
+            { q: "Какая первая пятилетка по счёту проводилась в 1928–1932 гг.?", options: ["Первая", "Вторая", "Третья", "Четвёртая"], correct: 0 },
+            { q: "Какое предприятие открыто в Могилёве в первую пятилетку?", options: ["Радиозавод", "Фабрика искусственного волокна", "Цементный завод", "Льнокомбинат"], correct: 1 },
+            { q: "В каком городе построен льнокомбинат во вторую пятилетку?", options: ["Орша", "Борисов", "Гомель", "Минск"], correct: 0 },
+            { q: "Что такое стахановское движение?", options: ["Сопротивление коллективизации", "Перевыполнение производственных норм", "Создание колхозов", "Строительство МТС"], correct: 1 },
+            { q: "Какой лозунг стал актуальным в связи с техническим обучением кадров?", options: ["«Пятилетку – в четыре года»", "«Кадры, овладевшие техникой, решают всё»", "«Земля – крестьянам»", "«Долой неграмотность»"], correct: 1 },
+            { q: "Какое звание учреждено для новаторов производства?", options: ["Герой Советского Союза", "Герой Социалистического Труда", "Заслуженный артист", "Почётный гражданин"], correct: 1 },
+            { q: "Главная причина хлебозаготовительного кризиса 1928–1929 гг.?", options: ["Неурожай", "Нежелание зажиточных крестьян продавать хлеб по низким ценам", "Эпидемия", "Война"], correct: 1 },
+            { q: "Какой год назван «годом великого перелома»?", options: ["1925", "1927", "1929", "1930"], correct: 2 },
+            { q: "Какая организация стала основной формой колхозного строительства?", options: ["Коммуна", "Артель", "ТОЗ", "Совхоз"], correct: 1 },
+            { q: "Что подлежало обязательному обобществлению при создании колхозов?", options: ["Жилые дома", "Лошади как тягловая сила", "Коровы", "Домашняя птица"], correct: 1 },
+            { q: "К чему привело форсирование темпов коллективизации в начале 1930 г.?", options: ["К росту поголовья скота", "К массовому забою скота и потере скота", "К улучшению жизни", "К ликвидации безработицы"], correct: 1 },
+            { q: "Когда появилось постановление «О борьбе с искажениями партлинии в колхозном движении»?", options: ["5 января 1930", "14 марта 1930", "1 августа 1930", "7 ноября 1930"], correct: 1 },
+            { q: "Что такое трудодень?", options: ["Единица учёта труда в колхозе", "Название газеты", "Денежная единица", "Налог"], correct: 0 },
+            { q: "Почему колхозники не получали паспорта в 1932–1933 гг.?", options: ["Паспорта не были нужны", "Чтобы закрепить их за колхозом и ограничить передвижение", "Из-за нехватки бумаги", "Всем выдавали паспорта"], correct: 1 },
+            { q: "Первая МТС в БССР создана в:", options: ["Койданово (Дзержинск)", "Минске", "Барановичах", "Могилёве"], correct: 0 },
+            { q: "Сколько процентов крестьянских хозяйств было объединено в колхозы к 1939 г.?", options: ["~50%", "~70%", ">90%", "100%"], correct: 2 },
+            { q: "Каков был итог индустриализации для БССР?", options: ["Осталась аграрной", "Превратилась в индустриально-аграрную республику", "Стала исключительно промышленной", "Закрылись все заводы"], correct: 1 }
+        ];
+        const quizContainer = document.getElementById('quiz-container');
+        function buildQuiz() {
+            let html = '';
+            quizData.forEach((item, idx) => {
+                html += `<p class="quiz-question">${idx+1}. ${item.q}</p>`;
+                item.options.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label>`;
+                });
+            });
+            quizContainer.innerHTML = html;
+        }
+        buildQuiz();
+        document.getElementById('check-quiz').addEventListener('click', () => {
+            let score = 0;
+            quizData.forEach((item, idx) => {
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === item.correct) score++;
+            });
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.textContent = `Ваш результат: ${score} из ${quizData.length}.`;
+            resultDiv.style.background = score >= 15 ? '#d4edda' : '#f8d7da';
+        });
+
+        // Drag-and-drop хронология
+        const sortableList = document.getElementById('sortable-chrono');
+        let draggedItem = null;
+        function initDragDrop(list) {
+            list.addEventListener('dragstart', function(e) {
+                draggedItem = e.target.closest('.sortable-item');
+                if (!draggedItem) return;
+                e.dataTransfer.effectAllowed = 'move';
+                draggedItem.style.opacity = '0.5';
+            });
+            list.addEventListener('dragend', function(e) {
+                if (draggedItem) draggedItem.style.opacity = '1';
+                draggedItem = null;
+                document.querySelectorAll('.sortable-item').forEach(item => item.classList.remove('drag-over'));
+            });
+            list.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                const targetItem = e.target.closest('.sortable-item');
+                if (!targetItem || targetItem === draggedItem) return;
+                targetItem.classList.add('drag-over');
+            });
+            list.addEventListener('dragleave', function(e) {
+                const targetItem = e.target.closest('.sortable-item');
+                if (targetItem) targetItem.classList.remove('drag-over');
+            });
+            list.addEventListener('drop', function(e) {
+                e.preventDefault();
+                const targetItem = e.target.closest('.sortable-item');
+                if (!targetItem || !draggedItem || targetItem === draggedItem) return;
+                targetItem.classList.remove('drag-over');
+                const children = Array.from(list.children);
+                const draggedIndex = children.indexOf(draggedItem);
+                const targetIndex = children.indexOf(targetItem);
+                if (draggedIndex < targetIndex) {
+                    list.insertBefore(draggedItem, targetItem.nextSibling);
+                } else {
+                    list.insertBefore(draggedItem, targetItem);
+                }
+            });
+        }
+        initDragDrop(sortableList);
+        document.getElementById('check-chrono-order').addEventListener('click', () => {
+            const items = Array.from(sortableList.querySelectorAll('.sortable-item'));
+            const currentOrder = items.map(item => parseInt(item.getAttribute('data-order')));
+            const isCorrect = currentOrder.every((val, idx) => val === idx + 1);
+            const feedback = document.getElementById('chrono-feedback');
+            feedback.textContent = isCorrect ? '✅ Верно!' : '❌ Порядок нарушен.';
+            feedback.className = isCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Соотнесение пятилеток и предприятий
+        document.getElementById('check-match').addEventListener('click', () => {
+            const answers = { 1: 'silk', 2: 'cement', 3: 'radio' };
+            let allCorrect = true;
+            document.querySelectorAll('.match-select').forEach(select => {
+                const id = select.getAttribute('data-id');
+                if (select.value !== answers[id]) allCorrect = false;
+            });
+            const feedback = document.getElementById('match-feedback');
+            feedback.textContent = allCorrect ? '✅ Верно!' : '❌ Есть ошибки.';
+            feedback.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Пропуски терминов
+        document.getElementById('check-gaps').addEventListener('click', () => {
+            const g1 = document.getElementById('gap1').value.trim().toLowerCase();
+            const g2 = document.getElementById('gap2').value.trim().toLowerCase();
+            const g3 = document.getElementById('gap3').value.trim().toLowerCase();
+            const ok1 = g1 === 'индустриализация' || g1 === 'індустрыялізацыя';
+            const ok2 = g2 === 'коллективизация' || g2 === 'калектывізацыя';
+            const ok3 = g3 === 'раскулачивание' || g3 === 'раскулачванне';
+            document.getElementById('gap1').style.border = ok1 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap2').style.border = ok2 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap3').style.border = ok3 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            const feedback = document.getElementById('gaps-feedback');
+            if (ok1 && ok2 && ok3) {
+                feedback.textContent = '✅ Верно! Индустриализация, коллективизация, раскулачивание.';
+                feedback.className = 'correct-feedback';
+            } else {
+                feedback.textContent = '❌ Ожидались: индустриализация, коллективизация, раскулачивание.';
+                feedback.className = 'incorrect-feedback';
+            }
+        });
+    })();
+</script>
+</body>
+</html>

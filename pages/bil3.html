@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билет №3: Христианизация белорусских земель X–XIII вв.</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+                .btnBackBlock{
+            position: absolute;
+            display: flex;
+            top: 40px;
+            left: 40px;
+        }
+        .backBtn{
+            text-decoration: none;
+            background: #6b4f28;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .backBtn>p{
+            transition: .3s;
+            position: relative;
+            z-index: 10;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+        .backBtn::after{    
+            transition: .5s;
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dfd0b0;
+            z-index: 1;
+        }
+        .backBtn:hover>p{
+            color: #4e3d22;
+        }
+        .backBtn:hover::after{
+            right: 0;
+        }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f4efe0;
+            color: #2e2b1a;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 15% 20%, #e4d5aa 0%, #f4efe0 70%);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 250, 240, 0.93);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(130, 100, 70, 0.25);
+            padding: 2rem 2rem 3rem;
+        }
+        h1 { font-size: 2.3rem; text-align: center; color: #4a3620; margin-bottom: 0.2rem; letter-spacing: 1px; }
+        .subtitle {
+            text-align: center; font-style: italic; color: #6b5a3e;
+            margin-bottom: 2.5rem; border-bottom: 2px dotted #b89a5e; padding-bottom: 1rem;
+        }
+        .tab-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2rem; }
+        .tab-btn {
+            background: #dfd0b0; border: none; padding: 12px 20px; border-radius: 30px;
+            font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            color: #4e3d22; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #b89a5e;
+            letter-spacing: 0.5px;
+        }
+        .tab-btn:hover { background: #cdba8b; color: #2d1f0c; }
+        .tab-btn.active {
+            background: #6b4f28; color: #fff; border-color: #4a3520;
+            box-shadow: 0 6px 12px rgba(107, 79, 40, 0.5); transform: translateY(-2px);
+        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card {
+            background: #fffef7; border: 1px solid #d9c7a0; border-radius: 20px;
+            padding: 1.5rem; margin-bottom: 1.8rem; box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .year-badge {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 12px; border-radius: 20px; display: inline-block; margin-right: 10px;
+        }
+        .timeline {
+            position: relative; margin: 2rem 0; padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+            width: 4px; background: #b89a5e; border-radius: 2px;
+        }
+        .timeline-item {
+            margin-bottom: 2rem; position: relative; padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '◆'; position: absolute; left: -6px; top: 2px;
+            font-size: 1.5rem; color: #6b4f28; line-height: 1;
+        }
+        .tl-date {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 14px; border-radius: 20px; display: inline-block; margin-bottom: 4px;
+        }
+        .tl-desc { color: #4d3b20; font-style: italic; }
+
+        .cards-grid {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-top: 1.5rem;
+        }
+        .flip-card {
+            background: transparent; width: 220px; height: 150px; perspective: 1000px; cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.6s; transform-style: preserve-3d;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2); border-radius: 18px;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 18px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 15px; font-weight: 600; font-size: 1rem;
+        }
+        .flip-card-front {
+            background: #efe3cc; color: #4e3620; border: 2px solid #c8aa7a;
+        }
+        .flip-card-back {
+            background: #6b4f28; color: #fff; border: 2px solid #4a3520;
+            transform: rotateY(180deg); font-size: 0.9rem;
+        }
+        .card-actions { display: flex; gap: 10px; justify-content: center; margin-top: 1.5rem; }
+        .quiz-area { background: #faf3e4; border-radius: 20px; padding: 1.5rem; }
+        .quiz-question { font-weight: 700; margin: 1.2rem 0 0.4rem; }
+        .quiz-result { font-weight: bold; margin-top: 1rem; padding: 0.8rem; border-radius: 12px; }
+        button {
+            background: #6b4f28; color: white; border: none; padding: 10px 25px;
+            border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 1rem; transition: 0.2s;
+        }
+        button:hover { background: #8b6a3a; }
+        .match-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .match-table td { padding: 8px; vertical-align: middle; }
+        .match-table select {
+            width: 100%; padding: 8px; border-radius: 10px; border: 1px solid #bb9a6e;
+            background: #fffef7; font-family: inherit;
+        }
+        .match-row.correct { background-color: #d4edda; }
+        .match-row.incorrect { background-color: #f8d7da; }
+        .fill-gap {
+            background: #fffef7; border: 1px solid #bb9a6e; padding: 5px 10px;
+            border-radius: 8px; width: auto; min-width: 100px;
+        }
+        .correct-feedback { color: #2d6a2d; font-weight: bold; }
+        .incorrect-feedback { color: #a13d3d; font-weight: bold; }
+        @media (max-width: 600px) {
+            .tab-btn { padding: 8px 14px; font-size: 0.85rem; }
+            .flip-card { width: 160px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class="btnBackBlock" id="backBtn">
+        <a href="../index.html" class="backBtn" ><p>Назад</p></a>
+    </div>
+    <h1>Билет №3</h1>
+    <div class="subtitle">Христианизация белорусских земель в X–XIII вв.</div>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="reasons">Причины и принятие</button>
+        <button class="tab-btn" data-tab="figures">Просветители</button>
+        <button class="tab-btn" data-tab="culture">Культура и письменность</button>
+        <button class="tab-btn" data-tab="timeline">Лента времени</button>
+        <button class="tab-btn" data-tab="cards">Хроно-карточки</button>
+        <button class="tab-btn" data-tab="quiz">Тест (20 вопросов)</button>
+        <button class="tab-btn" data-tab="practice">Практические задания</button>
+        <button class="tab-btn" data-tab="dictionary">📖 Словарик</button>
+        <button class="tab-btn" data-tab="answer">✍️ Приблизительный ответ</button>
+        <button class="tab-btn" data-tab="learningapp">🎮 Тренажёр</button>
+    </div>
+
+    <!-- Причины и принятие христианства -->
+    <div class="tab-content active" id="tab-reasons">
+        <div class="card">
+            <h2>🕊️ Почему язычество уступало?</h2>
+            <p>Язычество имело глубокие корни, но в X в. возникли новые потребности: развитие государства, земледелия, торговли, ремёсел. Требовались знания, письменность, связи с другими странами. Христианство поддерживало княжескую власть как данную от Бога и открывало путь к союзу с Византией.</p>
+        </div>
+        <div class="card">
+            <h2>📅 Крещение Руси (988 г.)</h2>
+            <p><span class="year-badge">988</span> – великий князь Владимир Святославич крестил киевлян. Это событие считается началом распространения христианства среди всех восточных славян.</p>
+        </div>
+        <div class="card">
+            <h2>⛪ Первые христиане и церковная организация</h2>
+            <p>В Полоцке первыми христианами, вероятно, были <strong>Рогнеда</strong> (постриглась в монахини под именем Анастасия) и её сын <strong>Изяслав</strong>, известный набожностью.</p>
+            <p>Церковная структура: митрополит в Киеве, епархии во главе с епископами.</p>
+            <ul>
+                <li><span class="year-badge">~992</span> – основана Полоцкая епархия (первый известный епископ – Мина, нач. XII в.).</li>
+                <li><span class="year-badge">1005</span> – основана Туровская епархия, первый епископ – Фома.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h2>☯️ Двоеверие</h2>
+            <p>Христианство распространялось в борьбе с язычеством. С X по XIII в. сохранялось <strong>двоеверие</strong>: приняв крещение, люди продолжали поклоняться языческим богам.</p>
+        </div>
+    </div>
+
+    <!-- Религиозные деятели-просветители -->
+    <div class="tab-content" id="tab-figures">
+        <div class="card">
+            <h2>🌟 Ефросиния Полоцкая (ок. 1101–1167)</h2>
+            <p>Дочь полоцкого князя, в 12 лет отказалась от брака, ушла в монастырь и приняла имя Ефросиния. Основала женский и мужской монастыри, организовала переписывание книг, стала <strong>первой известной женщиной-книгописцем</strong>. Открыла школу для молодых женщин.</p>
+            <p>Совершила паломничество в Иерусалим, где и умерла. Первая восточнославянская женщина, причисленная к лику святых. Её память отмечается <strong>5 июня</strong>.</p>
+        </div>
+        <div class="card">
+            <h2>📜 Кирилл Туровский (ок. 1113 – после 1190)</h2>
+            <p>Епископ Турова, жил отшельником в монастырской башне (столпе). Писал «слова» – обращения к верующим, молитвы-исповеди, повести-притчи. Его поучения основаны на христианской морали. За красноречие ещё при жизни прозван <strong>«Златоустом, который паче всех воссиял на Руси»</strong>.</p>
+        </div>
+    </div>
+
+    <!-- Культура и письменность -->
+    <div class="tab-content" id="tab-culture">
+        <div class="card">
+            <h2>📖 Письменность и книги</h2>
+            <p>В XI в. распространилась кириллица (создана в 863 г. Кириллом и Мефодием). Свидетельства: надписи на <strong>Борисовых камнях</strong> в Западной Двине, на <strong>Рогволодовом камне</strong> возле Орши. Найдены <strong>берестяные грамоты</strong> в Витебске и Мстиславле – ими пользовались горожане, обучавшие детей грамоте.</p>
+            <p>Самая ранняя рукописная книга на территории Беларуси – <strong>Туровское евангелие</strong> (XI в.), украшенное заставками. Материал – пергамент (выделанная кожа телят), обложка – доски, обтянутые кожей, с пряжкой.</p>
+            <p>В первой половине XI в. началось летописание. В начале XII в. монах Нестор создал <strong>«Повесть временных лет»</strong>, где есть сведения о Полоцке. Существовала также несохранившаяся Полоцкая летопись.</p>
+        </div>
+        <div class="card">
+            <h2>🏛️ Каменное зодчество</h2>
+            <p><strong>Полоцкий Софийский собор</strong> – возведён в 50-е гг. XI в., третий храм Святой Софии у восточных славян (после новгородского и киевского). Символизирует мудрость.</p>
+            <p><strong>Спасо-Евфросиниевская церковь</strong> в Полоцке – памятник XII в., расписана фресками (живопись водяными красками по сырой штукатурке). Фрески передают внутренний мир верующего: дугообразные брови, большие задумчивые глаза.</p>
+            <p><strong>Борисоглебская (Коложская) церковь</strong> в Гродно – шедевр гродненской архитектурной школы. Стены украшены разноцветными камнями и плитками, внутри – голосники (глиняные жбаны) для улучшения акустики.</p>
+        </div>
+        <div class="card">
+            <h2>💎 Крест Ефросинии Полоцкой</h2>
+            <p>Создан в <span class="year-badge">1161</span> мастером <strong>Богшей</strong> (Лазарем) по заказу Ефросинии. Шестиконечный крест из кипариса, обложен золотыми и серебряными пластинами, украшен перегородчатой эмалью и кириллическими надписями. Содержал христианские реликвии.</p>
+            <p>Исчез во время Великой Отечественной войны, его местонахождение неизвестно. В 1990-е гг. художник-ювелир <strong>Николай Кузьмич</strong> создал современную копию креста, которая теперь хранится в Спасо-Евфросиниевском монастыре Полоцка.</p>
+        </div>
+    </div>
+
+    <!-- Лента времени -->
+    <div class="tab-content" id="tab-timeline">
+        <h2 style="text-align:center; margin-bottom:1.5rem;">🕰️ Хронология христианизации</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="tl-date">863</div><div class="tl-desc">Создание кириллической азбуки Кириллом и Мефодием.</div></div>
+            <div class="timeline-item"><div class="tl-date">988</div><div class="tl-desc">Крещение Руси князем Владимиром. Начало христианизации восточных славян.</div></div>
+            <div class="timeline-item"><div class="tl-date">~992</div><div class="tl-desc">Основание Полоцкой епархии.</div></div>
+            <div class="timeline-item"><div class="tl-date">1000</div><div class="tl-desc">Смерть Рогнеды, постриженной в монахини под именем Анастасия.</div></div>
+            <div class="timeline-item"><div class="tl-date">1005</div><div class="tl-desc">Основание Туровской епархии (первый епископ Фома).</div></div>
+            <div class="timeline-item"><div class="tl-date">50-е гг. XI в.</div><div class="tl-desc">Постройка Полоцкого Софийского собора.</div></div>
+            <div class="timeline-item"><div class="tl-date">XII в.</div><div class="tl-desc">Создание «Повести временных лет» Нестором. Деятельность Ефросинии Полоцкой и Кирилла Туровского.</div></div>
+            <div class="timeline-item"><div class="tl-date">1161</div><div class="tl-desc">Создание креста Ефросинии Полоцкой мастером Богшей.</div></div>
+        </div>
+    </div>
+
+    <!-- Хроно-карточки -->
+    <div class="tab-content" id="tab-cards">
+        <h2 style="text-align:center; margin-bottom:0.5rem;">📅 Хронологические карточки</h2>
+        <p style="text-align:center; color:#5e4a2e;">Нажмите на карточку, чтобы увидеть обратную сторону.</p>
+        <div class="cards-grid" id="chrono-cards-container"></div>
+        <div class="card-actions">
+            <button id="flip-all">🔄 Перевернуть все</button>
+            <button id="reset-cards">↩️ Сбросить все</button>
+        </div>
+    </div>
+
+    <!-- Тест (20 вопросов) -->
+    <div class="tab-content" id="tab-quiz">
+        <div class="quiz-area">
+            <h2>📝 Тест по билету №3</h2>
+            <div id="quiz-container"></div>
+            <button id="check-quiz">Проверить ответы</button>
+            <div id="quiz-result" class="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Практические задания -->
+    <div class="tab-content" id="tab-practice">
+        <div class="card">
+            <h2>🧩 Задание 1. Хронология событий</h2>
+            <p>Укажите верный порядок (от 1 до 5).</p>
+            <table class="match-table" id="chrono-order-table">
+                <tr><th>Событие</th><th>Порядок</th></tr>
+                <tr data-correct="1"><td>Крещение Руси Владимиром</td><td><select class="order-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+                <tr data-correct="2"><td>Основание Туровской епархии</td><td><select class="order-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+                <tr data-correct="3"><td>Постройка Полоцкого Софийского собора</td><td><select class="order-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+                <tr data-correct="4"><td>Деятельность Ефросинии Полоцкой</td><td><select class="order-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+                <tr data-correct="5"><td>Создание креста Ефросинии Полоцкой</td><td><select class="order-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+            </table>
+            <button id="check-chrono-order">Проверить порядок</button>
+            <span id="chrono-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>🔗 Задание 2. Соотнесите личность и деяние</h2>
+            <table class="match-table" id="person-match">
+                <tr><th>Личность</th><th>Деяние</th></tr>
+                <tr data-correct="mon"><td>Ефросиния Полоцкая</td><td><select class="person-select"><option value="">--</option><option value="mon">Основала монастыри, школа, книги</option><option value="slovo">Писал «слова» и притчи</option><option value="krest">Создал крест Ефросинии Полоцкой</option><option value="kopia">Воссоздал крест Ефросинии Полоцкой</option></select></td></tr>
+                <tr data-correct="slovo"><td>Кирилл Туровский</td><td><select class="person-select"><option value="">--</option><option value="mon">Основала монастыри, школа, книги</option><option value="slovo">Писал «слова» и притчи, жил в затворе</option><option value="krest">Создал крест Ефросинии Полоцкой</option><option value="kopia">Воссоздал крест Ефросинии Полоцкой</option></select></td></tr>
+                <tr data-correct="krest"><td>Богша (Лазарь)</td><td><select class="person-select"><option value="">--</option><option value="mon">Основала монастыри, школа, книги</option><option value="slovo">Писал «слова» и притчи</option><option value="krest">Создал крест Ефросинии Полоцкой</option><option value="kopia">Воссоздал крест Ефросинии Полоцкой</option></select></td></tr>
+                <tr data-correct="kopia"><td>Николай Кузьмич</td><td><select class="person-select"><option value="">--</option><option value="mon">Основала монастыри, школа, книги</option><option value="slovo">Писал «слова» и притчи</option><option value="krest">Создал крест Ефросинии Полоцкой</option><option value="kopia">Воссоздал крест Ефросинии Полоцкой</option></select></td></tr>
+            </table>
+            <button id="check-person-match">Проверить</button>
+            <span id="person-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>✍️ Задание 3. Вставьте пропущенные слова в цитату</h2>
+            <p>«Кирилла Туровского ещё при жизни прозвали 
+                <input type="text" class="fill-gap" id="gap1" placeholder="?">, 
+                который паче всех воссиял на Руси».
+            </p>
+            <button id="check-gaps">Проверить</button>
+            <span id="gaps-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>🏛️ Задание 4. Соотнесите памятник зодчества и его описание</h2>
+            <table class="match-table" id="arch-match">
+                <tr><th>Памятник</th><th>Описание</th></tr>
+                <tr data-correct="sofia"><td>Софийский собор (Полоцк)</td><td><select class="arch-select"><option value="">--</option><option value="sofia">Третий храм Святой Софии у восточных славян</option><option value="spas">Церковь, построенная по заказу Ефросинии, с фресками</option><option value="kolozha">Гродненская церковь с голосниками и цветными камнями</option></select></td></tr>
+                <tr data-correct="spas"><td>Спасо-Евфросиниевская церковь</td><td><select class="arch-select"><option value="">--</option><option value="sofia">Третий храм Святой Софии у восточных славян</option><option value="spas">Церковь, построенная по заказу Ефросинии, с фресками</option><option value="kolozha">Гродненская церковь с голосниками и цветными камнями</option></select></td></tr>
+                <tr data-correct="kolozha"><td>Борисоглебская (Коложская) церковь</td><td><select class="arch-select"><option value="">--</option><option value="sofia">Третий храм Святой Софии у восточных славян</option><option value="spas">Церковь, построенная по заказу Ефросинии, с фресками</option><option value="kolozha">Гродненская церковь с голосниками и цветными камнями</option></select></td></tr>
+            </table>
+            <button id="check-arch-match">Проверить</button>
+            <span id="arch-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+    </div>
+
+    <!-- Словарик -->
+    <div class="tab-content" id="tab-dictionary">
+        <div class="card">
+            <h2>📖 Основные термины и понятия</h2>
+            <table style="width:100%; border-collapse:collapse; margin-top:1rem;">
+                <tr style="background:#f2e2c6;"><th style="padding:10px; text-align:left;">Термин</th><th style="padding:10px; text-align:left;">Определение</th></tr>
+                <tr><td style="padding:8px;"><strong>Двоеверие</strong></td><td style="padding:8px;">Сосуществование христианства и языческих верований в X–XIII вв.</td></tr>
+                <tr><td style="padding:8px;"><strong>Кириллица</strong></td><td style="padding:8px;">Азбука, созданная Кириллом и Мефодием в 863 г., из 43 букв.</td></tr>
+                <tr><td style="padding:8px;"><strong>Пергамент</strong></td><td style="padding:8px;">Специально выделанная кожа телят, материал для рукописных книг.</td></tr>
+                <tr><td style="padding:8px;"><strong>Фреска</strong></td><td style="padding:8px;">Живопись водяными красками по сырой штукатурке.</td></tr>
+                <tr><td style="padding:8px;"><strong>Голосники</strong></td><td style="padding:8px;">Глиняные кувшины в стенах храма для улучшения акустики.</td></tr>
+                <tr><td style="padding:8px;"><strong>Епархия</strong></td><td style="padding:8px;">Большой церковный округ во главе с епископом.</td></tr>
+                <tr><td style="padding:8px;"><strong>Заставка</strong></td><td style="padding:8px;">Большая разноцветная заглавная буква в рукописной книге.</td></tr>
+                <tr><td style="padding:8px;"><strong>Летопись</strong></td><td style="padding:8px;">Запись событий по годам в хронологической последовательности.</td></tr>
+                <tr><td style="padding:8px;"><strong>Зодчество</strong></td><td style="padding:8px;">Строительство зданий из камня и кирпича, скреплённых известковым раствором.</td></tr>
+                <tr><td style="padding:8px;"><strong>Перегородчатая эмаль</strong></td><td style="padding:8px;">Техника нанесения эмали, в которой выполнен крест Ефросинии Полоцкой.</td></tr>
+                <tr><td style="padding:8px;"><strong>Кокошники</strong></td><td style="padding:8px;">Архитектурная деталь, впервые появившаяся на Спасо-Евфросиниевской церкви.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Приблизительный ответ -->
+    <div class="tab-content" id="tab-answer">
+        <div class="card">
+            <h2>✍️ Примерный ответ по билету №3</h2>
+            <p><strong>Причины и значение принятия христианства</strong></p>
+            <p>В X веке возникла потребность в укреплении княжеской власти, развитии государства, торговли, ремесла. Необходимы были знания, письменность и связи с другими странами, прежде всего с Византией. Христианство обязывало подчиняться власти, данной от Бога. В 988 г. князь Владимир Святославич крестил Русь. Первыми христианами на белорусских землях стали Рогнеда (в монашестве Анастасия) и её сын Изяслав. В 992 г. основана Полоцкая епархия, в 1005 г. — Туровская (первый епископ Фома). Долгое время сохранялось двоеверие.</p>
+            <p><strong>Религиозные деятели-просветители</strong></p>
+            <p>Ефросиния Полоцкая — княжна Предслава, принявшая постриг в 12 лет. Основала монастыри, переписывала книги, открыла школу для девушек. Совершила паломничество в Иерусалим. Первая восточнославянская святая женщина. Кирилл Туровский — епископ, отшельник, автор «слов», молитв и притч, прозванный Златоустом.</p>
+            <p><strong>Письменность и культура</strong></p>
+            <p>С XI в. распространилась кириллица (создана в 863 г.). Памятники: Борисовы камни, Рогволодов камень, берестяные грамоты (Витебск, Мстиславль). Самая ранняя рукописная книга — Туровское евангелие (XI в.). Летописание: «Повесть временных лет» Нестора. Каменное зодчество: Софийский собор (Полоцк, XI в.), Спасо-Преображенская церковь (по заказу Ефросинии), Коложская церковь (Гродно) с голосниками. Шедевр прикладного искусства — крест Ефросинии Полоцкой (1161, мастер Богша), воссозданный Николаем Кузьмичом.</p>
+        </div>
+    </div>
+
+    <!-- Тренажёр -->
+    <div class="tab-content" id="tab-learningapp">
+        <div class="card">
+            <h2>🧠 Интерактивный тренажёр</h2>
+            <iframe src="https://learningapps.org/watch?v=p8w5oxxq326" 
+                    style="border:0px; width:100%; height:500px; border-radius:20px;" 
+                    allowfullscreen="true" 
+                    webkitallowfullscreen="true" 
+                    mozallowfullscreen="true"></iframe>
+            <p style="margin-top:1rem; font-style:italic;">Выполните задание, чтобы закрепить тему. После ответа можно вернуться к другим вкладкам.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Переключение вкладок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(`tab-${target}`).classList.add('active');
+            });
+        });
+
+        // Хронологические карточки
+        const chronoData = [
+            { date: "863", desc: "Создание кириллической азбуки Кириллом и Мефодием." },
+            { date: "988", desc: "Крещение Руси Владимиром. Начало христианизации." },
+            { date: "~992", desc: "Основание Полоцкой епархии." },
+            { date: "1000", desc: "Смерть Рогнеды (в монашестве Анастасия)." },
+            { date: "1005", desc: "Основание Туровской епархии. Первый епископ Фома." },
+            { date: "50-е гг. XI в.", desc: "Постройка Полоцкого Софийского собора." },
+            { date: "XII в.", desc: "«Повесть временных лет». Деятельность Ефросинии и Кирилла Туровского." },
+            { date: "1161", desc: "Создание креста Ефросинии Полоцкой мастером Богшей." }
+        ];
+        const cardsContainer = document.getElementById('chrono-cards-container');
+        function buildCards() {
+            cardsContainer.innerHTML = '';
+            chronoData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'flip-card';
+                card.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">${item.date}</div>
+                        <div class="flip-card-back">${item.desc}</div>
+                    </div>
+                `;
+                card.addEventListener('click', () => card.classList.toggle('flipped'));
+                cardsContainer.appendChild(card);
+            });
+        }
+        buildCards();
+        document.getElementById('flip-all').addEventListener('click', () => {
+            const cards = document.querySelectorAll('.flip-card');
+            const allFlipped = Array.from(cards).every(c => c.classList.contains('flipped'));
+            cards.forEach(c => c.classList.toggle('flipped', !allFlipped));
+        });
+        document.getElementById('reset-cards').addEventListener('click', () => {
+            document.querySelectorAll('.flip-card').forEach(c => c.classList.remove('flipped'));
+        });
+
+        // Тест (20 вопросов)
+        const quizData = [
+            { q: "Почему язычество перестало отвечать потребностям общества в X веке?", options: ["Из-за запрета князей", "Развитие государства, торговли, необходимость знаний и письменности", "Исчезли языческие боги", "Все жители внезапно разуверились"], correct: 1 },
+            { q: "В каком году князь Владимир крестил Русь?", options: ["862", "980", "988", "1005"], correct: 2 },
+            { q: "Какое государство было образцом христианства для Руси?", options: ["Польша", "Византия", "Германия", "Болгария"], correct: 1 },
+            { q: "Кто из первых полоцких правителей принял христианство?", options: ["Рогволод", "Рогнеда и Изяслав", "Всеслав Чародей", "Брячислав"], correct: 1 },
+            { q: "Какое имя получила Рогнеда после пострижения в монахини?", options: ["Елена", "Ольга", "Анастасия", "Ефросиния"], correct: 2 },
+            { q: "Где находился глава русской церкви?", options: ["В Полоцке", "В Новгороде", "В Киеве (митрополит)", "В Турове"], correct: 2 },
+            { q: "В каком году была основана Туровская епархия?", options: ["992", "1005", "1050", "1161"], correct: 1 },
+            { q: "Как звали первого туровского епископа?", options: ["Мина", "Фома", "Кирилл", "Лазарь"], correct: 1 },
+            { q: "Что означает термин «двоеверие»?", options: ["Два князя правят одновременно", "Сосуществование христианства и языческих верований", "Вера в двух богов", "Разделение церквей"], correct: 1 },
+            { q: "Кто создал кириллическую азбуку?", options: ["Нестор", "Кирилл и Мефодий", "Ефросиния Полоцкая", "Кирилл Туровский"], correct: 1 },
+            { q: "На чём были сделаны надписи, называемые Борисовыми камнями?", options: ["На бумаге", "На бересте", "На валунах в русле Западной Двины", "На стенах собора"], correct: 2 },
+            { q: "Где были найдены берестяные грамоты на территории Беларуси?", options: ["Только в Полоцке", "В Витебске и Мстиславле", "В Турове", "В Гродно"], correct: 1 },
+            { q: "Как называется самая ранняя рукописная книга Беларуси?", options: ["Полоцкое евангелие", "Туровское евангелие", "Повесть временных лет", "Слова Кирилла Туровского"], correct: 1 },
+            { q: "Кто автор «Повести временных лет»?", options: ["Кирилл Туровский", "Нестор", "Ефросиния Полоцкая", "Изяслав"], correct: 1 },
+            { q: "Сколько лет было Предславе, когда она ушла в монастырь?", options: ["10", "12", "15", "20"], correct: 1 },
+            { q: "Чем прославилась Ефросиния Полоцкая как книжница?", options: ["Писала летописи", "Переписывала церковные книги и открыла школу", "Создала азбуку", "Ввела книгопечатание"], correct: 1 },
+            { q: "Какое прозвище получил Кирилл Туровский?", options: ["Чародей", "Мудрый", "Златоуст", "Книжник"], correct: 2 },
+            { q: "Какой собор был построен в Полоцке в 50-е гг. XI в.?", options: ["Спасо-Евфросиниевский", "Софийский", "Борисоглебский", "Коложский"], correct: 1 },
+            { q: "Чем знаменита Коложская церковь в Гродно?", options: ["Фресками", "Голосниками и цветными камнями", "Крестом Ефросинии", "Мощами Кирилла Туровского"], correct: 1 },
+            { q: "Кто воссоздал крест Ефросинии Полоцкой в наши дни?", options: ["Нестор", "Богша", "Николай Кузьмич", "Лазарь"], correct: 2 }
+        ];
+        const quizContainer = document.getElementById('quiz-container');
+        function buildQuiz() {
+            let html = '';
+            quizData.forEach((item, idx) => {
+                html += `<p class="quiz-question">${idx+1}. ${item.q}</p>`;
+                item.options.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label><br>`;
+                });
+            });
+            quizContainer.innerHTML = html;
+        }
+        buildQuiz();
+        document.getElementById('check-quiz').addEventListener('click', () => {
+            let score = 0;
+            quizData.forEach((item, idx) => {
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === item.correct) score++;
+            });
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.textContent = `Ваш результат: ${score} из ${quizData.length}.`;
+            resultDiv.style.background = score >= 15 ? '#d4edda' : '#f8d7da';
+        });
+
+        // Задание 1: Хронология
+        document.getElementById('check-chrono-order').addEventListener('click', () => {
+            const rows = document.querySelectorAll('#chrono-order-table tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.order-select');
+                row.classList.remove('correct', 'incorrect');
+                if (select.value === correct) row.classList.add('correct');
+                else { row.classList.add('incorrect'); allCorrect = false; }
+            });
+            const fb = document.getElementById('chrono-feedback');
+            fb.textContent = allCorrect ? '✅ Порядок верный!' : '❌ Есть ошибки в порядке.';
+            fb.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Задание 2: Личности
+        document.getElementById('check-person-match').addEventListener('click', () => {
+            const rows = document.querySelectorAll('#person-match tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.person-select');
+                row.classList.remove('correct', 'incorrect');
+                if (select.value === correct) row.classList.add('correct');
+                else { row.classList.add('incorrect'); allCorrect = false; }
+            });
+            const fb = document.getElementById('person-feedback');
+            fb.textContent = allCorrect ? '✅ Все верно!' : '❌ Есть ошибки.';
+            fb.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Задание 3: Цитата
+        document.getElementById('check-gaps').addEventListener('click', () => {
+            const input = document.getElementById('gap1');
+            const val = input.value.trim().toLowerCase();
+            const correct = ['златоуст', 'златоустом', 'златоустъ'];
+            const ok = correct.some(c => val.includes(c));
+            input.style.border = ok ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            const fb = document.getElementById('gaps-feedback');
+            fb.textContent = ok ? '✅ Верно! «Златоуст, который паче всех воссиял на Руси».' : '❌ Проверьте: ожидается «Златоуст».';
+            fb.className = ok ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Задание 4: Зодчество
+        document.getElementById('check-arch-match').addEventListener('click', () => {
+            const rows = document.querySelectorAll('#arch-match tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.arch-select');
+                row.classList.remove('correct', 'incorrect');
+                if (select.value === correct) row.classList.add('correct');
+                else { row.classList.add('incorrect'); allCorrect = false; }
+            });
+            const fb = document.getElementById('arch-feedback');
+            fb.textContent = allCorrect ? '✅ Все памятники определены верно!' : '❌ Есть ошибки.';
+            fb.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+    })();
+</script>
+</body>
+</html>

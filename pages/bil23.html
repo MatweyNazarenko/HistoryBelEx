@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билет №23: Становление государственного суверенитета Республики Беларусь</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }        .btnBackBlock{
+            position: absolute;
+            display: flex;
+            top: 40px;
+            left: 40px;
+        }
+        .backBtn{
+            text-decoration: none;
+            background: #6b4f28;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .backBtn>p{
+            transition: .3s;
+            position: relative;
+            z-index: 10;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+        .backBtn::after{    
+            transition: .5s;
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dfd0b0;
+            z-index: 1;
+        }
+        .backBtn:hover>p{
+            color: #4e3d22;
+        }
+        .backBtn:hover::after{
+            right: 0;
+        }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f4efe0;
+            color: #2e2b1a;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 15% 20%, #e4d5aa 0%, #f4efe0 70%);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 250, 240, 0.93);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(130, 100, 70, 0.25);
+            padding: 2rem 2rem 3rem;
+        }
+        h1 { font-size: 2.3rem; text-align: center; color: #4a3620; margin-bottom: 0.2rem; }
+        .subtitle {
+            text-align: center; font-style: italic; color: #6b5a3e;
+            margin-bottom: 2.5rem; border-bottom: 2px dotted #b89a5e; padding-bottom: 1rem;
+        }
+        .tab-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2rem; }
+        .tab-btn {
+            background: #dfd0b0; border: none; padding: 12px 20px; border-radius: 30px;
+            font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            color: #4e3d22; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #b89a5e;
+        }
+        .tab-btn:hover { background: #cdba8b; color: #2d1f0c; }
+        .tab-btn.active {
+            background: #6b4f28; color: #fff; border-color: #4a3520;
+            box-shadow: 0 6px 12px rgba(107, 79, 40, 0.5); transform: translateY(-2px);
+        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card {
+            background: #fffef7; border: 1px solid #d9c7a0; border-radius: 20px;
+            padding: 1.5rem; margin-bottom: 1.8rem; box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .year-badge {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 12px; border-radius: 20px; display: inline-block; margin-right: 10px;
+        }
+        .timeline {
+            position: relative; margin: 2rem 0; padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+            width: 4px; background: #b89a5e; border-radius: 2px;
+        }
+        .timeline-item {
+            margin-bottom: 2rem; position: relative; padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '◆'; position: absolute; left: -6px; top: 2px;
+            font-size: 1.5rem; color: #6b4f28;
+        }
+        .tl-date {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 14px; border-radius: 20px; display: inline-block; margin-bottom: 4px;
+        }
+        .tl-desc { color: #4d3b20; font-style: italic; }
+        .cards-grid {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-top: 1.5rem;
+        }
+        .flip-card {
+            background: transparent; width: 220px; height: 150px; perspective: 1000px; cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.6s; transform-style: preserve-3d;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2); border-radius: 18px;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 18px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 15px; font-weight: 600; font-size: 1rem;
+        }
+        .flip-card-front {
+            background: #efe3cc; color: #4e3620; border: 2px solid #c8aa7a;
+        }
+        .flip-card-back {
+            background: #6b4f28; color: #fff; border: 2px solid #4a3520;
+            transform: rotateY(180deg); font-size: 0.9rem;
+        }
+        .card-actions { display: flex; gap: 10px; justify-content: center; margin-top: 1.5rem; }
+        .quiz-area { background: #faf3e4; border-radius: 20px; padding: 1.5rem; }
+        .quiz-question { font-weight: 700; margin: 1.2rem 0 0.4rem; }
+        .quiz-result { font-weight: bold; margin-top: 1rem; padding: 0.8rem; border-radius: 12px; }
+        button {
+            background: #6b4f28; color: white; border: none; padding: 10px 25px;
+            border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 1rem; transition: 0.2s;
+        }
+        button:hover { background: #8b6a3a; }
+        .match-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .match-table td { padding: 8px; vertical-align: middle; }
+        .match-table select {
+            width: 100%; padding: 8px; border-radius: 10px; border: 1px solid #bb9a6e;
+            background: #fffef7; font-family: inherit;
+        }
+        .match-row.correct { background-color: #d4edda; }
+        .match-row.incorrect { background-color: #f8d7da; }
+        .fill-gap {
+            background: #fffef7; border: 1px solid #bb9a6e; padding: 5px 10px;
+            border-radius: 8px; width: auto; min-width: 100px;
+        }
+        .correct-feedback { color: #2d6a2d; font-weight: bold; }
+        .incorrect-feedback { color: #a13d3d; font-weight: bold; }
+        @media (max-width: 600px) {
+            .tab-btn { padding: 8px 14px; font-size: 0.85rem; }
+            .flip-card { width: 160px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class="btnBackBlock" id="backBtn">
+        <a href="../index.html" class="backBtn" ><p>Назад</p></a>
+    </div>
+    <h1>Билет №23</h1>
+    <div class="subtitle">Становление государственного суверенитета Республики Беларусь</div>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="sovereignty">Суверенитет и независимость</button>
+        <button class="tab-btn" data-tab="constitution">Конституция и референдумы</button>
+        <button class="tab-btn" data-tab="timeline">Лента времени</button>
+        <button class="tab-btn" data-tab="cards">Хроно-карточки</button>
+        <button class="tab-btn" data-tab="quiz">Тест (20 вопросов)</button>
+        <button class="tab-btn" data-tab="practice">Практические задания</button>
+    </div>
+
+    <!-- Суверенитет и независимость -->
+    <div class="tab-content active" id="tab-sovereignty">
+        <div class="card">
+            <h2>📜 Декларация о суверенитете</h2>
+            <p><span class="year-badge">27 июля 1990</span> – Верховный Совет БССР принял Декларацию о государственном суверенитете Белорусской ССР. Эта дата стала Днём Независимости (Днём Республики) до 1996 года.</p>
+            <p>После августовского путча 1991 г. <span class="year-badge">25 августа 1991</span> Декларации придан статус конституционного закона. <span class="year-badge">26 августа</span> – Закон «Об обеспечении политической и экономической самостоятельности». <span class="year-badge">19 сентября 1991</span> – новое название «Республика Беларусь».</p>
+        </div>
+        <div class="card">
+            <h2>🕊️ Беловежские соглашения и СНГ</h2>
+            <p><span class="year-badge">8 декабря 1991</span> – в Беловежской пуще руководители Беларуси (С. Шушкевич), России (Б. Ельцин) и Украины (Л. Кравчук) подписали Соглашение о создании СНГ, объявив о прекращении существования СССР.</p>
+            <p>10 декабря 1991 г. Верховный Совет Беларуси ратифицировал соглашение и денонсировал договор об образовании СССР. 21 декабря в СНГ вошли 11 бывших республик. 26 декабря 1991 г. СССР официально прекратил существование.</p>
+        </div>
+    </div>
+
+    <!-- Конституция и референдумы -->
+    <div class="tab-content" id="tab-constitution">
+        <div class="card">
+            <h2>📄 Конституция 1994 года и институт президентства</h2>
+            <p><span class="year-badge">15 марта 1994</span> – Верховный Совет принял Конституцию. Беларусь провозглашена унитарным демократическим социальным правовым государством. Президент – глава государства и исполнительной власти. Первые президентские выборы состоялись в 1994 году, победу одержал <strong>А. Г. Лукашенко</strong>.</p>
+            <p>Первый Герой Беларуси (1996) – военный лётчик <strong>В. Н. Карват</strong> (посмертно), который отвёл горящий самолёт от деревни Большое Гатище.</p>
+        </div>
+        <div class="card">
+            <h2>🗳️ Ключевые референдумы</h2>
+            <p><strong>24 ноября 1996 г.</strong> – республиканский референдум. 70,5% поддержали конституционные поправки Президента (расширение полномочий), 88,2% – перенос Дня независимости на 3 июля (День освобождения Минска).</p>
+            <p><strong>17 октября 2004 г.</strong> – референдум о праве А. Г. Лукашенко участвовать в следующих президентских выборах; 79,4% поддержали.</p>
+            <p><strong>27 февраля 2022 г.</strong> – четвёртый референдум по изменениям в Конституцию. Всебелорусское народное собрание получило статус высшего представительного органа народовластия. Закреплён конституционный долг сохранять историческую правду о подвиге народа в Великой Отечественной войне.</p>
+        </div>
+    </div>
+
+    <!-- Лента времени -->
+    <div class="tab-content" id="tab-timeline">
+        <h2 style="text-align:center; margin-bottom:1.5rem;">🕰️ Ключевые даты становления суверенитета</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="tl-date">27 июля 1990</div><div class="tl-desc">Декларация о государственном суверенитете БССР.</div></div>
+            <div class="timeline-item"><div class="tl-date">25 августа 1991</div><div class="tl-desc">Статус конституционного закона Декларации.</div></div>
+            <div class="timeline-item"><div class="tl-date">8 декабря 1991</div><div class="tl-desc">Беловежские соглашения, создание СНГ.</div></div>
+            <div class="timeline-item"><div class="tl-date">15 марта 1994</div><div class="tl-desc">Принятие Конституции Республики Беларусь.</div></div>
+            <div class="timeline-item"><div class="tl-date">Июль 1994</div><div class="tl-desc">Первые президентские выборы. Избран А. Г. Лукашенко.</div></div>
+            <div class="timeline-item"><div class="tl-date">24 ноября 1996</div><div class="tl-desc">Первый республиканский референдум. Перенос Дня независимости на 3 июля.</div></div>
+            <div class="timeline-item"><div class="tl-date">17 октября 2004</div><div class="tl-desc">Референдум о праве Президента переизбираться.</div></div>
+            <div class="timeline-item"><div class="tl-date">27 февраля 2022</div><div class="tl-desc">Четвёртый референдум. Изменения в Конституцию, статус ВНС.</div></div>
+        </div>
+    </div>
+
+    <!-- Хроно-карточки -->
+    <div class="tab-content" id="tab-cards">
+        <h2 style="text-align:center; margin-bottom:0.5rem;">📅 Хронологические карточки</h2>
+        <p style="text-align:center; color:#5e4a2e;">Нажмите на карточку, чтобы увидеть детали.</p>
+        <div class="cards-grid" id="chrono-cards-container"></div>
+        <div class="card-actions">
+            <button id="flip-all">🔄 Перевернуть все</button>
+            <button id="reset-cards">↩️ Сбросить</button>
+        </div>
+    </div>
+
+    <!-- Тест (20 вопросов) -->
+    <div class="tab-content" id="tab-quiz">
+        <div class="quiz-area">
+            <h2>📝 Тест по билету №23</h2>
+            <div id="quiz-container"></div>
+            <button id="check-quiz">Проверить ответы</button>
+            <div id="quiz-result" class="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Практические задания -->
+    <div class="tab-content" id="tab-practice">
+        <div class="card">
+            <h2>🧩 Задание 1. Соотнесите дату и событие</h2>
+            <table class="match-table" id="match-dates">
+                <tr><th>Дата</th><th>Событие</th></tr>
+                <tr data-correct="declaration"><td>27 июля 1990 г.</td><td>
+                    <select class="date-select">
+                        <option value="">-- выберите --</option>
+                        <option value="declaration">Принятие Декларации о государственном суверенитете БССР</option>
+                        <option value="belovezh">Подписание Беловежских соглашений, создание СНГ</option>
+                        <option value="constitution">Принятие Конституции Республики Беларусь</option>
+                        <option value="referendum1996">Первый республиканский референдум (перенос Дня независимости)</option>
+                        <option value="referendum2022">Четвёртый референдум, изменения в Конституцию</option>
+                    </select></td></tr>
+                <tr data-correct="belovezh"><td>8 декабря 1991 г.</td><td>
+                    <select class="date-select">
+                        <option value="">-- выберите --</option>
+                        <option value="declaration">Принятие Декларации о государственном суверенитете БССР</option>
+                        <option value="belovezh">Подписание Беловежских соглашений, создание СНГ</option>
+                        <option value="constitution">Принятие Конституции Республики Беларусь</option>
+                        <option value="referendum1996">Первый республиканский референдум (перенос Дня независимости)</option>
+                        <option value="referendum2022">Четвёртый референдум, изменения в Конституцию</option>
+                    </select></td></tr>
+                <tr data-correct="constitution"><td>15 марта 1994 г.</td><td>
+                    <select class="date-select">
+                        <option value="">-- выберите --</option>
+                        <option value="declaration">Принятие Декларации о государственном суверенитете БССР</option>
+                        <option value="belovezh">Подписание Беловежских соглашений, создание СНГ</option>
+                        <option value="constitution">Принятие Конституции Республики Беларусь</option>
+                        <option value="referendum1996">Первый республиканский референдум (перенос Дня независимости)</option>
+                        <option value="referendum2022">Четвёртый референдум, изменения в Конституцию</option>
+                    </select></td></tr>
+                <tr data-correct="referendum1996"><td>24 ноября 1996 г.</td><td>
+                    <select class="date-select">
+                        <option value="">-- выберите --</option>
+                        <option value="declaration">Принятие Декларации о государственном суверенитете БССР</option>
+                        <option value="belovezh">Подписание Беловежских соглашений, создание СНГ</option>
+                        <option value="constitution">Принятие Конституции Республики Беларусь</option>
+                        <option value="referendum1996">Первый республиканский референдум (перенос Дня независимости)</option>
+                        <option value="referendum2022">Четвёртый референдум, изменения в Конституцию</option>
+                    </select></td></tr>
+                <tr data-correct="referendum2022"><td>27 февраля 2022 г.</td><td>
+                    <select class="date-select">
+                        <option value="">-- выберите --</option>
+                        <option value="declaration">Принятие Декларации о государственном суверенитете БССР</option>
+                        <option value="belovezh">Подписание Беловежских соглашений, создание СНГ</option>
+                        <option value="constitution">Принятие Конституции Республики Беларусь</option>
+                        <option value="referendum1996">Первый республиканский референдум (перенос Дня независимости)</option>
+                        <option value="referendum2022">Четвёртый референдум, изменения в Конституцию</option>
+                    </select></td></tr>
+            </table>
+            <button id="check-dates">Проверить</button>
+            <span id="dates-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>✍️ Задание 2. Вставьте пропущенные даты и цифры</h2>
+            <p>Декларация о государственном суверенитете принята 
+                <input type="text" class="fill-gap" id="gap1" placeholder="?"> (дата). 
+                Перенос Дня независимости на 3 июля поддержали 
+                <input type="text" class="fill-gap" id="gap2" placeholder="?">% избирателей. 
+                Конституция Республики Беларусь была принята 
+                <input type="text" class="fill-gap" id="gap3" placeholder="?"> (год). 
+                Четвёртый республиканский референдум состоялся в 
+                <input type="text" class="fill-gap" id="gap4" placeholder="?"> году.
+            </p>
+            <button id="check-gaps">Проверить</button>
+            <span id="gaps-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Переключение вкладок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(`tab-${target}`).classList.add('active');
+            });
+        });
+
+        // Хронологические карточки
+        const chronoData = [
+            { date: "27 июля 1990", desc: "Декларация о государственном суверенитете БССР." },
+            { date: "25 авг. 1991", desc: "Декларация — конституционный закон." },
+            { date: "8 дек. 1991", desc: "Беловежские соглашения. Создание СНГ." },
+            { date: "15 марта 1994", desc: "Принятие Конституции." },
+            { date: "1994", desc: "Первые президентские выборы. А. Г. Лукашенко." },
+            { date: "24 нояб. 1996", desc: "Референдум. День независимости — 3 июля." },
+            { date: "17 окт. 2004", desc: "Референдум о праве переизбрания." },
+            { date: "27 фев. 2022", desc: "Четвёртый референдум. Усиление роли ВНС." }
+        ];
+        const cardsContainer = document.getElementById('chrono-cards-container');
+        function buildCards() {
+            cardsContainer.innerHTML = '';
+            chronoData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'flip-card';
+                card.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">${item.date}</div>
+                        <div class="flip-card-back">${item.desc}</div>
+                    </div>
+                `;
+                card.addEventListener('click', () => card.classList.toggle('flipped'));
+                cardsContainer.appendChild(card);
+            });
+        }
+        buildCards();
+        document.getElementById('flip-all').addEventListener('click', () => {
+            const cards = document.querySelectorAll('.flip-card');
+            const allFlipped = Array.from(cards).every(c => c.classList.contains('flipped'));
+            cards.forEach(c => c.classList.toggle('flipped', !allFlipped));
+        });
+        document.getElementById('reset-cards').addEventListener('click', () => {
+            document.querySelectorAll('.flip-card').forEach(c => c.classList.remove('flipped'));
+        });
+
+        // Тест (20 вопросов)
+        const quizData = [
+            { q: "Когда была принята Декларация о государственном суверенитете БССР?", options: ["27 июля 1990", "25 августа 1991", "8 декабря 1991", "15 марта 1994"], correct: 0 },
+            { q: "Какое событие ускорило «парад суверенитетов» в 1990 г.?", options: ["Путч в Москве", "Декларация о суверенитете РСФСР 12 июня", "Беловежские соглашения", "Принятие Конституции"], correct: 1 },
+            { q: "Какой процент избирателей БССР высказался за сохранение СССР на референдуме 1991 г.?", options: ["70,4%", "82,7%", "76,4%", "88,2%"], correct: 1 },
+            { q: "Когда Беларусь официально стала независимым государством?", options: ["27 июля 1990", "25–26 августа 1991", "8 декабря 1991", "19 сентября 1991"], correct: 1 },
+            { q: "Какое название утверждено Верховным Советом 19 сентября 1991 г.?", options: ["Белорусская ССР", "Республика Беларусь", "Беларусь", "Речь Посполитая"], correct: 1 },
+            { q: "Где были подписаны Беловежские соглашения?", options: ["Минск", "Вильнюс", "Беловежская пуща", "Москва"], correct: 2 },
+            { q: "Кто подписал Соглашение о создании СНГ от Беларуси?", options: ["А. Г. Лукашенко", "С. С. Шушкевич", "В. Ф. Кебич", "П. К. Пономаренко"], correct: 1 },
+            { q: "Когда прекратил существование СССР официально?", options: ["25 декабря 1991", "26 декабря 1991", "8 декабря 1991", "21 декабря 1991"], correct: 1 },
+            { q: "В каком году была принята Конституция Республики Беларусь?", options: ["1991", "1994", "1996", "1990"], correct: 1 },
+            { q: "Каким государством по Конституции является Республика Беларусь?", options: ["Федеративным", "Унитарным демократическим правовым", "Конфедеративным", "Монархией"], correct: 1 },
+            { q: "Кто стал первым Президентом Республики Беларусь в 1994 г.?", options: ["С. С. Шушкевич", "А. Г. Лукашенко", "М. С. Горбачёв", "Б. Н. Ельцин"], correct: 1 },
+            { q: "Какой лётчик стал первым Героем Беларуси в 1996 г.?", options: ["В. Н. Карват", "А. Кижеватов", "Н. Гастелло", "В. Голубок"], correct: 0 },
+            { q: "Какая дата была объявлена Днём независимости после референдума 1996 г.?", options: ["27 июля", "3 июля", "25 августа", "8 декабря"], correct: 1 },
+            { q: "Сколько процентов избирателей поддержали поправки Президента на референдуме 1996 г.?", options: ["88,2%", "79,4%", "70,5%", "82,7%"], correct: 2 },
+            { q: "По итогам референдума 2004 г. Президент А. Г. Лукашенко получил право:", options: ["Назначать премьера", "Избираться повторно", "Распускать парламент", "Вводить военное положение"], correct: 1 },
+            { q: "Когда состоялся четвёртый республиканский референдум?", options: ["17 октября 2004", "24 ноября 1996", "27 февраля 2022", "15 марта 2022"], correct: 2 },
+            { q: "Какой орган после референдума 2022 года стал высшим представительным органом народовластия?", options: ["Парламент", "Всебелорусское народное собрание", "Совет Министров", "Конституционный суд"], correct: 1 },
+            { q: "Какое обязательство закреплено в Конституции после референдума 2022 г.?", options: ["Сохранять историческую правду о ВОВ", "Создать единую валюту", "Выйти из состава ООН", "Отменить смертную казнь"], correct: 0 },
+            { q: "В каком городе расположена штаб-квартира СНГ?", options: ["Минск", "Москва", "Киев", "Астана"], correct: 0 },
+            { q: "В каком году были проведены шестые Всебелорусские народные собрания?", options: ["2016", "2021", "2010", "1996"], correct: 1 }
+        ];
+        const quizContainer = document.getElementById('quiz-container');
+        function buildQuiz() {
+            let html = '';
+            quizData.forEach((item, idx) => {
+                html += `<p class="quiz-question">${idx+1}. ${item.q}</p>`;
+                item.options.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label>`;
+                });
+            });
+            quizContainer.innerHTML = html;
+        }
+        buildQuiz();
+        document.getElementById('check-quiz').addEventListener('click', () => {
+            let score = 0;
+            quizData.forEach((item, idx) => {
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === item.correct) score++;
+            });
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.textContent = `Ваш результат: ${score} из ${quizData.length}.`;
+            resultDiv.style.background = score >= 15 ? '#d4edda' : '#f8d7da';
+        });
+
+        // Задание 1: соответствие дат
+        const datesTable = document.getElementById('match-dates');
+        document.getElementById('check-dates').addEventListener('click', () => {
+            const rows = datesTable.querySelectorAll('tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.date-select');
+                row.classList.remove('correct', 'incorrect');
+                if (select.value === correct) {
+                    row.classList.add('correct');
+                } else {
+                    row.classList.add('incorrect');
+                    allCorrect = false;
+                }
+            });
+            const feedback = document.getElementById('dates-feedback');
+            feedback.textContent = allCorrect ? '✅ Все даты соотнесены верно!' : '❌ Есть ошибки. Правильные строки подсвечены зелёным.';
+            feedback.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Задание 2: пропуски
+        document.getElementById('check-gaps').addEventListener('click', () => {
+            const g1 = document.getElementById('gap1').value.trim();
+            const g2 = document.getElementById('gap2').value.trim();
+            const g3 = document.getElementById('gap3').value.trim();
+            const g4 = document.getElementById('gap4').value.trim();
+            const ok1 = g1 === '27 июля 1990' || g1 === '27 июля 1990 г.';
+            const ok2 = g2 === '88,2' || g2 === '88.2' || g2 === '88,2%';
+            const ok3 = g3 === '1994';
+            const ok4 = g4 === '2022';
+            document.getElementById('gap1').style.border = ok1 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap2').style.border = ok2 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap3').style.border = ok3 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap4').style.border = ok4 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            const feedback = document.getElementById('gaps-feedback');
+            if (ok1 && ok2 && ok3 && ok4) {
+                feedback.textContent = '✅ Верно! 27 июля 1990, 88,2%, 1994, 2022.';
+                feedback.className = 'correct-feedback';
+            } else {
+                feedback.textContent = '❌ Проверьте: 27 июля 1990, 88,2%, 1994, 2022.';
+                feedback.className = 'incorrect-feedback';
+            }
+        });
+    })();
+</script>
+</body>
+</html>

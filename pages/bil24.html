@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билет №24: Внешняя политика Республики Беларусь</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }        .btnBackBlock{
+            position: absolute;
+            display: flex;
+            top: 40px;
+            left: 40px;
+        }
+        .backBtn{
+            text-decoration: none;
+            background: #6b4f28;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .backBtn>p{
+            transition: .3s;
+            position: relative;
+            z-index: 10;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+        .backBtn::after{    
+            transition: .5s;
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dfd0b0;
+            z-index: 1;
+        }
+        .backBtn:hover>p{
+            color: #4e3d22;
+        }
+        .backBtn:hover::after{
+            right: 0;
+        }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f4efe0;
+            color: #2e2b1a;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 15% 20%, #e4d5aa 0%, #f4efe0 70%);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 250, 240, 0.93);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(130, 100, 70, 0.25);
+            padding: 2rem 2rem 3rem;
+        }
+        h1 { font-size: 2.3rem; text-align: center; color: #4a3620; margin-bottom: 0.2rem; }
+        .subtitle {
+            text-align: center; font-style: italic; color: #6b5a3e;
+            margin-bottom: 2.5rem; border-bottom: 2px dotted #b89a5e; padding-bottom: 1rem;
+        }
+        .tab-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2rem; }
+        .tab-btn {
+            background: #dfd0b0; border: none; padding: 12px 20px; border-radius: 30px;
+            font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            color: #4e3d22; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #b89a5e;
+        }
+        .tab-btn:hover { background: #cdba8b; color: #2d1f0c; }
+        .tab-btn.active {
+            background: #6b4f28; color: #fff; border-color: #4a3520;
+            box-shadow: 0 6px 12px rgba(107, 79, 40, 0.5); transform: translateY(-2px);
+        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card {
+            background: #fffef7; border: 1px solid #d9c7a0; border-radius: 20px;
+            padding: 1.5rem; margin-bottom: 1.8rem; box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .year-badge {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 12px; border-radius: 20px; display: inline-block; margin-right: 10px;
+        }
+        .timeline {
+            position: relative; margin: 2rem 0; padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+            width: 4px; background: #b89a5e; border-radius: 2px;
+        }
+        .timeline-item {
+            margin-bottom: 2rem; position: relative; padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '◆'; position: absolute; left: -6px; top: 2px;
+            font-size: 1.5rem; color: #6b4f28;
+        }
+        .tl-date {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 14px; border-radius: 20px; display: inline-block; margin-bottom: 4px;
+        }
+        .tl-desc { color: #4d3b20; font-style: italic; }
+        .cards-grid {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-top: 1.5rem;
+        }
+        .flip-card {
+            background: transparent; width: 220px; height: 150px; perspective: 1000px; cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.6s; transform-style: preserve-3d;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2); border-radius: 18px;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 18px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 15px; font-weight: 600; font-size: 1rem;
+        }
+        .flip-card-front {
+            background: #efe3cc; color: #4e3620; border: 2px solid #c8aa7a;
+        }
+        .flip-card-back {
+            background: #6b4f28; color: #fff; border: 2px solid #4a3520;
+            transform: rotateY(180deg); font-size: 0.9rem;
+        }
+        .card-actions { display: flex; gap: 10px; justify-content: center; margin-top: 1.5rem; }
+        .quiz-area { background: #faf3e4; border-radius: 20px; padding: 1.5rem; }
+        .quiz-question { font-weight: 700; margin: 1.2rem 0 0.4rem; }
+        .quiz-result { font-weight: bold; margin-top: 1rem; padding: 0.8rem; border-radius: 12px; }
+        button {
+            background: #6b4f28; color: white; border: none; padding: 10px 25px;
+            border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 1rem; transition: 0.2s;
+        }
+        button:hover { background: #8b6a3a; }
+        .match-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .match-table td { padding: 8px; vertical-align: middle; }
+        .match-table select {
+            width: 100%; padding: 8px; border-radius: 10px; border: 1px solid #bb9a6e;
+            background: #fffef7; font-family: inherit;
+        }
+        .match-row.correct { background-color: #d4edda; }
+        .match-row.incorrect { background-color: #f8d7da; }
+        .fill-gap {
+            background: #fffef7; border: 1px solid #bb9a6e; padding: 5px 10px;
+            border-radius: 8px; width: auto; min-width: 100px;
+        }
+        .correct-feedback { color: #2d6a2d; font-weight: bold; }
+        .incorrect-feedback { color: #a13d3d; font-weight: bold; }
+        @media (max-width: 600px) {
+            .tab-btn { padding: 8px 14px; font-size: 0.85rem; }
+            .flip-card { width: 160px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class="btnBackBlock" id="backBtn">
+        <a href="../index.html" class="backBtn" ><p>Назад</p></a>
+    </div>
+    <h1>Билет №24</h1>
+    <div class="subtitle">Внешняя политика Республики Беларусь</div>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="principles">Принципы и ООН</button>
+        <button class="tab-btn" data-tab="integration">Интеграция на постсоветском пространстве</button>
+        <button class="tab-btn" data-tab="multivector">Многовекторность и приоритеты</button>
+        <button class="tab-btn" data-tab="timeline">Лента времени</button>
+        <button class="tab-btn" data-tab="cards">Хроно-карточки</button>
+        <button class="tab-btn" data-tab="quiz">Тест (20 вопросов)</button>
+        <button class="tab-btn" data-tab="practice">Практические задания</button>
+    </div>
+
+    <!-- Принципы и ООН -->
+    <div class="tab-content active" id="tab-principles">
+        <div class="card">
+            <h2>🌐 Основы внешней политики</h2>
+            <p>Принципы закреплены в статье 18 Конституции 1994 года (с изменениями 1996 г.). Беларусь стала полноценным субъектом международного права после обретения независимости в 1991 году.</p>
+        </div>
+        <div class="card">
+            <h2>🏛️ БССР – соосновательница ООН (1945)</h2>
+            <p>БССР вошла в число стран-учредителей ООН в апреле 1945 года на конференции в Сан-Франциско. Делегацию возглавлял нарком иностранных дел БССР <strong>Кузьма Венедиктович Киселёв</strong>. Устав ООН подписан 26 июня 1945 года. Признан вклад республики в разгром нацизма.</p>
+        </div>
+        <div class="card">
+            <h2>🕊️ Деятельность в ООН и международные инициативы</h2>
+            <p>1992 – членство в ОБСЕ. 1998 – резолюция «Региональное разоружение» (создание безъядерной зоны в Центральной и Восточной Европе). 2000 – подписание Декларации тысячелетия ООН. 2010 – глобальный план по борьбе с торговлей людьми, разработанный по белорусской инициативе. ООН оказывала помощь в преодолении последствий Чернобыля.</p>
+        </div>
+    </div>
+
+    <!-- Интеграция на постсоветском пространстве -->
+    <div class="tab-content" id="tab-integration">
+        <div class="card">
+            <h2>🇧🇾🇷🇺 Союзное государство Беларуси и России</h2>
+            <p>1995 – Договор о дружбе, добрососедстве и сотрудничестве. 2 апреля 1996 – Создание Сообщества Беларуси и России. 2 апреля 1997 – Союз Беларуси и России (с 2010 – День единения народов). 8 декабря 1999 – Договор о создании Союзного государства.</p>
+        </div>
+        <div class="card">
+            <h2>🛡️ ОДКБ и безопасность</h2>
+            <p>1993 – Беларусь присоединилась к Договору о коллективной безопасности СНГ (с оговоркой о неучастии в боевых действиях за рубежом). В 2002 году подписан Устав ОДКБ (государства-основатели: Беларусь, Россия, Армения, Казахстан, Кыргызстан, Таджикистан).</p>
+        </div>
+        <div class="card">
+            <h2>📈 Евразийский экономический союз (ЕАЭС)</h2>
+            <p>2011 – Декларация о европейской экономической интеграции (Беларусь, Россия, Казахстан). 2012 – формирование Единого экономического пространства. 2015 – начало работы Евразийского экономического союза (члены: Беларусь, Россия, Казахстан, Армения, Кыргызстан).</p>
+        </div>
+    </div>
+
+    <!-- Многовекторность и приоритеты -->
+    <div class="tab-content" id="tab-multivector">
+        <div class="card">
+            <h2>🧭 Многовекторная политика</h2>
+            <p>Стратегия «равной приближённости» к Востоку и Западу. Беларусь провозгласила безъядерный статус. Конституционная норма (референдум 2022) исключает военную агрессию с территории страны.</p>
+            <p>Сотрудничество с Европейским союзом: в 2009 году Беларусь вошла в инициативу «Восточное партнёрство».</p>
+        </div>
+        <div class="card">
+            <h2>🇨🇳🇧🇾 Стратегическое партнёрство с Китаем</h2>
+            <p>С середины 1990-х годов развиваются стратегические отношения. Китай – один из крупнейших партнёров. Торговля переведена на национальные валюты. Ключевой проект – Китайско-Белорусский индустриальный парк «Великий камень» (с 2015 года).</p>
+        </div>
+    </div>
+
+    <!-- Лента времени -->
+    <div class="tab-content" id="tab-timeline">
+        <h2 style="text-align:center; margin-bottom:1.5rem;">🕰️ Основные вехи внешней политики</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="tl-date">Апрель 1945</div><div class="tl-desc">Конференция в Сан-Франциско. БССР – учредитель ООН.</div></div>
+            <div class="timeline-item"><div class="tl-date">26 июня 1945</div><div class="tl-desc">Подписание Устава ООН.</div></div>
+            <div class="timeline-item"><div class="tl-date">1992</div><div class="tl-desc">Присоединение к ОБСЕ.</div></div>
+            <div class="timeline-item"><div class="tl-date">1995</div><div class="tl-desc">Договор о дружбе с Россией.</div></div>
+            <div class="timeline-item"><div class="tl-date">2 апреля 1996</div><div class="tl-desc">Создание Сообщества Беларуси и России.</div></div>
+            <div class="timeline-item"><div class="tl-date">8 декабря 1999</div><div class="tl-desc">Договор о создании Союзного государства.</div></div>
+            <div class="timeline-item"><div class="tl-date">2000</div><div class="tl-desc">Подписание Декларации тысячелетия ООН.</div></div>
+            <div class="timeline-item"><div class="tl-date">2011</div><div class="tl-desc">Декларация о европейской экономической интеграции (ЕАЭС).</div></div>
+            <div class="timeline-item"><div class="tl-date">2015</div><div class="tl-desc">Начало работы ЕАЭС. Открытие индустриального парка «Великий камень».</div></div>
+        </div>
+    </div>
+
+    <!-- Хроно-карточки -->
+    <div class="tab-content" id="tab-cards">
+        <h2 style="text-align:center; margin-bottom:0.5rem;">📅 Хронологические карточки</h2>
+        <p style="text-align:center; color:#5e4a2e;">Нажмите на карточку, чтобы увидеть подробности.</p>
+        <div class="cards-grid" id="chrono-cards-container"></div>
+        <div class="card-actions">
+            <button id="flip-all">🔄 Перевернуть все</button>
+            <button id="reset-cards">↩️ Сбросить</button>
+        </div>
+    </div>
+
+    <!-- Тест (20 вопросов) -->
+    <div class="tab-content" id="tab-quiz">
+        <div class="quiz-area">
+            <h2>📝 Тест по билету №24</h2>
+            <div id="quiz-container"></div>
+            <button id="check-quiz">Проверить ответы</button>
+            <div id="quiz-result" class="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Практические задания -->
+    <div class="tab-content" id="tab-practice">
+        <div class="card">
+            <h2>🧩 Задание 1. Соотнесите дату и событие</h2>
+            <table class="match-table" id="match-dates">
+                <tr><th>Дата</th><th>Событие</th></tr>
+                <tr data-correct="1945"><td>26 июня 1945 г.</td><td>
+                    <select class="date-select">
+                        <option value="">-- выберите --</option><option value="1945">Подписание Устава ООН</option>
+                        <option value="1999">Договор о создании Союзного государства</option>
+                        <option value="2015">Начало работы ЕАЭС</option>
+                        <option value="2002">Создание ОДКБ</option>
+                        <option value="1996">Создание Сообщества Беларуси и России</option>
+                    </select></td></tr>
+                <tr data-correct="1999"><td>8 декабря 1999 г.</td><td>
+                    <select class="date-select">
+                        <option value="">-- выберите --</option><option value="1945">Подписание Устава ООН</option>
+                        <option value="1999">Договор о создании Союзного государства</option>
+                        <option value="2015">Начало работы ЕАЭС</option>
+                        <option value="2002">Создание ОДКБ</option>
+                        <option value="1996">Создание Сообщества Беларуси и России</option>
+                    </select></td></tr>
+                <tr data-correct="2015"><td>2015 г.</td><td>
+                    <select class="date-select">
+                        <option value="">-- выберите --</option><option value="1945">Подписание Устава ООН</option>
+                        <option value="1999">Договор о создании Союзного государства</option>
+                        <option value="2015">Начало работы ЕАЭС</option>
+                        <option value="2002">Создание ОДКБ</option>
+                        <option value="1996">Создание Сообщества Беларуси и России</option>
+                    </select></td></tr>
+                <tr data-correct="2002"><td>2002 г.</td><td>
+                    <select class="date-select">
+                        <option value="">-- выберите --</option><option value="1945">Подписание Устава ООН</option>
+                        <option value="1999">Договор о создании Союзного государства</option>
+                        <option value="2015">Начало работы ЕАЭС</option>
+                        <option value="2002">Создание ОДКБ</option>
+                        <option value="1996">Создание Сообщества Беларуси и России</option>
+                    </select></td></tr>
+                <tr data-correct="1996"><td>2 апреля 1996 г.</td><td>
+                    <select class="date-select">
+                        <option value="">-- выберите --</option><option value="1945">Подписание Устава ООН</option>
+                        <option value="1999">Договор о создании Союзного государства</option>
+                        <option value="2015">Начало работы ЕАЭС</option>
+                        <option value="2002">Создание ОДКБ</option>
+                        <option value="1996">Создание Сообщества Беларуси и России</option>
+                    </select></td></tr>
+            </table>
+            <button id="check-dates">Проверить</button>
+            <span id="dates-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>✍️ Задание 2. Вставьте пропущенные слова</h2>
+            <p>«БССР была одной из стран-учредителей ООН в 
+                <input type="text" class="fill-gap" id="gap1" placeholder="?"> году. 
+                Договор о создании Союзного государства был подписан в 
+                <input type="text" class="fill-gap" id="gap2" placeholder="?"> году. 
+                Стратегическим партнёром Беларуси на Востоке является 
+                <input type="text" class="fill-gap" id="gap3" placeholder="?">, а крупнейший совместный проект – индустриальный парк 
+                <input type="text" class="fill-gap" id="gap4" placeholder="?">. 
+                ОДКБ была создана в 
+                <input type="text" class="fill-gap" id="gap5" placeholder="?"> году».
+            </p>
+            <button id="check-gaps">Проверить</button>
+            <span id="gaps-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Переключение вкладок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(`tab-${target}`).classList.add('active');
+            });
+        });
+
+        // Хронологические карточки
+        const chronoData = [
+            { date: "1945", desc: "БССР – учредитель ООН. Подписание Устава." },
+            { date: "1992", desc: "Присоединение к ОБСЕ." },
+            { date: "1995", desc: "Договор о дружбе и сотрудничестве с РФ." },
+            { date: "2 апреля 1996", desc: "Создано Сообщество Беларуси и России." },
+            { date: "8 декабря 1999", desc: "Договор о создании Союзного государства." },
+            { date: "2002", desc: "Устав ОДКБ." },
+            { date: "2011", desc: "Декларация о европейской экономической интеграции." },
+            { date: "2015", desc: "Начало ЕАЭС. Запуск парка «Великий камень»." }
+        ];
+        const cardsContainer = document.getElementById('chrono-cards-container');
+        function buildCards() {
+            cardsContainer.innerHTML = '';
+            chronoData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'flip-card';
+                card.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">${item.date}</div>
+                        <div class="flip-card-back">${item.desc}</div>
+                    </div>
+                `;
+                card.addEventListener('click', () => card.classList.toggle('flipped'));
+                cardsContainer.appendChild(card);
+            });
+        }
+        buildCards();
+        document.getElementById('flip-all').addEventListener('click', () => {
+            const cards = document.querySelectorAll('.flip-card');
+            const allFlipped = Array.from(cards).every(c => c.classList.contains('flipped'));
+            cards.forEach(c => c.classList.toggle('flipped', !allFlipped));
+        });
+        document.getElementById('reset-cards').addEventListener('click', () => {
+            document.querySelectorAll('.flip-card').forEach(c => c.classList.remove('flipped'));
+        });
+
+        // Тест (20 вопросов)
+        const quizData = [
+            { q: "В каком году БССР стала одним из учредителей ООН?", options: ["1944", "1945", "1950", "1991"], correct: 1 },
+            { q: "Кто возглавлял делегацию БССР на конференции в Сан-Франциско?", options: ["Андрей Громыко", "Кузьма Киселёв", "Пётр Машеров", "Владимир Макей"], correct: 1 },
+            { q: "В какой статье Конституции закреплены принципы внешней политики РБ?", options: ["Статья 1", "Статья 8", "Статья 18", "Статья 100"], correct: 2 },
+            { q: "Какая организация была создана в 1996 году между Беларусью и Россией?", options: ["Союзное государство", "СНГ", "Сообщество Беларуси и России", "ЕАЭС"], correct: 2 },
+            { q: "Когда был подписан Договор о создании Союзного государства?", options: ["2 апреля 1996", "2 апреля 1997", "8 декабря 1999", "2000"], correct: 2 },
+            { q: "Какой документ подписали страны-основатели ОДКБ в 2002 году?", options: ["Декларация о дружбе", "Устав ОДКБ", "Договор о коллективной безопасности", "Акт о военном союзе"], correct: 1 },
+            { q: "В каком году Беларусь вошла в инициативу «Восточное партнёрство»?", options: ["2004", "2009", "2012", "2015"], correct: 1 },
+            { q: "Какие страны образовали Единое экономическое пространство в 2012 году?", options: ["Россия, Казахстан, Украина", "Беларусь, Россия, Казахстан", "Беларусь, Россия, Узбекистан", "Россия, Армения, Киргизия"], correct: 1 },
+            { q: "В каком году начал работу Евразийский экономический союз (ЕАЭС)?", options: ["2010", "2012", "2014", "2015"], correct: 3 },
+            { q: "Какой принцип внешней политики провозглашает «равную приближённость» к Востоку и Западу?", options: ["Односторонняя ориентация", "Многовекторность", "Изоляционизм", "Панславизм"], correct: 1 },
+            { q: "Какая резолюция была принята в ООН по инициативе Беларуси в 1998 году?", options: ["О борьбе с терроризмом", "Региональное разоружение", "О правах человека", "О защите климата"], correct: 1 },
+            { q: "Какой глобальный план был разработан по инициативе Беларуси в 2010 году?", options: ["План по борьбе с голодом", "План по борьбе с торговлей людьми", "Экологическая программа", "План развития Африки"], correct: 1 },
+            { q: "Что исключает Конституция Республики Беларусь (с изменениями 2022 г.)?", options: ["Дипломатические отношения с НАТО", "Военную агрессию со своей территории", "Торговлю оружием", "Членство в ВТО"], correct: 1 },
+            { q: "Какая страна является стратегическим партнёром Беларуси на Востоке?", options: ["Япония", "Индия", "Китай", "Вьетнам"], correct: 2 },
+            { q: "Как называется китайско-белорусский индустриальный парк?", options: ["Великий камень", "Силиконовая долина", "Индустриальный союз", "Восточный партнёр"], correct: 0 },
+            { q: "Какая международная организация была создана в 2002 году на базе Договора о коллективной безопасности?", options: ["ОДКБ", "ШОС", "ЕАЭС", "СНГ"], correct: 0 },
+            { q: "Когда отмечается День единения народов Беларуси и России?", options: ["2 апреля", "8 декабря", "9 мая", "3 июля"], correct: 0 },
+            { q: "С какой республикой БССР подписала Устав ООН в 1945 году?", options: ["Литовская ССР", "Украинская ССР", "Молдавская ССР", "Грузинская ССР"], correct: 1 },
+            { q: "Какая международная декларация, направленная на искоренение бедности и улучшение здоровья, была подписана Беларусью в 2000 году?", options: ["Декларация прав человека", "Декларация тысячелетия", "Декларация о мире", "Всеобщая декларация ЮНЕСКО"], correct: 1 },
+            { q: "Что было важным результатом референдума 2022 года в сфере внешней политики?", options: ["Вступление в НАТО", "Исключение военной агрессии со своей территории", "Выход из ООН", "Создание Союзного государства"], correct: 1 }
+        ];
+        const quizContainer = document.getElementById('quiz-container');
+        function buildQuiz() {
+            let html = '';
+            quizData.forEach((item, idx) => {
+                html += `<p class="quiz-question">${idx+1}. ${item.q}</p>`;
+                item.options.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label>`;
+                });
+            });
+            quizContainer.innerHTML = html;
+        }
+        buildQuiz();
+        document.getElementById('check-quiz').addEventListener('click', () => {
+            let score = 0;
+            quizData.forEach((item, idx) => {
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === item.correct) score++;
+            });
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.textContent = `Ваш результат: ${score} из ${quizData.length}.`;
+            resultDiv.style.background = score >= 15 ? '#d4edda' : '#f8d7da';
+        });
+
+        // Задание 1: соотнесение дат
+        const datesTable = document.getElementById('match-dates');
+        document.getElementById('check-dates').addEventListener('click', () => {
+            const rows = datesTable.querySelectorAll('tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.date-select');
+                row.classList.remove('correct', 'incorrect');
+                select.classList.remove('correct-select', 'incorrect-select');
+                if (select.value === correct) {
+                    row.classList.add('correct');
+                    select.classList.add('correct-select');
+                } else {
+                    row.classList.add('incorrect');
+                    select.classList.add('incorrect-select');
+                    allCorrect = false;
+                }
+            });
+            const feedback = document.getElementById('dates-feedback');
+            feedback.textContent = allCorrect ? '✅ Все даты соотнесены верно!' : '❌ Есть ошибки. Правильные строки подсвечены зелёным.';
+            feedback.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Задание 2: пропуски
+        document.getElementById('check-gaps').addEventListener('click', () => {
+            const answers = {
+                gap1: '1945',
+                gap2: '1999',
+                gap3: 'китай' || 'китаем',
+                gap4: 'великий камень',
+                gap5: '2002'
+            };
+            const check = (id, val) => {
+                const input = document.getElementById(id);
+                const isOk = input.value.trim().toLowerCase() === val.toLowerCase();
+                input.style.border = isOk ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+                return isOk;
+            };
+            const ok1 = check('gap1', '1945');
+            const ok2 = check('gap2', '1999');
+            const ok3 = document.getElementById('gap3').value.trim().toLowerCase().includes('китай');
+            document.getElementById('gap3').style.border = ok3 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            const ok4 = document.getElementById('gap4').value.trim().toLowerCase().includes('великий камень');
+            document.getElementById('gap4').style.border = ok4 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            const ok5 = check('gap5', '2002');
+
+            const allOk = ok1 && ok2 && ok3 && ok4 && ok5;
+            const feedback = document.getElementById('gaps-feedback');
+            feedback.textContent = allOk ? '✅ Верно! 1945, 1999, Китай, Великий камень, 2002.' : '❌ Проверьте ответы: 1945, 1999, Китай, Великий камень, 2002.';
+            feedback.className = allOk ? 'correct-feedback' : 'incorrect-feedback';
+        });
+    })();
+</script>
+</body>
+</html>

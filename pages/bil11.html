@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билет №11: Революции 1905–1907 и Февраль 1917 в Беларуси</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f4efe0;
+            color: #2e2b1a;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 15% 20%, #e4d5aa 0%, #f4efe0 70%);
+        }        .btnBackBlock{
+            position: absolute;
+            display: flex;
+            top: 40px;
+            left: 40px;
+        }
+        .backBtn{
+            text-decoration: none;
+            background: #6b4f28;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .backBtn>p{
+            transition: .3s;
+            position: relative;
+            z-index: 10;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+        .backBtn::after{    
+            transition: .5s;
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dfd0b0;
+            z-index: 1;
+        }
+        .backBtn:hover>p{
+            color: #4e3d22;
+        }
+        .backBtn:hover::after{
+            right: 0;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 250, 240, 0.93);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(130, 100, 70, 0.25);
+            padding: 2rem 2rem 3rem;
+        }
+        h1 { font-size: 2.3rem; text-align: center; color: #4a3620; margin-bottom: 0.2rem; letter-spacing: 1px; }
+        .subtitle {
+            text-align: center; font-style: italic; color: #6b5a3e;
+            margin-bottom: 2.5rem; border-bottom: 2px dotted #b89a5e; padding-bottom: 1rem;
+        }
+        .tab-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2rem; }
+        .tab-btn {
+            background: #dfd0b0; border: none; padding: 12px 20px; border-radius: 30px;
+            font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            color: #4e3d22; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #b89a5e;
+            letter-spacing: 0.5px;
+        }
+        .tab-btn:hover { background: #cdba8b; color: #2d1f0c; }
+        .tab-btn.active {
+            background: #6b4f28; color: #fff; border-color: #4a3520;
+            box-shadow: 0 6px 12px rgba(107, 79, 40, 0.5); transform: translateY(-2px);
+        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card {
+            background: #fffef7; border: 1px solid #d9c7a0; border-radius: 20px;
+            padding: 1.5rem; margin-bottom: 1.8rem; box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .year-badge {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 12px; border-radius: 20px; display: inline-block; margin-right: 10px;
+        }
+        .timeline {
+            position: relative; margin: 2rem 0; padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+            width: 4px; background: #b89a5e; border-radius: 2px;
+        }
+        .timeline-item {
+            margin-bottom: 2rem; position: relative; padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '◆'; position: absolute; left: -6px; top: 2px;
+            font-size: 1.5rem; color: #6b4f28; line-height: 1;
+        }
+        .tl-date {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 14px; border-radius: 20px; display: inline-block; margin-bottom: 4px;
+        }
+        .tl-desc { color: #4d3b20; font-style: italic; }
+        .cards-grid {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-top: 1.5rem;
+        }
+        .flip-card {
+            background: transparent; width: 220px; height: 150px; perspective: 1000px; cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.6s; transform-style: preserve-3d;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2); border-radius: 18px;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 18px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 15px; font-weight: 600; font-size: 1rem;
+        }
+        .flip-card-front {
+            background: #efe3cc; color: #4e3620; border: 2px solid #c8aa7a;
+        }
+        .flip-card-back {
+            background: #6b4f28; color: #fff; border: 2px solid #4a3520;
+            transform: rotateY(180deg); font-size: 0.9rem;
+        }
+        .card-actions { display: flex; gap: 10px; justify-content: center; margin-top: 1.5rem; }
+        .quiz-area { background: #faf3e4; border-radius: 20px; padding: 1.5rem; }
+        .quiz-question { font-weight: 700; margin: 1.2rem 0 0.4rem; }
+        .quiz-result { font-weight: bold; margin-top: 1rem; padding: 0.8rem; border-radius: 12px; }
+        button {
+            background: #6b4f28; color: white; border: none; padding: 10px 25px;
+            border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 1rem; transition: 0.2s;
+        }
+        button:hover { background: #8b6a3a; }
+        .sortable-list { list-style: none; padding: 0; margin: 1rem 0; max-width: 500px; }
+        .sortable-item {
+            background: #fffef7; border: 1px solid #c9a87c; border-radius: 12px;
+            padding: 10px 15px; margin-bottom: 8px; cursor: grab; display: flex;
+            align-items: center; transition: 0.2s; user-select: none;
+        }
+        .sortable-item:active { cursor: grabbing; opacity: 0.8; }
+        .drag-handle { margin-right: 10px; font-size: 1.3rem; color: #6b4f28; }
+        .match-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .match-table td { padding: 8px; vertical-align: middle; }
+        .match-table select {
+            width: 100%; padding: 8px; border-radius: 10px; border: 1px solid #bb9a6e;
+            background: #fffef7; font-family: inherit;
+        }
+        .fill-gap {
+            background: #fffef7; border: 1px solid #bb9a6e; padding: 5px 10px;
+            border-radius: 8px; width: auto; min-width: 100px;
+        }
+        .correct-feedback { color: #2d6a2d; font-weight: bold; }
+        .incorrect-feedback { color: #a13d3d; font-weight: bold; }
+        @media (max-width: 600px) {
+            .tab-btn { padding: 8px 14px; font-size: 0.85rem; }
+            .flip-card { width: 160px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class="btnBackBlock" id="backBtn">
+        <a href="../index.html" class="backBtn" ><p>Назад</p></a>
+    </div>
+    <h1>Билет №11</h1>
+    <div class="subtitle">Революции 1905–1907 и Февраль 1917 г. в Беларуси. Национальное движение</div>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="reasons">Причины и лагеря</button>
+        <button class="tab-btn" data-tab="events1905">События 1905–1907</button>
+        <button class="tab-btn" data-tab="duma">Думы и автономисты</button>
+        <button class="tab-btn" data-tab="february">Февраль 1917</button>
+        <button class="tab-btn" data-tab="timeline">Лента времени</button>
+        <button class="tab-btn" data-tab="cards">Хроно-карточки</button>
+        <button class="tab-btn" data-tab="quiz">Тест (20 вопросов)</button>
+        <button class="tab-btn" data-tab="practice">Практические задания</button>
+    </div>
+
+    <!-- Причины и политические лагеря -->
+    <div class="tab-content active" id="tab-reasons">
+        <div class="card">
+            <h2>⚡ Причины буржуазно-демократических революций</h2>
+            <p>Переход от феодальных к буржуазным отношениям (модернизация) сопровождался реформами, но не был завершён.</p>
+            <ul>
+                <li><strong>Аграрный вопрос:</strong> не решён – сохранялось крупное помещичье землевладение.</li>
+                <li><strong>Политический строй:</strong> абсолютная монархия, отсутствие демократических прав и свобод.</li>
+                <li><strong>Национальный вопрос:</strong> отсутствие права наций на свободное этническое, государственное, культурное самоопределение.</li>
+            </ul>
+            <p><span class="year-badge">1914</span> – Первая мировая война усугубила противоречия и ускорила Февральскую революцию.</p>
+        </div>
+        <div class="card">
+            <h2>🏛️ Три политических лагеря (1905–1907)</h2>
+            <p><strong>Правительственный (монархический):</strong> сохранение самодержавия, сословных привилегий, помещичьего землевладения. Опора – армия и полиция.</p>
+            <p><strong>Буржуазно-либеральный:</strong> партии октябристов («Союз 17 октября»), кадетов (конституционные демократы). За реформы при сохранении монархии.</p>
+            <p><strong>Революционно-демократический:</strong> эсеры (социализация земли), РСДРП (большевики – диктатура пролетариата, меньшевики), Бунд (еврейская национальная рабочая партия), <strong>Белорусская социалистическая громада (БСГ)</strong> – единственная белорусская национально-демократическая партия, требовавшая автономии Беларуси с сеймом в Вильне в составе Российской федеративной демократической республики.</p>
+        </div>
+    </div>
+
+    <!-- События 1905–1907 -->
+    <div class="tab-content" id="tab-events1905">
+        <div class="card">
+            <h2>📅 Ключевые даты и события</h2>
+            <p><span class="year-badge">9 января 1905</span> – «Кровавое воскресенье» в Петербурге. Расстрел мирного шествия рабочих. Начало революции. В Беларуси – выступления солидарности.</p>
+            <p><span class="year-badge">Весна–лето 1905</span> – рост экономических и политических забастовок. Первомайская демонстрация в Минске.</p>
+            <p><span class="year-badge">Октябрь 1905</span> – Всероссийская политическая стачка, в которой активно участвовали трудящиеся Беларуси.</p>
+            <p><span class="year-badge">17 октября 1905</span> – Манифест Николая II. Государственная дума получила законодательные полномочия, обещаны политические свободы.</p>
+            <p><span class="year-badge">18 октября 1905</span> – <strong>Курловский расстрел</strong> в Минске. Расстрел мирного митинга, обсуждавшего Манифест. Назван по фамилии губернатора Курлова. Также расстрел митинга в Витебске.</p>
+            <p><span class="year-badge">Декабрь 1905</span> – крестьянские выступления. В д. Пинковичи Пинского уезда руководил Константин Мицкевич (Якуб Колас). Волнения солдат в Бобруйской и Брестской крепостях, Барановичах. Вооружённое восстание не состоялось.</p>
+        </div>
+    </div>
+
+    <!-- Государственные думы и национальное движение -->
+    <div class="tab-content" id="tab-duma">
+        <div class="card">
+            <h2>🏛️ I и II Государственные думы</h2>
+            <p><span class="year-badge">Декабрь 1905</span> – объявлены выборы в Думу. В I Думе – 36 депутатов от 5 белорусских губерний. Почти половина образовали группу <strong>автономистов</strong> во главе с помещиком <strong>Романом Скирмунтом</strong>. Требовали автономии Белорусского края, восстановления «Литовской провинции» (преемницы ВКЛ) с сеймом и самоуправлением.</p>
+            <p>Главный вопрос – аграрный. Белорусские депутаты-крестьяне не поддержали национализацию земли, выступая за частную собственность.</p>
+            <p><span class="year-badge">Июль 1906</span> – роспуск I Думы за «революционность».</p>
+            <p>Во II Думе большинство у монархистов и октябристов. Сильное влияние получил <strong>Русский окраинный союз</strong> (лозунг «Россия для русских»). Он отрицал существование белорусской нации, считал Беларусь Западной Россией.</p>
+            <p><span class="year-badge">3 июня 1907</span> – роспуск II Думы (третьеиюньский государственный переворот). Завершение революции 1905–1907.</p>
+        </div>
+        <div class="card">
+            <h2>📊 Итоги революции 1905–1907 гг.</h2>
+            <ul>
+                <li>Революция потерпела поражение – основные вопросы не решены.</li>
+                <li>Царизм пошёл на уступки: Государственная дума с законодательными полномочиями, провозглашение демократических прав и свобод.</li>
+                <li>Некоторые улучшения экономического положения рабочих.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Февраль 1917 -->
+    <div class="tab-content" id="tab-february">
+        <div class="card">
+            <h2>🔥 Февральская буржуазно-демократическая революция</h2>
+            <p><strong>Причины:</strong> ухудшение положения народа, нерешённость аграрного и национального вопросов, обострение из-за Первой мировой войны, недовольство царизмом.</p>
+            <p><span class="year-badge">2 марта 1917</span> – отречение Николая II. Падение самодержавия. Власть перешла к <strong>Временному правительству</strong> (буржуазному). Оно выступало за продолжение войны и откладывало решение ключевых вопросов до созыва Учредительного собрания.</p>
+        </div>
+        <div class="card">
+            <h2>🏛️ Двоевластие и национальное движение</h2>
+            <p>Параллельно возникли Советы рабочих и солдатских депутатов – органы революционно-демократической власти. Сложилось <strong>двоевластие</strong>: Советы и буржуазные «общественные комитеты порядка». Советы поддерживали комитеты (политика меньшевиков и эсеров).</p>
+            <p>В марте 1917 г. в Минске прошли два съезда белорусских национальных организаций. Они высказались за <strong>государственно-территориальную автономию Беларуси</strong> в составе Российской демократической республики. Высший орган местной власти – <strong>Великая белорусская рада</strong>. Но Временное правительство, стоявшее на принципе единой и неделимой России, отказало, отложив решение до Учредительного собрания.</p>
+        </div>
+        <div class="card">
+            <h2>📌 Итоги и противоречия</h2>
+            <p>Февраль сверг самодержавие, открыл путь к парламентской демократии. Однако аграрный, национальный вопросы и вопрос о мире не были решены. Часть белорусских земель была оккупирована немецкими войсками. Незавершённость модернизации создала почву для дальнейших потрясений.</p>
+        </div>
+    </div>
+
+    <!-- Лента времени -->
+    <div class="tab-content" id="tab-timeline">
+        <h2 style="text-align:center; margin-bottom:1.5rem;">🕰️ Хронология революций в Беларуси</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="tl-date">9 янв. 1905</div><div class="tl-desc">«Кровавое воскресенье». Начало революции.</div></div>
+            <div class="timeline-item"><div class="tl-date">май–июнь 1905</div><div class="tl-desc">Первые забастовки и демонстрации в Минске и других городах.</div></div>
+            <div class="timeline-item"><div class="tl-date">17 окт. 1905</div><div class="tl-desc">Манифест о законодательной Думе и свободах.</div></div>
+            <div class="timeline-item"><div class="tl-date">18 окт. 1905</div><div class="tl-desc">Курловский расстрел в Минске.</div></div>
+            <div class="timeline-item"><div class="tl-date">дек. 1905</div><div class="tl-desc">Крестьянские волнения (Якуб Колас), солдатские бунты.</div></div>
+            <div class="timeline-item"><div class="tl-date">июль 1906</div><div class="tl-desc">Роспуск I Думы.</div></div>
+            <div class="timeline-item"><div class="tl-date">3 июня 1907</div><div class="tl-desc">Третьеиюньский переворот. Конец революции 1905–1907.</div></div>
+            <div class="timeline-item"><div class="tl-date">2 мар. 1917</div><div class="tl-desc">Отречение Николая II. Победа Февральской революции.</div></div>
+            <div class="timeline-item"><div class="tl-date">март 1917</div><div class="tl-desc">Съезды белорусских организаций в Минске, требование автономии.</div></div>
+        </div>
+    </div>
+
+    <!-- Хроно-карточки -->
+    <div class="tab-content" id="tab-cards">
+        <h2 style="text-align:center; margin-bottom:0.5rem;">📅 Хронологические карточки</h2>
+        <p style="text-align:center; color:#5e4a2e;">Нажмите на карточку, чтобы увидеть обратную сторону.</p>
+        <div class="cards-grid" id="chrono-cards-container"></div>
+        <div class="card-actions">
+            <button id="flip-all">🔄 Перевернуть все</button>
+            <button id="reset-cards">↩️ Сбросить все</button>
+        </div>
+    </div>
+
+    <!-- Тест (20 вопросов) -->
+    <div class="tab-content" id="tab-quiz">
+        <div class="quiz-area">
+            <h2>📝 Тест по билету №11</h2>
+            <div id="quiz-container"></div>
+            <button id="check-quiz">Проверить ответы</button>
+            <div id="quiz-result" class="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Практические задания -->
+    <div class="tab-content" id="tab-practice">
+        <div class="card">
+            <h2>🧩 Задание 1. Расставьте события в хронологическом порядке</h2>
+            <ul class="sortable-list" id="sortable-chrono">
+                <li class="sortable-item" data-order="1"><span class="drag-handle">☰</span> «Кровавое воскресенье»</li>
+                <li class="sortable-item" data-order="2"><span class="drag-handle">☰</span> Манифест 17 октября</li>
+                <li class="sortable-item" data-order="3"><span class="drag-handle">☰</span> Курловский расстрел</li>
+                <li class="sortable-item" data-order="4"><span class="drag-handle">☰</span> Третьеиюньский переворот</li>
+                <li class="sortable-item" data-order="5"><span class="drag-handle">☰</span> Февральская революция</li>
+            </ul>
+            <button id="check-chrono-order">Проверить порядок</button>
+            <span id="chrono-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+        <div class="card">
+            <h2>🔗 Задание 2. Соотнесите партию и политический лагерь</h2>
+            <table class="match-table">
+                <tr><th>Партия</th><th>Лагерь</th></tr>
+                <tr><td>«Союз русского народа»</td><td><select class="match-select" data-id="1"><option value="">--</option><option value="monarch">Монархический</option><option value="liberal">Буржуазно-либеральный</option><option value="rev">Революционно-демократический</option></select></td></tr>
+                <tr><td>Кадеты</td><td><select class="match-select" data-id="2"><option value="">--</option><option value="monarch">Монархический</option><option value="liberal">Буржуазно-либеральный</option><option value="rev">Революционно-демократический</option></select></td></tr>
+                <tr><td>БСГ</td><td><select class="match-select" data-id="3"><option value="">--</option><option value="monarch">Монархический</option><option value="liberal">Буржуазно-либеральный</option><option value="rev">Революционно-демократический</option></select></td></tr>
+            </table>
+            <button id="check-match">Проверить соответствия</button>
+            <span id="match-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+        <div class="card">
+            <h2>✍️ Задание 3. Заполните пропуск о требованиях автономистов</h2>
+            <p>В I Государственной думе депутаты-автономисты от Беларуси требовали восстановить 
+                <input type="text" class="fill-gap" id="gap1" placeholder="?"> 
+                как преемницу ВКЛ с собственным сеймом и самоуправлением.
+            </p>
+            <button id="check-gaps">Проверить</button>
+            <span id="gaps-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Переключение вкладок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(`tab-${target}`).classList.add('active');
+            });
+        });
+
+        // Хронологические карточки
+        const chronoData = [
+            { date: "9 января 1905", desc: "«Кровавое воскресенье». Начало революции." },
+            { date: "17 октября 1905", desc: "Манифест о законодательной Думе." },
+            { date: "18 октября 1905", desc: "Курловский расстрел митинга в Минске." },
+            { date: "3 июня 1907", desc: "Третьеиюньский переворот, конец революции." },
+            { date: "2 марта 1917", desc: "Отречение Николая II, победа Февраля." },
+            { date: "Март 1917", desc: "Съезды белорусских организаций, требование автономии." }
+        ];
+        const cardsContainer = document.getElementById('chrono-cards-container');
+        function buildCards() {
+            cardsContainer.innerHTML = '';
+            chronoData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'flip-card';
+                card.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">${item.date}</div>
+                        <div class="flip-card-back">${item.desc}</div>
+                    </div>
+                `;
+                card.addEventListener('click', () => card.classList.toggle('flipped'));
+                cardsContainer.appendChild(card);
+            });
+        }
+        buildCards();
+        document.getElementById('flip-all').addEventListener('click', () => {
+            const cards = document.querySelectorAll('.flip-card');
+            const allFlipped = Array.from(cards).every(c => c.classList.contains('flipped'));
+            cards.forEach(c => c.classList.toggle('flipped', !allFlipped));
+        });
+        document.getElementById('reset-cards').addEventListener('click', () => {
+            document.querySelectorAll('.flip-card').forEach(c => c.classList.remove('flipped'));
+        });
+
+        // Тест (20 вопросов)
+        const quizData = [
+            { q: "Что стало поводом к началу революции 1905–1907 гг.?", options: ["Отречение царя", "«Кровавое воскресенье»", "Первая мировая война", "Роспуск Думы"], correct: 1 },
+            { q: "Какая белорусская партия требовала автономии с сеймом в Вильне?", options: ["Бунд", "Кадеты", "БСГ", "Октябристы"], correct: 2 },
+            { q: "Когда был издан Манифест о законодательной Думе?", options: ["9 января 1905", "17 октября 1905", "18 октября 1905", "3 июня 1907"], correct: 1 },
+            { q: "С чьим именем связан расстрел митинга в Минске 18 октября 1905 г.?", options: ["Столыпин", "Курлов", "Скирмунт", "Максим Горький"], correct: 1 },
+            { q: "Кто руководил крестьянским выступлением в Пинковичах в декабре 1905 г.?", options: ["Роман Скирмунт", "Якуб Колас", "Павел Шейн", "Александр Богданов"], correct: 1 },
+            { q: "Какая группа депутатов I Думы выступала за автономию Белорусского края?", options: ["Трудовики", "Автономисты", "Федералисты", "Прогрессисты"], correct: 1 },
+            { q: "Какую автономию имели в виду автономисты?", options: ["Культурную", "Территориальную с сеймом", "Экономическую", "Религиозную"], correct: 1 },
+            { q: "Какая партия во II Думе отрицала существование белорусской нации?", options: ["РСДРП", "Бунд", "Русский окраинный союз", "БСГ"], correct: 2 },
+            { q: "Когда закончилась революция 1905–1907 гг.?", options: ["3 июня 1907", "17 октября 1905", "9 января 1906", "2 марта 1917"], correct: 0 },
+            { q: "Какая причина ускорила Февральскую революцию?", options: ["Революция 1905 года", "Первая мировая война", "Отречение царя", "Крымская война"], correct: 1 },
+            { q: "Когда отрёкся Николай II?", options: ["1 марта 1917", "2 марта 1917", "3 марта 1917", "27 февраля 1917"], correct: 1 },
+            { q: "Какое правительство пришло к власти после Февраля?", options: ["Советское", "Временное", "Царское", "Комитет министров"], correct: 1 },
+            { q: "Что такое двоевластие?", options: ["Власть двух царей", "Советы и буржуазные комитеты", "Дума и правительство", "Армия и полиция"], correct: 1 },
+            { q: "Какой орган власти белорусские организации хотели создать в 1917 г.?", options: ["Сейм", "Великая белорусская рада", "Земство", "Краевой совет"], correct: 1 },
+            { q: "Почему Временное правительство не дало автономию Беларуси?", options: ["Не хотело", "Отложило до Учредительного собрания", "Беларусь была против", "Запрет Германии"], correct: 1 },
+            { q: "Какая территория была оккупирована немецкими войсками после Февраля?", options: ["Вся Беларусь", "Западная часть", "Часть белорусских земель", "Минск"], correct: 2 },
+            { q: "Что из перечисленного НЕ было итогом революции 1905–1907 гг.?", options: ["Манифест 17 октября", "Отмена помещичьего землевладения", "Создание Думы", "Провозглашение свобод"], correct: 1 },
+            { q: "Какой вопрос был главным в I Думе?", options: ["Национальный", "Рабочий", "Аграрный", "Военный"], correct: 2 },
+            { q: "Кто был лидером автономистов в I Думе?", options: ["Якуб Колас", "Роман Скирмунт", "Павел Милюков", "Александр Гучков"], correct: 1 },
+            { q: "Какой политический лагерь представляли большевики?", options: ["Монархический", "Либеральный", "Революционно-демократический", "Консервативный"], correct: 2 }
+        ];
+
+        const quizContainer = document.getElementById('quiz-container');
+        function buildQuiz() {
+            let html = '';
+            quizData.forEach((item, idx) => {
+                html += `<p class="quiz-question">${idx+1}. ${item.q}</p>`;
+                item.options.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label>`;
+                });
+            });
+            quizContainer.innerHTML = html;
+        }
+        buildQuiz();
+        document.getElementById('check-quiz').addEventListener('click', () => {
+            let score = 0;
+            quizData.forEach((item, idx) => {
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === item.correct) score++;
+            });
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.textContent = `Ваш результат: ${score} из ${quizData.length}.`;
+            resultDiv.style.background = score >= 15 ? '#d4edda' : '#f8d7da';
+        });
+
+        // Drag-and-drop
+        const sortableList = document.getElementById('sortable-chrono');
+        let draggedItem = null;
+        function initDragDrop(list) {
+            list.addEventListener('dragstart', function(e) {
+                draggedItem = e.target.closest('.sortable-item');
+                if (!draggedItem) return;
+                e.dataTransfer.effectAllowed = 'move';
+                draggedItem.style.opacity = '0.5';
+            });
+            list.addEventListener('dragend', function(e) {
+                if (draggedItem) draggedItem.style.opacity = '1';
+                draggedItem = null;
+                document.querySelectorAll('.sortable-item').forEach(item => item.classList.remove('drag-over'));
+            });
+            list.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                const targetItem = e.target.closest('.sortable-item');
+                if (!targetItem || targetItem === draggedItem) return;
+                targetItem.classList.add('drag-over');
+            });
+            list.addEventListener('dragleave', function(e) {
+                const targetItem = e.target.closest('.sortable-item');
+                if (targetItem) targetItem.classList.remove('drag-over');
+            });
+            list.addEventListener('drop', function(e) {
+                e.preventDefault();
+                const targetItem = e.target.closest('.sortable-item');
+                if (!targetItem || !draggedItem || targetItem === draggedItem) return;
+                targetItem.classList.remove('drag-over');
+                const children = Array.from(list.children);
+                const draggedIndex = children.indexOf(draggedItem);
+                const targetIndex = children.indexOf(targetItem);
+                if (draggedIndex < targetIndex) {
+                    list.insertBefore(draggedItem, targetItem.nextSibling);
+                } else {
+                    list.insertBefore(draggedItem, targetItem);
+                }
+            });
+        }
+        initDragDrop(sortableList);
+        document.getElementById('check-chrono-order').addEventListener('click', () => {
+            const items = Array.from(sortableList.querySelectorAll('.sortable-item'));
+            const currentOrder = items.map(item => parseInt(item.getAttribute('data-order')));
+            const isCorrect = currentOrder.every((val, idx) => val === idx + 1);
+            const feedback = document.getElementById('chrono-feedback');
+            feedback.textContent = isCorrect ? '✅ Верно!' : '❌ Порядок нарушен.';
+            feedback.className = isCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Соотнесение партий и лагерей
+        document.getElementById('check-match').addEventListener('click', () => {
+            const answers = { 1: 'monarch', 2: 'liberal', 3: 'rev' };
+            let allCorrect = true;
+            document.querySelectorAll('.match-select').forEach(select => {
+                const id = select.getAttribute('data-id');
+                if (select.value !== answers[id]) allCorrect = false;
+            });
+            const feedback = document.getElementById('match-feedback');
+            feedback.textContent = allCorrect ? '✅ Верно!' : '❌ Есть ошибки.';
+            feedback.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Пропуск
+        document.getElementById('check-gaps').addEventListener('click', () => {
+            const val = document.getElementById('gap1').value.trim().toLowerCase();
+            const ok = val.includes('литовской провинции') || val.includes('литовскую провинцию');
+            document.getElementById('gap1').style.border = ok ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            const feedback = document.getElementById('gaps-feedback');
+            if (ok) {
+                feedback.textContent = '✅ Верно! «Литовская провинция» как преемница ВКЛ.';
+                feedback.className = 'correct-feedback';
+            } else {
+                feedback.textContent = '❌ Ожидалось «Литовская провинция» (или «Литовскую провинцию»).';
+                feedback.className = 'incorrect-feedback';
+            }
+        });
+    })();
+</script>
+</body>
+</html>

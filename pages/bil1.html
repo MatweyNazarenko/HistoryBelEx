@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билет №1: Древние люди на территории Беларуси</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f4efe0;
+            color: #2e2b1a;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 18% 25%, #e4d5aa 0%, #f4efe0 70%);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 250, 240, 0.93);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(130, 100, 70, 0.25);
+            padding: 2rem 2rem 3rem;
+            position: relative;
+        }
+        h1 { font-size: 2.3rem; text-align: center; color: #4a3620; margin-bottom: 0.2rem; letter-spacing: 1px; }
+        .subtitle {
+            text-align: center; font-style: italic; color: #6b5a3e;
+            margin-bottom: 2.5rem; border-bottom: 2px dotted #b89a5e; padding-bottom: 1rem;
+        }
+        .tab-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2rem; }
+        .tab-btn {
+            background: #dfd0b0; border: none; padding: 12px 20px; border-radius: 30px;
+            font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            color: #4e3d22; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #b89a5e;
+            letter-spacing: 0.5px;
+        }
+        .tab-btn:hover { background: #cdba8b; color: #2d1f0c; }
+        .tab-btn.active {
+            background: #6b4f28; color: #fff; border-color: #4a3520;
+            box-shadow: 0 6px 12px rgba(107, 79, 40, 0.5); transform: translateY(-2px);
+        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card {
+            background: #fffef7; border: 1px solid #d9c7a0; border-radius: 20px;
+            padding: 1.5rem; margin-bottom: 1.8rem; box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .year-badge {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 12px; border-radius: 20px; display: inline-block; margin-right: 10px;
+        }
+        .timeline {
+            position: relative; margin: 2rem 0; padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+            width: 4px; background: #b89a5e; border-radius: 2px;
+        }
+        .timeline-item {
+            margin-bottom: 2rem; position: relative; padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '◆'; position: absolute; left: -6px; top: 2px;
+            font-size: 1.5rem; color: #6b4f28; line-height: 1;
+        }
+        .tl-date {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 14px; border-radius: 20px; display: inline-block; margin-bottom: 4px;
+        }
+        .tl-desc { color: #4d3b20; font-style: italic; }
+        .quiz-area { background: #faf3e4; border-radius: 20px; padding: 1.5rem; }
+        .quiz-question { font-weight: 700; margin: 1.2rem 0 0.4rem; }
+        .quiz-result { font-weight: bold; margin-top: 1rem; padding: 0.8rem; border-radius: 12px; }
+        button {
+            background: #6b4f28; color: white; border: none; padding: 10px 25px;
+            border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 1rem; transition: 0.2s;
+        }
+        button:hover { background: #8b6a3a; }
+        .match-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .match-table td { padding: 8px; vertical-align: middle; }
+        .match-table select {
+            width: 100%; padding: 8px; border-radius: 10px; border: 1px solid #bb9a6e;
+            background: #fffef7; font-family: inherit;
+        }
+        .match-row.correct { background-color: #d4edda; }
+        .match-row.incorrect { background-color: #f8d7da; }
+        .fill-gap {
+            background: #fffef7; border: 1px solid #bb9a6e; padding: 5px 10px;
+            border-radius: 8px; width: auto; min-width: 100px;
+        }
+        .correct-feedback { color: #2d6a2d; font-weight: bold; }
+        .incorrect-feedback { color: #a13d3d; font-weight: bold; }
+        .map-container {
+            position: relative; width: 100%; max-width: 450px; margin: 1rem auto;
+            background: #e0d7b9; border-radius: 30px; padding: 20px; aspect-ratio: 4/3;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><path d="M70 120 L130 70 L210 50 L290 80 L340 140 L310 220 L240 250 L140 240 L80 190 Z" fill="%23dcc8a0" stroke="%23997b55" stroke-width="2"/><circle cx="170" cy="130" r="6" fill="%236b4f28" opacity="0.6"/><circle cx="220" cy="160" r="6" fill="%236b4f28" opacity="0.6"/><circle cx="120" cy="190" r="6" fill="%236b4f28" opacity="0.6"/><circle cx="200" cy="200" r="6" fill="%236b4f28" opacity="0.6"/><circle cx="90" cy="140" r="6" fill="%236b4f28" opacity="0.6"/></svg>');
+            background-size: cover; background-position: center; border: 2px solid #b89a5e;
+        }
+        .map-marker {
+            position: absolute; background: #6b4f28; color: white; font-weight: bold;
+            font-size: 0.7rem; padding: 3px 8px; border-radius: 20px;
+            transform: translate(-50%, -100%); white-space: nowrap;
+            border: 1px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        .map-marker.yurovichi { top: 55%; left: 75%; }
+        .map-marker.berdyzh { top: 45%; left: 85%; }
+        .map-marker.svetilovichi { top: 35%; left: 80%; }
+        .map-marker.obidovichi { top: 40%; left: 70%; }
+        .map-marker.krasnoselsky { top: 50%; left: 30%; }
+        @media (max-width: 600px) {
+            .tab-btn { padding: 8px 14px; font-size: 0.85rem; }
+        }
+        .btnBackBlock{
+            position: absolute;
+            display: flex;
+            top: 40px;
+            left: 40px;
+        }
+        .backBtn{
+            text-decoration: none;
+            background: #6b4f28;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .backBtn>p{
+            transition: .3s;
+            position: relative;
+            z-index: 10;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+        .backBtn::after{    
+            transition: .5s;
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dfd0b0;
+            z-index: 1;
+        }
+        .backBtn:hover>p{
+            color: #4e3d22;
+        }
+        .backBtn:hover::after{
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="btnBackBlock" id="backBtn">
+        <a href="../index.html" class="backBtn" ><p>Назад</p></a>
+    </div>
+    <h1>Билет №1</h1>
+    <div class="subtitle">Древние люди на территории Беларуси: заселение, занятия, изобретения, верования</div>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="settlement">Заселение</button>
+        <button class="tab-btn" data-tab="economy">Хозяйство и изобретения</button>
+        <button class="tab-btn" data-tab="beliefs">Верования и искусство</button>
+        <button class="tab-btn" data-tab="timeline">Лента времени</button>
+        <button class="tab-btn" data-tab="quiz">Тест (20 вопросов)</button>
+        <button class="tab-btn" data-tab="practice">Практические задания</button>
+        <button class="tab-btn" data-tab="dictionary">📖 Словарик</button>
+        <button class="tab-btn" data-tab="answer">✍️ Приблизительный ответ</button>
+        <button class="tab-btn" data-tab="learningapp">🎮 Тренажёр</button>
+    </div>
+
+    <!-- Заселение территории -->
+    <div class="tab-content active" id="tab-settlement">
+        <div class="card">
+            <h2>🦴 Первые люди: неандертальцы</h2>
+            <p>Наиболее древние орудия труда найдены около деревень <strong>Светиловичи</strong> и <strong>Подлужье</strong> (Гомельщина), <strong>Обидовичи</strong> (Могилёвщина). Возможно, их оставили неандертальцы.</p>
+        </div>
+        <div class="card">
+            <h2>👤 Кроманьонец – человек современного типа</h2>
+            <p>Появился около <strong>40–35 тыс. лет назад</strong>, в среднем палеолите (эпоха мустье).</p>
+            <p>Наиболее ранние датированные стоянки:</p>
+            <ul>
+                <li><span class="year-badge">24 тыс. до н.э.</span> д. Юровичи (Калинковичский район)</li>
+                <li><span class="year-badge">21 тыс. до н.э.</span> д. Бердыж (Чечерский район)</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h2>🌡️ Мезолит и первое постоянное население</h2>
+            <p>После окончания ледниковой эпохи климат потеплел. Появились леса, луга, много рек и озёр.</p>
+            <p>Примерно <strong>7–8 тыс. лет назад</strong> сложилось первое постоянное (автохтонное) население. Всего около <strong>4–6 тыс. человек</strong>.</p>
+        </div>
+        <div style="text-align:center; margin-top:1rem;">
+            <p>📍 Ключевые стоянки и места находок</p>
+            <div class="map-container">
+                <div class="map-marker yurovichi">Юровичи (24 тыс. до н.э.)</div>
+                <div class="map-marker berdyzh">Бердыж (21 тыс. до н.э.)</div>
+                <div class="map-marker svetilovichi">Светиловичи</div>
+                <div class="map-marker obidovichi">Обидовичи</div>
+                <div class="map-marker krasnoselsky">Красносельский</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Хозяйство и изобретения -->
+    <div class="tab-content" id="tab-economy">
+        <div class="card">
+            <h2>🔥 Основные изобретения каменного века</h2>
+            <p>Человек научился добывать огонь, строить примитивные жилища, охотиться на крупных животных (мамонт, шерстистый носорог, бизон, олень). Орудия: кремнёвые рубила, остроконечники, ножи, скребки, костяные иглы, гарпуны.</p>
+        </div>
+        <div class="card">
+            <h2>🏹 Мезолит: лук и собака</h2>
+            <p>Распространились лук и стрелы с кремнёвыми наконечниками. Была приручена собака – первое домашнее животное. Хозяйство оставалось присваивающим (охота, рыболовство, собирательство).</p>
+        </div>
+        <div class="card">
+            <h2>🌾 Неолитическая революция</h2>
+            <p>Переход к производящему хозяйству: животноводство и земледелие. Сначала мотыжное, затем подсечно-огневое земледелие (вырубка леса, сжигание пней, зола как удобрение, борона-суковатка, серп, зернотёрки).</p>
+            <p>Рыболовство (крючки из кости, сети), зарождение ткачества и гончарства. Посуду лепили вручную, обжигали на костре, украшали орнаментом. Камень научились шлифовать, пилить, сверлить. Кремень добывали шахтным способом (п. Красносельский).</p>
+        </div>
+        <div class="card">
+            <h2>⚔️ Бронзовый и железный века</h2>
+            <p><span class="year-badge">~5 тыс. лет назад</span> на территорию Беларуси пришли индоевропейцы – культура шнуровой керамики (каменные сверлёные топоры, горшки с отпечатком шнура). Они занимались скотоводством, ускорили переход к бронзовому веку.</p>
+            <p><span class="year-badge">VII в. до н.э.</span> – начало железного века. Железо выплавляли из руды в печах-домницах, получали кричное железо. Земледелие стало пашенным (рало с железным сошником).</p>
+            <p>Излишки продуктов привели к имущественному неравенству, для защиты строили городища.</p>
+        </div>
+    </div>
+
+    <!-- Верования и искусство -->
+    <div class="tab-content" id="tab-beliefs">
+        <div class="card">
+            <h2>🙏 Религиозные верования</h2>
+            <p><strong>Анимизм</strong> – вера в душу и духов.</p>
+            <p><strong>Фетишизм</strong> – поклонение неодушевлённым предметам.</p>
+            <p><strong>Тотемизм</strong> – связь рода с определённым животным или растением.</p>
+        </div>
+        <div class="card">
+            <h2>⚰️ Погребальные обряды</h2>
+            <p>С появлением веры в душу тело хоронили головой на запад, лицом к восходящему солнцу, либо сжигали (огонь – священная сила). Клали вещи для «загробного мира». Над могилами насыпали курганы.</p>
+        </div>
+        <div class="card">
+            <h2>🎨 Зарождение искусства</h2>
+            <p>Хозяйственные занятия и религиозные представления способствовали появлению первобытного искусства – скульптурных изображений, орнаментов на посуде.</p>
+        </div>
+    </div>
+
+    <!-- Лента времени -->
+    <div class="tab-content" id="tab-timeline">
+        <h2 style="text-align:center; margin-bottom:1.5rem;">🕰️ Хронология древней истории Беларуси</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="tl-date">40–35 тыс. лет назад</div><div class="tl-desc">Появление кроманьонца в среднем палеолите (эпоха мустье).</div></div>
+            <div class="timeline-item"><div class="tl-date">24 тыс. до н.э.</div><div class="tl-desc">Стоянка Юровичи – самая ранняя датированная стоянка кроманьонца.</div></div>
+            <div class="timeline-item"><div class="tl-date">21 тыс. до н.э.</div><div class="tl-desc">Стоянка Бердыж.</div></div>
+            <div class="timeline-item"><div class="tl-date">7–8 тыс. лет назад</div><div class="tl-desc">Первое постоянное население (мезолит). Приручение собаки, распространение лука.</div></div>
+            <div class="timeline-item"><div class="tl-date">Неолит</div><div class="tl-desc">Неолитическая революция: переход к земледелию и скотоводству. Ткачество, гончарство, шлифовка камня.</div></div>
+            <div class="timeline-item"><div class="tl-date">~5 тыс. лет назад</div><div class="tl-desc">Расселение индоевропейцев. Культура шнуровой керамики. Начало бронзового века.</div></div>
+            <div class="timeline-item"><div class="tl-date">VII в. до н.э.</div><div class="tl-desc">Начало железного века. Печи-домницы, пашенное земледелие.</div></div>
+        </div>
+    </div>
+
+    <!-- Тест (20 вопросов) -->
+    <div class="tab-content" id="tab-quiz">
+        <div class="quiz-area">
+            <h2>📝 Тест по билету №1</h2>
+            <div id="quiz-container"></div>
+            <button id="check-quiz">Проверить ответы</button>
+            <div id="quiz-result" class="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Практические задания -->
+    <div class="tab-content" id="tab-practice">
+        <div class="card">
+            <h2>🧩 Задание 1. Хронология событий</h2>
+            <p>Укажите верный порядок событий (от 1 до 5).</p>
+            <table class="match-table" id="chrono-order-table">
+                <tr><th>Событие</th><th>Порядок</th></tr>
+                <tr data-correct="1"><td>Первые стоянки кроманьонца (Юровичи, Бердыж)</td><td><select class="order-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+                <tr data-correct="2"><td>Появление постоянного населения в мезолите</td><td><select class="order-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+                <tr data-correct="3"><td>Неолитическая революция (земледелие, скотоводство)</td><td><select class="order-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+                <tr data-correct="4"><td>Приход индоевропейцев (культура шнуровой керамики)</td><td><select class="order-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+                <tr data-correct="5"><td>Начало железного века (VII в. до н.э.)</td><td><select class="order-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></td></tr>
+            </table>
+            <button id="check-chrono-order">Проверить порядок</button>
+            <span id="chrono-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>🔗 Задание 2. Соотнесите тип хозяйства с его характеристиками</h2>
+            <table class="match-table" id="economy-match">
+                <tr><th>Характеристика</th><th>Тип хозяйства</th></tr>
+                <tr data-correct="prisv"><td>Основные занятия – охота, собирательство, рыболовство</td><td><select class="econ-select"><option value="">--</option><option value="prisv">Присваивающее</option><option value="proizv">Производящее</option></select></td></tr>
+                <tr data-correct="proizv"><td>Люди сами выращивают растения и разводят животных</td><td><select class="econ-select"><option value="">--</option><option value="prisv">Присваивающее</option><option value="proizv">Производящее</option></select></td></tr>
+                <tr data-correct="prisv"><td>Не было запасов еды, полная зависимость от природы</td><td><select class="econ-select"><option value="">--</option><option value="prisv">Присваивающее</option><option value="proizv">Производящее</option></select></td></tr>
+                <tr data-correct="proizv"><td>Появились излишки продуктов, имущественное неравенство</td><td><select class="econ-select"><option value="">--</option><option value="prisv">Присваивающее</option><option value="proizv">Производящее</option></select></td></tr>
+            </table>
+            <button id="check-economy">Проверить</button>
+            <span id="economy-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>✍️ Задание 3. Впишите названия верований</h2>
+            <p>Вера в душу и духов – <input type="text" class="fill-gap" id="gap1" placeholder="?">,
+                поклонение неживым предметам – <input type="text" class="fill-gap" id="gap2" placeholder="?">,
+                связь рода с животным или растением – <input type="text" class="fill-gap" id="gap3" placeholder="?">.</p>
+            <button id="check-gaps">Проверить</button>
+            <span id="gaps-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>🔗 Задание 4. Соотнесите эпоху и занятия</h2>
+            <table class="match-table" id="era-match">
+                <tr><th>Эпоха</th><th>Занятия / изобретения</th></tr>
+                <tr data-correct="mezolit"><td>Мезолит</td><td><select class="era-select"><option value="">--</option><option value="mezolit">Лук и стрелы, приручение собаки</option><option value="neolit">Неолитическая революция, гончарство</option><option value="bronza">Пашенное земледелие, печи-домницы</option></select></td></tr>
+                <tr data-correct="neolit"><td>Неолит</td><td><select class="era-select"><option value="">--</option><option value="mezolit">Лук и стрелы, приручение собаки</option><option value="neolit">Неолитическая революция, гончарство</option><option value="bronza">Пашенное земледелие, печи-домницы</option></select></td></tr>
+                <tr data-correct="bronza"><td>Железный век</td><td><select class="era-select"><option value="">--</option><option value="mezolit">Лук и стрелы, приручение собаки</option><option value="neolit">Неолитическая революция, гончарство</option><option value="bronza">Пашенное земледелие, печи-домницы</option></select></td></tr>
+            </table>
+            <button id="check-era">Проверить</button>
+            <span id="era-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>🧩 Задание 5. Развитие общины</h2>
+            <p>Укажите верный порядок смены форм общины (от 1 до 3).</p>
+            <table class="match-table" id="commune-order">
+                <tr><th>Форма общины</th><th>Порядок</th></tr>
+                <tr data-correct="1"><td>Материнская родовая община (матриархат)</td><td><select class="commune-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></td></tr>
+                <tr data-correct="2"><td>Патриархальная родовая община (патриархат)</td><td><select class="commune-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></td></tr>
+                <tr data-correct="3"><td>Соседская община</td><td><select class="commune-select"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></td></tr>
+            </table>
+            <button id="check-commune">Проверить</button>
+            <span id="commune-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+    </div>
+
+    <!-- Словарик -->
+    <div class="tab-content" id="tab-dictionary">
+        <div class="card">
+            <h2>📖 Основные термины и понятия</h2>
+            <table style="width:100%; border-collapse:collapse; margin-top:1rem;">
+                <tr style="background:#f2e2c6;"><th style="padding:10px; text-align:left;">Термин</th><th style="padding:10px; text-align:left;">Определение</th></tr>
+                <tr><td style="padding:8px;"><strong>Неандерталец</strong></td><td style="padding:8px;">Первый человек, чьи орудия найдены в Беларуси. Жил около 100–35 тыс. лет назад.</td></tr>
+                <tr><td style="padding:8px;"><strong>Кроманьонец</strong></td><td style="padding:8px;">Человек современного типа, появившийся на территории Беларуси около 40–35 тыс. лет назад.</td></tr>
+                <tr><td style="padding:8px;"><strong>Ледник</strong></td><td style="padding:8px;">Лёд толщиной до 2 км, покрывавший земную поверхность в древности.</td></tr>
+                <tr><td style="padding:8px;"><strong>Присваивающее хозяйство</strong></td><td style="padding:8px;">Хозяйство, при котором человек брал от природы всё в готовом виде (охота, собирательство, рыболовство).</td></tr>
+                <tr><td style="padding:8px;"><strong>Производящее хозяйство</strong></td><td style="padding:8px;">Хозяйство, при котором люди сами производили необходимые продукты (земледелие, животноводство).</td></tr>
+                <tr><td style="padding:8px;"><strong>Неолитическая революция</strong></td><td style="padding:8px;">Переход от присваивающего хозяйства к производящему.</td></tr>
+                <tr><td style="padding:8px;"><strong>Анимизм</strong></td><td style="padding:8px;">Вера в существование души и духов (леший, водяной, домовой).</td></tr>
+                <tr><td style="padding:8px;"><strong>Фетишизм</strong></td><td style="padding:8px;">Вера в сверхъестественные возможности неодушевлённых предметов (камней, амулетов).</td></tr>
+                <tr><td style="padding:8px;"><strong>Тотемизм</strong></td><td style="padding:8px;">Вера в связь между родом и каким-либо животным или растением (тотемом).</td></tr>
+                <tr><td style="padding:8px;"><strong>Магия</strong></td><td style="padding:8px;">Обряды, связанные с верой в возможность человека воздействовать на природу и людей.</td></tr>
+                <tr><td style="padding:8px;"><strong>Городище</strong></td><td style="padding:8px;">Укреплённое поселение, возникшее для защиты от нападений.</td></tr>
+                <tr><td style="padding:8px;"><strong>Индоевропейцы</strong></td><td style="padding:8px;">Племена животноводов-кочевников из Малой Азии, предки многих народов Европы.</td></tr>
+                <tr><td style="padding:8px;"><strong>Патриархат</strong></td><td style="padding:8px;">Порядок жизни, при котором родство считалось по отцовской линии.</td></tr>
+                <tr><td style="padding:8px;"><strong>Матриархат</strong></td><td style="padding:8px;">Порядок жизни, при котором родство считалось по материнской линии.</td></tr>
+                <tr><td style="padding:8px;"><strong>Кремень</strong></td><td style="padding:8px;">Основной материал для изготовления орудий труда в древности.</td></tr>
+                <tr><td style="padding:8px;"><strong>Печь-домница</strong></td><td style="padding:8px;">Сооружение для выплавки кричного железа из болотной руды.</td></tr>
+                <tr><td style="padding:8px;"><strong>Курган</strong></td><td style="padding:8px;">Насыпь на месте захоронения.</td></tr>
+                <tr><td style="padding:8px;"><strong>Лунница</strong></td><td style="padding:8px;">Женское украшение в форме луны.</td></tr>
+                <tr><td style="padding:8px;"><strong>Фибула</strong></td><td style="padding:8px;">Булавка для одежды.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Приблизительный ответ -->
+    <div class="tab-content" id="tab-answer">
+        <div class="card">
+            <h2>✍️ Примерный ответ по билету №1</h2>
+            <p><strong>Заселение территории Беларуси древними людьми</strong></p>
+            <p>Первыми людьми на территории Беларуси, вероятно, были неандертальцы (100–35 тыс. лет назад). Их орудия найдены у деревень Светиловичи, Подлужье, Обидовичи. Человек современного типа – кроманьонец – появился около 40–35 тыс. лет назад. Самые ранние стоянки: Юровичи (24 тыс. до н.э.) и Бердыж (21 тыс. до н.э.).</p>
+            <p>В мезолите (7–8 тыс. лет назад) после отступления ледника сложилось первое постоянное население численностью 4–6 тыс. человек.</p>
+            <p><strong>Занятия</strong></p>
+            <p>В каменном веке господствовало присваивающее хозяйство: охота на мамонтов, шерстистых носорогов, собирательство, рыболовство. Были изобретены лук и стрелы, приручена собака. В неолите произошла «неолитическая революция» – переход к производящему хозяйству (земледелие и скотоводство). Земледелие прошло путь от мотыжного к подсечно-огневому, а затем к пашенному (с использованием рала). Развивались гончарство, ткачество, обработка камня. В бронзовом веке расселились индоевропейцы, в железном веке (с VII в. до н.э.) началась выплавка железа в печах-домницах.</p>
+            <p><strong>Религиозные верования</strong></p>
+            <p>Невозможность объяснить природу породила веру в сверхъестественное. Основные формы: анимизм (вера в духов), фетишизм (поклонение предметам) и тотемизм (связь рода с животным). Умерших хоронили головой на запад или сжигали, насыпали курганы. Религия и быт способствовали зарождению первобытного искусства (орнамент, статуэтки, украшения).</p>
+        </div>
+    </div>
+
+    <!-- Тренажёр -->
+    <div class="tab-content" id="tab-learningapp">
+        <div class="card">
+            <h2>🧠 Интерактивный тренажёр</h2>
+            <iframe src="https://learningapps.org/watch?v=p8ux82x2v26" 
+                    style="border:0px; width:100%; height:500px; border-radius:20px;" 
+                    allowfullscreen="true" 
+                    webkitallowfullscreen="true" 
+                    mozallowfullscreen="true"></iframe>
+            <p style="margin-top:1rem; font-style:italic;">Выполните задание, чтобы закрепить тему. После ответа можно вернуться к другим вкладкам.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Переключение вкладок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(`tab-${target}`).classList.add('active');
+            });
+        });
+
+        // Тест
+        const quizData = [
+            { q: "Какие древнейшие орудия найдены в Беларуси?", options: ["Бронзовые топоры", "Кремнёвые рубила, остроконечники", "Железные мечи", "Костяные гарпуны"], correct: 1 },
+            { q: "Около каких деревень найдены орудия неандертальцев?", options: ["Юровичи, Бердыж", "Светиловичи, Подлужье, Обидовичи", "Красносельский", "Тяпино, Несвиж"], correct: 1 },
+            { q: "Когда появился кроманьонец на территории Беларуси?", options: ["100 тыс. лет назад", "40-35 тыс. лет назад", "10 тыс. лет назад", "5 тыс. лет назад"], correct: 1 },
+            { q: "Самая ранняя стоянка кроманьонца (24 тыс. до н.э.) обнаружена у деревни:", options: ["Бердыж", "Юровичи", "Светиловичи", "Обидовичи"], correct: 1 },
+            { q: "Сколько людей насчитывало первое постоянное население Беларуси?", options: ["1-2 тыс.", "4-6 тыс.", "10-12 тыс.", "Около 20 тыс."], correct: 1 },
+            { q: "Какое хозяйство существовало в мезолите?", options: ["Производящее", "Присваивающее", "Смешанное", "Торговое"], correct: 1 },
+            { q: "Какое первое животное приручил человек?", options: ["Кошка", "Корова", "Собака", "Лошадь"], correct: 2 },
+            { q: "Что такое неолитическая революция?", options: ["Изобретение лука", "Переход к производящему хозяйству", "Появление городищ", "Начало железного века"], correct: 1 },
+            { q: "Какой способ земледелия был первоначально в неолите?", options: ["Пашенный", "Мотыжный", "Орошаемый", "Подсечно-огневой"], correct: 1 },
+            { q: "Какое орудие использовали при подсечно-огневом земледелии?", options: ["Плуг", "Борона-суковатка", "Коса", "Рало с железным сошником"], correct: 1 },
+            { q: "Где добывали кремень шахтным способом?", options: ["Под Юровичами", "Красносельский", "Бердыж", "Светиловичи"], correct: 1 },
+            { q: "Кто такие индоевропейцы?", options: ["Первые земледельцы", "Животноводы-кочевники из Малой Азии", "Рыболовы Балтики", "Строители городищ"], correct: 1 },
+            { q: "Как археологи называют культуру индоевропейцев на Беларуси?", options: ["Культура ямочной керамики", "Культура шнуровой керамики", "Зарубинецкая культура", "Днепро-двинская культура"], correct: 1 },
+            { q: "Когда начался железный век на территории Беларуси?", options: ["V в. до н.э.", "VII в. до н.э.", "I в. н.э.", "X в. н.э."], correct: 1 },
+            { q: "В чём выплавляли железную руду?", options: ["В горнах", "В доменных печах", "В печах-домницах", "В тиглях"], correct: 2 },
+            { q: "Что такое городище?", options: ["Место захоронения", "Укреплённое поселение для защиты", "Торговая площадь", "Мастерская"], correct: 1 },
+            { q: "Какая вера лежит в основе погребальных обрядов?", options: ["Фетишизм", "Тотемизм", "Анимизм", "Культ предков"], correct: 2 },
+            { q: "Как хоронили умерших?", options: ["Только сжигали", "Закапывали головой на восток", "Закапывали головой на запад или сжигали", "Оставляли в лесу"], correct: 2 },
+            { q: "Что насыпали над могилами?", options: ["Каменные стелы", "Курганы", "Деревянные срубы", "Земляные валы"], correct: 1 },
+            { q: "Что способствовало зарождению первобытного искусства?", options: ["Только охота", "Религиозные верования и хозяйственные занятия", "Торговля", "Войны"], correct: 1 }
+        ];
+
+        const quizContainer = document.getElementById('quiz-container');
+        function buildQuiz() {
+            let html = '';
+            quizData.forEach((item, idx) => {
+                html += `<p class="quiz-question">${idx+1}. ${item.q}</p>`;
+                item.options.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label><br>`;
+                });
+            });
+            quizContainer.innerHTML = html;
+        }
+        buildQuiz();
+
+        document.getElementById('check-quiz').addEventListener('click', () => {
+            let score = 0;
+            quizData.forEach((item, idx) => {
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === item.correct) score++;
+            });
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.textContent = `Ваш результат: ${score} из ${quizData.length}.`;
+            resultDiv.style.background = score >= 15 ? '#d4edda' : '#f8d7da';
+        });
+
+        // Задание 1: Хронология
+        document.getElementById('check-chrono-order').addEventListener('click', () => {
+            const rows = document.querySelectorAll('#chrono-order-table tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.order-select');
+                row.classList.remove('correct', 'incorrect');
+                if (select.value === correct) {
+                    row.classList.add('correct');
+                } else {
+                    row.classList.add('incorrect');
+                    allCorrect = false;
+                }
+            });
+            const fb = document.getElementById('chrono-feedback');
+            fb.textContent = allCorrect ? '✅ Порядок верный!' : '❌ Есть ошибки в порядке.';
+            fb.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Задание 2: Типы хозяйства
+        document.getElementById('check-economy').addEventListener('click', () => {
+            const rows = document.querySelectorAll('#economy-match tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.econ-select');
+                row.classList.remove('correct', 'incorrect');
+                if (select.value === correct) row.classList.add('correct');
+                else { row.classList.add('incorrect'); allCorrect = false; }
+            });
+            const fb = document.getElementById('economy-feedback');
+            fb.textContent = allCorrect ? '✅ Все ответы верны!' : '❌ Есть ошибки.';
+            fb.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Задание 3: Верования
+        document.getElementById('check-gaps').addEventListener('click', () => {
+            const g1 = document.getElementById('gap1').value.trim().toLowerCase();
+            const g2 = document.getElementById('gap2').value.trim().toLowerCase();
+            const g3 = document.getElementById('gap3').value.trim().toLowerCase();
+            const ok1 = g1 === 'анимизм';
+            const ok2 = g2 === 'фетишизм';
+            const ok3 = g3 === 'тотемизм';
+            document.getElementById('gap1').style.border = ok1 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap2').style.border = ok2 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap3').style.border = ok3 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            const feedback = document.getElementById('gaps-feedback');
+            feedback.textContent = (ok1 && ok2 && ok3) ? '✅ Верно: анимизм, фетишизм, тотемизм.' : '❌ Проверьте написание: анимизм, фетишизм, тотемизм.';
+            feedback.className = (ok1 && ok2 && ok3) ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Задание 4: Эпохи и занятия
+        document.getElementById('check-era').addEventListener('click', () => {
+            const rows = document.querySelectorAll('#era-match tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.era-select');
+                row.classList.remove('correct', 'incorrect');
+                if (select.value === correct) row.classList.add('correct');
+                else { row.classList.add('incorrect'); allCorrect = false; }
+            });
+            const fb = document.getElementById('era-feedback');
+            fb.textContent = allCorrect ? '✅ Всё верно!' : '❌ Есть ошибки.';
+            fb.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Задание 5: Община
+        document.getElementById('check-commune').addEventListener('click', () => {
+            const rows = document.querySelectorAll('#commune-order tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.commune-select');
+                row.classList.remove('correct', 'incorrect');
+                if (select.value === correct) row.classList.add('correct');
+                else { row.classList.add('incorrect'); allCorrect = false; }
+            });
+            const fb = document.getElementById('commune-feedback');
+            fb.textContent = allCorrect ? '✅ Порядок верный!' : '❌ Есть ошибки в порядке.';
+            fb.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+    })();
+</script>
+</body>
+</html>

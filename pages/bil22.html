@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билет №22: БССР в 1940-х – 1980-е гг.: образование, наука, культура</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f4efe0;
+            color: #2e2b1a;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 15% 20%, #e4d5aa 0%, #f4efe0 70%);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 250, 240, 0.93);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(130, 100, 70, 0.25);
+            padding: 2rem 2rem 3rem;
+        }
+        h1 { font-size: 2.3rem; text-align: center; color: #4a3620; margin-bottom: 0.2rem; }
+        .subtitle {
+            text-align: center; font-style: italic; color: #6b5a3e;
+            margin-bottom: 2.5rem; border-bottom: 2px dotted #b89a5e; padding-bottom: 1rem;
+        }
+        .tab-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2rem; }
+        .tab-btn {
+            background: #dfd0b0; border: none; padding: 12px 20px; border-radius: 30px;
+            font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            color: #4e3d22; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #b89a5e;
+        }
+        .tab-btn:hover { background: #cdba8b; color: #2d1f0c; }
+        .tab-btn.active {
+            background: #6b4f28; color: #fff; border-color: #4a3520;
+            box-shadow: 0 6px 12px rgba(107, 79, 40, 0.5); transform: translateY(-2px);
+        }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card {
+            background: #fffef7; border: 1px solid #d9c7a0; border-radius: 20px;
+            padding: 1.5rem; margin-bottom: 1.8rem; box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .year-badge {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 12px; border-radius: 20px; display: inline-block; margin-right: 10px;
+        }
+        .timeline {
+            position: relative; margin: 2rem 0; padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+            width: 4px; background: #b89a5e; border-radius: 2px;
+        }
+        .timeline-item {
+            margin-bottom: 2rem; position: relative; padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '◆'; position: absolute; left: -6px; top: 2px;
+            font-size: 1.5rem; color: #6b4f28;
+        }
+        .tl-date {
+            font-weight: bold; color: #6b4f28; background: #f2e2c6;
+            padding: 2px 14px; border-radius: 20px; display: inline-block; margin-bottom: 4px;
+        }
+        .tl-desc { color: #4d3b20; font-style: italic; }
+        .cards-grid {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-top: 1.5rem;
+        }
+        .flip-card {
+            background: transparent; width: 220px; height: 150px; perspective: 1000px; cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.6s; transform-style: preserve-3d;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2); border-radius: 18px;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 18px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 15px; font-weight: 600; font-size: 1rem;
+        }
+        .flip-card-front {
+            background: #efe3cc; color: #4e3620; border: 2px solid #c8aa7a;
+        }
+        .flip-card-back {
+            background: #6b4f28; color: #fff; border: 2px solid #4a3520;
+            transform: rotateY(180deg); font-size: 0.9rem;
+        }        .btnBackBlock{
+            position: absolute;
+            display: flex;
+            top: 40px;
+            left: 40px;
+        }
+        .backBtn{
+            text-decoration: none;
+            background: #6b4f28;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .backBtn>p{
+            transition: .3s;
+            position: relative;
+            z-index: 10;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+        .backBtn::after{    
+            transition: .5s;
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dfd0b0;
+            z-index: 1;
+        }
+        .backBtn:hover>p{
+            color: #4e3d22;
+        }
+        .backBtn:hover::after{
+            right: 0;
+        }
+        .card-actions { display: flex; gap: 10px; justify-content: center; margin-top: 1.5rem; }
+        .quiz-area { background: #faf3e4; border-radius: 20px; padding: 1.5rem; }
+        .quiz-question { font-weight: 700; margin: 1.2rem 0 0.4rem; }
+        .quiz-result { font-weight: bold; margin-top: 1rem; padding: 0.8rem; border-radius: 12px; }
+        button {
+            background: #6b4f28; color: white; border: none; padding: 10px 25px;
+            border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 1rem; transition: 0.2s;
+        }
+        button:hover { background: #8b6a3a; }
+        .match-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .match-table td { padding: 8px; vertical-align: middle; }
+        .match-table select {
+            width: 100%; padding: 8px; border-radius: 10px; border: 1px solid #bb9a6e;
+            background: #fffef7; font-family: inherit;
+        }
+        .match-row.correct { background-color: #d4edda; }
+        .match-row.incorrect { background-color: #f8d7da; }
+        .fill-gap {
+            background: #fffef7; border: 1px solid #bb9a6e; padding: 5px 10px;
+            border-radius: 8px; width: auto; min-width: 100px;
+        }
+        .correct-feedback { color: #2d6a2d; font-weight: bold; }
+        .incorrect-feedback { color: #a13d3d; font-weight: bold; }
+        @media (max-width: 600px) {
+            .tab-btn { padding: 8px 14px; font-size: 0.85rem; }
+            .flip-card { width: 160px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <div class="btnBackBlock" id="backBtn">
+        <a href="../index.html" class="backBtn" ><p>Назад</p></a>
+    </div>
+    <h1>Билет №22</h1>
+    <div class="subtitle">БССР: образование, наука и культура (1940-е – 1980-е)</div>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="science">Образование и наука</button>
+        <button class="tab-btn" data-tab="literature">Литература</button>
+        <button class="tab-btn" data-tab="art">Искусство</button>
+        <button class="tab-btn" data-tab="timeline">Лента времени</button>
+        <button class="tab-btn" data-tab="cards">Хроно-карточки</button>
+        <button class="tab-btn" data-tab="quiz">Тест (20 вопросов)</button>
+        <button class="tab-btn" data-tab="practice">Практические задания</button>
+    </div>
+
+    <!-- Образование и наука -->
+    <div class="tab-content active" id="tab-science">
+        <div class="card">
+            <h2>🎓 Послевоенное восстановление образования</h2>
+            <p>За годы войны разрушена материально-техническая база. С 1949/1950 учебного года начался переход к <strong>всеобщему обязательному семилетнему образованию</strong>, завершившийся к середине 1950-х. Для переростков открывали начальные школы, школы рабочей и сельской молодёжи, ликвидировали безграмотность в западных областях.</p>
+            <p>Восстановлены и открыты новые вузы: Минский институт иностранных языков, Брестский и Полоцкий педагогические, Гродненский сельскохозяйственный, БелИИЖТ в Гомеле, Минский радиотехнический институт.</p>
+        </div>
+        <div class="card">
+            <h2>🔬 Академия наук и выдающиеся учёные</h2>
+            <p>С 1952 по 1969 г. Академию наук БССР возглавлял ботаник и физиолог <strong>В.Ф. Купревич</strong> (доказал поглощение корнями углекислоты из почвы).</p>
+            <p>Уроженец Минска <strong>Я.Б. Зельдович</strong>, не имея высшего образования, стал доктором наук и внёс вклад в создание советской атомной и водородной бомб (трижды Герой Социалистического Труда). Авиаконструктор <strong>П.О. Сухой</strong> (дважды Герой Соцтруда) создал самолёты со стрелообразными и треугольными крыльями.</p>
+            <p>Беларусь гордится космонавтами <strong>Петром Климуком</strong> и <strong>Владимиром Ковалёнком</strong>.</p>
+        </div>
+    </div>
+
+    <!-- Литература -->
+    <div class="tab-content" id="tab-literature">
+        <div class="card">
+            <h2>📖 Проза и поэзия</h2>
+            <p>Военная тема: <strong>Василь Быков</strong> («Журавлиный крик», «Знак беды»), <strong>Иван Науменко</strong>, <strong>Алесь Адамович</strong> («Партизаны», «Хатынская повесть»), <strong>Янка Брыль</strong>. Историческая: <strong>Иван Мележ</strong> – трилогия «Полесская хроника». Романтик <strong>Владимир Короткевич</strong> («Колосья под серпом твоим», «Дикая охота короля Стаха», «Чёрный замок Ольшанский»). Народный писатель <strong>Иван Шамякин</strong> (романы «Сердце на ладони», «Возьму твою боль»).</p>
+            <p>Поэты: <strong>Петрусь Бровка</strong>, <strong>Максим Танк</strong>, <strong>Пимен Панченко</strong>.</p>
+        </div>
+    </div>
+
+    <!-- Искусство -->
+    <div class="tab-content" id="tab-art">
+        <div class="card">
+            <h2>🎭 Театр, музыка, кино</h2>
+            <p>В 1945 г. в Купаловском театре поставлена пьеса «Заложники» о Батьке Минае. Выдающиеся артисты: Глеб Глебов, Лидия Ржецкая, Борис Платонов, Стефания Станюта.</p>
+            <p>Ансамбли <strong>«Песняры»</strong> (Владимир Мулявин) и <strong>«Сябры»</strong> (Анатолий Ярмоленко). Киностудия «Беларусьфильм». Режиссёры <strong>Виктор Туров</strong> («Через кладбище», «Люди на болоте») и <strong>Михаил Пташук</strong> («Возьму твою боль», «Знак беды»).</p>
+        </div>
+        <div class="card">
+            <h2>🎨 Живопись и скульптура</h2>
+            <p><strong>Михаил Савицкий</strong> – цикл «Цифры на сердце», картины «Партизанская мадонна», «Чернобыльская мадонна». Герой Беларуси (2006). <strong>Александр Исачёв</strong> – библейские сюжеты в технике гладкого письма.</p>
+            <p>Скульпторы: <strong>А. Аникейчик</strong> («Прорыв» в Ушачах, «Проклятие фашизму» в Шуневке, соавтор мемориала «Хатынь»). Мемориалы: «Брестская крепость-герой» (1971), «Курган Славы» (1969), памятник матери-патриотке в Жодино (1975).</p>
+        </div>
+    </div>
+
+    <!-- Лента времени -->
+    <div class="tab-content" id="tab-timeline">
+        <h2 style="text-align:center; margin-bottom:1.5rem;">🕰️ Ключевые даты</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="tl-date">1945</div><div class="tl-desc">Пьеса «Заложники» в Купаловском театре.</div></div>
+            <div class="timeline-item"><div class="tl-date">1949/1950</div><div class="tl-desc">Начало перехода к всеобщему семилетнему образованию.</div></div>
+            <div class="timeline-item"><div class="tl-date">1952–1969</div><div class="tl-desc">В.Ф. Купревич – президент АН БССР.</div></div>
+            <div class="timeline-item"><div class="tl-date">1969</div><div class="tl-desc">Открытие мемориала «Хатынь» (Селиханов, Аникейчик).</div></div>
+            <div class="timeline-item"><div class="tl-date">1971</div><div class="tl-desc">Мемориал «Брестская крепость-герой».</div></div>
+            <div class="timeline-item"><div class="tl-date">1975</div><div class="tl-desc">Монумент матери-патриотке в Жодино.</div></div>
+            <div class="timeline-item"><div class="tl-date">2006</div><div class="tl-desc">М.А. Савицкий – Герой Беларуси.</div></div>
+        </div>
+    </div>
+
+    <!-- Хроно-карточки -->
+    <div class="tab-content" id="tab-cards">
+        <h2 style="text-align:center; margin-bottom:0.5rem;">📅 Хронологические карточки</h2>
+        <p style="text-align:center; color:#5e4a2e;">Нажмите на карточку, чтобы увидеть детали.</p>
+        <div class="cards-grid" id="chrono-cards-container"></div>
+        <div class="card-actions">
+            <button id="flip-all">🔄 Перевернуть все</button>
+            <button id="reset-cards">↩️ Сбросить</button>
+        </div>
+    </div>
+
+    <!-- Тест (20 вопросов) -->
+    <div class="tab-content" id="tab-quiz">
+        <div class="quiz-area">
+            <h2>📝 Тест по билету №22</h2>
+            <div id="quiz-container"></div>
+            <button id="check-quiz">Проверить ответы</button>
+            <div id="quiz-result" class="quiz-result"></div>
+        </div>
+    </div>
+
+    <!-- Практические задания -->
+    <div class="tab-content" id="tab-practice">
+        <div class="card">
+            <h2>🧩 Задание 1. Соотнесите личность и её вклад</h2>
+            <table class="match-table" id="match-persons">
+                <tr><th>Личность</th><th>Достижение / произведение</th></tr>
+                <tr data-correct="kuprevich"><td>В.Ф. Купревич</td><td>
+                    <select class="person-select">
+                        <option value="">-- выберите --</option>
+                        <option value="kuprevich">Доказал корневое поглощение CO₂, президент АН БССР</option>
+                        <option value="zeldovich">Создатель атомной и водородной бомб</option>
+                        <option value="savitsky">Автор цикла «Цифры на сердце», народный художник</option>
+                        <option value="turov">Режиссёр фильмов «Люди на болоте», «Через кладбище»</option>
+                        <option value="bykov">Писатель-фронтовик («Знак беды», «Третья ракета»)</option>
+                    </select></td></tr>
+                <tr data-correct="zeldovich"><td>Я.Б. Зельдович</td><td>
+                    <select class="person-select">
+                        <option value="">-- выберите --</option>
+                        <option value="kuprevich">Доказал корневое поглощение CO₂, президент АН БССР</option>
+                        <option value="zeldovich">Создатель атомной и водородной бомб</option>
+                        <option value="savitsky">Автор цикла «Цифры на сердце», народный художник</option>
+                        <option value="turov">Режиссёр фильмов «Люди на болоте», «Через кладбище»</option>
+                        <option value="bykov">Писатель-фронтовик («Знак беды», «Третья ракета»)</option>
+                    </select></td></tr>
+                <tr data-correct="savitsky"><td>М.А. Савицкий</td><td>
+                    <select class="person-select">
+                        <option value="">-- выберите --</option>
+                        <option value="kuprevich">Доказал корневое поглощение CO₂, президент АН БССР</option>
+                        <option value="zeldovich">Создатель атомной и водородной бомб</option>
+                        <option value="savitsky">Автор цикла «Цифры на сердце», народный художник</option>
+                        <option value="turov">Режиссёр фильмов «Люди на болоте», «Через кладбище»</option>
+                        <option value="bykov">Писатель-фронтовик («Знак беды», «Третья ракета»)</option>
+                    </select></td></tr>
+                <tr data-correct="turov"><td>Виктор Туров</td><td>
+                    <select class="person-select">
+                        <option value="">-- выберите --</option>
+                        <option value="kuprevich">Доказал корневое поглощение CO₂, президент АН БССР</option>
+                        <option value="zeldovich">Создатель атомной и водородной бомб</option>
+                        <option value="savitsky">Автор цикла «Цифры на сердце», народный художник</option>
+                        <option value="turov">Режиссёр фильмов «Люди на болоте», «Через кладбище»</option>
+                        <option value="bykov">Писатель-фронтовик («Знак беды», «Третья ракета»)</option>
+                    </select></td></tr>
+                <tr data-correct="bykov"><td>Василь Быков</td><td>
+                    <select class="person-select">
+                        <option value="">-- выберите --</option>
+                        <option value="kuprevich">Доказал корневое поглощение CO₂, президент АН БССР</option>
+                        <option value="zeldovich">Создатель атомной и водородной бомб</option>
+                        <option value="savitsky">Автор цикла «Цифры на сердце», народный художник</option>
+                        <option value="turov">Режиссёр фильмов «Люди на болоте», «Через кладбище»</option>
+                        <option value="bykov">Писатель-фронтовик («Знак беды», «Третья ракета»)</option>
+                    </select></td></tr>
+            </table>
+            <button id="check-persons">Проверить</button>
+            <span id="persons-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+
+        <div class="card">
+            <h2>✍️ Задание 2. Вставьте пропущенные слова</h2>
+            <p>«В 1949/1950 учебном году начался переход к всеобщему обязательному 
+                <input type="text" class="fill-gap" id="gap1" placeholder="?"> образованию. 
+                Выдающийся физик-самоучка, один из создателей советского ядерного щита – 
+                <input type="text" class="fill-gap" id="gap2" placeholder="?">. 
+                Народный художник, автор циклов «Цифры на сердце» и «Чернобыльская мадонна» – 
+                <input type="text" class="fill-gap" id="gap3" placeholder="?">».
+            </p>
+            <button id="check-gaps">Проверить</button>
+            <span id="gaps-feedback" style="margin-left:15px; font-weight:bold;"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Переключение вкладок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(`tab-${target}`).classList.add('active');
+            });
+        });
+
+        // Хронологические карточки
+        const chronoData = [
+            { date: "1945", desc: "Пьеса «Заложники» в театре им. Я. Купалы." },
+            { date: "1949/1950", desc: "Начало всеобщего семилетнего образования." },
+            { date: "1952–1969", desc: "В.Ф. Купревич — президент АН БССР." },
+            { date: "1969", desc: "Открытие мемориала «Хатынь»." },
+            { date: "1971", desc: "Мемориал «Брестская крепость-герой»." },
+            { date: "1975", desc: "Монумент матери-патриотке в Жодино." },
+            { date: "2006", desc: "М. А. Савицкий — Герой Беларуси." }
+        ];
+        const cardsContainer = document.getElementById('chrono-cards-container');
+        function buildCards() {
+            cardsContainer.innerHTML = '';
+            chronoData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'flip-card';
+                card.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">${item.date}</div>
+                        <div class="flip-card-back">${item.desc}</div>
+                    </div>
+                `;
+                card.addEventListener('click', () => card.classList.toggle('flipped'));
+                cardsContainer.appendChild(card);
+            });
+        }
+        buildCards();
+        document.getElementById('flip-all').addEventListener('click', () => {
+            const cards = document.querySelectorAll('.flip-card');
+            const allFlipped = Array.from(cards).every(c => c.classList.contains('flipped'));
+            cards.forEach(c => c.classList.toggle('flipped', !allFlipped));
+        });
+        document.getElementById('reset-cards').addEventListener('click', () => {
+            document.querySelectorAll('.flip-card').forEach(c => c.classList.remove('flipped'));
+        });
+
+        // Тест (20 вопросов)
+        const quizData = [
+            { q: "В какие годы президентом АН БССР был В. Ф. Купревич?", options: ["1945–1952", "1952–1969", "1970–1980", "1960–1975"], correct: 1 },
+            { q: "Что изучал В. Ф. Купревич как учёный?", options: ["Физику атома", "Ботанику и физиологию растений", "Реактивные двигатели", "Космические лучи"], correct: 1 },
+            { q: "Кто из учёных участвовал в создании атомной и водородной бомб?", options: ["П. О. Сухой", "Я. Б. Зельдович", "В. Ф. Купревич", "А. А. Громыко"], correct: 1 },
+            { q: "Сколько раз Я. Б. Зельдович был удостоен звания Героя Соцтруда?", options: ["Один", "Два", "Три", "Четыре"], correct: 2 },
+            { q: "Какой белорусский авиаконструктор создал самолёты со стрелообразными крыльями?", options: ["Антонов", "Туполев", "Сухой", "Ильюшин"], correct: 2 },
+            { q: "Какой писатель создал трилогию «Полесская хроника»?", options: ["Иван Шамякин", "Иван Мележ", "Алесь Адамович", "Владимир Короткевич"], correct: 1 },
+            { q: "Какое произведение принадлежит Владимиру Короткевичу?", options: ["Дикая охота короля Стаха", "Люди на болоте", "Партизанская мадонна", "Цифры на сердце"], correct: 0 },
+            { q: "Кто является автором романа «Чёрный замок Ольшанский»?", options: ["В. Быков", "И. Шамякин", "В. Короткевич", "И. Мележ"], correct: 2 },
+            { q: "Какой ансамбль возглавлял Владимир Мулявин?", options: ["Сябры", "Песняры", "Верасы", "Хорошки"], correct: 1 },
+            { q: "Какой кинорежиссёр снял фильм «Через кладбище»?", options: ["Михаил Пташук", "Виктор Туров", "Элем Климов", "Андрей Тарковский"], correct: 1 },
+            { q: "Какой фильм по повести Василя Быкова снял Михаил Пташук?", options: ["Знак беды", "Война под крышами", "Люди на болоте", "Чёрный замок Ольшанский"], correct: 0 },
+            { q: "Цикл картин «Цифры на сердце» принадлежит кисти:", options: ["А. Исачёва", "М. Савицкого", "И. Репина", "Н. Гончаровой"], correct: 1 },
+            { q: "Какой мемориал посвящён подвигу партизан в Ушачском районе?", options: ["Прорыв", "Курган Славы", "Хатынь", "Брестская крепость"], correct: 0 },
+            { q: "В каком году была открыта экспозиция мемориала «Брестская крепость-герой»?", options: ["1969", "1971", "1975", "1980"], correct: 1 },
+            { q: "Кто из скульпторов участвовал в создании мемориала «Хатынь»?", options: ["З. Азгур", "С. Селиханов", "А. Бембель", "Л. Зильбер"], correct: 1 },
+            { q: "В каком городе установлен памятник матери-патриотке Анастасии Куприяновой?", options: ["Минск", "Жодино", "Брест", "Гомель"], correct: 1 },
+            { q: "Какой писатель впервые поднял тему чернобыльской трагедии в литературе?", options: ["И. Шамякин", "В. Быков", "А. Адамович", "И. Мележ"], correct: 0 },
+            { q: "Какое учебное заведение готовило специалистов для железной дороги в Гомеле?", options: ["БелИИЖТ", "БНТУ", "БелГУТ", "ГГУ"], correct: 0 },
+            { q: "В каком году в Купаловском театре была поставлена пьеса «Заложники»?", options: ["1944", "1945", "1946", "1950"], correct: 1 },
+            { q: "Кто из композиторов и певцов стал руководителем ансамбля «Сябры»?", options: ["В. Мулявин", "А. Ярмоленко", "И. Лученок", "Э. Ханок"], correct: 1 }
+        ];
+        const quizContainer = document.getElementById('quiz-container');
+        function buildQuiz() {
+            let html = '';
+            quizData.forEach((item, idx) => {
+                html += `<p class="quiz-question">${idx+1}. ${item.q}</p>`;
+                item.options.forEach((opt, optIdx) => {
+                    html += `<label><input type="radio" name="q${idx}" value="${optIdx}"> ${opt}</label>`;
+                });
+            });
+            quizContainer.innerHTML = html;
+        }
+        buildQuiz();
+        document.getElementById('check-quiz').addEventListener('click', () => {
+            let score = 0;
+            quizData.forEach((item, idx) => {
+                const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === item.correct) score++;
+            });
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.textContent = `Ваш результат: ${score} из ${quizData.length}.`;
+            resultDiv.style.background = score >= 15 ? '#d4edda' : '#f8d7da';
+        });
+
+        // Задание 1: соотнесение личностей
+        const personsTable = document.getElementById('match-persons');
+        document.getElementById('check-persons').addEventListener('click', () => {
+            const rows = personsTable.querySelectorAll('tr[data-correct]');
+            let allCorrect = true;
+            rows.forEach(row => {
+                const correct = row.getAttribute('data-correct');
+                const select = row.querySelector('.person-select');
+                row.classList.remove('correct', 'incorrect');
+                if (select.value === correct) {
+                    row.classList.add('correct');
+                } else {
+                    row.classList.add('incorrect');
+                    allCorrect = false;
+                }
+            });
+            const feedback = document.getElementById('persons-feedback');
+            feedback.textContent = allCorrect ? '✅ Все личности соотнесены верно!' : '❌ Есть ошибки. Правильные строки подсвечены зелёным.';
+            feedback.className = allCorrect ? 'correct-feedback' : 'incorrect-feedback';
+        });
+
+        // Задание 2: пропуски
+        document.getElementById('check-gaps').addEventListener('click', () => {
+            const g1 = document.getElementById('gap1').value.trim().toLowerCase();
+            const g2 = document.getElementById('gap2').value.trim().toLowerCase();
+            const g3 = document.getElementById('gap3').value.trim().toLowerCase();
+            const ok1 = g1.includes('семилетнему') || g1.includes('семилетнего');
+            const ok2 = g2.includes('зельдович') || g2.includes('я. б. зельдович');
+            const ok3 = g3.includes('савицкий') || g3.includes('м. а. савицкий');
+            document.getElementById('gap1').style.border = ok1 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap2').style.border = ok2 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            document.getElementById('gap3').style.border = ok3 ? '2px solid #2d6a2d' : '2px solid #a13d3d';
+            const feedback = document.getElementById('gaps-feedback');
+            if (ok1 && ok2 && ok3) {
+                feedback.textContent = '✅ Верно! Семилетнему, Зельдович, Савицкий.';
+                feedback.className = 'correct-feedback';
+            } else {
+                feedback.textContent = '❌ Ожидались: семилетнему, Зельдович, Савицкий.';
+                feedback.className = 'incorrect-feedback';
+            }
+        });
+    })();
+</script>
+</body>
+</html>
