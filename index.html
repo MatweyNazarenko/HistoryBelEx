@@ -265,6 +265,24 @@
             background: #b99a6a;
             border-radius: 8px;
         }
+        .formTest{
+            background: #6b4f28;
+            color: white;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .formTest:hover{
+            background: #8b6a3a;
+        }
     </style>
 </head>
 <body>
@@ -286,6 +304,7 @@
     <main class="viewer">
         <div class="viewer-header">
             <span class="current-ticket" id="currentTicketLabel">Билет №1: Древние люди</span>
+            <button class="open-new-tab" id="openNewTabBtn">📖 Открыть в новой вкладке</button>
             <button class="open-new-tab" id="openNewTabBtn">📖 Открыть в новой вкладке</button>
         </div>
         <div class="iframe-container" id="iframeContainer">
